@@ -30,12 +30,10 @@ class Theme_basic extends BaseTheme {
   }
 // TEMPLATE FOR LAYOUT HEADERS, LEFT COLUMN & MAIN COLUMN 
 function header($title = "") { 
-global $base_url;
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <html>
 <head>
-<base href="<?php echo "$base_url/" ?>" />
 <title><?php print $title; ?></title>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php print t('iso-8859-1'); ?>">
   <?php print theme_head($main); ?>
@@ -44,7 +42,7 @@ global $base_url;
   <meta name="MSSmartTagsPreventParsing" content="true"> 
 </head>
   
-<body bgcolor="<?php print $this->style['background_color']; ?>" text="<?php print $this->style['text_color']; ?>" link="<?php print $this->style['link_color']; ?>" alink="<?php print $this->style['active_link_color']; ?>" vlink="<?php print $this->style['visited_link_color']; ?>">
+<body bgcolor="<?php print $this->style['background_color']; ?>" text="<?php print $this->style['text_color']; ?>" link="<?php print $this->style['link_color']; ?>" alink="<?php print $this->style['active_link_color']; ?>" vlink="<?php print $this->style['visited_link_color']; ?>"<?php print theme_onload_attribute(); ?>>
 <br>
 <!-- HEADERS -->
 <?php if ($this->style['enable_logo']) {
