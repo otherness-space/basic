@@ -94,16 +94,16 @@ if ($this->style['enable_columns']) {
 function node($node, $main = 0) { ?>  
 <!-- NODE: "<?php print $node->title; ?>" -->  
 <a name="<?php print $node->nid; ?>"></a>
-<p><font size="<?php print $this->style['title_font_size']; ?>"><?php if ($this->style['title_font_weight'] == "bold") print "<b>"; ?><?php print check_output($node->title); ?><?php if ($this->style['title_font_weight'] == "bold") print "</b>"; ?></font></p>
+<p><font size="<?php print $this->style['title_font_size']; ?>"><?php if ($this->style['title_font_weight'] == "bold") print "<b>"; ?><?php print $node->title; ?><?php if ($this->style['title_font_weight'] == "bold") print "</b>"; ?></font></p>
 <p><i>
 <?php print basic_get_meta_line($node, $this->style['date_format']); ?>
 <?php if ($taxbar = basic_get_taxonomy($node->nid)) print "<br>Category: " . $taxbar . "</i></p>\n";
 else print "</i></p>\n"; ?>
 <blockquote>
 <?php if ($main && $node->teaser) {
-print check_output($node->teaser);
+print $node->teaser;
 } else { 
-print check_output($node->body); 
+print $node->body; 
 } ?>
 
 </blockquote>
@@ -115,7 +115,7 @@ print check_output($node->body);
 // TEMPLATE LAYOUT COMMENT BLOCK 
 function comment($comment, $link = "") { ?>
 
-<p><font size="<?php print $this->style['title_font_size']; ?>"><?php if ($this->style['title_font_weight'] == "bold") print "<b>"; ?><?php print check_output($comment->subject); ?><?php if ($this->style['title_font_weight'] == "bold") print "</b>"; ?></font>&nbsp; 
+<p><font size="<?php print $this->style['title_font_size']; ?>"><?php if ($this->style['title_font_weight'] == "bold") print "<b>"; ?><?php print $comment->subject; ?><?php if ($this->style['title_font_weight'] == "bold") print "</b>"; ?></font>&nbsp; 
 <?php if ($comment->new) { 
   print "&nbsp;<img src=\"";
   print $this->style['path_new_icon']; 
@@ -125,7 +125,7 @@ function comment($comment, $link = "") { ?>
 <p><i><?php print basic_get_meta_line($comment, $this->style['date_format']); ?></i></p>
 <blockquote>
 <?php if ($comment->comment) { 
-  print check_output($comment->comment, 1); 
+  print $comment->comment; 
 } ?>
 
 </blockquote>
@@ -197,7 +197,7 @@ function comment_post_forbidden() {
 }
 
 function comment_folded($comment) {
-  print l(check_output($comment->subject), "node/view/$comment->nid/$comment->cid#$comment->cid") ." ". t("by") . " " . format_name($comment) . "";
+  print l($comment->subject, "node/view/$comment->nid/$comment->cid#$comment->cid") ." ". t("by") . " " . format_name($comment) . "";
   if ($comment->new) print "&nbsp; <img src=\"" . $this->style['path_new_icon'] . "\" alt=\"New\" border=\"0\">";
   print "\n<br>\n";
 }
