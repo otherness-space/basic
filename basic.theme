@@ -29,10 +29,13 @@ class Theme_basic extends BaseTheme {
   return $out;
   }
 // TEMPLATE FOR LAYOUT HEADERS, LEFT COLUMN & MAIN COLUMN 
-function header($title = "") { ?>
+function header($title = "") { 
+global $base_url;
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
 <html>
 <head>
+<base href="<?php echo "$base_url/" ?>" />
 <title><?php print $title; ?></title>
   <meta http-equiv="Content-Type" content="text/html; charset=<?php print t('iso-8859-1'); ?>">
   <?php print theme_head($main); ?>
