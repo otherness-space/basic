@@ -1,0 +1,243 @@
+<?php
+// Drupal Basic theme 1.0 
+// This theme has style.module support
+class Theme_basic extends BaseTheme {
+  function Theme_basic($filename = "", $style_set = "") {
+    include_once "basic.inc";
+    if (module_exist("style")) { 
+      $this->style = style_get_style("basic", $style_set);
+    }
+    else {
+      $style_array = basic_default_style();
+      foreach($style_array as $key=>$value) {
+        $this->style[$key] = $value['value'];
+      }     
+      $this->style = basic_style_mapping($this->style);
+    }
+    $this->foreground = $this->style['text_color'];
+    $this->background = $this->style['background_color']; 
+    $this->path = dirname($filename);    
+  } 
+  function system($field) {
+    $system["name"] = "Basic";
+    $system["author"] = "Robert Laarhoven";
+    $system["description"] = "Simple Theme (HTML 3.2)";
+    return $system[$field];
+  }
+  function links($links) {
+    $out .= implode($this->style['link_delimiter'], $links);
+  return $out;
+  }
+// TEMPLATE FOR LAYOUT HEADERS, LEFT COLUMN & MAIN COLUMN 
+function header($title = "") { ?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<title><?php print $title; ?></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=<?php print t('iso-8859-1'); ?>">
+  <?php print theme_head($main); ?>
+  <meta name="generator" content="Drupal 4.1">
+  <meta name="theme" content="Basic 1.0">
+  <meta name="MSSmartTagsPreventParsing" content="true"> 
+</head>
+  
+<body bgcolor="<?php print $this->style['background_color']; ?>" text="<?php print $this->style['text_color']; ?>" link="<?php print $this->style['link_color']; ?>" alink="<?php print $this->style['active_link_color']; ?>" vlink="<?php print $this->style['visited_link_color']; ?>">
+<br>
+<!-- HEADERS -->
+<?php if ($this->style['enable_logo']) {
+  print "<center><a href=\"/\"><img src=\"";
+  print $this->style['path_logo'];
+  print "\" alt=\"Logo\" border=\"0\">";  
+  print "</a></center>\n";
+}
+if ($this->style['enable_header_text']) { 
+  print "<center><p>\n<font size=\"";
+  print $this->style['header_font_size'];
+  print "\">";
+  if ($this->style['header_font_weight']) print "<b>";  
+  print $this->style['header_text'];
+  if ($this->style['header_font_weight']) print "</b>";
+  print "</font>\n</p></center>\n";
+}?>
+<br>
+<?php // HEADER MENU 
+if (!$this->style['enable_columns'] || $this->style['enable_header_menu']) { 
+  print "<!-- HEADER MENU -->\n";
+  print "<center>" . $this->links(link_page()) . "</center>\n"; 
+  print "<br>\n";
+}  
+if ($this->style['enable_columns']) {
+  print "\n<!-- MAIN TABLE -->\n";
+  print "<table border=\"0\" width=\"100%\">\n<tr>\n";
+}
+// LEFT SIDE COLUMN
+if ($this->style['left_column_width'] && $this->style['enable_columns']) { 
+  print "\n<!-- LEFT COLUMN -->\n";
+  print "<td valign=\"top\">\n\n";
+  print theme_blocks("left", $this);
+  print "<br><img src=\"". $this->path ."/images/pixel.gif\" width=\"";
+  print $this->style['left_column_width'];
+  print "\" height=\"1\" border=\"0\">\n";
+  print "\n</td>\n<td>&nbsp;&nbsp;</td>\n";
+  print "<!-- END LEFT COLUMN -->\n";
+} 
+if ($this->style['enable_columns']) {
+  print "\n<!-- NODE/MAIN COLUMN -->\n";
+  print "<td valign=\"top\" width=\"100%\">\n";
+}
+} // END TEMPLATE FOR LAYOUT HEADERS, LEFT COLUMN & MAIN COLUMN 
+
+// TEMPLATE LAYOUT NODE BLOCK 
+function node($node, $main = 0) { ?>  
+<!-- NODE: "<?php print $node->title; ?>" -->  
+<a name="<?php print $node->nid; ?>"></a>
+<p><font size="<?php print $this->style['title_font_size']; ?>"><?php if ($this->style['title_font_weight'] == "bold") print "<b>"; ?><?php print check_output($node->title); ?><?php if ($this->style['title_font_weight'] == "bold") print "</b>"; ?></font></p>
+<p><i>
+<?php print basic_get_meta_line($node, $this->style['date_format']); ?>
+<?php if ($taxbar = basic_get_taxonomy($node->nid)) print "<br>Category: " . $taxbar . "</i></p>\n";
+else print "</i></p>\n"; ?>
+<blockquote>
+<?php if ($main && $node->teaser) {
+print check_output($node->teaser);
+} else { 
+print check_output($node->body); 
+} ?>
+
+</blockquote>
+<p><?php print $this->links(link_node($node, $main), $this->style['link_delimiter']); ?></p>
+<br>
+<?php
+} // END TEMPLATE LAYOUT NODE BLOCK 
+
+// TEMPLATE LAYOUT COMMENT BLOCK 
+function comment($comment, $link = "") { ?>
+
+<p><font size="<?php print $this->style['title_font_size']; ?>"><?php if ($this->style['title_font_weight'] == "bold") print "<b>"; ?><?php print check_output($comment->subject); ?><?php if ($this->style['title_font_weight'] == "bold") print "</b>"; ?></font>&nbsp; 
+<?php if ($comment->new) { 
+  print "&nbsp;<img src=\"";
+  print $this->style['path_new_icon']; 
+  print "\" alt=\"\" border=\"0\">";
+} ?>
+</p>
+<p><i><?php print basic_get_meta_line($comment, $this->style['date_format']); ?></i></p>
+<blockquote>
+<?php if ($comment->comment) { 
+  print check_output($comment->comment, 1); 
+} ?>
+
+</blockquote>
+<p><?php print $link; ?></p>
+<br>
+<?php      
+} // END TEMPLATE LAYOUT COMMENT BLOCK 
+
+// TEMPLATE LAYOUT (GENERAL) BOX 
+function box($subject, $content, $region = "main") { ?>
+<!-- BOX: "<?php print $subject; ?>" -->
+<center><p><font size="<?php print $this->style['title_font_size']; ?>"><?php if ($this->style['title_font_weight'] == "bold") print "<b>"; ?>
+<?php print $subject; ?>
+<?php if ($this->style['title_font_weight'] == "bold") print "</b>"; ?></font></p></center>
+<p>
+<?php print $content; ?>
+</p>
+<?php
+} // END TEMPLATE LAYOUT BOX 
+
+// TEMPLATE LAYOUT RIGHT COLUMN AND FOOTERS 
+function footer() { ?>
+<?php 
+// RIGHT SIDE COLUMN
+if ($this->style['enable_columns']) { 
+  print "\n</td>\n";
+  print "<!-- END MAIN COLUMN -->\n\n";
+}
+if ($this->style['right_column_width'] && $this->style['enable_columns']) { 
+  print "<!-- RIGHT COLUMN -->\n";
+  print "<td>&nbsp;&nbsp;</td>\n";  
+  print "<td valign=\"top\" align=\"right\">\n\n";
+  print theme_blocks("right", $this);
+  print "\n<br><img src=\"". $this->path ."/images/pixel.gif\" width=\"";
+  print $this->style['right_column_width'];
+  print "\" height=\"1\" border=\"0\">\n</td>\n";
+  print "<!-- END RIGHT COLUMN -->\n";
+} ?>
+<?php if ($this->style['enable_columns']) {
+  print "\n</tr>\n</table>\n";
+  print "<!-- END MAIN TABLE -->\n";
+} ?>
+<br>
+<?php // FOOTER MENU
+if(!$this->style['enable_columns'] || $this->style['enable_footer_menu']) { 
+  print "\n<!-- FOOTER MENU -->\n";
+  print "<center>" . $this->links(link_page()) . "</center>\n"; 
+} ?>
+<?php 
+if (variable_get("site_footer", "")) { 
+  print "\n<!-- FOOTERS MESSAGE -->\n";
+  print "<center><p>";
+  print variable_get("site_footer", "");
+  print "</p></center>\n";
+} ?>
+<?php if (module_exist("agents")) { 
+  print agents_check_browser(); 
+  print agents_check_images();
+}?>
+<br>
+
+</body>
+</html>
+<?php
+} // END TEMPLATE LAYOUT RIGHT COLUMN AND FOOTERS
+
+function comment_post_forbidden() {
+  // hide these links
+}
+
+function comment_folded($comment) {
+  print l(check_output($comment->subject), "node/view/$comment->nid/$comment->cid#$comment->cid") ." ". t("by") . " " . format_name($comment) . "";
+  if ($comment->new) print "&nbsp; <img src=\"" . $this->style['path_new_icon'] . "\" alt=\"New\" border=\"0\">";
+  print "\n<br>\n";
+}
+
+function comment_flat_collapsed($comments, $threshold) {
+  foreach ($comments as $comment) {
+    if (comment_visible($comment, $threshold)) {
+      print comment_view($comment, "", 0) . "\n<br>\n";
+    }
+  }
+}
+
+function pager_display_default($tags = "", $limit = 10, $element = 0, $attributes = array()) {
+  //if (count($attributes)) {
+    $out .= "\n<!-- PAGER -->\n<center><p>\n";  
+    $out .= pager_first(($tags[0] ? $tags[0] : t("first page")), $limit, $element, $attributes) . " " . $this->style['link_delimiter'] . " ";
+    $out .= pager_previous(($tags[1] ? $tags[1] : t("previous page")), $limit, $element, 1, $attributes) . " " . $this->style['link_delimiter'] . " ";
+    $out .= pager_list($limit, $element, ($tags[2] ? $tags[2] : 9 ), "", $attributes) . " " . $this->style['link_delimiter'] . " ";
+    $out .= pager_next(($tags[3] ? $tags[3] : t("next page")), $limit, $element, 1, $attributes) . " " . $this->style['link_delimiter'] . " ";
+    $out .= pager_last(($tags[4] ? $tags[4] : t("last page")), $limit, $element, $attributes) ."\n";
+    $out .= "</p></center>\n";
+  //}
+  return $out;
+}
+
+function theme_mark() { 
+  return " <b>*</b> ";
+}
+
+function theme_error($message) {
+  return "<b>" . $message . "</b>\n";
+}
+
+function theme_item_list($items = array(), $title = "") {
+  if ($title) {
+    $out .= "<b>$title</b><br>\n";
+  }
+  if (isset($items)) {
+    foreach ($items as $item) {
+      $out .= $this->style['item_bullet'] . $item . "<br>\n";
+    }
+  }
+  return $out;
+}
+
+} // END BASIC THEME CLASS ?>
