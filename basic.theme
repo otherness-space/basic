@@ -35,7 +35,6 @@ function header($title = "") {
 <html>
 <head>
 <title><?php print $title; ?></title>
-  <meta http-equiv="Content-Type" content="text/html; charset=<?php print t('iso-8859-1'); ?>">
   <?php print theme_head($main); ?>
   <meta name="generator" content="Drupal 4.1">
   <meta name="theme" content="Basic 1.0">
