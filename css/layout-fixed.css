@@ -1,0 +1,125 @@
+/* $Id$
+*/
+
+/** MAIN LAYOUT - FIXED WIDTH
+---------------------------------*/
+
+#page{
+	width:960px;  /* If you change this value, you will have to change the 
+										margins of the content and the sidebar right */
+	margin:0 auto;
+}
+#content, .two-sidebars #content{
+  width: 560px;
+  float: left;
+  margin-left: 200px; /* The width of #sidebar-left */
+  margin-right: -760px; /* Negative value of #content's width + left margin. */
+  padding: 0; /* Changing this might break the layout. Add padding or margin to #content-inner. */
+	overflow:hidden; /* hide content the overflow content */
+}
+
+.sidebar-left #content{
+  width: 760px;
+  margin-left: 200px; /* The width of #sidebar-left. */
+  margin-right: -960px; /* Negative value of #content's width + left margin. */
+}
+
+.sidebar-right #content{
+  width: 760px;
+  margin-left: 0;
+  margin-right: -760px; /* Negative value of #content's width + left margin. */
+}
+
+.no-sidebars #content{
+  width: 960px;
+  margin-left: 0;
+  margin-right: -960px; /* Negative value of #content's width + left margin. */
+}
+
+#content-inner{
+  margin: 0;
+  padding: 0;
+}
+/** sidebar-left **/
+
+#sidebar-left {
+  float: left;
+  width: 200px;
+  margin-left: 0;
+  margin-right: -200px; /* Negative value of #sidebar-left's width + left margin. */
+  padding: 0; /* Changing this might break the layout. Add padding or margin to #sidebar-left-inner. */
+}
+
+/** sidebar-right **/
+
+#sidebar-right{
+  float: left;
+  width: 200px;
+  margin-left: 760px; /* Width of content + sidebar-left. */
+  margin-right: -960px; /* Negative value of #sidebar-right's width + left margin. */
+  padding: 0; /* Changing this might break the layout. Add padding or margin to #sidebar-right-inner. */
+}
+
+/*---------------------------------*/
+
+/* Layout Helpers */
+
+#header,
+#footer,
+#main #content .mission,
+#main #content .breadcrumb,
+#main #content .node {
+	clear: both;
+}
+
+#header,
+#footer {
+	background-color: #eee;
+	padding: 10px;
+}
+
+.sidebar {
+	background-color: #eff;
+}
+
+#navigation{
+	background-color: #f0ff83;
+}
+
+/* header 
+--------------------------- */
+
+#header #logo-title {
+	margin: 0;
+	position: relative;
+}
+
+#header #logo-title #logo{
+	vertical-align: baseline;
+}
+
+#header #logo-title #name-and-slogan {
+	display: inline;
+}
+
+#header #logo-title #site-name {
+	margin: 0;
+	display: inline;
+}
+
+#header #logo-title #site-slogan {
+	margin-left: 20px;
+}
+
+#header #header-region {
+	overflow: hidden;
+}
+
+/* footer 
+--------------------------- */
+
+#footer {
+	float: none;
+	clear:both;
+	height: 20px;
+}
