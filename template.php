@@ -35,19 +35,19 @@ $vars['styles'] = drupal_get_css();
 
 /**
  * Declare the available regions implemented by this theme.
- * Replace base5_regions by 'name of your theme'_regions
+ * Replace basic_regions by 'name of your theme'_regions
  *
  * @return
  *   An array of regions.
  */
-function base5_regions() {
+function basic_regions() {
   return array(
     'sidebar_left' => t('left sidebar'),
     'sidebar_right' => t('right sidebar'),
     'content_top' => t('content top'),
     'content_bottom' => t('content bottom'),
     'header' => t('header'),
-    'footer' => t('footer')  
+    'footer_block' => t('footer'),  
   );
 }
 // */

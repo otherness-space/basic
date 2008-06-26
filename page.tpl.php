@@ -138,7 +138,7 @@
 
   	<div id="footer">
 	    <?= $footer_message; ?>
-	    <?= $footer; ?>
+	    <?= $footer_block; ?>
   	</div> <!-- /footer -->
   	<?= $closure; ?>
   </div> <!-- /page -->
