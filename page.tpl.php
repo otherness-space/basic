@@ -2,12 +2,12 @@
 // $Id$
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="<?= $language ?>" xml:lang="<?= $language ?>">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="<?php echo $language ?>" xml:lang="<?php echo $language ?>">
 
 <head>
-  <title><?= $head_title; ?></title>
-  <?= $head; ?>
-  <?= $styles; ?>
+  <title><?php echo $head_title; ?></title>
+  <?php echo $head; ?>
+  <?php echo $styles; ?>
   <!--[if lte IE 6]>
   <style type="text/css" media="all">
     @import "<?php echo $base_path . path_to_theme() ?>/css/ie6.css";
@@ -18,11 +18,11 @@
     @import "<?php echo $base_path . path_to_theme() ?>/css/ie7.css";
   </style>
   <![endif]-->
-  <?= $scripts; ?>
+  <?php echo $scripts; ?>
 </head>
 
 <?php /* different ids allow for separate theming of the home page */ ?>
-<body class="<?= $body_classes; ?>">
+<body class="<?php echo $body_classes; ?>">
   <div id="skip-nav"><a href="#content">Skip to Content</a></div>  
   <div id="page">
 	
@@ -30,17 +30,17 @@
 		
 		<div id="header">
 		  	<div id="logo-title">
-				  <!-- Uncomment to activate search box <?= $search_box; ?> -->
+				  <!-- Uncomment to activate search box <?php echo $search_box; ?> -->
 		  	  <?php if ($logo): ?>
-		  	    <a href="<?= $base_path; ?>" title="<?= t('Home'); ?>">
-		  	      <img src="<?= $logo; ?>" alt="<?= t('Home'); ?>" id="logo" />
+		  	    <a href="<?php echo $base_path; ?>" title="<?php echo t('Home'); ?>">
+		  	      <img src="<?php echo $logo; ?>" alt="<?php echo t('Home'); ?>" id="logo" />
 		  	    </a>
 		  	  <?php endif; ?>
 
 	        <div id="name-and-slogan">
 	          <?php if (!empty($site_name)): ?>
 	            <h1 id="site-name">
-	              <a href="<?= $base_path; ?>" title="<?= t('Home'); ?>"><span><?php print $site_name; ?></span></a>
+	              <a href="<?php echo $base_path; ?>" title="<?php echo t('Home'); ?>"><span><?php print $site_name; ?></span></a>
 	            </h1>
 	          <?php endif; ?>
 
@@ -68,7 +68,7 @@
 
 		  		<?php if ($header): ?>
 		  		  <div id="header-region">
-		  		    <?= $header; ?>
+		  		    <?php echo $header; ?>
 		  		  </div>
 		  		<?php endif; ?>
 	    	</div> <!-- /header -->
@@ -89,7 +89,7 @@
 				        	      <h1 class="title"><?php print $title; ?></h1>
 				        	    <?php endif; ?>
 					  	  		  <?php if ($mission): ?>
-												<div id="mission"><?= $mission; ?></div>
+												<div id="mission"><?php echo $mission; ?></div>
 											<?php endif; ?>
 				        	    <?php print $messages; ?>
 				        	    <?php if ($tabs): ?>
@@ -102,8 +102,8 @@
 				        	<div id="content-area"> <!-- CONTENT AREA -->
 				        	  <?php print $content; ?>
 				        	</div>
-		  	  		  	<?= $feed_icons; ?>
-		  	  		  	<?php if ($content_bottom): ?><div id="content-bottom"><?= $content_bottom; ?></div><?php endif; ?>
+		  	  		  	<?php echo $feed_icons; ?>
+		  	  		  	<?php if ($content_bottom): ?><div id="content-bottom"><?php echo $content_bottom; ?></div><?php endif; ?>
 
 		  	  			</div>
 							</div> <!-- /content-inner /content -->
@@ -113,7 +113,7 @@
 		  	  		  <div id="sidebar-left" class="column sidebar">
 									<div id="sidebar-left-inner">
 			    			  <?php if ($sidebar_left): ?>
-		  	  		    	<div class="left" id="top-left"><?= $sidebar_left; ?></div>
+		  	  		    	<div class="left" id="top-left"><?php echo $sidebar_left; ?></div>
 			    			  <?php endif; ?>
 									</div>
 		  	  		  </div> <!-- /sidebar-left -->
@@ -124,7 +124,7 @@
 		  	  		  <div id="sidebar-right" class="column sidebar">
 									<div id="sidebar-right-inner">
 			    			  <?php if ($sidebar_right): ?>
-		  	  		    	<div class="right" id="top-right"><?= $sidebar_right; ?></div>
+		  	  		    	<div class="right" id="top-right"><?php echo $sidebar_right; ?></div>
 			    			  <?php endif; ?>
 									</div>
 		  	  		  </div> <!-- /sidebar-right -->
@@ -137,10 +137,10 @@
 				
 
   	<div id="footer">
-	    <?= $footer_message; ?>
-	    <?= $footer_block; ?>
+	    <?php echo $footer_message; ?>
+	    <?php echo $footer_block; ?>
   	</div> <!-- /footer -->
-  	<?= $closure; ?>
+  	<?php echo $closure; ?>
   </div> <!-- /page -->
 
 </body>
