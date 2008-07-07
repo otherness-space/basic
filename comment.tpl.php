@@ -27,7 +27,7 @@
  */
 ?>
 
-<div class="comment <?php echo comment_classes($comment) . ' ' . $zebra ?> clear-block">
+<div class="comment <?php echo comment_classes($comment) .' '. $zebra ?> clear-block">
 	
   <?php if ($title): ?>
     <h3 class="title"><?php print $title; if (!empty($new)): ?> <span class="new"><?php print $new; ?></span><?php endif; ?></h3>
@@ -39,7 +39,11 @@
     <div class="unpublished"><?php print t('Unpublished'); ?></div>
   <?php endif; ?>
 
-  <?php if ($picture) print $picture; ?>
+  <?php 
+  if ($picture) { 
+    print $picture; 
+  } 
+  ?>
 
   <div class="submitted">
     <?php print $submitted ?>

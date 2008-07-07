@@ -27,8 +27,8 @@ function phptemplate_preprocess_page(&$vars, $hook) {
     // Add unique classes for each page and website section
     $path = drupal_get_path_alias($_GET['q']);
     list($section, ) = explode('/', $path, 2);
-    $body_classes[] = phptemplate_id_safe('page-' . $path);
-    $body_classes[] = phptemplate_id_safe('section-' . $section);
+    $body_classes[] = phptemplate_id_safe('page-'. $path);
+    $body_classes[] = phptemplate_id_safe('section-'. $section);
     if (arg(0) == 'node') {
       if (arg(1) == 'add') {
         if ($section == 'node') {
@@ -40,7 +40,7 @@ function phptemplate_preprocess_page(&$vars, $hook) {
         if ($section == 'node') {
           array_pop($body_classes); // Remove 'section-node'
         }
-        $body_classes[] = 'section-node-' . arg(2); // Add 'section-node-edit' or 'section-node-delete'
+        $body_classes[] = 'section-node-'. arg(2); // Add 'section-node-edit' or 'section-node-delete'
       }
     }
   }
@@ -85,7 +85,7 @@ function phptemplate_preprocess_node(&$vars, $hook) {
     $node_classes[] = 'node-teaser';
   }
   // Class for node type: "node-type-page", "node-type-story", "node-type-my-custom-type", etc.
-  $node_classes[] = 'node-type-' . $vars['node']->type;
+  $node_classes[] = 'node-type-'. $vars['node']->type;
   $vars['node_classes'] = implode(' ', $node_classes); // Concatenate with spaces
 }
 
@@ -132,16 +132,17 @@ function phptemplate_preprocess_block(&$vars, $hook) {
 //
 
 function comment_classes($comment) {
-	$node = node_load($comment->nid);   global $user;
+  $node = node_load($comment->nid);
+  global $user;
  
- $output .= ($comment->new) ? ' comment-new' : ''; 
- $output .=  ' '. $status . ' '; 
- if ($node->name == $comment->name){	
- 	$output .= 'node-author';
- }
- if ($user->name == $comment->name){	
- 	$output .=  ' '. 'mine';
- }
+  $output .= ($comment->new) ? ' comment-new' : ''; 
+  $output .=  ' '. $status .' '; 
+  if ($node->name == $comment->name) {	
+    $output .= 'node-author';
+  }
+  if ($user->name == $comment->name) {	
+    $output .=  ' mine';
+  }
   return $output;
 }
 
@@ -165,7 +166,7 @@ function phptemplate_menu_item_link($link) {
 
   // If an item is a LOCAL TASK, render it as a tab
   if ($link['type'] & MENU_IS_LOCAL_TASK) {
-    $link['title'] = '<span class="tab">' . check_plain($link['title']) . '</span>';
+    $link['title'] = '<span class="tab">'. check_plain($link['title']) .'</span>';
     $link['options']['html'] = TRUE;
   }
 
@@ -215,7 +216,7 @@ function phptemplate_id_safe($string) {
   $string = strtolower(preg_replace('/[^a-zA-Z0-9_-]+/', '-', $string));
   // If the first character is not a-z, add 'n' in front.
   if (!ctype_lower($string{0})) { // Don't use ctype_alpha since its locale aware.
-    $string = 'id' . $string;
+    $string = 'id'. $string;
   }
   return $string;
 }
@@ -235,10 +236,10 @@ function phptemplate_id_safe($string) {
 
 function truncate($phrase, $max_words) {
 	$phrase = strip_tags($phrase);
-   $phrase_array = explode(' ',$phrase);
-   if(count($phrase_array) > $max_words && $max_words > 0)
-      $phrase = implode(' ',array_slice($phrase_array, 0, $max_words)).'...'; 
-   return $phrase;
+  $phrase_array = explode(' ', $phrase);
+  if(count($phrase_array) > $max_words && $max_words > 0)
+    $phrase = implode(' ', array_slice($phrase_array, 0, $max_words)) .'...'; 
+  return $phrase;
 }
 
 //
