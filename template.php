@@ -147,7 +147,6 @@ function comment_classes($comment) {
 }
 
 
-// 	$Id$
 // 	
 // 	Customize the PRIMARY and SECONDARY LINKS, to allow the admin tabs to work on all browsers
 // 	Generate the HTML representing a given menu item ID.

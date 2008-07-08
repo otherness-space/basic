@@ -53,20 +53,20 @@
 
 <?php if ($teaser): ?>
 	
-	<div class="node <?php print $node_classes; ?>" id="node-<?php print $node->nid; ?>">
+	<div class="node <?php echo $node_classes; ?>" id="node-<?php echo $node->nid; ?>">
 		<div class="node-inner">
 	
-			<h2><a href="<?php print $node_url ?>" title="<?php print $title ?>"><?php print $title; ?></a></h2>
+			<h2><a href="<?php echo $node_url ?>" title="<?php echo $title ?>"><?php echo $title; ?></a></h2>
   		
 			<?php if ($submitted): ?>
-			  <div class="submitted"><?php print $submitted; ?></div>
+			  <div class="submitted"><?php echo $submitted; ?></div>
 			<?php endif; ?>
 			
 			<div class="content">
-  		  <?php print $node->teaser; ?>
+  		  <?php echo $node->teaser; ?>
   		</div>
   		
-  		<?php print $links; ?>
+  		<?php echo $links; ?>
 
 		</div> <!-- end node-inner -->
 	</div> <!-- end node-->
@@ -76,26 +76,26 @@
 
 <?php /* _____________ FULL NODE ______________ */ ?>
 
-	<div class="node <?php print $node_classes; ?>" id="node-<?php print $node->nid; ?>">
+	<div class="node <?php echo $node_classes; ?>" id="node-<?php echo $node->nid; ?>">
 		<div class="node-inner">
 	
-			<?php print $picture; ?>
+			<?php echo $picture; ?>
 	
 	  	<div class="meta">
 	  		<?php if ($submitted): ?>
-	  		  <span class="submitted"><?php print $submitted; ?></span>
+	  		  <span class="submitted"><?php echo $submitted; ?></span>
 	  		<?php endif; ?>
 	  		
 	  		<?php if ($terms): ?>
-	  		  <div class="terms terms-inline"><?php print $terms; ?></div>
+	  		  <div class="terms terms-inline"><?php echo $terms; ?></div>
 	  		<?php endif;?>
 	  	</div>
 	  	
 	  	<div class="content">
-	  	  <?php print $content; ?>
+	  	  <?php echo $content; ?>
 	  	</div>
 	  	
-	  	<?php print $links; ?>
+	  	<?php echo $links; ?>
 	    
 		</div> <!-- end node-inner -->
 	</div> <!-- end node-->

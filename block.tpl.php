@@ -26,16 +26,16 @@
  * @see template_preprocess_block()
  */
 ?>
-<div id="block-<?php print $block->module .'-'. $block->delta ?>" class="block block-<?php print $block->module .' '. $block_zebra .' '. $block->region ?>">
+<div id="block-<?php echo $block->module .'-'. $block->delta ?>" class="block block-<?php echo $block->module .' '. $block_zebra .' '. $block->region ?>">
 
   <?php if ($block->subject): ?>
-    <h3 class="title"><?php print $block->subject ?></h3>
+    <h3 class="title"><?php echo $block->subject ?></h3>
   <?php endif; ?>
 
   <div class="content">
-    <?php print $block->content ?>
+    <?php echo $block->content ?>
   </div>
 
-  <?php print $edit_links ?>
+  <?php echo $edit_links ?>
 
 </div>
