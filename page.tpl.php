@@ -40,28 +40,28 @@
 	        <div id="name-and-slogan">
 	          <?php if (!empty($site_name)): ?>
 	            <h1 id="site-name">
-	              <a href="<?php echo $base_path; ?>" title="<?php echo t('Home'); ?>"><span><?php print $site_name; ?></span></a>
+	              <a href="<?php echo $base_path; ?>" title="<?php echo t('Home'); ?>"><span><?php echo $site_name; ?></span></a>
 	            </h1>
 	          <?php endif; ?>
 
 	          <?php if (!empty($site_slogan)): ?>
-	            <div id="site-slogan"><?php print $site_slogan; ?></div>
+	            <div id="site-slogan"><?php echo $site_slogan; ?></div>
 	          <?php endif; ?>
 	        </div> <!-- /name-and-slogan -->
 
 		  	</div> <!-- /logo-title -->
 	  	
 	  	
-	      <div id="navigation" class="menu <?php if (!empty($primary_links)) { print "withprimary"; } if (!empty($secondary_links)) { print " withsecondary"; } ?> ">
+	      <div id="navigation" class="menu <?php if (!empty($primary_links)) { echo "withprimary"; } if (!empty($secondary_links)) { echo " withsecondary"; } ?> ">
 	        <?php if (!empty($primary_links)): ?>
 	          <div id="primary" class="clear-block">
-	            <?php print theme('links', $primary_links, array('class' => 'links primary-links')); ?>
+	            <?php echo theme('links', $primary_links, array('class' => 'links primary-links')); ?>
 	          </div>
 	        <?php endif; ?>
 
 	        <?php if (!empty($secondary_links)): ?>
 	          <div id="secondary" class="clear-block">
-	            <?php print theme('links', $secondary_links, array('class' => 'links secondary-links')); ?>
+	            <?php echo theme('links', $secondary_links, array('class' => 'links secondary-links')); ?>
 	          </div>
 	        <?php endif; ?>
 	      </div> <!-- /navigation -->
@@ -84,23 +84,23 @@
 
 				        	<?php if ($breadcrumb or $title or $tabs or $help or $messages or $mission): ?>
 				        	  <div id="content-header">
-				        	    <?php print $breadcrumb; ?>
+				        	    <?php echo $breadcrumb; ?>
 				        	    <?php if ($title): ?>
-				        	      <h1 class="title"><?php print $title; ?></h1>
+				        	      <h1 class="title"><?php echo $title; ?></h1>
 				        	    <?php endif; ?>
 					  	  		  <?php if ($mission): ?>
 												<div id="mission"><?php echo $mission; ?></div>
 											<?php endif; ?>
-				        	    <?php print $messages; ?>
+				        	    <?php echo $messages; ?>
 				        	    <?php if ($tabs): ?>
-				        	      <div class="tabs"><?php print $tabs; ?></div>
+				        	      <div class="tabs"><?php echo $tabs; ?></div>
 				        	    <?php endif; ?>
-				        	    <?php print $help; ?>
+				        	    <?php echo $help; ?>
 				        	  </div> <!-- /#content-header -->
 				        	<?php endif; ?>
 
 				        	<div id="content-area"> <!-- CONTENT AREA -->
-				        	  <?php print $content; ?>
+				        	  <?php echo $content; ?>
 				        	</div>
 		  	  		  	<?php echo $feed_icons; ?>
 		  	  		  	<?php if ($content_bottom): ?><div id="content-bottom"><?php echo $content_bottom; ?></div><?php endif; ?>

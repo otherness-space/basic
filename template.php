@@ -27,8 +27,8 @@ $vars['css'] = drupal_add_css( path_to_theme() .'/css/layout-fixed.css', 'theme'
 
 $vars['css'] = drupal_add_css( path_to_theme() .'/css/main.css', 'theme', 'all');
 
-// Add a PRINT stylesheet by uncommenting the next line 
-//$vars['css'] = drupal_add_css( path_to_theme() .'/css/print.css', 'theme', 'print');
+// Add a print style sheet
+$vars['css'] = drupal_add_css( path_to_theme() .'/css/print.css', 'theme', 'print');
 $vars['styles'] = drupal_get_css();
 
 
@@ -97,6 +97,9 @@ function _phptemplate_variables($hook, $vars = array()) {
       	case $vars['sidebar_right'] :
       		$body_classes[] = 'sidebar-right';
       		break;
+      	case !$vars['sidebar_left'] && !$vars['sidebar_right'] :
+          $body_classes[] = 'no-sidebars';
+          break;
       }
       // implode with spaces
       $vars['body_classes'] = implode(' ', $body_classes);
