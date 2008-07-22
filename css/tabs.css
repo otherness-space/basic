@@ -1,19 +1,20 @@
-/* $Id$
-*/
+/* $Id$ */
 
 /*
  * Tabs CSS
  *
  * Adds styles for the primary and secondary tabs.
  *
- * Compare this with default CSS found in the system module's stylesheet (a copy
- * of which is in drupal5-reference.css, line 510.)
- *
  */
 
 
 div.tabs {
   margin: 0 0 5px 0;
+}
+
+ul.primary , ul.secondary{
+	display:table;
+	width:99%;
 }
 
 ul.primary {

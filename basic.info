@@ -2,13 +2,13 @@
 
 name = basic
 
-description = Raincity Studios basic theme for Drupal 6
+description = Raincity Studios basic theme for Drupal 7
 
 screenshot = rcs.png
 
 version = 1.0 dev
 
-core = 6.x
+core = 7.x
 
 engine = phptemplate
 
@@ -42,7 +42,8 @@ stylesheets[all][] = css/layout-fixed.css
 ; stylesheets[all][] = css/layout-liquid.css
 
 stylesheets[all][] = css/main.css
-stylesheets[print][] = print.css
+stylesheets[print][] = css/print.css
 
 
 php = 4.3.3
+
