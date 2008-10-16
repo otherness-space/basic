@@ -6,7 +6,7 @@ description = Raincity Studios basic theme for Drupal 6
 
 screenshot = rcs.png
 
-version = 1.0 dev
+version = 1.2.1
 
 core = 6.x
 
@@ -16,7 +16,7 @@ regions[left] = Left sidebar
 regions[right] = Right sidebar
 regions[content] = Content
 regions[header] = Header
-regions[footer] = Footer
+regions[footer_block] = Footer
 
 features[] = logo
 features[] = name

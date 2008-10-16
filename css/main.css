@@ -33,21 +33,27 @@ a:hover, a:active {
 
 /* Titles  */
 
-h1{
+h1 {
 	font-size:2em;
 	line-height:1.3em;
 	margin-bottom:0.5em;
 	margin-top:0pt;
 }
+ 
+/* Paragraph Styles */
 
-/* Lists  */
+.node p {
+  margin: 1em 0;
+}
+
+/* List Styles  */
 
 ul, ol {
   margin-left: 0;
   padding-left: 2em;
 }
 
-/* tables  */
+/* Table Styles  */
 
 table {
 	width: 99%;
@@ -56,7 +62,7 @@ tr.even td, tr.odd td {
 	padding: 10px 5px;
 }
 tr.even {
-	background-color: #f5f8ff;
+	background-color: #F9F9F9;
 }
 tr.odd {
 	background-color: #fff;
@@ -108,7 +114,7 @@ abbr.created {
 }
 .messages {
 	padding: 10px;
-	margin: 10px;
+	margin: 10px 0;
 	border: 1px solid #04a107;
 	color: #04a107;
 	background-color: #edffed;
@@ -120,10 +126,10 @@ form{
 /* Rollover edit links for blocks
 ----------------------------*/
 
-div.block {
+body.admin div.block {
   position: relative;
 }
-div.block div.edit {
+body.admin div.block div.edit {
   display: none;
   position: absolute;
   right: 0;
@@ -134,6 +140,6 @@ div.block div.edit {
   font-size: 11px;
   background-color: #fff;
 }
-div.block:hover div.edit {
+body.admin div.block:hover div.edit {
   display: block;
 }

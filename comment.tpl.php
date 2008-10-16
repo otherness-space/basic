@@ -27,36 +27,41 @@
  */
 ?>
 
-<div class="comment <?php echo comment_classes($comment) .' '. $zebra ?> clear-block">
-	
-  <?php if ($title): ?>
-    <h3 class="title"><?php echo $title; if (!empty($new)): ?> <span class="new"><?php echo $new; ?></span><?php endif; ?></h3>
-  <?php elseif (!empty($new)): ?>
-    <div class="new"><?php echo $new; ?></div>
-  <?php endif; ?>
-
-  <?php if ($unpublished): ?>
-    <div class="unpublished"><?php echo t('Unpublished'); ?></div>
-  <?php endif; ?>
-
-  <?php if ($picture) { echo $picture; } ?>
-
-  <div class="submitted">
-    <?php echo $submitted; ?>
-  </div>
-
-  <div class="content">
-    <?php echo $content ?>
-    <?php if ($signature): ?>
-    <div class="user-signature clear-block">
-      <?php echo $signature ?>
-    </div>
+<div class="comment <?php echo comment_classes($comment) .' '. $zebra; if ($unpublished) { echo 'comment-unpublished'; } ?> clear-block">
+	<div class="comment-inner">
+		
+    <?php if ($title): ?>
+      <h3 class="title"><?php echo $title; if (!empty($new)): ?> <span class="new"><?php echo $new; ?></span><?php endif; ?></h3>
+    <?php elseif (!empty($new)): ?>
+      <div class="new"><?php echo $new; ?></div>
     <?php endif; ?>
-  </div>
-
-  <?php if ($links): ?>
-    <div class="links">
-      <?php echo $links; ?>
+    
+    <?php if ($unpublished): ?>
+      <div class="unpublished"><?php echo t('Unpublished'); ?></div>
+    <?php endif; ?>
+    
+    <?php if ($picture): ?>
+	    <div class="picture"><?php echo $picture; ?></div>
+	  <?php endif; ?>
+	    
+    <div class="submitted">
+      <?php echo $submitted; ?>
     </div>
-  <?php endif; ?>
+    
+    <div class="content">
+      <?php echo $content ?>
+      <?php if ($signature): ?>
+      <div class="user-signature clear-block">
+        <?php echo $signature; ?>
+      </div>
+      <?php endif; ?>
+    </div>
+    
+    <?php if ($links): ?>
+      <div class="links">
+        <?php echo $links; ?>
+      </div>
+    <?php endif; ?>  
+
+  </div>
 </div>

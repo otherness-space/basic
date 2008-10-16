@@ -75,7 +75,6 @@
 #header,
 #footer {
 	background-color: #eee;
-	padding: 10px;
 }
 
 .sidebar {
@@ -99,12 +98,10 @@
 }
 
 #header #logo-title #name-and-slogan {
-	display: inline;
 }
 
 #header #logo-title #site-name {
 	margin: 0;
-	display: inline;
 }
 
 #header #logo-title #site-slogan {
@@ -121,5 +118,4 @@
 #footer {
 	float: none;
 	clear:both;
-	height: 20px;
 }

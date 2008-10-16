@@ -49,55 +49,32 @@
  */
 ?>
 
-<?php /* _____________ TEASER ______________ */ ?>
+<div class="node <?php echo $node_classes; ?>" id="node-<?php echo $node->nid; ?>">
+	<div class="node-inner">
 
-<?php if ($teaser): ?>
-	
-	<div class="node <?php echo $node_classes; ?>" id="node-<?php echo $node->nid; ?>">
-		<div class="node-inner">
-	
-			<h2><a href="<?php echo $node_url ?>" title="<?php echo $title ?>"><?php echo $title; ?></a></h2>
-  		
-			<?php if ($submitted): ?>
-			  <div class="submitted"><?php echo $submitted; ?></div>
-			<?php endif; ?>
-			
-			<div class="content">
-  		  <?php echo $node->teaser; ?>
-  		</div>
-  		
-  		<?php echo $links; ?>
-
-		</div> <!-- end node-inner -->
-	</div> <!-- end node-->
-
-	
-<?php else: ?>
-
-<?php /* _____________ FULL NODE ______________ */ ?>
-
-	<div class="node <?php echo $node_classes; ?>" id="node-<?php echo $node->nid; ?>">
-		<div class="node-inner">
-	
-			<?php echo $picture; ?>
-	
-	  	<div class="meta">
-	  		<?php if ($submitted): ?>
-	  		  <span class="submitted"><?php echo $submitted; ?></span>
-	  		<?php endif; ?>
-	  		
-	  		<?php if ($terms): ?>
-	  		  <div class="terms terms-inline"><?php echo $terms; ?></div>
-	  		<?php endif;?>
-	  	</div>
-	  	
-	  	<div class="content">
-	  	  <?php echo $content; ?>
-	  	</div>
-	  	
-	  	<?php echo $links; ?>
-	    
-		</div> <!-- end node-inner -->
-	</div> <!-- end node-->
-
-<?php endif; ?>
+    <?php if ($picture): ?>
+	    <div class="picture"><?php echo $picture; ?></div>
+	  <?php endif; ?>
+		    
+    <?php if($submitted || $terms): ?>
+      <div class="meta<?php if ($terms): ?> with-taxonomy<?php endif; ?>">
+      	<?php if ($submitted): ?>
+      	  <span class="submitted"><?php echo $submitted; ?></span>
+      	<?php endif; ?>
+      	
+      	<?php if ($terms): ?>
+      	  <div class="taxonomy"><?php echo $terms; ?></div>
+      	<?php endif;?>
+      </div>
+		<?php endif; ?>
+  	
+  	<div class="content">
+  	  <?php echo $content; ?>
+  	</div>
+  	
+    <?php if ($links): ?> 
+	    <div class="links"> <?php echo $links; ?></div>
+	  <?php endif; ?>
+    
+	</div> <!-- end node-inner -->
+</div> <!-- end node-->

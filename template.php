@@ -23,12 +23,16 @@ function phptemplate_preprocess_page(&$vars, $hook) {
   // Classes for body element. Allows advanced theming based on context
   // (home page, node of certain type, etc.)
   $body_classes = array($vars['body_classes']);
+  if (user_access('administer blocks')) {
+	  $body_classes[] = 'admin';
+	}
   if (!$vars['is_front']) {
     // Add unique classes for each page and website section
     $path = drupal_get_path_alias($_GET['q']);
     list($section, ) = explode('/', $path, 2);
     $body_classes[] = phptemplate_id_safe('page-'. $path);
     $body_classes[] = phptemplate_id_safe('section-'. $section);
+
     if (arg(0) == 'node') {
       if (arg(1) == 'add') {
         if ($section == 'node') {
