@@ -17,21 +17,17 @@
 
 // Adding the CSS files to the page template //
 
-
-$vars['css'] = drupal_add_css( path_to_theme() .'/css/override-system.css', 'theme', 'all');
 $vars['css'] = drupal_add_css( path_to_theme() .'/css/tabs.css', 'theme', 'all');
-$vars['css'] = drupal_add_css( path_to_theme() .'/css/layout-fixed.css', 'theme', 'all');
-
-// You can switch from a liquid or fixed layout by just uncommenting next line and commenting the previous one
-//$vars['css'] = drupal_add_css( path_to_theme() .'/css/layout-liquid.css', 'theme', 'all');
-
+$vars['css'] = drupal_add_css( path_to_theme() .'/css/layout-fixed.css', 'theme', 'all'); 
 $vars['css'] = drupal_add_css( path_to_theme() .'/css/main.css', 'theme', 'all');
 
 // Add a print style sheet
 $vars['css'] = drupal_add_css( path_to_theme() .'/css/print.css', 'theme', 'print');
+
+// You can switch from a liquid or fixed layout by just uncommenting next line and commenting the previous one
+// $vars['css'] = drupal_add_css( path_to_theme() .'/css/layout-liquid.css', 'theme', 'all');
+
 $vars['styles'] = drupal_get_css();
-
-
 
 /**
  * Declare the available regions implemented by this theme.
@@ -65,46 +61,64 @@ function basic_regions() {
 function _phptemplate_variables($hook, $vars = array()) {
   switch ($hook) {
     // Send a new variable, $logged_in, to page.tpl.php to tell us if the current user is logged in or out.
-    case 'page':
-      // get the currently logged in user
-      global $user;
+   case 'page':
+     // get the currently logged in user
+     global $user;
 
-      // An anonymous user has a user id of zero.
-      if ($user->uid > 0) {
-        // The user is logged in.
-        $vars['logged_in'] = TRUE;
-      }
-      else {
-        // The user has logged out.
-        $vars['logged_in'] = FALSE;
-      }
+     // An anonymous user has a user id of zero.
+     if ($user->uid > 0) {
+       // The user is logged in.
+       $vars['logged_in'] = TRUE;
+     }
+     else {
+       // The user has logged out.
+       $vars['logged_in'] = FALSE;
+     }
 
-      $body_classes = array();
-      // classes for body element
-      // allows advanced theming based on context (home page, node of certain type, etc.)
-      $body_classes[] = ($vars['is_front']) ? 'front' : 'not-front';
-      $body_classes[] = ($vars['logged_in']) ? 'logged-in' : 'not-logged-in';
-      if ($vars['node']->type) {
-        $body_classes[] = 'ntype-'. phptemplate_id_safe($vars['node']->type);
-      }
-      switch (TRUE) {
-      	case $vars['sidebar_left'] && $vars['sidebar_right'] :
-      		$body_classes[] = 'two-sidebars';
-      		break;
-      	case $vars['sidebar_left'] :
-      		$body_classes[] = 'sidebar-left';
-      		break;
-      	case $vars['sidebar_right'] :
-      		$body_classes[] = 'sidebar-right';
-      		break;
-      	case !$vars['sidebar_left'] && !$vars['sidebar_right'] :
-          $body_classes[] = 'no-sidebars';
-          break;
-      }
-      // implode with spaces
-      $vars['body_classes'] = implode(' ', $body_classes);
+     // Classes for body element. Allows advanced theming based on context
+     // (home page, node of certain type, etc.)
+     $body_classes = array();
+     $body_classes[] = ($vars['is_front']) ? 'front' : 'not-front';
+     $body_classes[] = ($vars['logged_in']) ? 'logged-in' : 'not-logged-in';
+     if ($vars['node']->type) {
+       // If on an individual node page, put the node type in the body classes
+       $body_classes[] = 'node-type-'. $vars['node']->type;
+     }
+     if ($vars['sidebar_left'] && $vars['sidebar_right']) {
+       $body_classes[] = 'two-sidebars';
+     }
+     elseif ($vars['sidebar_right']) {
+       $body_classes[] = 'sidebar-right';
+     } elseif (!$vars['sidebar_left'] && !$vars['sidebar_right']) {
+			 $body_classes[] = 'no-sidebars';
+		 }
+	   if (user_access('administer blocks')) {
+		   $body_classes[] = 'admin';
+		 }
+		 if (!$vars['is_front']) {
+       // Add unique classes for each page and website section
+       $path = drupal_get_path_alias($_GET['q']);
+       list($section,) = explode('/', $path, 2);
+       $body_classes[] = phptemplate_id_safe('page-'. $path);
+       $body_classes[] = phptemplate_id_safe('section-'. $section);
+       if (arg(0) == 'node') {
+         if (arg(1) == 'add') {
+           if ($section == 'node') {
+             array_pop($body_classes); // Remove 'section-node'
+           }
+           $body_classes[] = 'section-node-add'; // Add 'section-node-add'
+         }
+         elseif (is_numeric(arg(1)) && (arg(2) == 'edit' || arg(2) == 'delete')) {
+           if ($section == 'node') {
+             array_pop($body_classes); // Remove 'section-node'
+           }
+           $body_classes[] = 'section-node-'. arg(2); // Add 'section-node-edit' or 'section-node-delete'
+         }
+       }
+     }
+     $vars['body_classes'] = implode(' ', $body_classes); // Concatenate with spaces
 
-      break;
+     break;
 
     case 'node':
       // get the currently logged in user
@@ -200,7 +214,6 @@ function phptemplate_id_safe($string) {
   return strtolower(preg_replace('/[^a-zA-Z0-9-]+/', '-', $string));
 }
 
-// $Id$
 
 /**
  * Generate the HTML representing a given menu item ID.
@@ -282,13 +295,15 @@ menu_item_link($mid) . $children ."</li>
 //	This function also remove all markup, like <a> or <strong> to preserve the integrity
 //	of the markup
 
+
 function truncate($phrase, $max_words) {
 	$phrase = strip_tags($phrase);
-   $phrase_array = explode(' ',$phrase);
-   if(count($phrase_array) > $max_words && $max_words > 0)
-      $phrase = implode(' ',array_slice($phrase_array, 0, $max_words)).'...'; 
-   return $phrase;
+  $phrase_array = explode(' ', $phrase);
+  if(count($phrase_array) > $max_words && $max_words > 0)
+    $phrase = implode(' ', array_slice($phrase_array, 0, $max_words)) .'...'; 
+  return $phrase;
 }
+
 
 //
 //  Return a themed breadcrumb trail.
@@ -329,21 +344,5 @@ function phptemplate_pager($tags = array(), $limit = 10, $element = 0, $paramete
 function phptemplate_feed_icon($url) {
   if ($image = theme('image', 'misc/feed.png', t('Syndicate content'), t('Syndicate content'))) {
     return '<a href="'. check_url($url) .'" class="feed-icon">'. $image. '</a>';
-  }
-}
-
-/**
- * Allow themable wrapping of all comments.
- */
-
-function phptemplate_comment_wrapper($content, $type = null) {
-  static $node_type;
-  if (isset($type)) $node_type = $type;
-
-  if (!$content || $node_type == 'forum') {
-    return '<div id="comments">'. $content . '</div>';
-  }
-  else {
-    return '<div id="comments"><h2 class="comments">'. t('Comments') .'</h2>'. $content .'</div>';
   }
 }

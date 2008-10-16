@@ -5,12 +5,11 @@
 /** MAIN LAYOUT - FIXED WIDTH
 ---------------------------------*/
 
-#page{
-	width:960px;  /* If you change this value, you will have to change the 
-										margins of the content and the sidebar right */
-	margin:0 auto;
+#page {
+	width: 960px;  /* If you change this value, you will have to change the margins of the content and the sidebar right */
+	margin: 0 auto;
 }
-#content, .two-sidebars #content{
+#content, .two-sidebars #content {
   width: 560px;
   float: left;
   margin-left: 200px; /* The width of #sidebar-left */
@@ -19,25 +18,25 @@
 	overflow:hidden; /* hide content the overflow content */
 }
 
-.sidebar-left #content{
+.sidebar-left #content {
   width: 760px;
   margin-left: 200px; /* The width of #sidebar-left. */
   margin-right: -960px; /* Negative value of #content's width + left margin. */
 }
 
-.sidebar-right #content{
+.sidebar-right #content {
   width: 760px;
   margin-left: 0;
   margin-right: -760px; /* Negative value of #content's width + left margin. */
 }
 
-.no-sidebars #content{
+.no-sidebars #content {
   width: 960px;
   margin-left: 0;
   margin-right: -960px; /* Negative value of #content's width + left margin. */
 }
 
-#content-inner{
+#content-inner {
   margin: 0;
   padding: 0;
 }
@@ -53,7 +52,7 @@
 
 /** sidebar-right **/
 
-#sidebar-right{
+#sidebar-right {
   float: left;
   width: 200px;
   margin-left: 760px; /* Width of content + sidebar-left. */
@@ -76,14 +75,14 @@
 #header,
 #footer {
 	background-color: #eee;
-	padding: 10px;
+	padding: 0px;
 }
 
 .sidebar {
 	background-color: #eff;
 }
 
-#navigation{
+#navigation {
 	background-color: #f0ff83;
 }
 
@@ -92,24 +91,20 @@
 
 #header #logo-title {
 	margin: 0;
-	position: relative;
 }
 
-#header #logo-title #logo{
+#header #logo-title #logo {
 	vertical-align: baseline;
 }
 
 #header #logo-title #name-and-slogan {
-	display: inline;
 }
 
 #header #logo-title #site-name {
 	margin: 0;
-	display: inline;
 }
 
 #header #logo-title #site-slogan {
-	margin-left: 20px;
 }
 
 #header #header-region {
@@ -121,6 +116,5 @@
 
 #footer {
 	float: none;
-	clear:both;
-	height: 20px;
+	clear: both;
 }

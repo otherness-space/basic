@@ -8,7 +8,7 @@
 }
 
 div.admin .left, div.admin .right {
-	width:46%;  /* fix the admin page in IE6 */
+	width: 46%;  /* fix the admin page in IE6 */
 }
 
 /** floating divs **/
@@ -49,15 +49,15 @@ ul.primary li a .tab {
 }
 
 ul.primary li a:hover {
-	cursor:pointer; /* Minor fix for primary and secondary tabs in IE */
-	color:#555;
-	text-decoration:none;
+	cursor: pointer; /* Minor fix for primary and secondary tabs in IE */
+	color: #555;
+	text-decoration: none;
   background: url(../images/tabs/tab-left-ie6.png) no-repeat left -76px;
 }
 ul.secondary li a:hover{
-	cursor:pointer; /* Minor fix for primary and secondary tabs in IE */
-	color:#555;
-	text-decoration:none;
+	cursor: pointer; /* Minor fix for primary and secondary tabs in IE */
+	color: #555;
+	text-decoration: none;
 }
 ul.primary li a:hover .tab {
   background: url(../images/tabs/tab-right-ie6.png) no-repeat right -76px;

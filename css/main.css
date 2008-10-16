@@ -24,21 +24,27 @@ body, caption, th, td, input, textarea, select, option, legend, fieldset {
 
 a:link, a:visited {
   color: blue;
-  text-decoration:none;
+  text-decoration: none;
 }
 
 a:hover, a:active {
   color: red;
-  text-decoration:underline;
+  text-decoration: underline;
 }
 
 /* Titles  */
 
-h1{
-	font-size:2em;
-	line-height:1.3em;
-	margin-bottom:0.5em;
-	margin-top:0pt;
+h1 {
+	font-size: 2em;
+	line-height: 1.3em;
+	margin-bottom: 0.5em;
+	margin-top: 0pt;
+}
+
+/* Paragraph Styles */
+
+.node p {
+  margin: 1em 0;
 }
 
 /* Lists  */
@@ -48,7 +54,7 @@ ul, ol {
   padding-left: 2em;
 }
 
-/* tables  */
+/* Table Styles  */
 
 table {
 	width: 99%;
@@ -57,20 +63,20 @@ tr.even td, tr.odd td {
 	padding: 10px 5px;
 }
 tr.even {
-	background-color: #f5f8ff;
+	background-color: #f9f9f9;
 }
 tr.odd {
 	background-color: #fff;
 }
 
-/* Code */
+/* Code Styles */
 
 pre, code {
-	background-color:#efefef;
-	display:block;
-	padding:5px;
-	margin:5px 0;
-	border:1px solid #aaa;
+	background-color: #efefef;
+	display: block;
+	padding: 5px;
+	margin: 5px 0;
+	border: 1px solid #aaa;
   font-family: "Bitstream Vera Sans Mono", "Courier New", monospace;
 }
 
@@ -105,26 +111,27 @@ abbr.created {
 ---------------------------- */
 
 .resizable-textarea textarea {
-	font-size:14px!important;
+	font-size: 14px !important;
 }
 .messages {
 	padding: 10px;
-	margin: 10px;
+	margin: 10px 0px;
 	border: 1px solid #04a107;
 	color: #04a107;
 	background-color: #edffed;
 }
-form{
-	margin:10px 0;
+form {
+	margin: 10px 0;
 }
 
 /* Rollover edit links for blocks
 ----------------------------*/
 
-div.block {
+body.admin div.block {
   position: relative;
 }
-div.block div.edit {
+
+body.admin div.block div.edit {
   display: none;
   position: absolute;
   right: 0;
@@ -135,6 +142,6 @@ div.block div.edit {
   font-size: 11px;
   background-color: #fff;
 }
-div.block:hover div.edit {
+body.admin div.block:hover div.edit {
   display: block;
 }

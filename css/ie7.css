@@ -24,12 +24,12 @@
 /* Minor fix for primary and secondary tabs in IE */
 
 ul.primary li a:hover {
-	cursor:pointer;
-	color:#555;
-	text-decoration:none;
+	cursor: pointer;
+	color: #555;
+	text-decoration: none;
 }
 ul.secondary li a:hover{
-	cursor:pointer;
-	color:#555;
-	text-decoration:none;
+	cursor: pointer;
+	color: #555;
+	text-decoration: none;
 }

@@ -1,2 +1,37 @@
 /* $Id$
 */
+
+.sidebar, 
+#navigation, 
+#header-region, 
+#search-theme-form,
+#footer,
+.breadcrumb,
+.tabs,
+.feed-icon,
+.links {
+	display: none;
+}
+
+#header #logo-title {
+	text-align: center;
+}
+
+#page {
+	width: auto;
+}
+
+#header {
+	background-color: transparent;
+}
+
+#main-inner #content,
+#main-inner .content,
+#main-inner .title {
+	margin: 20px 0;
+	width: auto;
+}
+
+a:hover, a:active, a:link, a:visited {
+	color: #000;
+}
