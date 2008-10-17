@@ -51,6 +51,10 @@
 
 <div class="node <?php echo $node_classes; ?>" id="node-<?php echo $node->nid; ?>">
 	<div class="node-inner">
+    
+    <?php if ($page == 0): ?>
+	    <h2 class="title node-title"> <a href="<?php echo $node_url; ?>"><?php echo $title; ?></a></h2>
+    <?php endif; ?>
 
     <?php if ($picture): ?>
 	    <div class="picture"><?php echo $picture; ?></div>
