@@ -48,6 +48,27 @@ function phptemplate_preprocess_page(&$vars, $hook) {
       }
     }
   }
+  // Check what the user's browser is and add it as a body class    
+  $user_agent = $_SERVER['HTTP_USER_AGENT'];
+  if($user_agent) {
+    if (strpos($user_agent, 'MSIE')) {
+      $body_classes[] = 'browser-ie';
+    } else if (strpos($user_agent, 'MSIE 6.0')) {
+      $body_classes[] = 'browser-ie6';
+    } else if (strpos($user_agent, 'MSIE 7.0')) {
+      $body_classes[] = 'browser-ie7';
+    } else if (strpos($user_agent, 'MSIE 8.0')) {
+      $body_classes[] = 'browser-ie8'; 
+    } else if (strpos($user_agent, 'Firefox/2')) {
+      $body_classes[] = 'browser-firefox2';
+    } else if (strpos($user_agent, 'Firefox/3')) {
+      $body_classes[] = 'browser-firefox3';
+    }else if (strpos($user_agent, 'Safari')) {
+      $body_classes[] = 'browser-safari';
+    } else if (strpos($user_agent, 'Opera')) {
+      $body_classes[] = 'browser-opera';
+    }
+  }
   $vars['body_classes'] = implode(' ', $body_classes); // Concatenate with spaces
 }
 
@@ -153,7 +174,6 @@ function comment_classes($comment) {
 
 // 	
 // 	Customize the PRIMARY and SECONDARY LINKS, to allow the admin tabs to work on all browsers
-// 	Generate the HTML representing a given menu item ID.
 // 	An implementation of theme_menu_item_link()
 // 	
 // 	@param $link
@@ -196,6 +216,23 @@ function phptemplate_menu_local_tasks() {
   return $output;
 }
 
+//	
+//	Add custom classes to menu item
+//	
+	
+function phptemplate_menu_item($link, $has_children, $menu = '', $in_active_trail = FALSE, $extra_class = NULL) {
+  $class = ($menu ? 'expanded' : ($has_children ? 'collapsed' : 'leaf'));
+  if (!empty($extra_class)) {
+    $class .= ' '. $extra_class;
+  }
+  if ($in_active_trail) {
+    $class .= ' active-trail';
+  }
+#New line added to get unique classes for each menu item
+  $css_class = phptemplate_id_safe(str_replace(' ', '_', strip_tags($link)));
+  return '<li class="'. $class . ' ' . $css_class . '">' . $link . $menu ."</li>\n";
+}
+
 
 //	
 //	Converts a string to a suitable html ID attribute.
@@ -225,25 +262,9 @@ function phptemplate_id_safe($string) {
 }
 
 // 
-// from STEVE KRUEGER truncate text characters
+// REMOVED TRUNCATE FUNCTION
+// Instead, use : http://api.drupal.org/api/function/truncate_utf8/5
 //
-//	You can use this function in the node templates to maximize the number of words
-//	of an item. For example, if you wish to have a teaser of the body, limited to
-//	15 words, use this : 
-//
-//	print truncate($node->body,15)
-//
-//	This function also remove all markup, like <a> or <strong> to preserve the integrity
-//	of the markup
-
-
-function truncate($phrase, $max_words) {
-	$phrase = strip_tags($phrase);
-  $phrase_array = explode(' ', $phrase);
-  if(count($phrase_array) > $max_words && $max_words > 0)
-    $phrase = implode(' ', array_slice($phrase_array, 0, $max_words)) .'...'; 
-  return $phrase;
-}
 
 //
 //  Return a themed breadcrumb trail.

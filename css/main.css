@@ -126,10 +126,10 @@ form{
 /* Rollover edit links for blocks
 ----------------------------*/
 
-body.admin div.block {
+div.block {
   position: relative;
 }
-body.admin div.block div.edit {
+div.block div.edit {
   display: none;
   position: absolute;
   right: 0;
@@ -140,6 +140,6 @@ body.admin div.block div.edit {
   font-size: 11px;
   background-color: #fff;
 }
-body.admin div.block:hover div.edit {
+div.block:hover div.edit {
   display: block;
 }

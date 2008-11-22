@@ -1,20 +1,14 @@
 ; $Id$
 
 name = basic
-
 description = Raincity Studios basic theme for Drupal 6
-
 screenshot = rcs.png
-
-version = 1.2.1
-
-core = 6.x
-
 engine = phptemplate
 
 regions[left] = Left sidebar
 regions[right] = Right sidebar
-regions[content] = Content
+regions[content_top] = Content Top
+regions[content_bottom] = Content Bottom
 regions[header] = Header
 regions[footer_block] = Footer
 
@@ -31,18 +25,15 @@ features[] = primary_links
 ; disabled features, uncomment to activate
 ; features[] = secondary_links
 
-
 stylesheets[all][] = style.css
 stylesheets[all][] = css/tabs.css
-
-; comment this for a liquid layout
-stylesheets[all][] = css/layout-fixed.css
-
-; uncomment this for a liquid layout
-; stylesheets[all][] = css/layout-liquid.css
-
+stylesheets[all][] = css/layout.css
 stylesheets[all][] = css/main.css
 stylesheets[print][] = css/print.css
 
+; Information added by drupal.org packaging script on 2008-10-17
+version = "6.x-1.x-dev"
+core = "6.x"
+project = "basic"
+datestamp = "1224244887"
 
-php = 4.3.3

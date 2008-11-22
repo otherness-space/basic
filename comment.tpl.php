@@ -63,5 +63,5 @@
       </div>
     <?php endif; ?>  
 
-  </div>
-</div>
+  </div> <!-- /comment-inner -->
+</div> <!-- /comment -->

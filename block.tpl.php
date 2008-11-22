@@ -27,17 +27,17 @@
  */
 ?>
 <div id="block-<?php echo $block->module .'-'. $block->delta ?>" class="block block-<?php echo $block->module .' '. $block_zebra .' '. $block->region ?>">
+	<div class="block-inner">
 
-  <?php if ($block->subject): ?>
-    <h3 class="title block-title"><?php echo $block->subject; ?></h3>
-  <?php endif; ?>
+		<?php if ($block->subject): ?>
+		  <h3 class="title block-title"><?php echo $block->subject; ?></h3>
+		<?php endif; ?>
+		
+		<div class="content">
+		  <?php echo $block->content; ?>
+		</div>
+		
+	  <?php echo $edit_links; ?>
 
-  <div class="content">
-    <?php echo $block->content; ?>
-  </div>
-
-  <?php if($edit_links): ?>
-    <?php echo $edit_links; ?>
-  <?php endif; ?>
-
-</div>
+	</div> <!-- /block-inner -->
+</div> <!-- /block -->

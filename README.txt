@@ -54,10 +54,6 @@ Feature List (6.x)
 
 - folder architecture : css / images
 
-- teaser / full view sections in node template
-
-- truncate function
-
 __________________________________________________________________________________________
 
 Installation
@@ -92,19 +88,3 @@ This is how the page template is buit in basic, and it works in fluid and fixed 
 
 
 __________________________________________________________________________________________
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
