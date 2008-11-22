@@ -97,6 +97,7 @@
   <?php echo $scripts; ?>
 </head>
 
+<?php /* different ids allow for separate theming of the home page */ ?>
 <body class="<?php echo $body_classes; ?>">
   <div id="skip-nav"><a href="#content">Skip to Content</a></div>  
   <div id="page">
@@ -104,6 +105,11 @@
 	<!-- ______________________ HEADER _______________________ -->
   
 	<div id="header">
+		
+		<?php if($search_box): ?>
+			<?php echo $search_box; ?>
+		<?php endif; ?>
+		
 	  	<div id="logo-title">
 	
         <?php if (!empty($logo)): ?>
@@ -128,6 +134,7 @@
 	  	
 	  	
       <div id="navigation" class="menu <?php if (!empty($primary_links)) { echo "withprimary"; } if (!empty($secondary_links)) { echo " withsecondary"; } ?> ">
+	
         <?php if (isset($main_menu)): ?>
           <div id="primary" class="clear-block">
             <?php print theme('links', $main_menu, array('class' => 'links', 'id' => 'navlist')) ?>
@@ -139,6 +146,7 @@
             <?php print theme('links', $secondary_menu, array('class' => 'links', 'id' => 'subnavlist')); ?>
           </div>
         <?php endif; ?>
+
       </div> <!-- /navigation -->
 	  		
 	  		<?php if ($header): ?>
@@ -146,48 +154,66 @@
 	  		    <?php echo $header; ?>
 	  		  </div>
 	  		<?php endif; ?>
+	
     	</div> <!-- /header -->
 
 			<!-- ______________________ MAIN _______________________ -->
   	
     	<div id="main" class="clearfix">
-	    	<div id="main-inner">
-		
-  	  		<div id="content" class="column">
-						<div id="content-inner">
 
-		        	<?php if ($breadcrumb or $title or $tabs or $help or $messages or $mission): ?>
+  	  		<div id="content" class="column center">
+						<div id="content-inner" class="inner">
+              
+		  		  <?php if ($content_top): ?>
+							<div id="content-top">
+								<?php echo $content_top; ?>
+							</div>
+						<?php endif; ?>
+
+		        	<?php if ($breadcrumb || $title || $tabs || $help || $messages || $mission): ?>
 		        	  <div id="content-header">
+			
 		        	    <?php echo $breadcrumb; ?>
+		
 		        	    <?php if ($title): ?>
 		        	      <h1 class="title"><?php echo $title; ?></h1>
 		        	    <?php endif; ?>
+		
 				  	  		<?php if ($mission): ?>
 										<div id="mission"><?php echo $mission; ?></div>
 									<?php endif; ?>
+									
 		        	    <?php echo $messages; ?>
+		
 		        	    <?php if ($tabs): ?>
 		        	      <div class="tabs"><?php echo $tabs; ?></div>
 		        	    <?php endif; ?>
+		
 		        	    <?php echo $help; ?>
+		
 		        	  </div> <!-- /#content-header -->
 		        	<?php endif; ?>
             	
 		        	<div id="content-area"> <!-- CONTENT AREA -->
 		        	  <?php echo $content; ?>
 		        	</div>
+		
   	  		  	<?php echo $feed_icons; ?>
 	
+		  		  	<?php if ($content_bottom): ?>
+								<div id="content-bottom">
+									<?php echo $content_bottom; ?>
+								</div>
+							<?php endif; ?>
+  
   	  			</div>
 					</div> <!-- /content-inner /content -->
 
 
   	  		<?php if ($left): ?> <!-- SIDEBAR LEFT -->
   	  		  <div id="sidebar-left" class="column sidebar">
-							<div id="sidebar-left-inner">
-	    			  <?php if ($left): ?>
-  	  		    	<div class="left" id="top-left"><?php echo $left; ?></div>
-	    			  <?php endif; ?>
+							<div id="sidebar-left-inner" class="inner">
+							  <?php echo $left; ?>
 							</div>
   	  		  </div> <!-- /sidebar-left -->
   	  		<?php endif; ?>
@@ -195,24 +221,24 @@
   	  		
   	  		<?php if ($right): ?> <!-- SIDEBAR RIGHT -->
   	  		  <div id="sidebar-right" class="column sidebar">
-							<div id="sidebar-right-inner">
-	    			  <?php if ($right): ?>
-  	  		    	<div class="right" id="top-right"><?php echo $right; ?></div>
-	    			  <?php endif; ?>
+							<div id="sidebar-right-inner" class="inner">
+								<?php echo $right; ?>
 							</div>
   	  		  </div> <!-- /sidebar-right -->
   	  		<?php endif; ?>
 	  
-	  	</div> <!-- /main-inner -->
   	</div> <!-- /main -->
   	
 		<!-- ______________________ FOOTER _______________________ -->
 
-  	<div id="footer">
-	    <?php echo $footer_message; ?>
-	    <?php echo $footer; ?>
-  	</div> <!-- /footer -->
-  	<?php echo $closure; ?>
+    <?php if(!empty($footer_message) || !empty($footer_block)): ?>
+  	  <div id="footer">
+	      <?php echo $footer_message; ?>
+	      <?php echo $footer_block; ?>
+  	  </div> <!-- /footer -->
+		<?php endif; ?>
+  	
+		<?php echo $closure; ?>
   </div> <!-- /page -->
 
 </body>

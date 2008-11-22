@@ -107,7 +107,7 @@ abbr.created {
 }
 .messages {
 	padding: 10px;
-	margin: 10px;
+	margin: 10px 0;
 	border: 1px solid #04a107;
 	color: #04a107;
 	background-color: #edffed;
