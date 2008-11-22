@@ -13,22 +13,19 @@
 	display: none;
 }
 
-#header #logo-title {
-	text-align: center;
-}
-
 #page {
-	width: auto;
+	width: 100%;
 }
 
 #header {
 	background-color: transparent;
 }
 
-#main-inner #content,
-#main-inner .content,
-#main-inner .title {
-	margin: 20px 0;
+#content,
+#content #content-inner,
+.content,
+.title {
+	margin:20px 0;
 	width: auto;
 }
 

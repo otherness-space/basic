@@ -1,0 +1,115 @@
+/* $Id$
+*/
+
+/** MAIN LAYOUT - FIXED WIDTH
+---------------------------------*/
+/* 
+	The layout is made using the 'Holy Grail' system by Matthew Levine
+	http://www.alistapart.com/articles/holygrail
+*/
+
+#page{
+	width:960px;
+	/* Remove the previous line to have a Fluid Layout 
+	or modify it to change the width of the page*/
+	margin:0 auto;
+}
+
+/* 
+	To change the width of a sidebar, just modify the corresponding values of this sidebar.
+	For example, If you want to change the width of the right sidebar to 250px, change the
+	value of each line commented "Right Sidebar width" to 250px
+*/
+
+#content {
+	float:left;
+	width:100%;
+	margin-right:-100%;
+	padding:0;
+}
+.sidebar {
+	float:left;
+}
+.two-sidebars #content-inner {
+  margin-left: 220px;   /* Left Sidebar width */
+  margin-right: 150px;  /* Right Sidebar width */
+}
+.sidebar-right #content-inner {
+  margin-right: 150px;  /* Right Sidebar width */
+}
+.sidebar-left #content-inner {
+  margin-left: 220px;   /* Left Sidebar width */
+}
+#sidebar-left {
+  width: 220px;
+	margin-right:-220px;
+}
+
+#sidebar-right{
+	float:right;
+  width: 150px;
+}
+.inner{
+	padding:10px;
+}
+
+/* header 
+--------------------------- */
+
+#header #logo-title {
+	margin: 0;
+	position: relative;
+}
+
+#header #logo-title #logo{
+	vertical-align: baseline;
+}
+
+#header #logo-title #site-name {
+	margin: 0;
+}
+
+#header #logo-title #site-slogan {
+	margin-left: 20px;
+}
+
+#header #header-region {
+	overflow: hidden;
+}
+
+/* footer 
+--------------------------- */
+
+#footer {
+	float: none;
+	clear:both;
+}
+
+
+/*---------------------------------*/
+
+/* Layout Helpers */
+
+#header,
+#footer,
+#main #content .mission,
+#main #content .breadcrumb,
+#main #content .node {
+	clear: both;
+}
+
+#header{
+	background-color: #ccc;
+}
+#footer{
+	background-color:#eee;
+}
+#sidebar-left {
+	background: #B9CAFF;
+}
+#sidebar-right {
+	background: #FF8539;
+}
+#navigation{
+	background-color: #f0ff83;
+}

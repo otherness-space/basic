@@ -13,14 +13,14 @@ Feature List (5.x)
    2. logged-in or not-logged-in classes
    3. node-type-CONTENT_TYPE class: for example, node-type-page, node-type-story and node-type-forum
    4. two-sidebars, one-sidebar sidebar-left, one-sidebar sidebar-right, or no-sidebars classes
-   5. page-FULL-URL class
-   6. section-FIRST-DIRECTORY class
+   5. page-URL class
+   6. section-FIRST-Arg class
    7. section-node-add, section-node-edit, or section-node-delete classes for node add, edit, and delete pages
 
 - Node classes.
 	
-	1. admin
-	2. sticky
+	1. node-mine
+	2. node-type
 	3. node-unpublished
 	4. ntype-[node type]
 	5. taxonomy
@@ -33,10 +33,11 @@ Feature List (5.x)
  
 - Comment classes
 
-	1. node-author
+	1. comment-by-author
 	2. zebra
 	3. new
 	4. status
+	5. comment-mine
 
 - Block editing links. Users with permission to edit blocks will see, when hovering over any block, links to edit that block. This is much more intuitive than first going to admin/build/blocks.
 
@@ -48,7 +49,7 @@ Feature List (5.x)
 
 - 3/2/1 columns layout
 
-- liquid or fixed layout
+- liquid or fixed layout by just deleting 1 line
 
 - id and classes for all menu items
 
@@ -59,6 +60,8 @@ Feature List (5.x)
 - themable pager
 
 - themable feed icon
+
+- themable comment wrapper
 
 __________________________________________________________________________________________
 
@@ -95,19 +98,3 @@ This is how the page template is buit in basic, and it works in fluid and fixed 
 
 
 __________________________________________________________________________________________
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

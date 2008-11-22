@@ -17,17 +17,15 @@
 
 // Adding the CSS files to the page template //
 
+
 $vars['css'] = drupal_add_css( path_to_theme() .'/css/tabs.css', 'theme', 'all');
-$vars['css'] = drupal_add_css( path_to_theme() .'/css/layout-fixed.css', 'theme', 'all'); 
+$vars['css'] = drupal_add_css( path_to_theme() .'/css/layout.css', 'theme', 'all');
 $vars['css'] = drupal_add_css( path_to_theme() .'/css/main.css', 'theme', 'all');
 
 // Add a print style sheet
 $vars['css'] = drupal_add_css( path_to_theme() .'/css/print.css', 'theme', 'print');
-
-// You can switch from a liquid or fixed layout by just uncommenting next line and commenting the previous one
-// $vars['css'] = drupal_add_css( path_to_theme() .'/css/layout-liquid.css', 'theme', 'all');
-
 $vars['styles'] = drupal_get_css();
+
 
 /**
  * Declare the available regions implemented by this theme.
@@ -59,6 +57,7 @@ function basic_regions() {
  */
 
 function _phptemplate_variables($hook, $vars = array()) {
+	
   switch ($hook) {
     // Send a new variable, $logged_in, to page.tpl.php to tell us if the current user is logged in or out.
    case 'page':
@@ -87,15 +86,16 @@ function _phptemplate_variables($hook, $vars = array()) {
      if ($vars['sidebar_left'] && $vars['sidebar_right']) {
        $body_classes[] = 'two-sidebars';
      }
+     elseif ($vars['sidebar_left']) {
+       $body_classes[] = 'one-sidebar sidebar-left';
+     }
      elseif ($vars['sidebar_right']) {
-       $body_classes[] = 'sidebar-right';
-     } elseif (!$vars['sidebar_left'] && !$vars['sidebar_right']) {
-			 $body_classes[] = 'no-sidebars';
-		 }
-	   if (user_access('administer blocks')) {
-		   $body_classes[] = 'admin';
-		 }
-		 if (!$vars['is_front']) {
+       $body_classes[] = 'one-sidebar sidebar-right';
+     }
+     else {
+       $body_classes[] = 'no-sidebars';
+     }
+     if (!$vars['is_front']) {
        // Add unique classes for each page and website section
        $path = drupal_get_path_alias($_GET['q']);
        list($section,) = explode('/', $path, 2);
@@ -116,6 +116,27 @@ function _phptemplate_variables($hook, $vars = array()) {
          }
        }
      }
+     // Check what the user's browser is and add it as a body class    
+     $user_agent = $_SERVER['HTTP_USER_AGENT'];
+     if($user_agent) {
+       if (strpos($user_agent, 'MSIE')) {
+         $body_classes[] = 'browser-ie';
+       } else if (strpos($user_agent, 'MSIE 6.0')) {
+         $body_classes[] = 'browser-ie6';
+       } else if (strpos($user_agent, 'MSIE 7.0')) {
+         $body_classes[] = 'browser-ie7';
+       } else if (strpos($user_agent, 'MSIE 8.0')) {
+         $body_classes[] = 'browser-ie8'; 
+       } else if (strpos($user_agent, 'Firefox/2')) {
+         $body_classes[] = 'browser-firefox2';
+       } else if (strpos($user_agent, 'Firefox/3')) {
+         $body_classes[] = 'browser-firefox3';
+       }else if (strpos($user_agent, 'Safari')) {
+         $body_classes[] = 'browser-safari';
+       } else if (strpos($user_agent, 'Opera')) {
+         $body_classes[] = 'browser-opera';
+       }
+     }
      $vars['body_classes'] = implode(' ', $body_classes); // Concatenate with spaces
 
      break;
@@ -124,70 +145,112 @@ function _phptemplate_variables($hook, $vars = array()) {
       // get the currently logged in user
       global $user;
 
-      // set a new $is_admin variable
-      // this is determined by looking at the currently logged in user and seeing if they are in the role 'admin'
-      $vars['is_admin'] = in_array('admin', $user->roles);
-
-      $node_classes = array('node');
-      if ($vars['sticky']) {
-      	$node_classes[] = 'sticky';
-      }
-      if (!$vars['node']->status) {
-      	$node_classes[] = 'node-unpublished';
-      }
-      $node_classes[] = 'ntype-'. phptemplate_id_safe($vars['node']->type);
-      // implode with spaces
-      $vars['node_classes'] = implode(' ', $node_classes);
-
-      if(count(taxonomy_node_get_terms($vars['node']->nid)))
-        $vars['has_terms'] = TRUE;
-      else
-        $vars['has_terms'] = FALSE;
+		  // Special classes for nodes
+		  $node_classes = array();
+		  if ($vars['sticky']) {
+		    $node_classes[] = 'sticky';
+		  }
+		  if (!$vars['node']->status) {
+		    $node_classes[] = 'node-unpublished';
+		    $vars['unpublished'] = TRUE;
+		  }
+		  else {
+		    $vars['unpublished'] = FALSE;
+		  }
+		  if ($vars['node']->uid && $vars['node']->uid == $user->uid) {
+		    // Node is authored by current user
+		    $node_classes[] = 'node-mine';
+		  }
+		  if ($vars['teaser']) {
+		    // Node is displayed as teaser
+		    $node_classes[] = 'node-teaser';
+		  }
+		  // Class for node type: "node-type-page", "node-type-story", "node-type-my-custom-type", etc.
+		  $node_classes[] = 'node-type-'. $vars['node']->type;
+		  $vars['node_classes'] = implode(' ', $node_classes); // Concatenate with spaces
 
       break;
 
 			case 'block':
-	      $block = $vars['block'];
+		  $block = $vars['block'];
 
-	      // Special classes for blocks
-	      $block_classes = array();
-	      $block_classes[] = 'block-'. $block->module;
-	      $block_classes[] = 'region-'. $vars['block_zebra'];
-	      $block_classes[] = $vars['zebra'];
-	      $block_classes[] = 'region-count-'. $vars['block_id'];
-	      $block_classes[] = 'count-'. $vars['id'];
-	      $vars['block_classes'] = implode(' ', $block_classes);
+		  // Special classes for blocks
+		  $block_classes = array();
+		  $block_classes[] = 'block-'. $block->module;
+		  $block_classes[] = 'region-'. $vars['block_zebra'];
+		  $block_classes[] = $vars['zebra'];
+		  $block_classes[] = 'region-count-'. $vars['block_id'];
+		  $block_classes[] = 'count-'. $vars['id'];
+		  $vars['block_classes'] = implode(' ', $block_classes);
 
-	      if (user_access('administer blocks')) {
-	        // Display 'edit block' for custom blocks
-	        if ($block->module == 'block') {
-	          $edit_links[] = l('<span>'. t('edit block') .'</span>', 'admin/build/block/configure/'. $block->module .'/'. $block->delta, array('title' => t('edit the content of this block'), 'class' => 'block-edit'), drupal_get_destination(), NULL, FALSE, TRUE);
-	        }
-	        // Display 'configure' for other blocks
-	        else {
-	          $edit_links[] = l('<span>'. t('configure') .'</span>', 'admin/build/block/configure/'. $block->module .'/'. $block->delta, array('title' => t('configure this block'), 'class' => 'block-config'), drupal_get_destination(), NULL, FALSE, TRUE);
-	        }
+		  $vars['edit_links'] = '';
+		  if (user_access('administer blocks')) {
+		    // Display 'edit block' for custom blocks
+		    if ($block->module == 'block') {
+		      $edit_links[] = l('<span>'. t('edit block') .'</span>', 'admin/build/block/configure/'. $block->module .'/'. $block->delta, array('title' => t('edit the content of this block'), 'class' => 'block-edit'), drupal_get_destination(), NULL, FALSE, TRUE);
+		    }
+		    // Display 'configure' for other blocks
+		    else {
+		      $edit_links[] = l('<span>'. t('configure') .'</span>', 'admin/build/block/configure/'. $block->module .'/'. $block->delta, array('title' => t('configure this block'), 'class' => 'block-config'), drupal_get_destination(), NULL, FALSE, TRUE);
+		    }
 
-	        // Display 'administer views' for views blocks
-	        if ($block->module == 'views' && user_access('administer views')) {
-	          $edit_links[] = l('<span>'. t('edit view') .'</span>', 'admin/build/views/'. $block->delta .'/edit', array('title' => t('edit the view that defines this block'), 'class' => 'block-edit-view'), drupal_get_destination(), 'edit-block', FALSE, TRUE);
-	        }
-	        // Display 'edit menu' for menu blocks
-	        elseif (($block->module == 'menu' || ($block->module == 'user' && $block->delta == 1)) && user_access('administer menu')) {
-	          $edit_links[] = l('<span>'. t('edit menu') .'</span>', 'admin/build/menu', array('title' => t('edit the menu that defines this block'), 'class' => 'block-edit-menu'), drupal_get_destination(), NULL, FALSE, TRUE);
-	        }
-	        $vars['edit_links_array'] = $edit_links;
-	        $vars['edit_links'] = '<div class="edit">'. implode(' ', $edit_links) .'</div>';
-	      }
+		    // Display 'administer views' for views blocks
+		    if ($block->module == 'views' && user_access('administer views')) {
+		      $edit_links[] = l('<span>'. t('edit view') .'</span>', 'admin/build/views/'. $block->delta .'/edit', array('title' => t('edit the view that defines this block'), 'class' => 'block-edit-view'), drupal_get_destination(), 'edit-block', FALSE, TRUE);
+		    }
+		    // Display 'edit menu' for menu blocks
+		    elseif (($block->module == 'menu' || ($block->module == 'user' && $block->delta == 1)) && user_access('administer menu')) {
+		      $edit_links[] = l('<span>'. t('edit menu') .'</span>', 'admin/build/menu', array('title' => t('edit the menu that defines this block'), 'class' => 'block-edit-menu'), drupal_get_destination(), NULL, FALSE, TRUE);
+		    }
+		    $vars['edit_links_array'] = $edit_links;
+		    $vars['edit_links'] = '<div class="edit">'. implode(' ', $edit_links) .'</div>';
+		  }
 
 	      break;
-	
+
     case 'comment':
-      // we load the node object that the current comment is attached to
-      $node = node_load($vars['comment']->nid);
-      // if the author of this comment is equal to the author of the node, we set a variable
-      // then in our theme we can theme this comment differently to stand out
-      $vars['author_comment'] = $vars['comment']->uid == $node->uid ? TRUE : FALSE;
+
+	  global $user;
+
+	  // We load the node object that the current comment is attached to
+	  $node = node_load($vars['comment']->nid);
+	  // If the author of this comment is equal to the author of the node, we
+	  // set a variable so we can theme this comment uniquely.
+	  $vars['author_comment'] = $vars['comment']->uid == $node->uid ? TRUE : FALSE;
+
+	  $comment_classes = array();
+
+	  // Odd/even handling
+	  static $comment_odd = TRUE;
+	  $comment_classes[] = $comment_odd ? 'odd' : 'even';
+	  $comment_odd = !$comment_odd;
+
+	  if ($vars['comment']->status == COMMENT_NOT_PUBLISHED) {
+	    $comment_classes[] = 'comment-unpublished';
+	    $vars['unpublished'] = TRUE;
+	  }
+	  else {
+	    $vars['unpublished'] = FALSE;
+	  }
+	  if ($vars['author_comment']) {
+	    // Comment is by the node author
+	    $comment_classes[] = 'comment-by-author';
+	  }
+	  if ($vars['comment']->uid == 0) {
+	    // Comment is by an anonymous user
+	    $comment_classes[] = 'comment-by-anon';
+	  }
+	  if ($user->uid && $vars['comment']->uid == $user->uid) {
+	    // Comment was posted by current user
+	    $comment_classes[] = 'comment-mine';
+	  }
+	  $vars['comment_classes'] = implode(' ', $comment_classes);
+
+	  // If comment subjects are disabled, don't display 'em
+	  if (variable_get('comment_subject_field', 1) == 0) {
+	    $vars['title'] = '';
+	  }
+
       break;
   }
 
@@ -214,18 +277,8 @@ function phptemplate_id_safe($string) {
   return strtolower(preg_replace('/[^a-zA-Z0-9-]+/', '-', $string));
 }
 
-
 /**
- * Generate the HTML representing a given menu item ID.
- *
- * An implementation of theme_menu_item_link()
- *
- * @param $item
- *   array The menu item to render.
- * @param $link_item
- *   array The menu item which should be used to find the correct path.
- * @return
- *   string The rendered menu item.
+ *	Adding span to tabs for theming purposes (ZEN tabs)
  */
 function phptemplate_menu_item_link($item, $link_item) {
   // If an item is a LOCAL TASK, render it as a tab
@@ -259,7 +312,6 @@ function phptemplate_menu_local_tasks() {
 
 /**
  * Implementation of theme_menu_item().
- *
  * Add active class and custom id to current menu item links.
  */
 function phptemplate_menu_item($mid, $children = '', $leaf = TRUE) {
@@ -284,32 +336,14 @@ menu_item_link($mid) . $children ."</li>
 }
 
 // 
-// from STEVE KRUEGER truncate text characters
-//
-//	You can use this function in the node templates to maximize the number of words
-//	of an item. For example, if you wish to have a teaser of the body, limited to
-//	15 words, use this : 
-//
-//	print truncate($node->body,15)
-//
-//	This function also remove all markup, like <a> or <strong> to preserve the integrity
-//	of the markup
-
-
-function truncate($phrase, $max_words) {
-	$phrase = strip_tags($phrase);
-  $phrase_array = explode(' ', $phrase);
-  if(count($phrase_array) > $max_words && $max_words > 0)
-    $phrase = implode(' ', array_slice($phrase_array, 0, $max_words)) .'...'; 
-  return $phrase;
-}
-
-
-//
-//  Return a themed breadcrumb trail.
-//	Alow you to customize the breadcrumb markup
+// REMOVED TRUNCATE FUNCTION
+// Instead, use : http://api.drupal.org/api/function/truncate_utf8/5
 //
 
+/**
+ *  Return a themed breadcrumb trail.
+ *  Allow you to customize the breadcrumb markup
+ */
 function phptemplate_breadcrumb($breadcrumb) {
   if (!empty($breadcrumb)) {
     return '<div class="breadcrumb">'. implode(' » ', $breadcrumb) .'</div>';
@@ -340,9 +374,15 @@ function phptemplate_pager($tags = array(), $limit = 10, $element = 0, $paramete
 /**
  * Return code that emits an feed icon.
  */
-
 function phptemplate_feed_icon($url) {
   if ($image = theme('image', 'misc/feed.png', t('Syndicate content'), t('Syndicate content'))) {
     return '<a href="'. check_url($url) .'" class="feed-icon">'. $image. '</a>';
   }
+}
+
+/**
+ * Allow wrapping of all comments.
+ */
+function phptemplate_comment_wrapper($content, $type = null) {
+    return '<div id="comments"><h2 class="comments">'. t('Comments') .'</h2>'. $content .'</div>';
 }

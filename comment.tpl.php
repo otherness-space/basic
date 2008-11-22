@@ -1,7 +1,7 @@
 <?php
 // $Id$
 ?>
-<div class="comment<?php echo ($comment->new) ? ' comment-new' : ''; echo ($comment->status == COMMENT_NOT_PUBLISHED) ? ' comment-unpublished' : ''; echo $zebra; ?>">
+<div class="comment <?php print $comment_classes; ?>">
   <div class="comment-inner">
 			
     <?php if ($title): ?>
@@ -10,7 +10,7 @@
       <div class="new"><?php echo $new; ?></div>
     <?php endif; ?>
 	  
-	  <?php if ($comment->status == COMMENT_NOT_PUBLISHED): ?>
+	  <?php if ($unpublished): ?>
       <div class="unpublished"><?php echo t('Unpublished'); ?></div>
     <?php endif; ?>
 	  
@@ -19,7 +19,7 @@
 	  <?php endif; ?>
     
 	  <div class="submitted">
-	  	<?php echo t('On ') . format_date($comment->timestamp, 'custom', 'F jS, Y'); ?> <?php echo theme('username', $comment) . t(' says:'); ?>
+	    <?php print $submitted; ?>
 	  </div>
 	  
     <div class="content">
@@ -32,5 +32,5 @@
       </div>
     <?php endif; ?>
 
-  </div>
-</div> 
+  </div> <!-- /comment-inner -->
+</div> <!-- /comment -->

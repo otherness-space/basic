@@ -84,10 +84,15 @@
 					<!-- ______________________ MAIN _______________________ -->
 
 		    	<div id="main" class="clearfix">
-			    	<div id="main-inner">
 
-		  	  		<div id="content" class="column">
-								<div id="content-inner">
+		  	  		<div id="content" class="column center">
+								<div id="content-inner" class="inner">
+                  
+		  	  		  <?php if ($content_top): ?>
+			            <div id="content-top">
+			              <?php echo $content_top; ?>
+			            </div>
+			          <?php endif; ?>
 
 				        	<?php if ($breadcrumb || $title || $tabs || $help || $messages || $mission): ?>
 				        	  <div id="content-header">
@@ -131,7 +136,7 @@
 
 		  	  		<?php if ($sidebar_left): ?> <!-- SIDEBAR LEFT -->
 		  	  		  <div id="sidebar-left" class="column sidebar">
-									<div id="sidebar-left-inner">
+									<div id="sidebar-left-inner" class="inner">
 										<?php echo $sidebar_left; ?>
 									</div>
 		  	  		  </div> <!-- /sidebar-left -->
@@ -140,13 +145,12 @@
 
 		  	  		<?php if ($sidebar_right): ?> <!-- SIDEBAR RIGHT -->
 		  	  		  <div id="sidebar-right" class="column sidebar">
-									<div id="sidebar-right-inner">
+									<div id="sidebar-right-inner" class="inner">
 									  <?php echo $sidebar_right; ?>
 									</div>
 		  	  		  </div> <!-- /sidebar-right -->
 		  	  		<?php endif; ?>
 
-			  	</div> <!-- /main-inner -->
 		  	</div> <!-- /main -->
 
 				<!-- ______________________ FOOTER _______________________ -->
