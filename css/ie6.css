@@ -1,7 +1,7 @@
 /* $Id$
 */
 
-
+#header{height:1%;}
 div.admin .left, div.admin .right {
 	width:46%;  /* fix the admin page in IE6 */
 }

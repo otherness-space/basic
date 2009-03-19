@@ -18,9 +18,10 @@
 // Adding the CSS files to the page template //
 
 
+$vars['css'] = drupal_add_css( path_to_theme() .'/css/default.css', 'theme', 'all');
 $vars['css'] = drupal_add_css( path_to_theme() .'/css/tabs.css', 'theme', 'all');
 $vars['css'] = drupal_add_css( path_to_theme() .'/css/layout.css', 'theme', 'all');
-$vars['css'] = drupal_add_css( path_to_theme() .'/css/main.css', 'theme', 'all');
+$vars['css'] = drupal_add_css( path_to_theme() .'/css/style.css', 'theme', 'all');
 
 // Add a print style sheet
 $vars['css'] = drupal_add_css( path_to_theme() .'/css/print.css', 'theme', 'print');
@@ -335,10 +336,6 @@ menu_item_link($mid) . $children ."</li>
 \n";
 }
 
-// 
-// REMOVED TRUNCATE FUNCTION
-// Instead, use : http://api.drupal.org/api/function/truncate_utf8/5
-//
 
 /**
  *  Return a themed breadcrumb trail.

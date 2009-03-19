@@ -1,24 +1,23 @@
 /* $Id$
 */
 
-
-/* GENERAL Styles 
-----------------------------*/
+/** General styles 
+---------------------------------*/
 
 body {
+  margin: 0;
   font-size: 100%; /* Fixes exaggerated text resizing in IE6 and IE7 */
 }
 
 #page {
-	/* Use a 14px base font size with a 18px line height */
-  font-size: 0.875em; /* 16px x .875 = 14px */
+	/* Use a 12px base font size with a 18px line height */
+  font-size: 0.875em; /* 16px x .75 = 12px */
   line-height: 1.286em; /* 14px x 1.286 = 18px */
 }
 
 body, caption, th, td, input, textarea, select, option, legend, fieldset {
-	font-family: Tahoma, Verdana, Arial, Helvetica, "Bitstream Vera Sans", sans-serif;
+	font-family: Tahoma, Verdana, Arial, sans-serif;
 }
-
 
 /* When declaring Link states, remember: LoVe HA : Link | Hover | Visited | Active */
 
@@ -37,17 +36,17 @@ a:hover, a:active {
 h1 {
 	font-size: 2em;
 	line-height: 1.3em;
-	margin-bottom: 0.5em;
-	margin-top: 0pt;
+	padding: 0 0 0.5em;
+	margin: 0;
 }
-
+ 
 /* Paragraph Styles */
 
-.node p {
+p {
   margin: 1em 0;
 }
 
-/* Lists  */
+/* List Styles  */
 
 ul, ol {
   margin-left: 0;
@@ -62,22 +61,22 @@ table {
 tr.even td, tr.odd td {
 	padding: 10px 5px;
 }
-tr.even {
-	background-color: #f9f9f9;
-}
 tr.odd {
 	background-color: #fff;
 }
 
-/* Code Styles */
+/* Code */
 
 pre, code {
+  font-family: "monaco", "Courier New", monospace;
+}
+
+pre {
 	background-color: #efefef;
 	display: block;
 	padding: 5px;
 	margin: 5px 0;
 	border: 1px solid #aaa;
-  font-family: "Bitstream Vera Sans Mono", "Courier New", monospace;
 }
 
 /* List Styles */
@@ -98,50 +97,28 @@ abbr {
   white-space: nowrap;
 }
 
-/* Date-based "abbreviations" show computer-friendly timestamps which are not
-   human-friendly. */
 
-abbr.created {
-  border: none;
-  cursor: auto;
-  white-space: normal;
+/** Colours
+---------------------------------
+*  delete when starting a new theme
+*/
+
+#header {
+	background-color: #ccc;
 }
 
-/* User Interface Styles 
----------------------------- */
-
-.resizable-textarea textarea {
-	font-size: 14px !important;
-}
-.messages {
-	padding: 10px;
-	margin: 10px 0px;
-	border: 1px solid #04a107;
-	color: #04a107;
-	background-color: #edffed;
-}
-form {
-	margin: 10px 0;
+#footer {
+	background-color: #eee;
 }
 
-/* Rollover edit links for blocks
-----------------------------*/
-
-div.block {
-  position: relative;
+#sidebar-left {
+	background: #B9CAFF;
 }
 
-div.block div.edit {
-  display: none;
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 40;
-  border: 1px solid #eee;
-  padding: 0 2px;
-  font-size: 11px;
-  background-color: #fff;
+#sidebar-right {
+	background: #FF8539;
 }
-div.block:hover div.edit {
-  display: block;
+
+#navigation {
+	background-color: #f0ff83;
 }

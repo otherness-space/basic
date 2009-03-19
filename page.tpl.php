@@ -24,7 +24,8 @@
 <?php /* different ids allow for separate theming of the home page */ ?>
 <body class="<?php echo $body_classes; ?>">
   <div id="skip-nav"><a href="#content">Skip to Content</a></div>  
-  <div id="page">
+  
+	<div id="page">
 	
 		<!-- ______________________ HEADER _______________________ -->
 		
@@ -34,8 +35,8 @@
 				<?php echo $search_box; ?>
 			<?php endif; ?>
 			
-		  	<div id="logo-title">
-							
+		  	<div id="logo-title">   
+			
 		  	  <?php if (!empty($logo)): ?>
 		  	    <a href="<?php echo $base_path; ?>" title="<?php echo t('Home'); ?>" rel="home" id="logo">
 		  	      <img src="<?php echo $logo; ?>" alt="<?php echo t('Home'); ?>" />
@@ -48,7 +49,6 @@
 	              <a href="<?php echo $base_path; ?>" title="<?php echo t('Home'); ?>" rel="home"><span><?php echo $site_name; ?></span></a>
 	            </h1>
 	          <?php endif; ?>
-
 	          <?php if (!empty($site_slogan)): ?>
 	            <div id="site-slogan"><?php echo $site_slogan; ?></div>
 	          <?php endif; ?>
@@ -56,37 +56,20 @@
 
 		  	</div> <!-- /logo-title -->
 	  	
-	  	
-	      <div id="navigation" class="menu <?php if (!empty($primary_links)) { echo "withprimary"; } if (!empty($secondary_links)) { echo " withsecondary"; } ?> ">
-		
-	        <?php if (!empty($primary_links)): ?>
-	          <div id="primary" class="clear-block">
-	            <?php echo theme('links', $primary_links, array('class' => 'links primary-links')); ?>
-	          </div>
-	        <?php endif; ?>
-
-	        <?php if (!empty($secondary_links)): ?>
-	          <div id="secondary" class="clear-block">
-	            <?php echo theme('links', $secondary_links, array('class' => 'links secondary-links')); ?>
-	          </div>
-	        <?php endif; ?>
-	
-	      </div> <!-- /navigation -->
-
 		  		<?php if ($header): ?>
 		  		  <div id="header-region">
 		  		    <?php echo $header; ?>
 		  		  </div>
 		  		<?php endif; ?>
 		
-	    	</div> <!-- /header -->
+	     </div> <!-- /header -->
  			
 					<!-- ______________________ MAIN _______________________ -->
 
 		    	<div id="main" class="clearfix">
 
-		  	  		<div id="content" class="column center">
-								<div id="content-inner" class="inner">
+		  	  		<div id="content">
+								<div id="content-inner" class="inner column center">
                   
 		  	  		  <?php if ($content_top): ?>
 			            <div id="content-top">
@@ -94,7 +77,7 @@
 			            </div>
 			          <?php endif; ?>
 
-				        	<?php if ($breadcrumb || $title || $tabs || $help || $messages || $mission): ?>
+  		        	  <?php if ($breadcrumb || $title || $mission || $messages || $help || $tabs): ?>
 				        	  <div id="content-header">
 					
 				        	    <?php echo $breadcrumb; ?>
@@ -133,14 +116,30 @@
 		  	  			</div>
 							</div> <!-- /content-inner /content -->
 
+				      <div id="navigation" class="menu <?php if (!empty($primary_links)) { echo "withprimary"; } if (!empty($secondary_links)) { echo " withsecondary"; } ?> ">
+
+				        <?php if (!empty($primary_links)): ?>
+				          <div id="primary" class="clear-block">
+				            <?php echo theme('links', $primary_links, array('class' => 'links primary-links')); ?>
+				          </div>
+				        <?php endif; ?>
+
+				        <?php if (!empty($secondary_links)): ?>
+				          <div id="secondary" class="clear-block">
+				            <?php echo theme('links', $secondary_links, array('class' => 'links secondary-links')); ?>
+				          </div>
+				        <?php endif; ?>
+
+				      </div> <!-- /navigation -->
+
 
 		  	  		<?php if ($sidebar_left): ?> <!-- SIDEBAR LEFT -->
 		  	  		  <div id="sidebar-left" class="column sidebar">
 									<div id="sidebar-left-inner" class="inner">
 										<?php echo $sidebar_left; ?>
 									</div>
-		  	  		  </div> <!-- /sidebar-left -->
-		  	  		<?php endif; ?>
+		  	  		  </div>
+		  	  		<?php endif; ?> <!-- /sidebar-left -->
 
 
 		  	  		<?php if ($sidebar_right): ?> <!-- SIDEBAR RIGHT -->
@@ -148,10 +147,11 @@
 									<div id="sidebar-right-inner" class="inner">
 									  <?php echo $sidebar_right; ?>
 									</div>
-		  	  		  </div> <!-- /sidebar-right -->
-		  	  		<?php endif; ?>
+		  	  		  </div>
+		  	  		<?php endif; ?> <!-- /sidebar-right -->
 
 		  	</div> <!-- /main -->
+		
 
 				<!-- ______________________ FOOTER _______________________ -->
 		
