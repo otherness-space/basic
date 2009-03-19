@@ -25,15 +25,15 @@ features[] = primary_links
 ; disabled features, uncomment to activate
 ; features[] = secondary_links
 
-stylesheets[all][] = style.css
+stylesheets[all][] = css/default.css
 stylesheets[all][] = css/tabs.css
 stylesheets[all][] = css/layout.css
-stylesheets[all][] = css/main.css
+stylesheets[all][] = css/style.css
 stylesheets[print][] = css/print.css
+             
+settings[basic_block_editing]        = 1
+settings[basic_rebuild_registry]     = 0
 
-; Information added by drupal.org packaging script on 2008-10-17
-version = "6.x-1.x-dev"
+version = "6.x-2.1"
 core = "6.x"
 project = "basic"
-datestamp = "1224244887"
-

@@ -1,5 +1,10 @@
 <?php
 // $Id$
+    
+// Auto-rebuild the theme registry during theme development.
+if (theme_get_setting('basic_rebuild_registry')) {
+  drupal_rebuild_theme_registry();
+}
 
 //
 //	from ZEN // Override or insert PHPTemplate variables into the page templates.
@@ -12,7 +17,7 @@
 //	  The name of the theme function being called ("page" in this case.)
 //
 
-function phptemplate_preprocess_page(&$vars, $hook) {
+function basic_preprocess_page(&$vars, $hook) {
   global $theme;
 
   // Don't display empty help from node_help().
@@ -30,8 +35,8 @@ function phptemplate_preprocess_page(&$vars, $hook) {
     // Add unique classes for each page and website section
     $path = drupal_get_path_alias($_GET['q']);
     list($section, ) = explode('/', $path, 2);
-    $body_classes[] = phptemplate_id_safe('page-'. $path);
-    $body_classes[] = phptemplate_id_safe('section-'. $section);
+    $body_classes[] = basic_id_safe('page-'. $path);
+    $body_classes[] = basic_id_safe('section-'. $section);
 
     if (arg(0) == 'node') {
       if (arg(1) == 'add') {
@@ -86,7 +91,7 @@ function phptemplate_preprocess_page(&$vars, $hook) {
 //	  The name of the theme function being called ("node" in this case.)
 //
 
-function phptemplate_preprocess_node(&$vars, $hook) {
+function basic_preprocess_node(&$vars, $hook) {
   global $user;
 
   // Special classes for nodes
@@ -129,10 +134,10 @@ function phptemplate_preprocess_node(&$vars, $hook) {
 //   The name of the theme function being called ("block" in this case.)
 // 
 
-function phptemplate_preprocess_block(&$vars, $hook) {
+function basic_preprocess_block(&$vars, $hook) {
   $block = $vars['block'];
 
-  if (user_access('administer blocks')) {
+  if (theme_get_setting('basic_block_editing') && user_access('administer blocks')) {
     // Display 'edit block' for custom blocks
     if ($block->module == 'block') {
       $edit_links[] = l( t('edit block'), 'admin/build/block/configure/'. $block->module .'/'. $block->delta, array('title' => t('edit the content of this block'), 'class' => 'block-edit'), drupal_get_destination(), NULL, FALSE, TRUE);
@@ -182,7 +187,7 @@ function comment_classes($comment) {
 // 	  string The rendered menu item.
 // 	
 
-function phptemplate_menu_item_link($link) {
+function basic_menu_item_link($link) {
   if (empty($link['options'])) {
     $link['options'] = array();
   }
@@ -203,7 +208,7 @@ function phptemplate_menu_item_link($link) {
 /**
  * Duplicate of theme_menu_local_tasks() but adds clear-block to tabs.
  */
-function phptemplate_menu_local_tasks() {
+function basic_menu_local_tasks() {
   $output = '';
 
   if ($primary = menu_primary_local_tasks()) {
@@ -220,7 +225,7 @@ function phptemplate_menu_local_tasks() {
 //	Add custom classes to menu item
 //	
 	
-function phptemplate_menu_item($link, $has_children, $menu = '', $in_active_trail = FALSE, $extra_class = NULL) {
+function basic_menu_item($link, $has_children, $menu = '', $in_active_trail = FALSE, $extra_class = NULL) {
   $class = ($menu ? 'expanded' : ($has_children ? 'collapsed' : 'leaf'));
   if (!empty($extra_class)) {
     $class .= ' '. $extra_class;
@@ -229,7 +234,7 @@ function phptemplate_menu_item($link, $has_children, $menu = '', $in_active_trai
     $class .= ' active-trail';
   }
 #New line added to get unique classes for each menu item
-  $css_class = phptemplate_id_safe(str_replace(' ', '_', strip_tags($link)));
+  $css_class = basic_id_safe(str_replace(' ', '_', strip_tags($link)));
   return '<li class="'. $class . ' ' . $css_class . '">' . $link . $menu ."</li>\n";
 }
 
@@ -251,7 +256,7 @@ function phptemplate_menu_item($link, $has_children, $menu = '', $in_active_trai
 //	
 
 
-function phptemplate_id_safe($string) {
+function basic_id_safe($string) {
   // Replace with dashes anything that isn't A-Z, numbers, dashes, or underscores.
   $string = strtolower(preg_replace('/[^a-zA-Z0-9_-]+/', '-', $string));
   // If the first character is not a-z, add 'n' in front.
@@ -261,17 +266,13 @@ function phptemplate_id_safe($string) {
   return $string;
 }
 
-// 
-// REMOVED TRUNCATE FUNCTION
-// Instead, use : http://api.drupal.org/api/function/truncate_utf8/5
-//
 
 //
 //  Return a themed breadcrumb trail.
 //	Alow you to customize the breadcrumb markup
 //
 
-function phptemplate_breadcrumb($breadcrumb) {
+function basic_breadcrumb($breadcrumb) {
   if (!empty($breadcrumb)) {
     return '<div class="breadcrumb">'. implode(' » ', $breadcrumb) .'</div>';
   }
