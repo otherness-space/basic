@@ -3,11 +3,15 @@
 name = basic
 description = Raincity Studios basic theme for Drupal 7
 screenshot = rcs.png
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "basic"
 engine = phptemplate
 
 regions[left] = Left sidebar
 regions[right] = Right sidebar
 regions[content_top] = Content Top
+regions[content] = Content
 regions[content_bottom] = Content Bottom
 regions[header] = Header
 regions[footer_block] = Footer
@@ -25,15 +29,11 @@ features[] = primary_links
 ; disabled features, uncomment to activate
 ; features[] = secondary_links
 
-stylesheets[all][] = style.css
+stylesheets[all][] = css/default.css
 stylesheets[all][] = css/tabs.css
 stylesheets[all][] = css/layout.css
-stylesheets[all][] = css/main.css
+stylesheets[all][] = css/style.css
 stylesheets[print][] = css/print.css
 
-; Information added by drupal.org packaging script on 2008-07-23
-version = "7.x-1.x-dev"
-core = "7.x"
-project = "basic"
-datestamp = "1216771269"
-
+settings[basic_block_editing]        = 1
+settings[basic_rebuild_registry]     = 1
