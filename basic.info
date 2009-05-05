@@ -1,8 +1,8 @@
 ; $Id$
 
 name = basic
-description = Raincity Studios basic theme for Drupal 6
-screenshot = rcs.png
+description = Basic starter theme for Drupal 6
+screenshot = screenshot.gif
 engine = phptemplate
 
 regions[left] = Left sidebar
