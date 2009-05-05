@@ -1,6 +1,6 @@
 Introduction to Basic
 
-The Basic theme was developed for internal use at Raincity Studios for client 
+The Basic theme was originally developed for internal use at Raincity Studios for client 
 projects. The purpose here is to have a very minimal theme that only contains 
 the functions that are used for all websites. This theme is not intended to have 
 subthemes, or to be another version of Zen. Basic is only intended to provide an 

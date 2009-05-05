@@ -117,27 +117,44 @@ function _phptemplate_variables($hook, $vars = array()) {
          }
        }
      }
-     // Check what the user's browser is and add it as a body class    
-     $user_agent = $_SERVER['HTTP_USER_AGENT'];
-     if($user_agent) {
-       if (strpos($user_agent, 'MSIE')) {
-         $body_classes[] = 'browser-ie';
-       } else if (strpos($user_agent, 'MSIE 6.0')) {
-         $body_classes[] = 'browser-ie6';
-       } else if (strpos($user_agent, 'MSIE 7.0')) {
-         $body_classes[] = 'browser-ie7';
-       } else if (strpos($user_agent, 'MSIE 8.0')) {
-         $body_classes[] = 'browser-ie8'; 
-       } else if (strpos($user_agent, 'Firefox/2')) {
-         $body_classes[] = 'browser-firefox2';
-       } else if (strpos($user_agent, 'Firefox/3')) {
-         $body_classes[] = 'browser-firefox3';
-       }else if (strpos($user_agent, 'Safari')) {
-         $body_classes[] = 'browser-safari';
-       } else if (strpos($user_agent, 'Opera')) {
-         $body_classes[] = 'browser-opera';
+     //// Check what the user's browser is and add it as a body class
+     //// DEACTIVATED - Only works if page cache is deactivated
+     //$user_agent = $_SERVER['HTTP_USER_AGENT'];
+     //if($user_agent) {
+     //  if (strpos($user_agent, 'MSIE')) {
+     //    $body_classes[] = 'browser-ie';
+     //  } else if (strpos($user_agent, 'MSIE 6.0')) {
+     //    $body_classes[] = 'browser-ie6';
+     //  } else if (strpos($user_agent, 'MSIE 7.0')) {
+     //    $body_classes[] = 'browser-ie7';
+     //  } else if (strpos($user_agent, 'MSIE 8.0')) {
+     //    $body_classes[] = 'browser-ie8'; 
+     //  } else if (strpos($user_agent, 'Firefox/2')) {
+     //    $body_classes[] = 'browser-firefox2';
+     //  } else if (strpos($user_agent, 'Firefox/3')) {
+     //    $body_classes[] = 'browser-firefox3';
+     //  }else if (strpos($user_agent, 'Safari')) {
+     //    $body_classes[] = 'browser-safari';
+     //  } else if (strpos($user_agent, 'Opera')) {
+     //    $body_classes[] = 'browser-opera';
+     //  }
+     //}
+
+     // Add template suggestions based on content type
+     // You can use a different page template depending on the
+     // content type or the node ID
+     // For example, if you wish to have a different page template
+     // for the story content type, just create a page template called
+     // page-type-story.tpl.php
+     // For a specific node, use the node ID in the name of the page template
+     // like this : page-node-22.tpl.php (if the node ID is 22)
+
+     if ($vars['node']->type != "") {
+         $vars['template_files'][] = "page-type-" . $vars['node']->type;
        }
-     }
+     if ($vars['node']->nid != "") {
+         $vars['template_files'][] = "page-node-" . $vars['node']->nid;
+       }
      $vars['body_classes'] = implode(' ', $body_classes); // Concatenate with spaces
 
      break;
