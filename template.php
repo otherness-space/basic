@@ -18,7 +18,6 @@ if (theme_get_setting('basic_rebuild_registry')) {
 //
 
 function basic_preprocess_page(&$vars, $hook) {
-  global $theme;
 
   // Don't display empty help from node_help().
   if ($vars['help'] == "<div class=\"help\"><p></p>\n</div>") {
@@ -31,6 +30,9 @@ function basic_preprocess_page(&$vars, $hook) {
   if (user_access('administer blocks')) {
 	  $body_classes[] = 'admin';
 	}
+	if (theme_get_setting('basic_wireframe')) {
+    $body_classes[] = 'with-wireframes'; // Optionally add the wireframes style.
+  }
   if (!$vars['is_front']) {
     // Add unique classes for each page and website section
     $path = drupal_get_path_alias($_GET['q']);
@@ -109,31 +111,27 @@ function basic_preprocess_page(&$vars, $hook) {
 //
 
 function basic_preprocess_node(&$vars, $hook) {
-  global $user;
-
   // Special classes for nodes
-  $node_classes = array();
+  $classes = array('node');
   if ($vars['sticky']) {
-    $node_classes[] = 'sticky';
+    $classes[] = 'sticky';
   }
-  if (!$vars['node']->status) {
-    $node_classes[] = 'node-unpublished';
+  if (!$vars['status']) {
+    $classes[] = 'node-unpublished';
     $vars['unpublished'] = TRUE;
   }
   else {
     $vars['unpublished'] = FALSE;
   }
-  if ($vars['node']->uid && $vars['node']->uid == $user->uid) {
-    // Node is authored by current user
-    $node_classes[] = 'node-mine';
+  if ($vars['uid'] && $vars['uid'] == $GLOBALS['user']->uid) {
+    $classes[] = 'node-mine'; // Node is authored by current user.
   }
   if ($vars['teaser']) {
-    // Node is displayed as teaser
-    $node_classes[] = 'node-teaser';
+    $classes[] = 'node-teaser'; // Node is displayed as teaser.
   }
   // Class for node type: "node-type-page", "node-type-story", "node-type-my-custom-type", etc.
-  $node_classes[] = 'node-type-'. $vars['node']->type;
-  $vars['node_classes'] = implode(' ', $node_classes); // Concatenate with spaces
+  $classes[] = basic_id_safe('node-type-' . $vars['type']);
+  $vars['classes'] = implode(' ', $classes); // Concatenate with spaces
 }
 
 
@@ -152,46 +150,134 @@ function basic_preprocess_node(&$vars, $hook) {
 // 
 
 function basic_preprocess_block(&$vars, $hook) {
-  $block = $vars['block'];
+    $block = $vars['block'];
 
-  if (theme_get_setting('basic_block_editing') && user_access('administer blocks')) {
-    // Display 'edit block' for custom blocks
-    if ($block->module == 'block') {
-      $edit_links[] = l( t('edit block'), 'admin/build/block/configure/'. $block->module .'/'. $block->delta, array('title' => t('edit the content of this block'), 'class' => 'block-edit'), drupal_get_destination(), NULL, FALSE, TRUE);
-    }
-    // Display 'configure' for other blocks
-    else {
-      $edit_links[] = l(t('configure'), 'admin/build/block/configure/'. $block->module .'/'. $block->delta, array('title' => t('configure this block'), 'class' => 'block-config'), drupal_get_destination(), NULL, FALSE, TRUE);
-    }
+    if (theme_get_setting('basic_block_editing') && user_access('administer blocks')) {
+        // Display 'edit block' for custom blocks.
+        if ($block->module == 'block') {
+          $edit_links[] = l('<span>' . t('edit block') . '</span>', 'admin/build/block/configure/' . $block->module . '/' . $block->delta,
+            array(
+              'attributes' => array(
+                'title' => t('edit the content of this block'),
+                'class' => 'block-edit',
+              ),
+              'query' => drupal_get_destination(),
+              'html' => TRUE,
+            )
+          );
+        }
+        // Display 'configure' for other blocks.
+        else {
+          $edit_links[] = l('<span>' . t('configure') . '</span>', 'admin/build/block/configure/' . $block->module . '/' . $block->delta,
+            array(
+              'attributes' => array(
+                'title' => t('configure this block'),
+                'class' => 'block-config',
+              ),
+              'query' => drupal_get_destination(),
+              'html' => TRUE,
+            )
+          );
+        }
 
-    // Display 'edit menu' for menu blocks
-    if (($block->module == 'menu' || ($block->module == 'user' && $block->delta == 1)) && user_access('administer menu')) {
-      $edit_links[] = l(t('edit menu'), 'admin/build/menu', array('title' => t('edit the menu that defines this block'), 'class' => 'block-edit-menu'), drupal_get_destination(), NULL, FALSE, TRUE);
-    }
-    $vars['edit_links_array'] = $edit_links;
-    $vars['edit_links'] = '<div class="edit">'. implode(' ', $edit_links) .'</div>';
+        // Display 'edit view' for Views blocks.
+        if ($block->module == 'views' && user_access('administer views')) {
+          list($view_name, $view_block) = explode('-block', $block->delta);
+          $edit_links[] = l('<span>' . t('edit view') . '</span>', 'admin/build/views/edit/' . $view_name,
+            array(
+              'attributes' => array(
+                'title' => t('edit the view that defines this block'),
+                'class' => 'block-edit-view',
+              ),
+              'query' => drupal_get_destination(),
+              'fragment' => 'views-tab-block' . $view_block,
+              'html' => TRUE,
+            )
+          );
+        }
+        // Display 'edit menu' for Menu blocks.
+        elseif (($block->module == 'menu' || ($block->module == 'user' && $block->delta == 1)) && user_access('administer menu')) {
+          $menu_name = ($block->module == 'user') ? 'navigation' : $block->delta;
+          $edit_links[] = l('<span>' . t('edit menu') . '</span>', 'admin/build/menu-customize/' . $menu_name,
+            array(
+              'attributes' => array(
+                'title' => t('edit the menu that defines this block'),
+                'class' => 'block-edit-menu',
+              ),
+              'query' => drupal_get_destination(),
+              'html' => TRUE,
+            )
+          );
+        }
+        // Display 'edit menu' for Menu block blocks.
+        elseif ($block->module == 'menu_block' && user_access('administer menu')) {
+          list($menu_name, ) = split(':', variable_get("menu_block_{$block->delta}_parent", 'navigation:0'));
+          $edit_links[] = l('<span>' . t('edit menu') . '</span>', 'admin/build/menu-customize/' . $menu_name,
+            array(
+              'attributes' => array(
+                'title' => t('edit the menu that defines this block'),
+                'class' => 'block-edit-menu',
+              ),
+              'query' => drupal_get_destination(),
+              'html' => TRUE,
+            )
+          );
+        }
+
+        $vars['edit_links_array'] = $edit_links;
+        $vars['edit_links'] = '<div class="edit">' . implode(' ', $edit_links) . '</div>';
+      }
   }
+
+
+
+// from ZEN // Override or insert PHPTemplate variables into the block templates.
+//
+//  @param $vars
+//    An array of variables to pass to the theme template.
+//  @param $hook
+//    The name of the template being rendered ("comment" in this case.)
+//
+
+function basic_preprocess_comment(&$vars, $hook) {
+  // Add an "unpublished" flag.
+  $vars['unpublished'] = ($vars['comment']->status == COMMENT_NOT_PUBLISHED);
+
+  // If comment subjects are disabled, don't display them.
+  if (variable_get('comment_subject_field_' . $vars['node']->type, 1) == 0) {
+    $vars['title'] = '';
+  }
+
+  // Special classes for comments.
+  $classes = array('comment');
+  if ($vars['comment']->new) {
+    $classes[] = 'comment-new';
+  }
+  $classes[] = $vars['status'];
+  $classes[] = $vars['zebra'];
+  if ($vars['id'] == 1) {
+    $classes[] = 'first';
+  }
+  if ($vars['id'] == $vars['node']->comment_count) {
+    $classes[] = 'last';
+  }
+  if ($vars['comment']->uid == 0) {
+    // Comment is by an anonymous user.
+    $classes[] = 'comment-by-anon';
+  }
+  else {
+    if ($vars['comment']->uid == $vars['node']->uid) {
+      // Comment is by the node author.
+      $classes[] = 'comment-by-author';
+    }
+    if ($vars['comment']->uid == $GLOBALS['user']->uid) {
+      // Comment was posted by current user.
+      $classes[] = 'comment-mine';
+    }
+  }
+  $vars['classes'] = implode(' ', $classes);
 }
 
-
-//
-//  Create some custom classes for comments
-//
-
-function comment_classes($comment) {
-  $node = node_load($comment->nid);
-  global $user;
- 
-  $output .= ($comment->new) ? ' comment-new' : ''; 
-  $output .=  ' '. $status .' '; 
-  if ($node->name == $comment->name) {	
-    $output .= 'node-author';
-  }
-  if ($user->name == $comment->name) {	
-    $output .=  ' mine';
-  }
-  return $output;
-}
 
 
 // 	

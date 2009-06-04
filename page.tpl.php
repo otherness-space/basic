@@ -117,13 +117,13 @@
 		      <div id="navigation" class="menu <?php if (!empty($primary_links)) { echo "withprimary"; } if (!empty($secondary_links)) { echo " withsecondary"; } ?> ">
 			
 		        <?php if (!empty($primary_links)): ?>
-		          <div id="primary" class="clear-block">
+		          <div id="primary" class="clearfix">
 		            <?php echo theme('links', $primary_links, array('class' => 'links primary-links')); ?>
 		          </div>
 		        <?php endif; ?>
 
 		        <?php if (!empty($secondary_links)): ?>
-		          <div id="secondary" class="clear-block">
+		          <div id="secondary" class="clearfix">
 		            <?php echo theme('links', $secondary_links, array('class' => 'links secondary-links')); ?>
 		          </div>
 		        <?php endif; ?>

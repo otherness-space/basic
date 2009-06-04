@@ -49,7 +49,7 @@
  */
 ?>
 
-<div class="node <?php echo $node_classes; ?>" id="node-<?php echo $node->nid; ?>">
+<div class="node <?php echo $classes; ?>" id="node-<?php echo $node->nid; ?>">
 	<div class="node-inner">
     
     <?php if ($page == 0): ?>

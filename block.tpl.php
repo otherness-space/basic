@@ -26,7 +26,7 @@
  * @see template_preprocess_block()
  */
 ?>
-<div id="block-<?php echo $block->module .'-'. $block->delta ?>" class="block block-<?php echo $block->module .' '. $block_zebra .' '. $block->region ?>">
+<div id="block-<?php echo $block->module .'-'. $block->delta ?>" class="block block-<?php echo $block->module .' '. $block_zebra .' '. $block->region ?> clearfix">
 	<div class="block-inner">
 
 		<?php if ($block->subject): ?>

@@ -27,7 +27,7 @@
  */
 ?>
 
-<div class="comment <?php echo comment_classes($comment) .' '. $zebra; if ($unpublished) { echo 'comment-unpublished'; } ?> clear-block">
+<div class="comment <?php echo $classes .' '. $zebra; if ($unpublished) { echo 'comment-unpublished'; } ?> clear-block">
 	<div class="comment-inner">
 		
     <?php if ($title): ?>

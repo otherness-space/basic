@@ -12,6 +12,14 @@ function basic_settings($saved_settings, $subtheme_defaults = array()) {
    * Create the form using Forms API
    */
 
+  $form['basic_wireframe'] = array(
+    '#type'          => 'checkbox',
+    '#title'         => t('Display borders around main layout elements'),
+    '#default_value' => $settings['basic_wireframe'],
+    '#description'   => t('<a href="!link">Wireframes</a> are useful when prototyping a website.', array('!link' => 'http://www.boxesandarrows.com/view/html_wireframes_and_prototypes_all_gain_and_no_pain')),
+    '#prefix'        => '<strong>' . t('Wireframes:') . '</strong>',
+  );
+
   $form['basic_block_editing'] = array(
     '#type'          => 'checkbox',
     '#title'         => t('Show block editing on hover'),
