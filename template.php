@@ -33,6 +33,11 @@ function basic_preprocess_page(&$vars, $hook) {
 	if (theme_get_setting('basic_wireframe')) {
     $body_classes[] = 'with-wireframes'; // Optionally add the wireframes style.
   }
+  if (module_exists('taxonomy') && $vars['node']->nid) {
+    foreach (taxonomy_node_get_terms($vars['node']) as $term) {
+    $body_classes[] = 'tax-' . eregi_replace('[^a-z0-9]', '-', $term->name);
+    }
+  }
   if (!$vars['is_front']) {
     // Add unique classes for each page and website section
     $path = drupal_get_path_alias($_GET['q']);
