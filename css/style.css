@@ -103,7 +103,7 @@ abbr {
 *  delete when starting a new theme
 */
 
-#header, #footer { background-color: #eee; }
+#header, #footer { background-color: #efefef; }
 #sidebar-left {	background: #e7edff; }
 #sidebar-right { background: #ffd075; }
 #navigation { background-color: #feffa5; }

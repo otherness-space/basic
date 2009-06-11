@@ -144,6 +144,10 @@ div.block:hover div.edit {
   padding: 2px;
   border: 1px solid #bbb;
 }
+.with-wireframes .node {
+  border-bottom: 1px solid #bbb;
+  margin-bottom:10px;
+}
 .with-wireframes .block {
   margin-bottom:3px;
 }
