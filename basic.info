@@ -1,9 +1,11 @@
 ; $Id$
 
 name = basic
+project = "basic"
 description = Basic starter theme for Drupal 6
 screenshot = screenshot.gif
 engine = phptemplate
+core = "6.x"
 
 regions[left] = Left sidebar
 regions[right] = Right sidebar
@@ -33,7 +35,3 @@ stylesheets[print][] = css/print.css
              
 settings[basic_block_editing]        = 1
 settings[basic_rebuild_registry]     = 0
-
-version = "6.x-2.1"
-core = "6.x"
-project = "basic"
