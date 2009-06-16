@@ -1,4 +1,3 @@
-<?php // $Id$ ?>
 <div class="comment<?php print ($comment->new) ? ' comment-new' : ''; print ' ' . $status; print ' ' . $zebra; ?>">
 	<div class="comment-inner">
 		

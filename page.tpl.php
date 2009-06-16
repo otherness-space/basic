@@ -1,4 +1,3 @@
-<?php // $Id$ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
   "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $language->language ?>" dir="<?php print $language->dir ?>"
@@ -8,19 +7,19 @@
   <?php echo $head; ?>
   <?php echo $styles; ?>
   <!--[if lte IE 6]>
-  <style type="text/css" media="all">
-    @import "<?php echo $base_path . path_to_theme() ?>/css/ie6.css";
-  </style>
+    <style type="text/css" media="all">
+      @import "<?php echo $base_path . path_to_theme() ?>/css/ie6.css";
+    </style>
   <![endif]-->
   <!--[if IE 7]>
-  <style type="text/css" media="all">
-    @import "<?php echo $base_path . path_to_theme() ?>/css/ie7.css";
-  </style>
+    <style type="text/css" media="all">
+      @import "<?php echo $base_path . path_to_theme() ?>/css/ie7.css";
+    </style>
   <![endif]-->
   <?php echo $scripts; ?>
 </head>
 
-<body class="<?php echo $body_classes; ?>">
+<body class="<?php echo $classes; ?>">
   <div id="skip-nav"><a href="#content">Skip to Content</a></div>  
   <div id="page">
 	
@@ -69,13 +68,7 @@
 	  			<div id="content">
 						<div id="content-inner" class="inner column center">
               
-  	  		  	<?php if ($content_top): ?>
-								<div id="content-top">
-									<?php echo $content_top; ?>
-								</div>
-							<?php endif; ?>
-
-		        	<?php if ($breadcrumb || $title || $mission || $messages || $help || $tabs): ?>
+		        	<?php if ($breadcrumb || $title|| $messages || $help || $tabs): ?>
 		        	  <div id="content-header">
 			
 		        	    <?php echo $breadcrumb; ?>
@@ -83,11 +76,7 @@
 		        	    <?php if ($title): ?>
 		        	      <h1 class="title"><?php echo $title; ?></h1>
 		        	    <?php endif; ?>
-		
-				  	  		<?php if ($mission): ?>
-										<div id="mission"><?php echo $mission; ?></div>
-									<?php endif; ?>
-									
+											
 		        	    <?php echo $messages; ?>
 		        	    
 		        	    <?php echo $help; ?> 
@@ -100,16 +89,10 @@
 		        	<?php endif; ?>
             	
 		        	<div id="content-area"> <!-- CONTENT AREA -->
-		        	  <?php echo $content; ?>
+                <?php print $content ?>
 		        	</div>
 		
   	  		  	<?php echo $feed_icons; ?>
-
-  	  		  	<?php if ($content_bottom): ?>
-								<div id="content-bottom">
-									<?php echo $content_bottom; ?>
-								</div>
-							<?php endif; ?>
 	
   	  			</div>
 					</div> <!-- /content-inner /content -->
@@ -150,10 +133,9 @@
   	
 		<!-- ______________________ FOOTER _______________________ -->
 
-    <?php if(!empty($footer_message) || !empty($footer_block)): ?>
+    <?php if(!empty($footer)): ?>
   	  <div id="footer">
-	      <?php echo $footer_message; ?>
-	      <?php echo $footer_block; ?>
+	      <?php echo $footer; ?>
   	  </div> <!-- /footer -->
 		<?php endif; ?>
 		

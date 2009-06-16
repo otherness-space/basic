@@ -1,20 +1,16 @@
-; $Id$
-
-name = basic
-description = Raincity Studios basic theme for Drupal 7
-screenshot = rcs.png
-version = "7.x-1.x-dev"
+name = Basic
+description = Basic starter theme for Drupal 7
+screenshot = screenshot.gif
 core = "7.x"
 project = "basic"
 engine = phptemplate
 
+regions[header] = Header
+regions[help] = Help
+regions[content] = Content
 regions[left] = Left sidebar
 regions[right] = Right sidebar
-regions[content_top] = Content Top
-regions[content] = Content
-regions[content_bottom] = Content Bottom
-regions[header] = Header
-regions[footer_block] = Footer
+regions[footer] = Footer
 
 features[] = logo
 features[] = name
@@ -24,10 +20,8 @@ features[] = node_user_picture
 features[] = comment_user_picture
 features[] = search
 features[] = favicon
-features[] = primary_links
-
-; disabled features, uncomment to activate
-; features[] = secondary_links
+features[] = main_menu
+features[] = secondary_menu
 
 stylesheets[all][] = css/default.css
 stylesheets[all][] = css/tabs.css
@@ -36,4 +30,4 @@ stylesheets[all][] = css/style.css
 stylesheets[print][] = css/print.css
 
 settings[basic_block_editing]        = 1
-settings[basic_rebuild_registry]     = 1
+settings[basic_rebuild_registry]     = 0

@@ -1,4 +1,3 @@
-/* $Id:*/
 
 /** ABOUT
 ---------------------------------
@@ -121,4 +120,43 @@ div.block div.edit {
 }
 div.block:hover div.edit {
   display: block;
+}
+
+/** WIREFRAMES STYLE
+------------------------------------*/
+
+.with-wireframes #header,
+.with-wireframes #content-top,
+.with-wireframes #content-top>*,
+.with-wireframes #content-header,
+.with-wireframes #content-header>*,
+.with-wireframes #content-area,
+.with-wireframes #content-area>*,
+.with-wireframes #content-bottom,
+.with-wireframes #content-bottom>*,
+.with-wireframes #primary,
+.with-wireframes #secondary,
+.with-wireframes #sidebar-left-inner,
+.with-wireframes #sidebar-right-inner,
+.with-wireframes .block{
+  padding: 2px;
+  border: 1px solid #bbb;
+}
+.with-wireframes .node {
+  border-bottom: 1px solid #bbb;
+  margin-bottom:10px;
+}
+.with-wireframes .block {
+  margin-bottom:3px;
+}
+.with-wireframes #content-top,
+.with-wireframes #content-header,
+.with-wireframes #content-area,
+.with-wireframes #content-bottom {
+  margin:0 3px 3px;
+}
+.with-wireframes #footer {
+  margin-top: 3px;
+  padding: 2px;
+  border: 1px solid #ccc;
 }

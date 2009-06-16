@@ -1,4 +1,3 @@
-<?php // $Id$ ?>
 <div id="block-<?php echo $block->module .'-'. $block->delta ?>" class="block block-<?php echo $block->module .' '. $block_zebra .' '. $block->region ?>">
 	<div class="block-inner">
 
@@ -7,14 +6,10 @@
 		<?php endif; ?>
 		
 		<div class="content">
-		  <?php echo $block->content; ?>
+		  <?php echo $content; ?>
 		</div>
 		
-	  <?php
-	   if (user_access('administer blocks')) {
-  	   echo $edit_links; 	     
-	   }
-	   ?>
+
 
 	</div> <!-- /block-inner -->
 </div> <!-- /block -->

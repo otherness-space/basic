@@ -5,7 +5,7 @@ The Basic theme was developed for internal use at Raincity Studios for client pr
 
 __________________________________________________________________________________________
 
-Feature List (6.x)
+Feature List
 
 - flexible and simple info file
 
