@@ -1,5 +1,5 @@
 
-/** General styles 
+/** Font styles 
 ---------------------------------*/
 
 body {
@@ -8,16 +8,15 @@ body {
 }
 
 #page {
-	/* Use a 12px base font size with a 18px line height */
-  font-size: 0.875em; /* 16px x .75 = 12px */
-  line-height: 1.286em; /* 14px x 1.286 = 18px */
+  font-size: 0.8125em; /* 16px x .8125 = 13px */
+  line-height: 1.5em; /* 14px x 1.5 = 21px */
 }
 
 body, caption, th, td, input, textarea, select, option, legend, fieldset {
-	font-family: Tahoma, Verdana, Arial, sans-serif;
+  font-family:"Helvetica Neue", helvetica, Arial, Helvetica, sans-serif;
 }
 
-/* When declaring Link states, remember: LoVe HA : Link | Hover | Visited | Active */
+/* Links */
 
 a:link, a:visited {
   color: blue;
@@ -31,13 +30,22 @@ a:hover, a:active {
 
 /* Titles  */
 
+h1, h2, h3, h4, h5, h6 {line-height:1.3em;}
+
 h1 {
-	font-size: 2em;
-	line-height: 1.3em;
+	font-size: 2.2em;
+	font-weight:normal;
 	padding: 0 0 0.5em;
 	margin: 0;
 }
- 
+
+h2 {font-size:1.8em;font-weight:normal;margin-bottom:0.75em;}
+h3 {font-size:1.4em;margin-bottom:1em;}
+h4 {font-size:1.2em;margin-bottom:1.25em;}
+h5 {font-size:1.1em;font-weight:bold;margin-bottom:1.5em;}
+h6 {font-size:1em;font-weight:bold;}
+
+
 /* Paragraph Styles */
 
 p {
@@ -65,9 +73,7 @@ tr.odd {
 
 /* Code */
 
-pre, code {
-  font-family: "monaco", "Courier New", monospace;
-}
+pre, code, tt {font:1em 'andale mono', 'lucida console', monospace;line-height:1.5;}
 
 pre {
 	background-color: #efefef;
@@ -96,12 +102,11 @@ abbr {
 }
 
 
-/** Colours
+/** Region Colors
 ---------------------------------
-*  delete when starting a new theme
-*/
+*  delete when starting a new theme */
 
 #header, #footer { background-color: #efefef; }
-#sidebar-left {	background: #e7edff; }
-#sidebar-right { background: #ffd075; }
-#navigation { background-color: #feffa5; }
+#sidebar-first {	background: #e7edff; }
+#sidebar-second { background: #ffd075; }
+#site-menu { background-color: #feffa5; }

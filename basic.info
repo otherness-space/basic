@@ -5,18 +5,18 @@ core = "7.x"
 project = "basic"
 engine = phptemplate
 
-regions[page_top] = Page Top
+regions[page_top] = Page top
 regions[header] = Header
 regions[help] = Help
 regions[content] = Content
-regions[left] = Left sidebar
-regions[right] = Right sidebar
+regions[sidebar_first] = First sidebar
+regions[sidebar_second] = Second sidebar
 regions[footer] = Footer
+regions[page_bottom] = Page bottom
 
 features[] = logo
 features[] = name
 features[] = slogan
-features[] = mission
 features[] = node_user_picture
 features[] = comment_user_picture
 features[] = search

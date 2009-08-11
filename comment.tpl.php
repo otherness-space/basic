@@ -1,34 +1,30 @@
-<div class="comment<?php print ($comment->new) ? ' comment-new' : ''; print ' ' . $status; print ' ' . $zebra; ?>">
+<div class="<?php print $classes . ' ' . $zebra; ?>">
 	<div class="comment-inner">
 		
-    <?php if ($title): ?>
-      <h3 class="title"><?php echo $title; if (!empty($new)): ?> <span class="new"><?php echo $new; ?></span><?php endif; ?></h3>
-    <?php elseif (!empty($new)): ?>
-      <div class="new"><?php echo $new; ?></div>
+    <h3 class="title"><?php print $title ?></h3>
+    
+    <?php if ($new) : ?>
+      <span class="new"><?php print drupal_ucfirst($new) ?></span>
     <?php endif; ?>
-        
-    <?php if ($picture): ?>
-	    <div class="picture"><?php echo $picture; ?></div>
-	  <?php endif; ?>
+    
+    <?php print $picture ?>
 	    
-    <div class="submitted">
-      <?php echo $submitted; ?>
-    </div>
+    <?php if ($submitted): ?>
+      <span class="submitted"><?php print $submitted; ?></span>
+    <?php endif; ?>
     
     <div class="content">
-      <?php echo $content ?>
-      <?php if ($signature): ?>
-      <div class="user-signature clearfix">
-        <?php echo $signature; ?>
-      </div>
-      <?php endif; ?>
+      <?php 
+        hide($content['links']); 
+        print render($content);
+        if ($signature) {
+          print $signature;
+        }?>
     </div>
     
-    <?php if ($links): ?>
-      <div class="links">
-        <?php echo $links; ?>
-      </div>
-    <?php endif; ?>  
+    <?php if (!empty($content['links'])): ?>
+	    <div class="links"><?php print render($content['links']); ?></div>
+	  <?php endif; ?>
 
   </div> <!-- /comment-inner -->
 </div> <!-- /comment -->

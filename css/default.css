@@ -125,37 +125,37 @@ div.block:hover div.edit {
 /** WIREFRAMES STYLE
 ------------------------------------*/
 
-.with-wireframes #header,
-.with-wireframes #content-top,
-.with-wireframes #content-top>*,
-.with-wireframes #content-header,
-.with-wireframes #content-header>*,
-.with-wireframes #content-area,
-.with-wireframes #content-area>*,
-.with-wireframes #content-bottom,
-.with-wireframes #content-bottom>*,
-.with-wireframes #primary,
-.with-wireframes #secondary,
-.with-wireframes #sidebar-left-inner,
-.with-wireframes #sidebar-right-inner,
-.with-wireframes .block{
+.wireframe-mode #header,
+.wireframe-mode #content-top,
+.wireframe-mode #content-top>*,
+.wireframe-mode #content-header,
+.wireframe-mode #content-header>*,
+.wireframe-mode #content-area,
+.wireframe-mode #content-area>*,
+.wireframe-mode #content-bottom,
+.wireframe-mode #content-bottom>*,
+.wireframe-mode #primary,
+.wireframe-mode #secondary,
+.wireframe-mode #sidebar-left-inner,
+.wireframe-mode #sidebar-right-inner,
+.wireframe-mode .block{
   padding: 2px;
   border: 1px solid #bbb;
 }
-.with-wireframes .node {
+.wireframe-mode .node {
   border-bottom: 1px solid #bbb;
   margin-bottom:10px;
 }
-.with-wireframes .block {
+.wireframe-mode .block {
   margin-bottom:3px;
 }
-.with-wireframes #content-top,
-.with-wireframes #content-header,
-.with-wireframes #content-area,
-.with-wireframes #content-bottom {
+.wireframe-mode #content-top,
+.wireframe-mode #content-header,
+.wireframe-mode #content-area,
+.wireframe-mode #content-bottom {
   margin:0 3px 3px;
 }
-.with-wireframes #footer {
+.wireframe-mode #footer {
   margin-top: 3px;
   padding: 2px;
   border: 1px solid #ccc;
