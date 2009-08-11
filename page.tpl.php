@@ -23,6 +23,12 @@
   <div id="skip-nav"><a href="#content">Skip to Content</a></div>  
   <div id="page">
 	
+	  <?php if ($page_top): ?>
+      <div id="page-top-region" class="clearfix">
+        <?php print $page_top; ?>
+      </div>
+    <?php endif; ?>
+  
 	<!-- ______________________ HEADER _______________________ -->
   
 	<div id="header">

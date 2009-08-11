@@ -1,10 +1,11 @@
 name = Basic
 description = Basic starter theme for Drupal 7
-screenshot = screenshot.gif
+screenshot = css/images/screenshot.gif
 core = "7.x"
 project = "basic"
 engine = phptemplate
 
+regions[page_top] = Page Top
 regions[header] = Header
 regions[help] = Help
 regions[content] = Content
