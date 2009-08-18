@@ -12,6 +12,14 @@ function basic_settings($saved_settings, $subtheme_defaults = array()) {
    * Create the form using Forms API
    */
 
+  $form['basic_zen_tabs'] = array(
+    '#type'          => 'checkbox',
+    '#title'         => t('Use Zen Tabs'),
+    '#default_value' => $settings['basic_zen_tabs'],
+    '#description'   => t('Replace the default tabs by the Zen Tabs.'),
+    '#prefix'        => '<strong>' . t('Zen Tabs:') . '</strong>',
+  );
+
   $form['basic_wireframe'] = array(
     '#type'          => 'checkbox',
     '#title'         => t('Display borders around main layout elements'),

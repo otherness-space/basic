@@ -1,9 +1,13 @@
 <?php
-// $Id$
     
 // Auto-rebuild the theme registry during theme development.
 if (theme_get_setting('basic_rebuild_registry')) {
   drupal_rebuild_theme_registry();
+}
+
+// Add Zen Tabs styles
+if (theme_get_setting('basic_zen_tabs')) {
+  drupal_add_css( drupal_get_path('theme', 'basic') .'/css/tabs.css', 'theme', 'screen');
 }
 
 //
@@ -101,8 +105,6 @@ function basic_preprocess_page(&$vars, $hook) {
   $vars['body_classes'] = implode(' ', $body_classes); // Concatenate with spaces
 }
 
-
-
 //
 //	from ZEN // Override or insert PHPTemplate variables into the node templates.
 //	
@@ -138,7 +140,6 @@ function basic_preprocess_node(&$vars, $hook) {
   $classes[] = basic_id_safe('node-type-' . $vars['type']);
   $vars['classes'] = implode(' ', $classes); // Concatenate with spaces
 }
-
 
 //
 // from ZEN // Override or insert PHPTemplate variables into the block templates.
@@ -184,24 +185,8 @@ function basic_preprocess_block(&$vars, $hook) {
             )
           );
         }
-
-        // Display 'edit view' for Views blocks.
-        if ($block->module == 'views' && user_access('administer views')) {
-          list($view_name, $view_block) = explode('-block', $block->delta);
-          $edit_links[] = l('<span>' . t('edit view') . '</span>', 'admin/build/views/edit/' . $view_name,
-            array(
-              'attributes' => array(
-                'title' => t('edit the view that defines this block'),
-                'class' => 'block-edit-view',
-              ),
-              'query' => drupal_get_destination(),
-              'fragment' => 'views-tab-block' . $view_block,
-              'html' => TRUE,
-            )
-          );
-        }
         // Display 'edit menu' for Menu blocks.
-        elseif (($block->module == 'menu' || ($block->module == 'user' && $block->delta == 1)) && user_access('administer menu')) {
+        if (($block->module == 'menu' || ($block->module == 'user' && $block->delta == 1)) && user_access('administer menu')) {
           $menu_name = ($block->module == 'user') ? 'navigation' : $block->delta;
           $edit_links[] = l('<span>' . t('edit menu') . '</span>', 'admin/build/menu-customize/' . $menu_name,
             array(
@@ -228,13 +213,10 @@ function basic_preprocess_block(&$vars, $hook) {
             )
           );
         }
-
         $vars['edit_links_array'] = $edit_links;
         $vars['edit_links'] = '<div class="edit">' . implode(' ', $edit_links) . '</div>';
       }
   }
-
-
 
 // from ZEN // Override or insert PHPTemplate variables into the block templates.
 //
@@ -282,8 +264,6 @@ function basic_preprocess_comment(&$vars, $hook) {
   }
   $vars['classes'] = implode(' ', $classes);
 }
-
-
 
 // 	
 // 	Customize the PRIMARY and SECONDARY LINKS, to allow the admin tabs to work on all browsers
@@ -346,7 +326,6 @@ function basic_menu_item($link, $has_children, $menu = '', $in_active_trail = FA
   return '<li class="'. $class . ' ' . $css_class . '">' . $link . $menu ."</li>\n";
 }
 
-
 //	
 //	Converts a string to a suitable html ID attribute.
 //	
@@ -363,7 +342,6 @@ function basic_menu_item($link, $has_children, $menu = '', $in_active_trail = FA
 //	  The converted string
 //	
 
-
 function basic_id_safe($string) {
   // Replace with dashes anything that isn't A-Z, numbers, dashes, or underscores.
   $string = strtolower(preg_replace('/[^a-zA-Z0-9_-]+/', '-', $string));
@@ -373,7 +351,6 @@ function basic_id_safe($string) {
   }
   return $string;
 }
-
 
 //
 //  Return a themed breadcrumb trail.

@@ -1,6 +1,6 @@
 <div class="comment <?php print $classes .' '. $zebra; if ($unpublished) { print 'unpublished'; } ?> clear-block">
-	<div class="comment-inner">
-		
+  <div class="comment-inner">
+
     <?php if ($title): ?>
       <h3 class="title"><?php print $title ?></h3>
     <?php endif; ?>
@@ -8,22 +8,22 @@
     <?php if ($new) : ?>
       <span class="new"><?php print drupal_ucfirst($new) ?></span>
     <?php endif; ?>
-        
+
     <?php print $user_picture; ?>
-	    
+
     <div class="submitted">
       <?php print $submitted; ?>
     </div>
-    
+
     <div class="content">
       <?php print $content ?>
       <?php if ($signature): ?>
-      <div class="user-signature clear-block">
-        <?php print $signature; ?>
-      </div>
+        <div class="user-signature clear-block">
+          <?php print $signature; ?>
+        </div>
       <?php endif; ?>
     </div>
-    
+
     <?php if ($links): ?>
       <div class="links">
         <?php print $links; ?>

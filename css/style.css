@@ -13,7 +13,7 @@ body {
 }
 
 body, caption, th, td, input, textarea, select, option, legend, fieldset {
-  font-family:"Helvetica Neue", helvetica, Arial, Helvetica, sans-serif;
+  font-family:"Helvetica Neue", helvetica, Arial, sans-serif;
 }
 
 /* Links */
