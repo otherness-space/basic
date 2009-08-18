@@ -1,10 +1,9 @@
-/* $Id$
-*/
+
 #header{height:1%;}
+
 div.admin .left, div.admin .right {
 	width:46%;  /* fix the admin page in IE6 */
 }
-
 
 /*
  * Tabs CSS - IE 5 and 6 don't support PNGs with alpha transparency.
