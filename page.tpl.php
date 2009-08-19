@@ -19,15 +19,15 @@
     <!-- ______________________ HEADER _______________________ -->
 
     <div id="header">
-				
-	  	<div id="logo-title">
+
+      <div id="logo-title">
 	
         <?php if (!empty($logo)): ?>
           <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
             <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>"/>
           </a>
         <?php endif; ?>
-	  	
+
         <div id="name-and-slogan">
           <?php if (!empty($site_name)): ?>
             <h1 id="site-name">
@@ -38,75 +38,75 @@
             <div id="site-slogan"><?php print $site_slogan; ?></div>
           <?php endif; ?>
         </div> <!-- /name-and-slogan -->
-	  	
+
       </div> <!-- /logo-title -->
-	  		  		
+
       <?php if ($header): ?>
         <div id="header-region">
           <?php print $header; ?>
         </div>
       <?php endif; ?>
-      
+
       <?php if($search_box): ?>
-      	<?php print $search_box; ?>
+        <?php print $search_box; ?>
       <?php endif; ?>
-    		
+
     </div> <!-- /header -->
 
     <!-- ______________________ MAIN _______________________ -->
-    
+
     <div id="main" class="clearfix">
     
       <div id="content">
         <div id="content-inner" class="inner column center">
-            
+
           <?php if ($content_top): ?>
-          	<div id="content-top">
-          		<?php print $content_top; ?>
-          	</div> <!-- /#content-top -->
+            <div id="content-top">
+              <?php print $content_top; ?>
+            </div> <!-- /#content-top -->
           <?php endif; ?>
-    
+
           <?php if ($breadcrumb || $title || $mission || $messages || $help || $tabs): ?>
             <div id="content-header">
-          
+
               <?php print $breadcrumb; ?>
-          
+
               <?php if ($title): ?>
                 <h1 class="title"><?php print $title; ?></h1>
               <?php endif; ?>
-          
-          		<?php if ($mission): ?>
-          			<div id="mission"><?php print $mission; ?></div>
-          		<?php endif; ?>
-          		
+
+              <?php if ($mission): ?>
+                <div id="mission"><?php print $mission; ?></div>
+              <?php endif; ?>
+
               <?php print $messages; ?>
-              
+
               <?php print $help; ?> 
-          
+
               <?php if ($tabs): ?>
                 <div class="tabs"><?php print $tabs; ?></div>
               <?php endif; ?>
-          
+
             </div> <!-- /#content-header -->
           <?php endif; ?>
-          	
+
           <div id="content-area">
             <?php print $content; ?>
           </div> <!-- /#content-area -->
-    
+
           <?php print $feed_icons; ?>
-          
+
           <?php if ($content_bottom): ?>
-          	<div id="content-bottom">
-          		<?php print $content_bottom; ?>
-          	</div><!-- /#content-bottom -->
+            <div id="content-bottom">
+              <?php print $content_bottom; ?>
+            </div><!-- /#content-bottom -->
           <?php endif; ?>
-    
-    			</div>
-    		</div> <!-- /content-inner /content -->
-    
+
+          </div>
+        </div> <!-- /content-inner /content -->
+
         <div id="navigation" class="menu <?php if (!empty($primary_links)) { print "withprimary"; } if (!empty($secondary_links)) { print " withsecondary"; } ?>">
-    
+
           <?php if (!empty($primary_links)): ?>
             <div id="primary" class="clearfix">
               <?php print theme('links', $primary_links, array('class' => 'links primary-links')); ?>
@@ -117,27 +117,27 @@
               <?php print theme('links', $secondary_links, array('class' => 'links secondary-links')); ?>
             </div>
           <?php endif; ?>
-    
+
         </div> <!-- /navigation -->
-    
-    		<?php if ($left): ?>
-    		  <div id="sidebar-first" class="column sidebar first">
-    				<div id="sidebar-first-inner" class="inner">
-    				  <?php print $left; ?>
-    				</div>
-    		  </div>
-    		<?php endif; ?> <!-- /sidebar-left -->
-    		
-    		<?php if ($right): ?>
-    		  <div id="sidebar-second" class="column sidebar second">
-    				<div id="sidebar-second-inner" class="inner">
-    					<?php print $right; ?>
-    				</div>
-    		  </div>
-    		<?php endif; ?> <!-- /sidebar-second -->
-    
+
+        <?php if ($left): ?>
+          <div id="sidebar-first" class="column sidebar first">
+            <div id="sidebar-first-inner" class="inner">
+              <?php print $left; ?>
+            </div>
+          </div>
+        <?php endif; ?> <!-- /sidebar-left -->
+
+        <?php if ($right): ?>
+          <div id="sidebar-second" class="column sidebar second">
+            <div id="sidebar-second-inner" class="inner">
+              <?php print $right; ?>
+            </div>
+          </div>
+        <?php endif; ?> <!-- /sidebar-second -->
+
       </div> <!-- /main -->
-  	
+
       <!-- ______________________ FOOTER _______________________ -->
 
       <?php if(!empty($footer_message) || !empty($footer_block)): ?>
@@ -146,9 +146,8 @@
           <?php print $footer_block; ?>
         </div> <!-- /footer -->
       <?php endif; ?>
-		
-    </div> <!-- /page -->
 
+    </div> <!-- /page -->
     <?php print $closure; ?>
   </body>
 </html>
