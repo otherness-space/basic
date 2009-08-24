@@ -11,8 +11,6 @@ if (theme_get_setting('basic_zen_tabs')) {
 }
 
 //
-//	from ZEN // Override or insert PHPTemplate variables into the page templates.
-//	
 //	 This function creates the body classes that are relative to each page
 //	
 //	@param $vars
@@ -106,8 +104,6 @@ function basic_preprocess_page(&$vars, $hook) {
 }
 
 //
-//	from ZEN // Override or insert PHPTemplate variables into the node templates.
-//	
 //	 This function creates the NODES classes, like 'node-unpublished' for nodes
 //	 that are not published, or 'node-mine' for node posted by the connected user...
 //	
@@ -141,8 +137,6 @@ function basic_preprocess_node(&$vars, $hook) {
   $vars['classes'] = implode(' ', $classes); // Concatenate with spaces
 }
 
-//
-// from ZEN // Override or insert PHPTemplate variables into the block templates.
 //
 //	This function create the EDIT LINKS for blocks and menus blocks.
 //	When overing a block (except in IE6), some links appear to edit
@@ -218,7 +212,7 @@ function basic_preprocess_block(&$vars, $hook) {
       }
   }
 
-// from ZEN // Override or insert PHPTemplate variables into the block templates.
+// Override or insert PHPTemplate variables into the block templates.
 //
 //  @param $vars
 //    An array of variables to pass to the theme template.
@@ -276,34 +270,32 @@ function basic_preprocess_comment(&$vars, $hook) {
 // 	
 
 function basic_menu_item_link($link) {
-  if (empty($link['options'])) {
-    $link['options'] = array();
+  if (empty($link['localized_options'])) {
+    $link['localized_options'] = array();
   }
 
   // If an item is a LOCAL TASK, render it as a tab
   if ($link['type'] & MENU_IS_LOCAL_TASK) {
-    $link['title'] = '<span class="tab">'. check_plain($link['title']) .'</span>';
-    $link['options']['html'] = TRUE;
+    $link['title'] = '<span class="tab">' . check_plain($link['title']) . '</span>';
+    $link['localized_options']['html'] = TRUE;
   }
 
-  if (empty($link['type'])) {
-    $true = TRUE;
-  }
-
-  return l($link['title'], $link['href'], $link['options']);
+  return l($link['title'], $link['href'], $link['localized_options']);
 }
 
-/**
- * Duplicate of theme_menu_local_tasks() but adds clear-block to tabs.
- */
+
+//
+//  Duplicate of theme_menu_local_tasks() but adds clear-block to tabs.
+//
+
 function basic_menu_local_tasks() {
   $output = '';
 
   if ($primary = menu_primary_local_tasks()) {
-    $output .= "<ul class=\"tabs primary clear-block\">\n". $primary ."</ul>\n";
+    $output .= '<ul class="tabs primary clear-block">' . $primary . '</ul>';
   }
   if ($secondary = menu_secondary_local_tasks()) {
-    $output .= "<ul class=\"tabs secondary clear-block\">\n". $secondary ."</ul>\n";
+    $output .= '<ul class="tabs secondary clear-block">' . $secondary . '</ul>';
   }
 
   return $output;
