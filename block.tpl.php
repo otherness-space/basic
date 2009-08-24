@@ -1,15 +1,18 @@
-<div id="block-<?php print $block->module .'-'. $block->delta ?>" class="block block-<?php print $block->module .' '. $block_zebra .' '. $block->region ?> clearfix">
+<?php  /* only display block markup if not main content */  if ($block->delta != 'main'): ?>
+<div id="block-<?php print $block->module .'-'. $block->delta ?>" class="<?php print $classes; ?> clearfix">
   <div class="block-inner">
+<?php endif; ?>
 
     <?php if (!empty($block->subject)): ?>
-      <h3 class="title block-title"><?php print $block->subject; ?></h3>
-    <?php endif; ?>
+		  <h3 class="title block-title"><?php print $block->subject; ?></h3>
+		<?php endif; ?>
+		
+		<div class="content">
+		  <?php print $content; ?>
+		</div>
 
-    <div class="content">
-      <?php print $block->content; ?>
-    </div>
-
-    <?php print $edit_links; ?>
-
-  </div> <!-- /block-inner -->
-</div> <!-- /block -->
+<?php if ($block->delta != 'main'): ?>
+  <?php echo $edit_links; ?>
+  </div>
+</div> <!-- /block-inner /block -->
+<?php endif; ?>

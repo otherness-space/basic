@@ -1,3 +1,6 @@
+/** Print styles 
+---------------------------------*/
+
 .sidebar, 
 #navigation, 
 #header-region, 
@@ -7,25 +10,25 @@
 .tabs,
 .feed-icon,
 .links {
-  display: none;
+	display: none;
 }
 
 #page {
-  width: 100%;
+	width: 100%;
 }
 
 #header {
-  background-color: transparent;
+	background-color: transparent;
 }
 
 #content,
 #content #content-inner,
 .content,
 .title {
-  margin:20px 0;
-  width: auto;
+	margin:20px 0;
+	width: auto;
 }
 
 a:hover, a:active, a:link, a:visited {
-  color: #000;
+	color: #000;
 }
