@@ -1,13 +1,13 @@
 
 /** Layout
 ---------------------------------
-*  The page is loaded by this order:
+*  Using a negative margin technique, adapted from ZEN. The page is loaded by this order:
 *  
 *  1. Header
 *  2. Content
 *  3. Navigation menus
-*  4. Sidebar First
-*  5. Sidebar Second
+*  4. Sidebar Left
+*  5. Sideabr Right
 *	
 */
 
@@ -26,7 +26,7 @@
 */
 
 .two-sidebars .center,
-.sidebar-first .center {
+.sidebar-left .center {
   margin-left: 190px;     /* LEFT value */
 }
 #sidebar-first {
@@ -34,7 +34,7 @@
 	margin-right: -190px;    /* negative LEFT value */
 }
 .two-sidebars .center,
-.sidebar-second .center {
+.sidebar-right .center {
   margin-right: 200px;    /* RIGHT value */
 }
 #sidebar-second {
@@ -51,18 +51,18 @@
 	padding: 0px;                     
 }                                   
 
-/** Site Menus styles
+/** Navigation styles
 ---------------------------------
 *  The navigation is loaded after the content, so we need to make space
 *  for it, equal to its height, so if you change the height of the navigation,
 *  remember to adapt the margin top of the content and sidebars.
 */
 
-#content,
-.sidebar {
-	margin-top: 40px;        /* Navigation Height */
+.with-navigation #content,
+.with-navigation .sidebar {
+  margin-top: 40px;        /* Navigation Height */
 }
-#site-menu {
+#navigation {
   height: 40px;            /* Navigation Height */
 }
 
@@ -72,18 +72,18 @@
 */
 
 #content {
-	float: left;
-	width: 100%;
-	margin-right: -100%;
-	padding: 0;
+  float: left;
+  width: 100%;
+  margin-right: -100%;
+  padding: 0;
 }                                   
 .sidebar {                          
-	float: left;                       
+  float: left;                       
 }                                   
 #sidebar-second {
   float: right;
 }
-#site-menu {                        
+#navigation {                        
   float: left;                       
   margin-left: 0;
   margin-right: -100%;
@@ -91,17 +91,25 @@
   width: 100%;
 }
 
+/* header */
+
+#header #header-region {
+  overflow: hidden;
+}
+
 /* footer */
 
 #footer {
-	float: none;
-	clear: both;
+  float: none;
+  clear: both;
 }
 
 /* Layout Helpers */
 
-#header, #footer,
+#header,
+#footer,
+#main #content .mission,
 #main #content .breadcrumb,
 #main #content .node {
-	clear: both;
+  clear: both;
 }

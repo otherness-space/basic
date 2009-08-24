@@ -81,7 +81,7 @@
 /* bug fix with views 2 edit links */
 
 div.view div.views-admin-links {
-	width:auto;
+  width:auto;
 }
 
 /** User interface styles 
@@ -91,14 +91,14 @@ div.view div.views-admin-links {
 	font-size:14px!important;
 }
 .messages {
-	padding: 10px;
-	margin: 10px 0;
-	border: 1px solid #04a107;
-	color: #04a107;
-	background-color: #edffed;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #04a107;
+  color: #04a107;
+  background-color: #edffed;
 }
 form{
-	margin:10px 0;
+  margin:10px 0;
 }
 
 /** Rollover edit links for blocks
@@ -125,37 +125,37 @@ div.block:hover div.edit {
 /** WIREFRAMES STYLE
 ------------------------------------*/
 
-.wireframe-mode #header,
-.wireframe-mode #content-top,
-.wireframe-mode #content-top>*,
-.wireframe-mode #content-header,
-.wireframe-mode #content-header>*,
-.wireframe-mode #content-area,
-.wireframe-mode #content-area>*,
-.wireframe-mode #content-bottom,
-.wireframe-mode #content-bottom>*,
-.wireframe-mode #primary,
-.wireframe-mode #secondary,
-.wireframe-mode #sidebar-left-inner,
-.wireframe-mode #sidebar-right-inner,
-.wireframe-mode .block{
+.with-wireframes #header,
+.with-wireframes #content-top,
+.with-wireframes #content-top>*,
+.with-wireframes #content-header,
+.with-wireframes #content-header>*,
+.with-wireframes #content-area,
+.with-wireframes #content-area>*,
+.with-wireframes #content-bottom,
+.with-wireframes #content-bottom>*,
+.with-wireframes #primary,
+.with-wireframes #secondary,
+.with-wireframes #sidebar-left-inner,
+.with-wireframes #sidebar-right-inner,
+.with-wireframes .block{
   padding: 2px;
   border: 1px solid #bbb;
 }
-.wireframe-mode .node {
+.with-wireframes .node {
   border-bottom: 1px solid #bbb;
   margin-bottom:10px;
 }
-.wireframe-mode .block {
+.with-wireframes .block {
   margin-bottom:3px;
 }
-.wireframe-mode #content-top,
-.wireframe-mode #content-header,
-.wireframe-mode #content-area,
-.wireframe-mode #content-bottom {
+.with-wireframes #content-top,
+.with-wireframes #content-header,
+.with-wireframes #content-area,
+.with-wireframes #content-bottom {
   margin:0 3px 3px;
 }
-.wireframe-mode #footer {
+.with-wireframes #footer {
   margin-top: 3px;
   padding: 2px;
   border: 1px solid #ccc;

@@ -13,7 +13,7 @@ body {
 }
 
 body, caption, th, td, input, textarea, select, option, legend, fieldset {
-  font-family:"Helvetica Neue", helvetica, Arial, Helvetica, sans-serif;
+  font-family:"Helvetica Neue", helvetica, Arial, sans-serif;
 }
 
 /* Links */
@@ -33,10 +33,10 @@ a:hover, a:active {
 h1, h2, h3, h4, h5, h6 {line-height:1.3em;}
 
 h1 {
-	font-size: 2.2em;
-	font-weight:normal;
-	padding: 0 0 0.5em;
-	margin: 0;
+  font-size: 2.2em;
+  font-weight:normal;
+  padding: 0 0 0.5em;
+  margin: 0;
 }
 
 h2 {font-size:1.8em;font-weight:normal;margin-bottom:0.75em;}
@@ -62,13 +62,13 @@ ul, ol {
 /* Table Styles  */
 
 table {
-	width: 99%;
+  width: 99%;
 }
 tr.even td, tr.odd td {
-	padding: 10px 5px;
+  padding: 10px 5px;
 }
 tr.odd {
-	background-color: #fff;
+  background-color: #fff;
 }
 
 /* Code */
@@ -76,11 +76,11 @@ tr.odd {
 pre, code, tt {font:1em 'andale mono', 'lucida console', monospace;line-height:1.5;}
 
 pre {
-	background-color: #efefef;
-	display: block;
-	padding: 5px;
-	margin: 5px 0;
-	border: 1px solid #aaa;
+  background-color: #efefef;
+  display: block;
+  padding: 5px;
+  margin: 5px 0;
+  border: 1px solid #aaa;
 }
 
 /* List Styles */
@@ -101,6 +101,25 @@ abbr {
   white-space: nowrap;
 }
 
+/* UI improvments  */
+
+#edit-title{
+  font-size: 24px;
+}
+#system-themes-form img{
+  width:100px;
+}
+.form-item .description{
+  font-style:italic;
+  line-height:1.2em;
+  font-size:0.8em;
+  margin-top:5px;
+  color:#777;
+}
+#edit-delete{
+  color:#c00;
+}
+
 
 /** Region Colors
 ---------------------------------
@@ -109,4 +128,4 @@ abbr {
 #header, #footer { background-color: #efefef; }
 #sidebar-first {	background: #e7edff; }
 #sidebar-second { background: #ffd075; }
-#site-menu { background-color: #feffa5; }
+#navigation { background-color: #feffa5; }
