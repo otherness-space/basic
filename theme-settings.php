@@ -14,7 +14,7 @@ function phptemplate_settings($saved_settings) {
   
   $defaults = array(
     'wireframe_mode'  => 0,
-    'block_editing'   => 1,
+    'block_editing'   => 0,
     'clear_registry'  => 0,
   );
 
@@ -36,7 +36,7 @@ function phptemplate_settings($saved_settings) {
   $form['dev_settings']['block_editing'] = array(
     '#type' => 'checkbox',
     '#title' =>  t('Show block editing on hover'),
-    '#description'   => t('When hovering over a block, privileged users will see block editing links.'),
+    '#description'   => t('When hovering over a block, privileged users will see block editing links. <strong>You might need to rebuild the theme registry after activating this option.</strong>'),
     '#default_value' => $settings['block_editing']
   );
   $form['dev_settings']['clear_registry'] = array(

@@ -49,9 +49,7 @@
   	  		  </div>
   	  		<?php endif; ?>
   	  		
-  	  		<?php if($search_box): ?>
-      			<?php print $search_box; ?>
-      		<?php endif; ?>
+          <?php print $search_box; ?>
   	
       	</div> <!-- /header -->
   
@@ -91,10 +89,10 @@
     	  			</div>
   					</div> <!-- /content-inner /content -->
   
-            <?php if ($main_menu_links || $secondary_menu_links): ?>
-              <div id="site-menu" class="menu <?php if (!empty($main_menu_links)) { print "withprimary"; } if (!empty($secondary_menu_links)) { print " withsecondary"; } ?>">
-                <?php print $main_menu_links; ?>
-                <?php print $secondary_menu_links; ?>
+            <?php if ($main_menu || $sub_menu): ?>
+              <div id="site-menu" class="menu <?php if (!empty($main_menu)) { print "withprimary"; } if (!empty($sub_menu)) { print " withsecondary"; } ?>">
+                <?php if ($main_menu): print $main_menu; endif; ?>
+                <?php if ($sub_menu): print $sub_menu; endif; ?>
               </div>
             <?php endif; ?>
   

@@ -30,5 +30,5 @@ stylesheets[all][] = css/layout.css
 stylesheets[all][] = css/style.css
 stylesheets[print][] = css/print.css
 
-settings[basic_block_editing]        = 1
+settings[basic_block_editing]        = 0
 settings[basic_rebuild_registry]     = 0

@@ -7,13 +7,17 @@ if (theme_get_setting('clear_registry')) {
 
 function basic_preprocess_page(&$vars, $hook) {
 
-  // For easy printing of variables.
-  $vars['main_menu_links']      = theme('links', $vars['main_menu'], array('class' => 'links main-menu'));
-  $vars['secondary_menu_links'] = theme('links', $vars['secondary_menu'], array('class' => 'links secondary-menu'));
+  // for easier theming of main and submenus
+  $vars['main_menu'] = isset($vars['main_menu']) ? theme('links', $vars['main_menu'], array(), array('id' => array('primary'),'class' => array('links', 'main-menu'))) : FALSE;
+  $vars['sub_menu'] = isset($vars['secondary_menu']) ? theme('links', $vars['secondary_menu'], array(), array('id' => array('secondary'),'class' => array('links', 'sub-menu'))) : FALSE;
 
   // Adding a class to body in wireframe mode
   if (theme_get_setting('wireframe_mode')) {
     $vars['classes_array'][] = 'wireframe-mode';
+  }
+  
+  if (!empty($vars['main_menu']) or !empty($vars['sub_menu'])) {
+    $vars['classes_array'][] = 'with-navigation';
   }
   
   // Add PAGE template suggestions based on content type  
