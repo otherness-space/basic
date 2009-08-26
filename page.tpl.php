@@ -47,9 +47,7 @@
         </div>
       <?php endif; ?>
 
-      <?php if($search_box): ?>
-        <?php print $search_box; ?>
-      <?php endif; ?>
+      <?php print $search_box; ?>
 
     </div> <!-- /header -->
 
@@ -105,20 +103,12 @@
           </div>
         </div> <!-- /content-inner /content -->
 
-        <div id="navigation" class="menu <?php if (!empty($primary_links)) { print "withprimary"; } if (!empty($secondary_links)) { print " withsecondary"; } ?>">
-
-          <?php if (!empty($primary_links)): ?>
-            <div id="primary" class="clearfix">
-              <?php print theme('links', $primary_links, array('class' => 'links primary-links')); ?>
-            </div>
-          <?php endif; ?>
-          <?php if (!empty($secondary_links)): ?>
-            <div id="secondary" class="clearfix">
-              <?php print theme('links', $secondary_links, array('class' => 'links secondary-links')); ?>
-            </div>
-          <?php endif; ?>
-
-        </div> <!-- /navigation -->
+        <?php if (!empty($primary_links) or !empty($secondary_links)): ?>
+          <div id="navigation" class="menu <?php if (!empty($primary_links)) { print "with-main-menu"; } if (!empty($secondary_links)) { print " with-sub-menu"; } ?>">
+            <?php if (!empty($primary_links)){ print theme('links', $primary_links, array('id' => 'primary', 'class' => 'links main-menu')); } ?>
+            <?php if (!empty($secondary_links)){ print theme('links', $secondary_links, array('id' => 'secondary', 'class' => 'links sub-menu')); } ?>
+          </div> <!-- /navigation -->
+        <?php endif; ?>
 
         <?php if ($left): ?>
           <div id="sidebar-first" class="column sidebar first">

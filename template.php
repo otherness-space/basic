@@ -10,14 +10,14 @@ if (theme_get_setting('basic_zen_tabs')) {
   drupal_add_css( drupal_get_path('theme', 'basic') .'/css/tabs.css', 'theme', 'screen');
 }
 
-//
-//	 This function creates the body classes that are relative to each page
-//	
-//	@param $vars
-//	  A sequential array of variables to pass to the theme template.
-//	@param $hook
-//	  The name of the theme function being called ("page" in this case.)
-//
+/*
+ *	 This function creates the body classes that are relative to each page
+ *	
+ *	@param $vars
+ *	  A sequential array of variables to pass to the theme template.
+ *	@param $hook
+ *	  The name of the theme function being called ("page" in this case.)
+ */
 
 function basic_preprocess_page(&$vars, $hook) {
 
@@ -34,6 +34,12 @@ function basic_preprocess_page(&$vars, $hook) {
 	}
 	if (theme_get_setting('basic_wireframe')) {
     $body_classes[] = 'with-wireframes'; // Optionally add the wireframes style.
+  }
+  if (!empty($vars['primary_links']) or !empty($vars['secondary_links'])) {
+    $body_classes[] = 'with-navigation';
+  }
+  if (!empty($secondary_links)) {
+    $body_classes[] = 'with-seconday';
   }
   if (module_exists('taxonomy') && $vars['node']->nid) {
     foreach (taxonomy_node_get_terms($vars['node']) as $term) {
@@ -62,37 +68,38 @@ function basic_preprocess_page(&$vars, $hook) {
       }
     }
   }
-  //// Check what the user's browser is and add it as a body class
-  //// DEACTIVATED - Only works if page cache is deactivated
-  //$user_agent = $_SERVER['HTTP_USER_AGENT'];
-  //if($user_agent) {
-  //  if (strpos($user_agent, 'MSIE')) {
-  //    $body_classes[] = 'browser-ie';
-  //  } else if (strpos($user_agent, 'MSIE 6.0')) {
-  //    $body_classes[] = 'browser-ie6';
-  //  } else if (strpos($user_agent, 'MSIE 7.0')) {
-  //    $body_classes[] = 'browser-ie7';
-  //  } else if (strpos($user_agent, 'MSIE 8.0')) {
-  //    $body_classes[] = 'browser-ie8'; 
-  //  } else if (strpos($user_agent, 'Firefox/2')) {
-  //    $body_classes[] = 'browser-firefox2';
-  //  } else if (strpos($user_agent, 'Firefox/3')) {
-  //    $body_classes[] = 'browser-firefox3';
-  //  }else if (strpos($user_agent, 'Safari')) {
-  //    $body_classes[] = 'browser-safari';
-  //  } else if (strpos($user_agent, 'Opera')) {
-  //    $body_classes[] = 'browser-opera';
-  //  }
-  //}
+  /*  // Check what the user's browser is and add it as a body class
+      // DEACTIVATED - Only works if page cache is deactivated
+      $user_agent = $_SERVER['HTTP_USER_AGENT'];
+      if($user_agent) {
+        if (strpos($user_agent, 'MSIE')) {
+          $body_classes[] = 'browser-ie';
+        } else if (strpos($user_agent, 'MSIE 6.0')) {
+          $body_classes[] = 'browser-ie6';
+        } else if (strpos($user_agent, 'MSIE 7.0')) {
+          $body_classes[] = 'browser-ie7';
+        } else if (strpos($user_agent, 'MSIE 8.0')) {
+          $body_classes[] = 'browser-ie8'; 
+        } else if (strpos($user_agent, 'Firefox/2')) {
+          $body_classes[] = 'browser-firefox2';
+        } else if (strpos($user_agent, 'Firefox/3')) {
+          $body_classes[] = 'browser-firefox3';
+        }else if (strpos($user_agent, 'Safari')) {
+          $body_classes[] = 'browser-safari';
+        } else if (strpos($user_agent, 'Opera')) {
+          $body_classes[] = 'browser-opera';
+        }
+      }
   
-  // Add template suggestions based on content type
-  // You can use a different page template depending on the
-  // content type or the node ID
-  // For example, if you wish to have a different page template
-  // for the story content type, just create a page template called
-  // page-type-story.tpl.php
-  // For a specific node, use the node ID in the name of the page template
-  // like this : page-node-22.tpl.php (if the node ID is 22)
+  /* Add template suggestions based on content type
+   * You can use a different page template depending on the
+   * content type or the node ID
+   * For example, if you wish to have a different page template
+   * for the story content type, just create a page template called
+   * page-type-story.tpl.php
+   * For a specific node, use the node ID in the name of the page template
+   * like this : page-node-22.tpl.php (if the node ID is 22)
+   */
   
   if ($vars['node']->type != "") {
       $vars['template_files'][] = "page-type-" . $vars['node']->type;
@@ -103,15 +110,15 @@ function basic_preprocess_page(&$vars, $hook) {
   $vars['body_classes'] = implode(' ', $body_classes); // Concatenate with spaces
 }
 
-//
-//	 This function creates the NODES classes, like 'node-unpublished' for nodes
-//	 that are not published, or 'node-mine' for node posted by the connected user...
-//	
-//	@param $vars
-//	  A sequential array of variables to pass to the theme template.
-//	@param $hook
-//	  The name of the theme function being called ("node" in this case.)
-//
+/*
+ *	 This function creates the NODES classes, like 'node-unpublished' for nodes
+ *	 that are not published, or 'node-mine' for node posted by the connected user...
+ *	
+ *	@param $vars
+ *	  A sequential array of variables to pass to the theme template.
+ *	@param $hook
+ *	  The name of the theme function being called ("node" in this case.)
+ */
 
 function basic_preprocess_node(&$vars, $hook) {
   // Special classes for nodes
@@ -137,17 +144,17 @@ function basic_preprocess_node(&$vars, $hook) {
   $vars['classes'] = implode(' ', $classes); // Concatenate with spaces
 }
 
-//
-//	This function create the EDIT LINKS for blocks and menus blocks.
-//	When overing a block (except in IE6), some links appear to edit
-//	or configure the block. You can then edit the block, and once you are
-//	done, brought back to the first page.
-//
-// @param $vars
-//   A sequential array of variables to pass to the theme template.
-// @param $hook
-//   The name of the theme function being called ("block" in this case.)
-// 
+/*
+ *	This function create the EDIT LINKS for blocks and menus blocks.
+ *	When overing a block (except in IE6), some links appear to edit
+ *	or configure the block. You can then edit the block, and once you are
+ *	done, brought back to the first page.
+ *
+ * @param $vars
+ *   A sequential array of variables to pass to the theme template.
+ * @param $hook
+ *   The name of the theme function being called ("block" in this case.)
+ */ 
 
 function basic_preprocess_block(&$vars, $hook) {
     $block = $vars['block'];
@@ -212,13 +219,14 @@ function basic_preprocess_block(&$vars, $hook) {
       }
   }
 
-// Override or insert PHPTemplate variables into the block templates.
-//
-//  @param $vars
-//    An array of variables to pass to the theme template.
-//  @param $hook
-//    The name of the template being rendered ("comment" in this case.)
-//
+/*
+ * Override or insert PHPTemplate variables into the block templates.
+ *
+ *  @param $vars
+ *    An array of variables to pass to the theme template.
+ *  @param $hook
+ *    The name of the template being rendered ("comment" in this case.)
+ */
 
 function basic_preprocess_comment(&$vars, $hook) {
   // Add an "unpublished" flag.
@@ -259,15 +267,15 @@ function basic_preprocess_comment(&$vars, $hook) {
   $vars['classes'] = implode(' ', $classes);
 }
 
-// 	
-// 	Customize the PRIMARY and SECONDARY LINKS, to allow the admin tabs to work on all browsers
-// 	An implementation of theme_menu_item_link()
-// 	
-// 	@param $link
-// 	  array The menu item to render.
-// 	@return
-// 	  string The rendered menu item.
-// 	
+/* 	
+ * 	Customize the PRIMARY and SECONDARY LINKS, to allow the admin tabs to work on all browsers
+ * 	An implementation of theme_menu_item_link()
+ * 	
+ * 	@param $link
+ * 	  array The menu item to render.
+ * 	@return
+ * 	  string The rendered menu item.
+ */ 	
 
 function basic_menu_item_link($link) {
   if (empty($link['localized_options'])) {
@@ -284,26 +292,29 @@ function basic_menu_item_link($link) {
 }
 
 
-//
-//  Duplicate of theme_menu_local_tasks() but adds clear-block to tabs.
-//
+/*
+ *  Duplicate of theme_menu_local_tasks() but adds clear-block to tabs.
+ */
 
 function basic_menu_local_tasks() {
   $output = '';
-
   if ($primary = menu_primary_local_tasks()) {
-    $output .= '<ul class="tabs primary clear-block">' . $primary . '</ul>';
+    if(menu_secondary_local_tasks()) {
+      $output .= '<ul class="tabs primary with-secondary clearfix">' . $primary . '</ul>';
+    }
+    else {
+      $output .= '<ul class="tabs primary clearfix">' . $primary . '</ul>';
+    }
   }
   if ($secondary = menu_secondary_local_tasks()) {
-    $output .= '<ul class="tabs secondary clear-block">' . $secondary . '</ul>';
+    $output .= '<ul class="tabs secondary clearfix">' . $secondary . '</ul>';
   }
-
   return $output;
 }
 
-//	
-//	Add custom classes to menu item
-//	
+/* 	
+ * 	Add custom classes to menu item
+ */	
 	
 function basic_menu_item($link, $has_children, $menu = '', $in_active_trail = FALSE, $extra_class = NULL) {
   $class = ($menu ? 'expanded' : ($has_children ? 'collapsed' : 'leaf'));
@@ -318,21 +329,21 @@ function basic_menu_item($link, $has_children, $menu = '', $in_active_trail = FA
   return '<li class="'. $class . ' ' . $css_class . '">' . $link . $menu ."</li>\n";
 }
 
-//	
-//	Converts a string to a suitable html ID attribute.
-//	
-//	 http://www.w3.org/TR/html4/struct/global.html#h-7.5.2 specifies what makes a
-//	 valid ID attribute in HTML. This function:
-//	
-//	- Ensure an ID starts with an alpha character by optionally adding an 'n'.
-//	- Replaces any character except A-Z, numbers, and underscores with dashes.
-//	- Converts entire string to lowercase.
-//	
-//	@param $string
-//	  The string
-//	@return
-//	  The converted string
-//	
+/*	
+ *	Converts a string to a suitable html ID attribute.
+ *	
+ *	 http://www.w3.org/TR/html4/struct/global.html#h-7.5.2 specifies what makes a
+ *	 valid ID attribute in HTML. This function:
+ *	
+ *	- Ensure an ID starts with an alpha character by optionally adding an 'n'.
+ *	- Replaces any character except A-Z, numbers, and underscores with dashes.
+ *	- Converts entire string to lowercase.
+ *	
+ *	@param $string
+ *	  The string
+ *	@return
+ *	  The converted string
+ */	
 
 function basic_id_safe($string) {
   // Replace with dashes anything that isn't A-Z, numbers, dashes, or underscores.
@@ -344,10 +355,10 @@ function basic_id_safe($string) {
   return $string;
 }
 
-//
-//  Return a themed breadcrumb trail.
-//	Alow you to customize the breadcrumb markup
-//
+/*
+ *  Return a themed breadcrumb trail.
+ *	Alow you to customize the breadcrumb markup
+ */
 
 function basic_breadcrumb($breadcrumb) {
   if (!empty($breadcrumb)) {

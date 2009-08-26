@@ -58,9 +58,9 @@
 *  remember to adapt the margin top of the content and sidebars.
 */
 
-#content,
-.sidebar {
-	margin-top: 40px;        /* Navigation Height */
+.with-navigation #content,
+.with-navigation .sidebar {
+  margin-top: 40px;        /* Navigation Height */
 }
 #navigation {
   height: 40px;            /* Navigation Height */
@@ -72,13 +72,13 @@
 */
 
 #content {
-	float: left;
-	width: 100%;
-	margin-right: -100%;
-	padding: 0;
+  float: left;
+  width: 100%;
+  margin-right: -100%;
+  padding: 0;
 }                                   
 .sidebar {                          
-	float: left;                       
+  float: left;                       
 }                                   
 #sidebar-second {
   float: right;
@@ -94,14 +94,14 @@
 /* header */
 
 #header #header-region {
-	overflow: hidden;
+  overflow: hidden;
 }
 
 /* footer */
 
 #footer {
-	float: none;
-	clear: both;
+  float: none;
+  clear: both;
 }
 
 /* Layout Helpers */
@@ -111,5 +111,5 @@
 #main #content .mission,
 #main #content .breadcrumb,
 #main #content .node {
-	clear: both;
+  clear: both;
 }

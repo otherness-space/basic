@@ -9,7 +9,7 @@
       <span class="new"><?php print drupal_ucfirst($new) ?></span>
     <?php endif; ?>
 
-    <?php print $user_picture; ?>
+    <?php print $picture; ?>
 
     <div class="submitted">
       <?php print $submitted; ?>
