@@ -5,12 +5,12 @@ core = "6.x"
 project = "basic"
 engine = phptemplate
 
-regions[page_top] = Page top
+regions[content_top] = Content top
 regions[header] = Header
 regions[left] = First sidebar
 regions[right] = Second sidebar
 regions[footer] = Footer
-regions[page_bottom] = Page bottom
+regions[content_bottom] = Content bottom
 
 features[] = logo
 features[] = name
@@ -21,7 +21,6 @@ features[] = comment_user_picture
 features[] = search
 features[] = favicon
 features[] = primary_links
-disabled features, uncomment to activate
 features[] = secondary_links
 
 stylesheets[all][] = css/default.css
@@ -33,3 +32,9 @@ settings[basic_zen_tabs]             = 1
 settings[basic_wireframe]            = 0
 settings[basic_block_editing]        = 1
 settings[basic_rebuild_registry]     = 0
+; Information added by drupal.org packaging script on 2009-08-24
+version = "6.x-2.6"
+core = "6.x"
+project = "basic"
+datestamp = "1251154823"
+
