@@ -5,12 +5,12 @@ core = "6.x"
 project = "basic"
 engine = phptemplate
 
-regions[content_top] = Content top
+regions[page_top] = Page top
 regions[header] = Header
 regions[left] = First sidebar
 regions[right] = Second sidebar
 regions[footer] = Footer
-regions[content_bottom] = Content bottom
+regions[page_bottom] = Page bottom
 
 features[] = logo
 features[] = name
