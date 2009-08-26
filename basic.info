@@ -9,7 +9,7 @@ regions[content_top] = Content top
 regions[header] = Header
 regions[left] = First sidebar
 regions[right] = Second sidebar
-regions[footer] = Footer
+regions[footer_block] = Footer
 regions[content_bottom] = Content bottom
 
 features[] = logo
@@ -32,3 +32,9 @@ settings[basic_zen_tabs]             = 1
 settings[basic_wireframe]            = 0
 settings[basic_block_editing]        = 1
 settings[basic_rebuild_registry]     = 0
+; Information added by drupal.org packaging script on 2009-08-26
+version = "6.x-2.7"
+core = "6.x"
+project = "basic"
+datestamp = "1251329703"
+
