@@ -5,7 +5,7 @@
       <h2 class="title"><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
     <?php endif; ?>
 
-    <?php print $picture; ?>
+    <?php print $user_picture; ?>
 
     <?php if ($submitted): ?>
       <span class="submitted"><?php print $submitted; ?></span>
