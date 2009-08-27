@@ -134,8 +134,8 @@
 
 
 		  	  		<?php if ($sidebar_left): ?> <!-- SIDEBAR LEFT -->
-		  	  		  <div id="sidebar-left" class="column sidebar">
-									<div id="sidebar-left-inner" class="inner">
+                <div id="sidebar-first" class="column sidebar first">
+                  <div id="sidebar-first-inner" class="inner">
 										<?php echo $sidebar_left; ?>
 									</div>
 		  	  		  </div>
@@ -143,8 +143,8 @@
 
 
 		  	  		<?php if ($sidebar_right): ?> <!-- SIDEBAR RIGHT -->
-		  	  		  <div id="sidebar-right" class="column sidebar">
-									<div id="sidebar-right-inner" class="inner">
+                <div id="sidebar-second" class="column sidebar second">
+                  <div id="sidebar-second-inner" class="inner">
 									  <?php echo $sidebar_right; ?>
 									</div>
 		  	  		  </div>

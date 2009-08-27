@@ -1,5 +1,3 @@
-/* $Id$
-*/
 
 /** Layout
 ---------------------------------
@@ -14,7 +12,7 @@
 */
 
 #page {
-	width: 1005px; /* edit to change the width of the page */
+	width: 960px; /* edit to change the width of the page */
 	margin: 0 auto; /* remove 'auto' and the width to switch to a fluid width */
 }
 
@@ -31,7 +29,7 @@
 .sidebar-left .center {
   margin-left: 190px;     /* LEFT value */
 }
-#sidebar-left {
+#sidebar-first {
   width: 190px;           /* LEFT value */
 	margin-right: -190px;    /* negative LEFT value */
 }
@@ -39,7 +37,7 @@
 .sidebar-right .center {
   margin-right: 200px;    /* RIGHT value */
 }
-#sidebar-right {
+#sidebar-second {
   width: 200px;           /* RIGHT value */
 }
 
@@ -60,9 +58,9 @@
 *  remember to adapt the margin top of the content and sidebars.
 */
 
-#content,
-.sidebar {
-	margin-top: 40px;        /* Navigation Height */
+.with-navigation #content,
+.with-navigation .sidebar {
+  margin-top: 40px;        /* Navigation Height */
 }
 #navigation {
   height: 40px;            /* Navigation Height */
@@ -74,15 +72,15 @@
 */
 
 #content {
-	float: left;
-	width: 100%;
-	margin-right: -100%;
-	padding: 0;
+  float: left;
+  width: 100%;
+  margin-right: -100%;
+  padding: 0;
 }                                   
 .sidebar {                          
-	float: left;                       
+  float: left;                       
 }                                   
-#sidebar-right {
+#sidebar-second {
   float: right;
 }
 #navigation {                        
@@ -96,14 +94,14 @@
 /* header */
 
 #header #header-region {
-	overflow: hidden;
+  overflow: hidden;
 }
 
 /* footer */
 
 #footer {
-	float: none;
-	clear: both;
+  float: none;
+  clear: both;
 }
 
 /* Layout Helpers */
@@ -113,5 +111,5 @@
 #main #content .mission,
 #main #content .breadcrumb,
 #main #content .node {
-	clear: both;
+  clear: both;
 }

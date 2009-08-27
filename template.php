@@ -84,6 +84,9 @@ function _phptemplate_variables($hook, $vars = array()) {
        // If on an individual node page, put the node type in the body classes
        $body_classes[] = 'node-type-'. $vars['node']->type;
      }
+     if (!empty($vars['primary_links']) or !empty($vars['secondary_links'])) {
+       $body_classes[] = 'with-navigation';
+     }
      if ($vars['sidebar_left'] && $vars['sidebar_right']) {
        $body_classes[] = 'two-sidebars';
      }
