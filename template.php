@@ -320,14 +320,17 @@ function phptemplate_menu_item_link($item, $link_item) {
  */
 function phptemplate_menu_local_tasks() {
   $output = '';
-
   if ($primary = menu_primary_local_tasks()) {
-    $output .= '<ul class="tabs primary clear-block">'. $primary .'</ul>';
+    if(menu_secondary_local_tasks()) {
+      $output .= '<ul class="tabs primary with-secondary clearfix">' . $primary . '</ul>';
+    }
+    else {
+      $output .= '<ul class="tabs primary clearfix">' . $primary . '</ul>';
+    }
   }
   if ($secondary = menu_secondary_local_tasks()) {
-    $output .= '<ul class="tabs secondary clear-block">'. $secondary .'</ul>';
+    $output .= '<ul class="tabs secondary clearfix">' . $secondary . '</ul>';
   }
-
   return $output;
 }
 
