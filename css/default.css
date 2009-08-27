@@ -1,4 +1,3 @@
-
 /** ABOUT
 ---------------------------------
 *  default.css is used to establish general rules and User interface Styles
@@ -10,40 +9,16 @@
 
 * { margin: 0; padding: 0; }
 
-/** Clear Floats Without Structural Markup: 
----------------------------------
-*  http://www.positioniseverything.net/easyclearing.html
-*/
+/* clear classes */
 
-.clearfix:after {
-  content: ".";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-}
+.clearleft, .clearl, .cleft { clear: left; }
+.clearright, .clearr, .cright { clear: right; }
+.clearboth, .clearall{ clear: both; }
 
-.clearfix { display: inline-block; }
+/* Float classes */
 
-/* Hides from IE-mac \*/
-* html .clearfix { height: 1%; }
-.clearfix { display: block; }
-/* End hide from IE-mac */
-
-
-/* clear classes for content 
----------------------------------*/
-
-.clearleft { clear: left; }
-.clearright { clear: right; }
-.clearboth { clear: both; }
-
-/* Float classes for images */
-
-.floatleft { float: left; margin: 0 10px 5px 0 !important; }
-.floatright { float: right; margin: 0 0 5px 10px !important; }
-.floatleft .caption { font-size: 10px; font-weight: bold; text-transform: uppercase; padding-top: 5px; }
-
+.floatleft, .fleft, .floatl { float: left; margin: 0 10px 5px 0; }
+.floatright, .fright, .floatr { float: right; margin: 0 0 5px 10px; }
 
 /** "Skip to Main Content" link
 ---------------------------------
@@ -67,42 +42,13 @@
   height: auto;
 }
 
-/** Prevent overflowing content **/
-
-#header,
-#content,
-#sidebar-left,
-#sidebar-right,
-#footer {
-  overflow: visible;
-  word-wrap: break-word; /* A very nice CSS3 property */
-}
-
 /* bug fix with views 2 edit links */
 
 div.view div.views-admin-links {
 	width:auto;
 }
 
-/** User interface styles 
----------------------------- */
-
-.resizable-textarea textarea {
-	font-size:14px!important;
-}
-.messages {
-	padding: 10px;
-	margin: 10px 0;
-	border: 1px solid #04a107;
-	color: #04a107;
-	background-color: #edffed;
-}
-form{
-	margin:10px 0;
-}
-
-/** Rollover edit links for blocks
-----------------------------*/
+/** Rollover edit links for blocks */
 
 div.block {
   position: relative;
