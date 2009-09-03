@@ -1,34 +1,27 @@
-<div id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>">
-	<div class="node-inner">
-    
+<div class="node <?php print $classes; ?>" id="node-<?php print $node->nid; ?>">
+  <div class="node-inner">
+
     <?php if (!$page): ?>
-	    <h2 class="title"><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+      <h2 class="title"><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
     <?php endif; ?>
 
-    <?php print $user_picture; ?>
-		    
-    <?php if ($display_submitted): ?>
-      <span class="submitted"><?php print $date . ' - ' . $name; ?></span>
+    <?php print $picture; ?>
+
+    <?php if ($submitted): ?>
+      <span class="submitted"><?php print $submitted; ?></span>
     <?php endif; ?>
 
-  	<div class="content">
-  	  <?php 
-  	    // We hide the comments and links now so that we can render them later.
-        hide($content['comments']);
-        hide($content['links']);
-        print render($content);
-       ?>
-  	</div>
-  	
-    <?php if (!empty($content['links']['terms'])): ?>
-      <div class="terms"><?php print render($content['links']['terms']); ?></div>
+    <div class="content">
+      <?php print $content; ?>
+    </div>
+
+    <?php if ($terms): ?>
+      <div class="taxonomy"><?php print $terms; ?></div>
     <?php endif;?>
-  	
-    <?php if (!empty($content['links'])): ?>
-	    <div class="links"><?php print render($content['links']); ?></div>
-	  <?php endif; ?>
-        
-	</div> <!-- /node-inner -->
-</div> <!-- /node-->
 
-<?php print render($content['comments']); ?>
+    <?php if ($links): ?> 
+      <div class="links"> <?php print $links; ?></div>
+    <?php endif; ?>
+
+  </div> <!-- /node-inner -->
+</div> <!-- /node-->
