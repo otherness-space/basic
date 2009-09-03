@@ -9,17 +9,16 @@
     
     <?php print $picture ?>
 	    
-    <?php if ($submitted): ?>
-      <span class="submitted"><?php print $submitted; ?></span>
-    <?php endif; ?>
+    <span class="submitted"><?php print $date . ' - ' . $author; ?></span>
     
     <div class="content">
       <?php 
         hide($content['links']); 
         print render($content);
-        if ($signature) {
-          print $signature;
-        }?>
+        ?>
+      <?php if ($signature): ?>
+        <div class="signature"><?php print $signature ?></div>
+      <?php endif; ?>
     </div>
     
     <?php if (!empty($content['links'])): ?>

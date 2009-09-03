@@ -2,16 +2,14 @@
   "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $language->language ?>" dir="<?php print $language->dir ?>"
   <?php print $rdf_namespaces ?>>
-  
   <head profile="<?php print $grddl_profile ?>">
     <title><?php print $head_title; ?></title>
     <?php print $head; ?>
-    <?php print $styles; ?>
+    <?php print $styles; ?> 
     <!--[if lte IE 6]><style type="text/css" media="all">@import "<?php print $base_path . path_to_theme() ?>/css/ie6.css";</style><![endif]-->
     <!--[if IE 7]><style type="text/css" media="all">@import "<?php print $base_path . path_to_theme() ?>/css/ie7.css";</style><![endif]-->
     <?php print $scripts; ?>
   </head>
-
   <body class="<?php print $classes; ?>"><?php print $page_top; ?>
   
     <div id="skip-nav"><a href="#content">Skip to Content</a></div>  
@@ -22,7 +20,7 @@
   	<div id="header">
   				
   	  	<div id="logo-title">
-  	
+
           <?php if (!empty($logo)): ?>
             <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
               <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>"/>
@@ -64,7 +62,11 @@
   		        	  <div id="content-header">
   			
   		        	    <?php print $breadcrumb; ?>
-  		
+
+                    <?php if ($highlight): ?>
+                      <div id="highlight"><?php print $highlight ?></div>
+                    <?php endif; ?>
+
   		        	    <?php if ($title): ?>
   		        	      <h1 class="title"><?php print $title; ?></h1>
   		        	    <?php endif; ?>
@@ -80,9 +82,7 @@
   		        	  </div> <!-- /#content-header -->
   		        	<?php endif; ?>
   		        	            	
-  		        	<div id="content-area"> <!-- CONTENT AREA -->
-                  <?php print $content ?>
-  		        	</div>
+  		        	<div id="content-area"><?php print $content ?></div>
   		
     	  		  	<?php print $feed_icons; ?>
   	
@@ -92,7 +92,7 @@
             <?php if ($main_menu || $sub_menu): ?>
               <div id="site-menu" class="menu <?php if (!empty($main_menu)) { print "withprimary"; } if (!empty($sub_menu)) { print " withsecondary"; } ?>">
                 <?php if ($main_menu): print $main_menu; endif; ?>
-                <?php if ($sub_menu): print $sub_menu; endif; ?>
+                <?php if ($secondary_menu): print $secondary_menu; endif; ?>
               </div>
             <?php endif; ?>
   

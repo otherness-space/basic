@@ -7,6 +7,7 @@ engine = phptemplate
 
 regions[page_top] = Page top
 regions[header] = Header
+regions[highlight] = Highlight
 regions[help] = Help
 regions[content] = Content
 regions[sidebar_first] = First sidebar
@@ -25,10 +26,6 @@ features[] = main_menu
 features[] = secondary_menu
 
 stylesheets[all][] = css/default.css
-stylesheets[all][] = css/tabs.css
 stylesheets[all][] = css/layout.css
 stylesheets[all][] = css/style.css
 stylesheets[print][] = css/print.css
-
-settings[basic_block_editing]        = 0
-settings[basic_rebuild_registry]     = 0

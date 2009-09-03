@@ -1,179 +1,111 @@
 
 Introduction to Basic
 
-The Basic theme was developed for internal use at Raincity Studios for client projects. The purpose here is to have a very minimal theme that only contains the functions that are used for all websites. This theme is not intended to have subthemes, or to be another version of Zen. Basic is only intended to provide an extremely clean and flexible start for a Drupal themer.
+BASIC was originally developed for internal use to develop themes at Raincity Studios (Vancouver)
+After using the ZEN theme for years, we realised that it was getting too complicated, had too much
+files and overrides, so we decided to develop a strip down version of it and BASIC
+was created.
 
-__________________________________________________________________________________________
+ZEN became a fairly big piece of code and we felt like for each project we didn't need most of
+it. So we took what we use all the time in ZEN, and removed all the things we felt were unnecessary.
 
-Feature List
+The layout was also modified to make it easier to modify. Most of the CSS was brought down to a 
+strict minimum, and the templates were also recoded to make them as clear as possible.
 
-- flexible and simple info file
-
-- Body classes.
-
-   1. front or not-front classes
-   2. logged-in or not-logged-in classes
-   3. node-type-CONTENT_TYPE class: for example, node-type-page, node-type-story and node-type-forum
-   4. two-sidebars, one-sidebar sidebar-left, one-sidebar sidebar-right, or no-sidebars classes
-   5. page-FULL-URL class
-   6. section-FIRST-DIRECTORY class
-   7. section-node-add, section-node-edit, or section-node-delete classes for node add, edit, and delete pages
-
-- Node classes.
-	
-	1. admin
-	2. sticky
-	3. node-unpublished
-	4. ntype-[node type]
-	5. taxonomy
-	
-- Block Classes
-
-	1. block-[block module]
-	2. region-[region]
-	3. odd / even
- 
-- Comment classes
-
-	1. node-author
-	2. zebra
-	3. new
-	4. mine
-
-- Block editing links. Users with permission to edit blocks will see, when hovering over any block, links to edit that block. This is much more intuitive than first going to admin/build/blocks.
-
-- Zen Tabs
-
-- Minimal regions : Header / Footer / content / sidebar left / sidebar right
-
-- Holy Grail layout
-
-- 3/2/1 columns layout
-
-- liquid or fixed layout
-
-- folder architecture : css / images
+BASIC is not intended for beginners, and if you're not sure, try ZEN first, and maybe later
+try basic.
+BASIC is now used for professional projects by multiple drupal agencies around the world.
 
 __________________________________________________________________________________________
 
 Installation
 
 - Download Basic from http://drupal.org/project/basic
-- Unpack the downloaded file and place the Basic folder in your Drupal installation under one of the following locations:
+- Unpack the downloaded file and place the Basic folder in your Drupal installation under 
+  one of the following locations:
 
     * sites/all/themes
     * sites/default/themes
     * sites/example.com/themes 
 
-- Log in as an administrator on your Drupal site and go to Administer > Site building > Themes (admin/build/themes) and make Basic the default theme.
+- Log in as an administrator on your Drupal site and go to 
+  Administer > Site building > Themes (admin/build/themes) and make Basic the default theme.
 
-If you want, you can rename the basic folder to your website name, but in version 5, remeber to also change the function basic_regions at the begining of the template.php file to [name of your theme]_regions. For Drupal 6, remember to edit the info file to change the name of the theme.
+- if you want to change the name of the theme from 'basic' to another name like 'mytheme',
+follow these steps (to do BEFORE enabling the theme) :
 
+	- rename the theme folder to 'mytheme'
+	- rename basic.info to mytheme.info
+	- Edit basic.info and change the name, description, projet (can be deleted)
+	- In basic.info replace [basic_block_editing] and [basic_rebuild_registry]
+	  by [mytheme_block_editing] and [mytheme_rebuild_registry]
+	- In template.php change each iteration of 'basic' to 'mytheme'
+	- In theme-settings.php change each iteration of 'basic' to 'mytheme'
 
 __________________________________________________________________________________________
 
+What are the files for ?
+------------------------
 
-Holy Grail Layout
+- basic.info => provide informations about the theme, like regions, css, settings, js ...
+- block-system-main.tpl.php => template to edit the content
+- block.tpl.php => template to edit the blocks
+- comment.tpl.php => template to edit the comments
+- node.tpl.php => template to edit the nodes (in content)
+- page.tpl.php => template to edit the page
+- template.php => used to modify drupal's default behavior before outputting HTML through 
+  the theme
+- theme-settings => used to create additional settings in the theme settings page
 
-The layout used in Basic, like in Zen, is the Holy Grail method. You can have a detailed information about this method here : http://www.alistapart.com/articles/holygrail
+In /CSS
+-------
 
-The purpose of this method is to have a minimal markup for an ideal display. For accessibility and search engine optimization, the best order to display a page is the following :
+- default.css => define default classes, browser resets and admin styles
+- ie6 => used to debug IE6
+- ie7 => used to debug IE7
+- layout.css => define the layout of the theme
+- print.css => define the way the theme look like when printed
+- style.css => contains some default font styles. that's where you can add custom css
+- tabs.css => styles for the admin tabs (from ZEN)
+
+__________________________________________________________________________________________
+
+Changing the Layout
+
+The layout used in Basic is fairly similar to the Holy Grail method. It has been tested on 
+all major browser including IE (5>8), Opera, Firefox, Safari, Chrome ...
+The purpose of this method is to have a minimal markup for an ideal display. 
+For accessibility and search engine optimization, the best order to display a page is ]
+the following :
 
 	1. header
 	2. content
 	3. sidebars
 	4. footer
 
-This is how the page template is buit in basic, and it works in fluid and fixed layout. 
-
-
-__________________________________________________________________________________________                           
-Introduction to Basic
-
-The Basic theme was developed for internal use at Raincity Studios for client projects. The purpose here is to have a very minimal theme that only contains the functions that are used for all websites. This theme is not intended to have subthemes, or to be another version of Zen. Basic is only intended to provide an extremely clean and flexible start for a Drupal themer.
+This is how the page template is buit in basic, and it works in fluid and fixed layout.
+Refers to the notes in layout.css to see how to modify the layout.
 
 __________________________________________________________________________________________
 
-Feature List (6.x)
+UPDATING BASIC
 
-- flexible and simple info file
+Once you start using basic, you will massively change it until a point where it has nothing
+to do with basic anymore. Unlike ZEN, basic is not intended to be use as a base theme for a 
+sub-theme (even though it is possible to do so). Because of this, it is not necessary to
+update your theme when a new version of BASIC comes out. Always see Basic as a STARTER, and 
+as soon as you start using it, it is not BASIC anymore, but your own theme.
 
-- Body classes.
-
-   1. front or not-front classes
-   2. logged-in or not-logged-in classes
-   3. node-type-CONTENT_TYPE class: for example, node-type-page, node-type-story and node-type-forum
-   4. two-sidebars, one-sidebar sidebar-left, one-sidebar sidebar-right, or no-sidebars classes
-   5. page-FULL-URL class
-   6. section-FIRST-DIRECTORY class
-   7. section-node-add, section-node-edit, or section-node-delete classes for node add, edit, and delete pages
-
-- Node classes.
-	
-	1. admin
-	2. sticky
-	3. node-unpublished
-	4. ntype-[node type]
-	5. taxonomy
-	
-- Block Classes
-
-	1. block-[block module]
-	2. region-[region]
-	3. odd / even
- 
-- Comment classes
-
-	1. node-author
-	2. zebra
-	3. new
-	4. mine
-
-- Block editing links. Users with permission to edit blocks will see, when hovering over any block, links to edit that block. This is much more intuitive than first going to admin/build/blocks.
-
-- Zen Tabs
-
-- Minimal regions : Header / Footer / content / sidebar left / sidebar right
-
-- Holy Grail layout
-
-- 3/2/1 columns layout
-
-- liquid or fixed layout
-
-- folder architecture : css / images
+If you didn't rename your theme, but you don't want to be notified when basic has a new version
+by the update module, simply delete "project = "basic" in basic.info
 
 __________________________________________________________________________________________
 
-Installation
+Thanks for using BASIC, and remember to use the issue queue in drupal.org for any question
+or bug report:
 
-- Download Basic from http://drupal.org/project/basic
-- Unpack the downloaded file and place the Basic folder in your Drupal installation under one of the following locations:
+http://drupal.org/project/issues/basic
 
-    * sites/all/themes
-    * sites/default/themes
-    * sites/example.com/themes 
-
-- Log in as an administrator on your Drupal site and go to Administer > Site building > Themes (admin/build/themes) and make Basic the default theme.
-
-If you want, you can rename the basic folder to your website name, but in version 5, remeber to also change the function basic_regions at the begining of the template.php file to [name of your theme]_regions. For Drupal 6, remember to edit the info file to change the name of the theme.
-
-
-__________________________________________________________________________________________
-
-
-Holy Grail Layout
-
-The layout used in Basic, like in Zen, is the Holy Grail method. You can have a detailed information about this method here : http://www.alistapart.com/articles/holygrail
-
-The purpose of this method is to have a minimal markup for an ideal display. For accessibility and search engine optimization, the best order to display a page is the following :
-
-	1. header
-	2. content
-	3. sidebars
-	4. footer
-
-This is how the page template is buit in basic, and it works in fluid and fixed layout. 
-
-
-__________________________________________________________________________________________
+Current maintainers:
+* Hubert Florin (couzinhub) -http://drupal.org/user/133581
+* Steve Krueger (SteveK) -http://drupal.org/user/111656

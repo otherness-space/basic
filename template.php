@@ -4,13 +4,35 @@
 if (theme_get_setting('clear_registry')) {
   drupal_theme_rebuild();
 }
+// Add Zen Tabs styles
+if (theme_get_setting('zen_tabs')) {
+  drupal_add_css( drupal_get_path('theme', 'basic') .'/css/tabs.css');
+}
 
 function basic_preprocess_page(&$vars, $hook) {
 
   // for easier theming of main and submenus
-  $vars['main_menu'] = isset($vars['main_menu']) ? theme('links', $vars['main_menu'], array(), array('id' => array('primary'),'class' => array('links', 'main-menu'))) : FALSE;
-  $vars['sub_menu'] = isset($vars['secondary_menu']) ? theme('links', $vars['secondary_menu'], array(), array('id' => array('secondary'),'class' => array('links', 'sub-menu'))) : FALSE;
-
+  if (isset($vars['main_menu'])) {
+    $vars['main_menu'] = theme('links', $vars['main_menu'],
+      array(
+        'class' => array('links', 'main-menu'),
+        'id' => array('primary'),
+      )
+    );
+  } else {
+    $vars['primary_nav'] = FALSE;
+  }
+  if (isset($vars['secondary_menu'])) {
+    $vars['secondary_menu'] = theme('links', $vars['secondary_menu'],
+      array(
+        'class' => array('links', 'sub-menu'),
+        'id' => array('secondary'),
+      )
+    );
+  } else {
+    $vars['secondary_menu'] = FALSE;
+  }
+  
   // Adding a class to body in wireframe mode
   if (theme_get_setting('wireframe_mode')) {
     $vars['classes_array'][] = 'wireframe-mode';
@@ -29,11 +51,15 @@ function basic_preprocess_page(&$vars, $hook) {
   }   
 }
 
+function basic_preprocess_node(&$vars) {
+  // Add a striping class.
+  $vars['classes_array'][] = 'node-' . $vars['zebra'];
+}
 
 function basic_preprocess_block(&$vars, $hook) {
     $block = $vars['block'];
 
-    if (theme_get_setting('block_editing') && user_access('administer blocks')) {
+    if (theme_get_setting('block_editing')) {
         // Display 'edit block' for custom blocks.
         if ($block->module == 'block') {
           $edit_links[] = l('<span>' . t('edit block') . '</span>', 'admin/structure/block/configure/' . $block->module . '/' . $block->delta,

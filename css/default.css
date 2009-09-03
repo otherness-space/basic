@@ -106,3 +106,10 @@ div.block:hover div.edit {
   padding: 2px;
   border: 1px solid #ccc;
 }
+.wireframe-mode.with-navigation #content, 
+.wireframe-mode.with-navigation .sidebar  {
+  margin-top:50px;
+}
+.wireframe-mode #site-menu {
+  height:50px;
+}

@@ -13,6 +13,7 @@ function phptemplate_settings($saved_settings) {
   // matches the $defaults in the template.php file.
   
   $defaults = array(
+    'zen_tabs'        => 1,
     'wireframe_mode'  => 0,
     'block_editing'   => 0,
     'clear_registry'  => 0,
@@ -20,6 +21,19 @@ function phptemplate_settings($saved_settings) {
 
   // Merge the saved variables and their default values
   $settings = array_merge($defaults, $saved_settings);
+
+  $form['options_settings'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Visual Options'),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE
+  );
+  $form['options_settings']['zen_tabs'] = array(
+    '#type' => 'checkbox',
+    '#title' =>  t('Use the ZEN tabs'),
+    '#description'   => t('Check this if you wish to replace the default tabs by the ZEN tabs'),
+    '#default_value' => $settings['zen_tabs']
+  );
 
   $form['dev_settings'] = array(
     '#type' => 'fieldset',
@@ -29,7 +43,7 @@ function phptemplate_settings($saved_settings) {
   );
   $form['dev_settings']['wireframe_mode'] = array(
     '#type' => 'checkbox',
-    '#title' =>  t('Display borders around main layout elements'),
+    '#title' =>  t('Wireframe Mode - Display borders around main layout elements'),
     '#description'   => t('<a href="!link">Wireframes</a> are useful when prototyping a website.', array('!link' => 'http://www.boxesandarrows.com/view/html_wireframes_and_prototypes_all_gain_and_no_pain')),
     '#default_value' => $settings['wireframe_mode']
   );

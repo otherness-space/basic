@@ -101,6 +101,14 @@ abbr {
   white-space: nowrap;
 }
 
+/* signature */
+
+.signature {
+  border-top:1px solid #ddd;
+  font-size:0.9em;
+  color:#666;
+}
+
 
 /** Region Colors
 ---------------------------------

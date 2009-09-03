@@ -2,14 +2,16 @@
 ---------------------------------*/
 
 .sidebar, 
-#navigation, 
+#site-menu, 
 #header-region, 
 #search-theme-form,
 #footer,
 .breadcrumb,
 .tabs,
 .feed-icon,
-.links {
+.links,
+form,
+#toolbar {
 	display: none;
 }
 

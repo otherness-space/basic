@@ -7,8 +7,8 @@
 
     <?php print $user_picture; ?>
 		    
-    <?php if ($submitted): ?>
-      <span class="submitted"><?php print $submitted; ?></span>
+    <?php if ($display_submitted): ?>
+      <span class="submitted"><?php print $date . ' - ' . $name; ?></span>
     <?php endif; ?>
 
   	<div class="content">
@@ -27,7 +27,7 @@
     <?php if (!empty($content['links'])): ?>
 	    <div class="links"><?php print render($content['links']); ?></div>
 	  <?php endif; ?>
-    
+        
 	</div> <!-- /node-inner -->
 </div> <!-- /node-->
 
