@@ -13,7 +13,7 @@
 
   <body class="<?php print $body_classes; ?>">
     
-    <div id="skip-nav"><a href="#content">Skip to Content</a></div>  
+    <div id="skip"><a href="#content">Skip to Content</a> <a href="#navigation">Skip to Navigation</a></div>  
     <div id="page">
 
     <!-- ______________________ HEADER _______________________ -->
