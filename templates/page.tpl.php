@@ -12,7 +12,7 @@
   </head>
   <body class="<?php print $classes; ?>"><?php print $page_top; ?>
   
-    <div id="skip-nav"><a href="#content">Skip to Content</a></div>  
+    <div id="skip"><a href="#content">Skip to Content</a> <a href="#navigation">Skip to Navigation</a></div>  
     <div id="page">
   	
   	<!-- ______________________ HEADER _______________________ -->

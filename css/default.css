@@ -23,20 +23,18 @@
 /** "Skip to Main Content" link
 ---------------------------------
 *  This link useful for both visually impaired people and those with mobility impairments
-*  who cannot use a mouse.
+*  who cannot use a mouse. http://www.webaim.org/techniques/css/invisiblecontent/
 */
 
-#skip-nav { display: none; }
-
-#skip-nav a, #skip-nav a:hover, #skip-nav a:visited {
+#skip a, #skip a:hover, #skip a:visited {
   position: absolute;
-  left: 0;
-  top: -500px;
+  left:-10000px;
+  top:auto;
   width: 1px;
   height: 1px;
   overflow: hidden;
 }
-#skip-nav a:active, #skip-nav a:focus {
+#skip a:active, #skip a:focus {
   position: static;
   width: auto;
   height: auto;
