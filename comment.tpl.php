@@ -1,6 +1,3 @@
-<?php
-// $Id$
-?>
 <div class="comment <?php print $comment_classes; ?>">
   <div class="comment-inner">
 			

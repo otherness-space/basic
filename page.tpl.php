@@ -1,6 +1,3 @@
-<?php
-// $Id$
-?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="<?php echo $language ?>" xml:lang="<?php echo $language ?>">
 
@@ -23,7 +20,7 @@
 
 <?php /* different ids allow for separate theming of the home page */ ?>
 <body class="<?php echo $body_classes; ?>">
-  <div id="skip-nav"><a href="#content">Skip to Content</a></div>  
+  <div id="skip"><a href="#content">Skip to Content</a> <a href="#navigation">Skip to Navigation</a></div>  
   
 	<div id="page">
 	
