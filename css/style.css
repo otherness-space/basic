@@ -4,16 +4,15 @@
 
 body {
   margin: 0;
-  font-size: 100%; /* Fixes exaggerated text resizing in IE6 and IE7 */
-}
-
-#page {
-  font-size: 0.8125em; /* 16px x .8125 = 13px */
-  line-height: 1.5em; /* 14px x 1.5 = 21px */
+  /*
+   * Setting up font size, leading and font family
+   * http://www.markboulton.co.uk/journal/comments/five-simple-steps-to-better-typography
+   */
+  font: 12px/1.5em "Helvetica Neue", helvetica, Arial, sans-serif;
 }
 
 body, caption, th, td, input, textarea, select, option, legend, fieldset {
-  font-family:"Helvetica Neue", helvetica, Arial, Helvetica, sans-serif;
+  font-family:"Helvetica Neue", helvetica, Arial, sans-serif;
 }
 
 /* Links */
