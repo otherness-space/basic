@@ -38,8 +38,8 @@ function basic_preprocess_page(&$vars, $hook) {
   if (!empty($vars['primary_links']) or !empty($vars['secondary_links'])) {
     $body_classes[] = 'with-navigation';
   }
-  if (!empty($secondary_links)) {
-    $body_classes[] = 'with-seconday';
+  if (!empty($vars['secondary_links'])) {
+    $body_classes[] = 'with-secondary';
   }
   if (module_exists('taxonomy') && $vars['node']->nid) {
     foreach (taxonomy_node_get_terms($vars['node']) as $term) {
