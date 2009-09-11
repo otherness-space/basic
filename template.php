@@ -41,6 +41,10 @@ function basic_preprocess_page(&$vars, $hook) {
   if (!empty($vars['main_menu']) or !empty($vars['sub_menu'])) {
     $vars['classes_array'][] = 'with-navigation';
   }
+  if (!empty($vars['secondary_menu'])) {
+    $vars['classes_array'][] = 'with-secondary';
+  }
+  
   
   // Add PAGE template suggestions based on content type  
   if (!empty($vars['node']->type)) {
