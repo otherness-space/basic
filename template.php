@@ -86,6 +86,9 @@ function _phptemplate_variables($hook, $vars = array()) {
      if (!empty($vars['primary_links']) or !empty($vars['secondary_links'])) {
        $body_classes[] = 'with-navigation';
      }
+     if (!empty($vars['secondary_links'])) {
+       $body_classes[] = 'with-secondary';
+     }
      if ($vars['sidebar_left'] && $vars['sidebar_right']) {
        $body_classes[] = 'two-sidebars';
      }
