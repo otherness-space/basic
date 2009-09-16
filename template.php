@@ -37,7 +37,6 @@ function basic_preprocess_page(&$vars, $hook) {
   if (theme_get_setting('wireframe_mode')) {
     $vars['classes_array'][] = 'wireframe-mode';
   }
-  
   if (!empty($vars['main_menu']) or !empty($vars['sub_menu'])) {
     $vars['classes_array'][] = 'with-navigation';
   }
@@ -45,14 +44,14 @@ function basic_preprocess_page(&$vars, $hook) {
     $vars['classes_array'][] = 'with-secondary';
   }
   
-  
   // Add PAGE template suggestions based on content type  
   if (!empty($vars['node']->type)) {
       $vars['template_files'][] = "page-type-" . $vars['node']->type;
     }
   if (!empty($vars['node']->nid)) {
     $vars['template_files'][] = "page-node-" . $vars['node']->nid;
-  }   
+  }
+    
 }
 
 function basic_preprocess_node(&$vars) {
