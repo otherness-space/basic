@@ -44,7 +44,7 @@
   			<div id="content">
 					<div id="content-inner" class="inner column center">
             
-	        	<?php if ($breadcrumb || $title|| $messages || $help || $tabs): ?>
+	        	<?php if ($breadcrumb || $title|| $messages || $tabs): ?>
 	        	  <div id="content-header">
 		
 	        	    <?php print $breadcrumb; ?>
