@@ -1,6 +1,6 @@
-/** ABOUT
+/** ABOUT DEFAULT STYLES
 ---------------------------------
-*  default.css is used to establish general rules and User interface Styles
+*  default.css is used to establish general rules, browser reset, or Admin User interface Styles
 
    BROWSER RESET
 ---------------------------------
@@ -13,7 +13,7 @@
 
 .clearleft, .clearl, .cleft { clear: left; }
 .clearright, .clearr, .cright { clear: right; }
-.clearboth, .clearall{ clear: both; }
+.clear, .clearboth, .clearall{ clear: both; }
 
 /* Float classes */
 
@@ -51,7 +51,7 @@ div.view div.views-admin-links {
 div.block {
   position: relative;
 }
-div.block div.edit {
+div.block .edit {
   display: none;
   position: absolute;
   right: 0;
@@ -62,7 +62,7 @@ div.block div.edit {
   font-size: 11px;
   background-color: #fff;
 }
-div.block:hover div.edit {
+div.block:hover .edit {
   display: block;
 }
 
@@ -108,6 +108,6 @@ div.block:hover div.edit {
 .wireframe-mode.with-navigation .sidebar  {
   margin-top:50px;
 }
-.wireframe-mode #site-menu {
+.wireframe-mode #navigation {
   height:50px;
 }

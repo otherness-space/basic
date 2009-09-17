@@ -9,6 +9,5 @@
 		  <?php print $content; ?>
 		</div>
 
-  <?php echo $edit_links; ?>
   </div>
 </div> <!-- /block-inner /block -->

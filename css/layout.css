@@ -1,4 +1,3 @@
-
 /** Layout
 ---------------------------------
 *  The page is loaded by this order:
@@ -62,7 +61,7 @@
 .with-navigation .sidebar {
 	margin-top: 40px;        /* Navigation Height */
 }
-#site-menu {
+#navigation {
   height: 40px;            /* Navigation Height */
 }
 
@@ -83,7 +82,7 @@
 #sidebar-second {
   float: right;
 }
-#site-menu {                        
+#navigation {                        
   float: left;                       
   margin-left: 0;
   margin-right: -100%;

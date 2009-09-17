@@ -29,9 +29,9 @@ a:hover, a:active {
 
 /* Titles  */
 
-h1, h2, h3, h4, h5, h6 {line-height:1.3em;}
+#site-name, h1, h2, h3, h4, h5, h6 {line-height:1.3em;}
 
-h1 {
+#site-name, h1 {
 	font-size: 2.2em;
 	font-weight:normal;
 	padding: 0 0 0.5em;
@@ -116,4 +116,4 @@ abbr {
 #header, #footer { background-color: #efefef; }
 #sidebar-first {	background: #e7edff; }
 #sidebar-second { background: #ffd075; }
-#site-menu { background-color: #feffa5; }
+#navigation { background-color: #feffa5; }

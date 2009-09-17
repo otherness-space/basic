@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * Here we override the default HTML output of drupal.
+ * refer to http://drupal.org/node/550722
+ */
+ 
 // Auto-rebuild the theme registry during theme development.
 if (theme_get_setting('clear_registry')) {
   drupal_theme_rebuild();
@@ -11,7 +16,19 @@ if (theme_get_setting('zen_tabs')) {
 
 function basic_preprocess_page(&$vars, $hook) {
 
-  // for easier theming of main and submenus
+  // Adding a class to #page in wireframe mode
+  if (theme_get_setting('wireframe_mode')) {
+    $vars['classes_array'][] = 'wireframe-mode';
+  }
+  // Adding classes wether #navigation is here or not
+  if (!empty($vars['main_menu']) or !empty($vars['sub_menu'])) {
+    $vars['classes_array'][] = 'with-navigation';
+  }
+  if (!empty($vars['secondary_menu'])) {
+    $vars['classes_array'][] = 'with-subnav';
+  }  
+
+  // changing #navigation markup for easier theming of main and submenus
   if (isset($vars['main_menu'])) {
     $vars['main_menu'] = theme('links', $vars['main_menu'],
       array(
@@ -32,26 +49,7 @@ function basic_preprocess_page(&$vars, $hook) {
   } else {
     $vars['secondary_menu'] = FALSE;
   }
-  
-  // Adding a class to body in wireframe mode
-  if (theme_get_setting('wireframe_mode')) {
-    $vars['classes_array'][] = 'wireframe-mode';
-  }
-  if (!empty($vars['main_menu']) or !empty($vars['sub_menu'])) {
-    $vars['classes_array'][] = 'with-navigation';
-  }
-  if (!empty($vars['secondary_menu'])) {
-    $vars['classes_array'][] = 'with-secondary';
-  }
-  
-  // Add PAGE template suggestions based on content type  
-  if (!empty($vars['node']->type)) {
-      $vars['template_files'][] = "page-type-" . $vars['node']->type;
-    }
-  if (!empty($vars['node']->nid)) {
-    $vars['template_files'][] = "page-node-" . $vars['node']->nid;
-  }
-    
+      
 }
 
 function basic_preprocess_node(&$vars) {
@@ -60,66 +58,37 @@ function basic_preprocess_node(&$vars) {
 }
 
 function basic_preprocess_block(&$vars, $hook) {
-    $block = $vars['block'];
 
-    // Display 'edit block' for custom blocks.
-    if ($block->module == 'block') {
-      $vars['edit_links_array']['block-edit'] = l('<span>' . t('edit block') . '</span>', 'admin/build/block/configure/' . $block->module . '/' . $block->delta,
-        array(
-          'attributes' => array(
-            'title' => t('edit the content of this block'),
-            'class' => 'block-edit',
-          ),
-          'query' => drupal_get_destination(),
-          'html' => TRUE,
-        )
-      );
-    }
-    // Display 'configure' for other blocks.
-    else {
-      $vars['edit_links_array']['block-config'] = l('<span>' . t('configure') . '</span>', 'admin/build/block/configure/' . $block->module . '/' . $block->delta,
-        array(
-          'attributes' => array(
-            'title' => t('configure this block'),
-            'class' => 'block-config',
-          ),
-          'query' => drupal_get_destination(),
-          'html' => TRUE,
-        )
-      );
-    }
+  $vars['classes_array'][] = 'block-' . $vars['zebra'];
 
-    // Display 'edit menu' for Menu blocks.
-    if (($block->module == 'menu' || ($block->module == 'user' && $block->delta == 1)) && user_access('administer menu')) {
-      $menu_name = ($block->module == 'user') ? 'navigation' : $block->delta;
-      $vars['edit_links_array']['block-edit-menu'] = l('<span>' . t('edit menu') . '</span>', 'admin/build/menu-customize/' . $menu_name,
-        array(
-          'attributes' => array(
-            'title' => t('edit the menu that defines this block'),
-            'class' => 'block-edit-menu',
-          ),
-          'query' => drupal_get_destination(),
+  $block = $vars['block'];
+  // Display 'edit block' for custom blocks.
+  if ($block->module != 'system') {
+    $vars['content'] .= l('<span>' . t('edit block') . '</span>', 'admin/structure/block/configure/block/' . $block->delta, 
+    array(
+      'attributes'=>array(
+        'class'=>'edit', 
+        'title'=>'edit '. $block->subject.' block'
+        ), 
+        'query'=>drupal_get_destination(),
+        'html' => TRUE,
+      )
+    );
+  } else {
+    if ($block->delta != 'main') {
+      $vars['content'] .= l('<span>' . t('configure block') . '</span>', 'admin/structure/block/configure/system/' . $block->delta, 
+      array(
+        'attributes'=>array(
+          'class'=>'edit', 
+          'title'=>'edit '. $block->subject.' block'
+          ), 
+          'query'=>drupal_get_destination(),
           'html' => TRUE,
         )
       );
     }
-    // Display 'edit menu' for Menu block blocks.
-    elseif ($block->module == 'menu_block' && user_access('administer menu')) {
-      list($menu_name, ) = split(':', variable_get("menu_block_{$block->delta}_parent", 'navigation:0'));
-      $vars['edit_links_array']['block-edit-menu'] = l('<span>' . t('edit menu') . '</span>', 'admin/build/menu-customize/' . $menu_name,
-        array(
-          'attributes' => array(
-            'title' => t('edit the menu that defines this block'),
-            'class' => 'block-edit-menu',
-          ),
-          'query' => drupal_get_destination(),
-          'html' => TRUE,
-        )
-      );
-    }
-
-    $vars['edit_links'] = '<div class="edit">' . implode(' ', $vars['edit_links_array']) . '</div>';
   }
+}
 
 
 /*   
