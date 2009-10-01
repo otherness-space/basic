@@ -49,7 +49,7 @@ function basic_preprocess_page(&$vars, $hook) {
   } else {
     $vars['secondary_menu'] = FALSE;
   }
-      
+
 }
 
 function basic_preprocess_node(&$vars) {
@@ -57,99 +57,38 @@ function basic_preprocess_node(&$vars) {
   $vars['classes_array'][] = 'node-' . $vars['zebra'];
 }
 
-function basic_preprocess_block(&$vars, $hook) {
 
+function basic_preprocess_block(&$vars, $hook) {
+  // Add a striping class.
   $vars['classes_array'][] = 'block-' . $vars['zebra'];
 
-  $block = $vars['block'];
-  // Display 'edit block' for custom blocks.
-  if ($block->module != 'system') {
-    $vars['content'] .= l('<span>' . t('edit block') . '</span>', 'admin/structure/block/configure/block/' . $block->delta, 
-    array(
-      'attributes'=>array(
-        'class'=>'edit', 
-        'title'=>'edit '. $block->subject.' block'
-        ), 
-        'query'=>drupal_get_destination(),
-        'html' => TRUE,
-      )
-    );
-  } else {
-    if ($block->delta != 'main') {
-      $vars['content'] .= l('<span>' . t('configure block') . '</span>', 'admin/structure/block/configure/system/' . $block->delta, 
+  // Display 'edit block' for all blocks except main content
+  if (theme_get_setting('block_editing') && user_access('administer blocks')) {
+    $block = $vars['block'];
+    if ($block->module != 'system') {
+      $vars['content'] .= l(t('edit block'), 'admin/structure/block/configure/' . $block->module . '/' . $block->delta, 
       array(
         'attributes'=>array(
-          'class'=>'edit', 
+          'class'=>array('edit'), 
           'title'=>'edit '. $block->subject.' block'
           ), 
           'query'=>drupal_get_destination(),
-          'html' => TRUE,
         )
       );
-    }
+    } else {
+      if ($block->delta != 'main') {
+        $vars['content'] .= l(t('configure block'), 'admin/structure/block/configure/system/' . $block->delta, 
+        array(
+          'attributes'=>array(
+            'class'=>array('edit'), 
+            'title'=>'edit '. $block->subject.' block'
+            ),
+            'query'=>drupal_get_destination(),
+          )
+        );
+      }
+    }  
   }
-}
-
-
-/*   
- *   Add custom classes to menu item
- */  
-	
-function basic_menu_item($link, $has_children, $menu = '', $in_active_trail = FALSE, $extra_class = NULL) {
-  $class = ($menu ? 'expanded' : ($has_children ? 'collapsed' : 'leaf'));
-  if (!empty($extra_class)) {
-    $class .= ' '. $extra_class;
-  }
-  if ($in_active_trail) {
-    $class .= ' active-trail';
-  }
-  // New line added to get unique classes for each menu item
-  $css_class = basic_id_safe(str_replace(' ', '_', strip_tags($link)));
-  return '<li class="'. $class . ' ' . $css_class . '">' . $link . $menu ."</li>\n";
-}
-
-/* 	
- * 	Customize the PRIMARY and SECONDARY LINKS, to allow the admin tabs to work on all browsers
- * 	An implementation of theme_menu_item_link()
- * 	
- * 	@param $link
- * 	  array The menu item to render.
- * 	@return
- * 	  string The rendered menu item.
- */ 	
-
-function basic_menu_item_link($link) {
-  if (empty($link['localized_options'])) {
-    $link['localized_options'] = array();
-  }
-
-  // If an item is a LOCAL TASK, render it as a tab
-  if ($link['type'] & MENU_IS_LOCAL_TASK) {
-    $link['title'] = '<span class="tab">' . check_plain($link['title']) . '</span>';
-    $link['localized_options']['html'] = TRUE;
-  }
-
-  return l($link['title'], $link['href'], $link['localized_options']);
-}
-
-/*
- *  Duplicate of theme_menu_local_tasks() but adds clearfix to tabs.
- */
- 
-function basic_menu_local_tasks() {
-  $output = '';
-  if ($primary = menu_primary_local_tasks()) {
-    if(menu_secondary_local_tasks()) {
-      $output .= '<ul class="tabs primary with-secondary clearfix">' . $primary . '</ul>';
-    }
-    else {
-      $output .= '<ul class="tabs primary clearfix">' . $primary . '</ul>';
-    }
-  }
-  if ($secondary = menu_secondary_local_tasks()) {
-    $output .= '<ul class="tabs secondary clearfix">' . $secondary . '</ul>';
-  }
-  return $output;
 }
 
 
@@ -178,6 +117,55 @@ function basic_id_safe($string) {
     $string = 'id'. $string;
   }
   return $string;
+}
+
+/*   
+ *   Add custom and unique classes to menu items for easier theming
+ */  
+	
+function basic_menu_link(array $element) {
+  $sub_menu = '';
+
+  if ($element['#below']) {
+    $sub_menu = drupal_render($element['#below']);
+  }
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  // adding name class to menu items
+  $element['#attributes']['class'][] = basic_id_safe($element['#title']);
+  // adding ID class to menu items
+  $element['#attributes']['class'][] = 'mid-' . $element['#original_link']['mlid'];
+  return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+}
+
+
+/* 	
+ * 	Customize the PRIMARY and SECONDARY LINKS, to allow the admin tabs to work on all browsers
+ */ 	
+
+function basic_menu_local_task($link, $active = FALSE) {
+  $link['localized_options']['html'] = TRUE;
+  return '<li ' . ($active ? 'class="active" ' : '') . '>' . l('<span class="tab">' . $link['title'], $link['href'], $link['localized_options']) . "</li>\n";
+}
+
+
+/*
+ *  Duplicate of theme_menu_local_tasks() but adds clearfix to tabs.
+ */
+ 
+function basic_menu_local_tasks() {
+  $output = '';
+  if ($primary = menu_primary_local_tasks()) {
+    if(menu_secondary_local_tasks()) {
+      $output .= '<ul class="tabs primary with-secondary clearfix">' . $primary . '</ul>';
+    }
+    else {
+      $output .= '<ul class="tabs primary clearfix">' . $primary . '</ul>';
+    }
+  }
+  if ($secondary = menu_secondary_local_tasks()) {
+    $output .= '<ul class="tabs secondary clearfix">' . $secondary . '</ul>';
+  }
+  return $output;
 }
 
 

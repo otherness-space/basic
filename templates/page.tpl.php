@@ -39,8 +39,6 @@
       </div>
     <?php endif; ?>
 
-    <?php print $search_box; ?>
-
   </div> <!-- /header -->
 
   <!-- ______________________ MAIN _______________________ -->
