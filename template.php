@@ -140,7 +140,9 @@ function basic_menu_link(array $variables) {
     $sub_menu = drupal_render($element['#below']);
   }
   $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  // Adding a class depending on the TITLE of the link (not constant)
   $element['#attributes']['class'][] = basic_id_safe($element['#title']);
+  // Adding a class depending on the ID of the link (constant)
   $element['#attributes']['class'][] = 'mid-' . $element['#original_link']['mlid'];
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
@@ -150,28 +152,33 @@ function basic_menu_link(array $variables) {
  * 	Customize the PRIMARY and SECONDARY LINKS, to allow the admin tabs to work on all browsers
  */ 	
 
-function basic_menu_local_task($link, $active = FALSE) {
+function basic_menu_local_task($variables) {
+  $link = $variables['element']['#link'];
   $link['localized_options']['html'] = TRUE;
-  return '<li ' . ($active ? 'class="active" ' : '') . '>' . l('<span class="tab">' . $link['title'], $link['href'], $link['localized_options']) . "</li>\n";
+  return '<li' . (!empty($variables['element']['#active']) ? ' class="active"' : '') . '>' . l('<span class="tab">' . $link['title'] . '</span>', $link['href'], $link['localized_options']) . "</li>\n";
 }
 
 
 /*
  *  Duplicate of theme_menu_local_tasks() but adds clearfix to tabs.
  */
- 
+
 function basic_menu_local_tasks() {
-  $output = '';
+  $output = array();
   if ($primary = menu_primary_local_tasks()) {
     if(menu_secondary_local_tasks()) {
-      $output .= '<ul class="tabs primary with-secondary clearfix">' . $primary . '</ul>';
+      $primary['#prefix'] = '<ul class="tabs primary with-secondary clearfix">';
     }
     else {
-      $output .= '<ul class="tabs primary clearfix">' . $primary . '</ul>';
+      $primary['#prefix'] = '<ul class="tabs primary clearfix">';
     }
+    $primary['#suffix'] = '</ul>';
+    $output[] = $primary;
   }
   if ($secondary = menu_secondary_local_tasks()) {
-    $output .= '<ul class="tabs secondary clearfix">' . $secondary . '</ul>';
+    $secondary['#prefix'] = '<ul class="tabs secondary clearfix">';
+    $secondary['#suffix'] = '</ul>';
+    $output[] = $secondary;
   }
   return $output;
 }
