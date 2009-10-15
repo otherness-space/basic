@@ -9,7 +9,7 @@
     
     <?php print $picture ?>
 	    
-    <span class="submitted"><?php print $date . ' - ' . $author; ?></span>
+    <span class="submitted"><?php print $created; ?> — <?php print $author; ?></span>
     
     <div class="content">
       <?php 

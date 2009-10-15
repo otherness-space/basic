@@ -29,9 +29,3 @@ stylesheets[all][] = css/default.css
 stylesheets[all][] = css/layout.css
 stylesheets[all][] = css/style.css
 stylesheets[print][] = css/print.css
-; Information added by drupal.org packaging script on 2009-09-17
-version = "7.x-1.x-dev"
-core = "7.x"
-project = "basic"
-datestamp = "1253145765"
-

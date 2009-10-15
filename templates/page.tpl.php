@@ -65,9 +65,8 @@
 
             <?php print render($page['help']); ?> 
 
-            <?php if ($tabs): ?>
-              <div class="tabs"><?php print $tabs; ?></div>
-            <?php endif; ?>
+            <?php if ($tabs): ?><?php print render($tabs) ?><?php endif; ?>
+            <?php if ($action_links): ?><ul class="action-links"><?php print render($action_links); ?></ul><?php endif; ?>
 
           </div> <!-- /#content-header -->
         <?php endif; ?>
