@@ -119,20 +119,28 @@ function basic_id_safe($string) {
   return $string;
 }
 
-/*   
- *   Add custom and unique classes to menu items for easier theming
- */  
-	
-function basic_menu_link(array $element) {
+
+/**
+ * Generate the HTML output for a menu link and submenu.
+ *
+ * @param $variables
+ *   An associative array containing:
+ *   - element: Structured array data for a menu link.
+ *
+ * @return
+ *   A themed HTML string.
+ *
+ * @ingroup themeable
+ */
+function basic_menu_link(array $variables) {
+  $element = $variables['element'];
   $sub_menu = '';
 
   if ($element['#below']) {
     $sub_menu = drupal_render($element['#below']);
   }
   $output = l($element['#title'], $element['#href'], $element['#localized_options']);
-  // adding name class to menu items
   $element['#attributes']['class'][] = basic_id_safe($element['#title']);
-  // adding ID class to menu items
   $element['#attributes']['class'][] = 'mid-' . $element['#original_link']['mlid'];
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
@@ -174,8 +182,14 @@ function basic_menu_local_tasks() {
  *	Alow you to customize the breadcrumb markup
  */
 
-function basic_breadcrumb($breadcrumb) {
+function basic_breadcrumb($variables) {
+  $breadcrumb = $variables['breadcrumb'];
+
   if (!empty($breadcrumb)) {
-    return '<div class="breadcrumb">'. implode(' » ', $breadcrumb) .'</div>';
+    // Provide a navigational heading to give context for breadcrumb links to
+    // screen-reader users. Make the heading invisible with .element-invisible.
+    $output = '<strong class="element-invisible">' . t('You are here') . ':</strong>';
+    $output .= '<div class="breadcrumb">' . implode(' » ', $breadcrumb) . '</div>';
+    return $output;
   }
 }
