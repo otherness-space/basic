@@ -46,23 +46,38 @@ div.view div.views-admin-links {
 	width:auto;
 }
 
-/** Rollover edit links for blocks */
+/* Rollover edit links for blocks */
 
 div.block {
+  /* adding this style for consistency between users */
   position: relative;
 }
-div.block .edit {
+div.block .contextual-links {
   display: none;
   position: absolute;
-  right: 0;
-  top: 0;
+  right: -20px;
+  top: -5px;
   z-index: 40;
-  border: 1px solid #eee;
-  padding: 0 2px;
-  font-size: 11px;
+  padding: 3px 5px;
+  font-size: 10px;
   background-color: #fff;
+  border:1px solid #ccc;
+  /*let's get fancy !*/
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-box-shadow: 0 1px 2px #888;
+  -webkit-box-shadow: -1px 1px 2px #666;
 }
-div.block:hover .edit {
+div.block .contextual-links li {
+  display:list-item;
+  border:0;
+  padding:0;
+  margin:0;
+}
+.contextual-links-region-active {
+  outline:0;
+}
+div.block:hover .contextual-links {
   display: block;
 }
 
@@ -70,18 +85,12 @@ div.block:hover .edit {
 ------------------------------------*/
 
 .wireframe-mode #header,
-.wireframe-mode #content-top,
-.wireframe-mode #content-top>*,
 .wireframe-mode #content-header,
-.wireframe-mode #content-header>*,
 .wireframe-mode #content-area,
-.wireframe-mode #content-area>*,
-.wireframe-mode #content-bottom,
-.wireframe-mode #content-bottom>*,
 .wireframe-mode #primary,
 .wireframe-mode #secondary,
-.wireframe-mode #sidebar-left-inner,
-.wireframe-mode #sidebar-right-inner,
+.wireframe-mode #sidebar-first-inner,
+.wireframe-mode #sidebar-second-inner,
 .wireframe-mode .block{
   padding: 2px;
   border: 1px solid #bbb;
@@ -93,10 +102,8 @@ div.block:hover .edit {
 .wireframe-mode .block {
   margin-bottom:3px;
 }
-.wireframe-mode #content-top,
 .wireframe-mode #content-header,
-.wireframe-mode #content-area,
-.wireframe-mode #content-bottom {
+.wireframe-mode #content-area{
   margin:0 3px 3px;
 }
 .wireframe-mode #footer {

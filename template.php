@@ -27,29 +27,6 @@ function basic_preprocess_page(&$vars, $hook) {
   if (!empty($vars['secondary_menu'])) {
     $vars['classes_array'][] = 'with-subnav';
   }  
-
-  // changing #navigation markup for easier theming of main and submenus
-  if (isset($vars['main_menu'])) {
-    $vars['main_menu'] = theme('links', $vars['main_menu'],
-      array(
-        'class' => array('links', 'main-menu'),
-        'id' => array('primary'),
-      )
-    );
-  } else {
-    $vars['primary_nav'] = FALSE;
-  }
-  if (isset($vars['secondary_menu'])) {
-    $vars['secondary_menu'] = theme('links', $vars['secondary_menu'],
-      array(
-        'class' => array('links', 'sub-menu'),
-        'id' => array('secondary'),
-      )
-    );
-  } else {
-    $vars['secondary_menu'] = FALSE;
-  }
-
 }
 
 function basic_preprocess_node(&$vars) {
@@ -57,40 +34,10 @@ function basic_preprocess_node(&$vars) {
   $vars['classes_array'][] = 'node-' . $vars['zebra'];
 }
 
-
 function basic_preprocess_block(&$vars, $hook) {
   // Add a striping class.
   $vars['classes_array'][] = 'block-' . $vars['zebra'];
-
-  // Display 'edit block' for all blocks except main content
-  if (theme_get_setting('block_editing') && user_access('administer blocks')) {
-    $block = $vars['block'];
-    if ($block->module != 'system') {
-      $vars['content'] .= l(t('edit block'), 'admin/structure/block/configure/' . $block->module . '/' . $block->delta, 
-      array(
-        'attributes'=>array(
-          'class'=>array('edit'), 
-          'title'=>'edit '. $block->subject.' block'
-          ), 
-          'query'=>drupal_get_destination(),
-        )
-      );
-    } else {
-      if ($block->delta != 'main') {
-        $vars['content'] .= l(t('configure block'), 'admin/structure/block/configure/system/' . $block->delta, 
-        array(
-          'attributes'=>array(
-            'class'=>array('edit'), 
-            'title'=>'edit '. $block->subject.' block'
-            ),
-            'query'=>drupal_get_destination(),
-          )
-        );
-      }
-    }  
-  }
 }
-
 
 /* 	
  * 	Converts a string to a suitable html ID attribute.
@@ -119,7 +66,6 @@ function basic_id_safe($string) {
   return $string;
 }
 
-
 /**
  * Generate the HTML output for a menu link and submenu.
  *
@@ -132,6 +78,7 @@ function basic_id_safe($string) {
  *
  * @ingroup themeable
  */
+ 
 function basic_menu_link(array $variables) {
   $element = $variables['element'];
   $sub_menu = '';
@@ -147,7 +94,6 @@ function basic_menu_link(array $variables) {
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
 
-
 /* 	
  * 	Customize the PRIMARY and SECONDARY LINKS, to allow the admin tabs to work on all browsers
  */ 	
@@ -157,7 +103,6 @@ function basic_menu_local_task($variables) {
   $link['localized_options']['html'] = TRUE;
   return '<li' . (!empty($variables['element']['#active']) ? ' class="active"' : '') . '>' . l('<span class="tab">' . $link['title'] . '</span>', $link['href'], $link['localized_options']) . "</li>\n";
 }
-
 
 /*
  *  Duplicate of theme_menu_local_tasks() but adds clearfix to tabs.
@@ -182,7 +127,6 @@ function basic_menu_local_tasks() {
   }
   return $output;
 }
-
 
 /*
  *  Return a themed breadcrumb trail.

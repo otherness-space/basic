@@ -29,3 +29,7 @@ stylesheets[all][] = css/default.css
 stylesheets[all][] = css/layout.css
 stylesheets[all][] = css/style.css
 stylesheets[print][] = css/print.css
+
+settings[zen_tabs] = 1
+settings[wireframe_mode] = 0
+settings[clear_registry] = 0

@@ -10,9 +10,10 @@
 *	
 */
 
+/* Delete the following rule to switch to a fluid width */
 #page {
 	width: 960px; /* edit to change the width of the page */
-	margin: 0 auto; /* remove 'auto' and the width to switch to a fluid width */
+	margin: 0 auto;
 }
 
 /** Sidebars width
@@ -43,31 +44,46 @@
 /** Columns inner
 ---------------------------------
 *  You can change the padding inside the columns without changing the
-*  width of them by just usinbg the INNER div of each column
+*  width of them by just using the INNER div of each column
 */
 
 .inner {                             
 	padding: 0px;                     
 }                                   
 
-/** Site Menus styles
+/** Navigation styles
 ---------------------------------
 *  The navigation is loaded after the content, so we need to make space
 *  for it, equal to its height, so if you change the height of the navigation,
 *  remember to adapt the margin top of the content and sidebars.
+*  The navigation is different wether there is subnavigation or not.
 */
 
+#navigation {
+  float: left;
+  margin-left: 0;
+  margin-right: -100%;
+  padding: 0;
+  width: 100%;
+}
+.with-primary {
+  height: 20px;            /* Only Primary height */
+}
+.with-secondary {
+  height: 40px;            /* With Secondary Height */
+}
 .with-navigation #content,
 .with-navigation .sidebar {
-	margin-top: 40px;        /* Navigation Height */
+	margin-top: 20px;        /* Only Primary height */
 }
-#navigation {
-  height: 40px;            /* Navigation Height */
+.with-subnav #content,
+.with-subnav .sidebar {
+	margin-top: 40px;        /* With Secondary Height */
 }
 
 /** LAYOUT RULES
 ---------------------------------
-*  do not change if you're not sure you know what you're doing
+*  do not change if you're not sure you know what you're doing :)
 */
 
 #content {
@@ -82,13 +98,6 @@
 #sidebar-second {
   float: right;
 }
-#navigation {                        
-  float: left;                       
-  margin-left: 0;
-  margin-right: -100%;
-  padding: 0;
-  width: 100%;
-}
 
 /* footer */
 
@@ -100,7 +109,6 @@
 /* Layout Helpers */
 
 #header, #footer,
-#main #content .breadcrumb,
-#main #content .node {
+.breadcrumb, .node {
 	clear: both;
 }
