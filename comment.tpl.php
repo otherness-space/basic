@@ -1,4 +1,4 @@
-<div class="comment <?php print $classes .' '. $zebra; if ($unpublished) { print 'unpublished'; } ?> clear-block">
+<div class="<?php print $classes .' '. $zebra; ?> clearfix">
   <div class="comment-inner">
 
     <?php if ($title): ?>
@@ -18,7 +18,7 @@
     <div class="content">
       <?php print $content ?>
       <?php if ($signature): ?>
-        <div class="user-signature clear-block">
+        <div class="user-signature clearfix">
           <?php print $signature; ?>
         </div>
       <?php endif; ?>

@@ -126,6 +126,10 @@ function basic_preprocess_node(&$vars, $hook) {
   if ($vars['sticky']) {
     $classes[] = 'sticky';
   }
+  // support for Skinr Module
+  if (module_exists('skinr')) {
+    $classes[] = $vars['skinr'];
+  }
   if (!$vars['status']) {
     $classes[] = 'node-unpublished';
     $vars['unpublished'] = TRUE;
@@ -139,6 +143,8 @@ function basic_preprocess_node(&$vars, $hook) {
   if ($vars['teaser']) {
     $classes[] = 'node-teaser'; // Node is displayed as teaser.
   }
+  $classes[] = 'clearfix';
+  
   // Class for node type: "node-type-page", "node-type-story", "node-type-my-custom-type", etc.
   $classes[] = basic_id_safe('node-type-' . $vars['type']);
   $vars['classes'] = implode(' ', $classes); // Concatenate with spaces
@@ -158,6 +164,20 @@ function basic_preprocess_node(&$vars, $hook) {
 
 function basic_preprocess_block(&$vars, $hook) {
     $block = $vars['block'];
+
+    // special block classes
+    $classes = array('block');
+    $classes[] = basic_id_safe('block-' . $vars['block']->module);
+    $classes[] = basic_id_safe('block-' . $vars['block']->region);
+    $classes[] = basic_id_safe('block-id-' . $vars['block']->bid);
+    $classes[] = 'clearfix';
+    
+    // support for Skinr Module
+    if (module_exists('skinr')) {
+      $classes[] = $vars['skinr'];
+    }
+    
+    $vars['block_classes'] = implode(' ', $classes); // Concatenate with spaces
 
     if (theme_get_setting('basic_block_editing') && user_access('administer blocks')) {
         // Display 'edit block' for custom blocks.
