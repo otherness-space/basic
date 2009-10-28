@@ -16,6 +16,34 @@
 	margin: 0 auto; /* remove 'auto' and the width to switch to a fluid width */
 }
 
+/** LAYOUT RULES
+---------------------------------
+*  do not change if you're not sure you know what you're doing
+*/
+
+#content {
+  float: left;
+  width: 100%;
+  margin-right: -100%;
+  padding: 0;
+}
+.sidebar {
+  float: left;
+}
+#sidebar-second {
+  float: right;
+}
+#footer {
+  float: none;
+  clear: both;
+}
+
+/* Layout Helpers */
+
+#header, #footer, .mission, .breadcrumb, .node {
+  clear: both;
+}
+
 /** Sidebars width
 ---------------------------------
 *  Changing the width of the sidebars is dead easy, just change the
@@ -47,9 +75,9 @@
 *  width of them by just usinbg the INNER div of each column
 */
 
-.inner {                             
-	padding: 0px;                     
-}                                   
+.inner {
+	padding: 0px;
+}
 
 /** Navigation styles
 ---------------------------------
@@ -58,58 +86,17 @@
 *  remember to adapt the margin top of the content and sidebars.
 */
 
+#navigation {
+  float: left;
+  margin-left: 0;
+  margin-right: -100%;
+  padding: 0;
+  width: 100%;
+}
 .with-navigation #content,
 .with-navigation .sidebar {
   margin-top: 40px;        /* Navigation Height */
 }
 #navigation {
   height: 40px;            /* Navigation Height */
-}
-
-/** LAYOUT RULES
----------------------------------
-*  do not change if you're not sure you know what you're doing
-*/
-
-#content {
-  float: left;
-  width: 100%;
-  margin-right: -100%;
-  padding: 0;
-}                                   
-.sidebar {                          
-  float: left;                       
-}                                   
-#sidebar-second {
-  float: right;
-}
-#navigation {                        
-  float: left;                       
-  margin-left: 0;
-  margin-right: -100%;
-  padding: 0;
-  width: 100%;
-}
-
-/* header */
-
-#header #header-region {
-  overflow: hidden;
-}
-
-/* footer */
-
-#footer {
-  float: none;
-  clear: both;
-}
-
-/* Layout Helpers */
-
-#header,
-#footer,
-#main #content .mission,
-#main #content .breadcrumb,
-#main #content .node {
-  clear: both;
 }
