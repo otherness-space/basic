@@ -1,35 +1,33 @@
-/** Print styles 
----------------------------------*/
+/* Use this stylesheet for print styles only. */
+* {
+  background-color: transparent; }
 
-*{background:transparent none;}
-body {line-height:1.5;font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;color:#000;background:none;font-size:10pt;}
-a img {border:none;}
-p img.top {margin-top:0;}
-
-.sidebar, 
-#site-menu, 
-#header-region, 
+.sidebar,
+#navigation,
+#header-region,
+#search-theme-form,
 #footer,
 .breadcrumb,
 .tabs,
 .feed-icon,
-.links,
-form,
-#toolbar {
-	display: none;
-}
+.links {
+  display: none; }
+
 #page {
-	width: 100%;
-}
+  width: 100%; }
+
 #content,
 #content #content-inner,
 .content,
 .title {
-	margin:20px 0;
-	width: auto;
-}
+  margin: 20px 0;
+  width: auto; }
+
 a:hover, a:active, a:link, a:visited {
-  text-decoration:none;
-	color: #000;
-}
-a:link:after, a:visited:after {content:" (" attr(href) ")";font-size:90%;}
+  color: black; }
+
+/* CSS2 selector to add visible href after links. */
+#content a:link:after, #content a:visited:after {
+  content: " (" attr(href) ") ";
+  font-size: 0.8em;
+  font-weight: normal; }

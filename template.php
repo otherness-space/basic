@@ -39,6 +39,45 @@ function basic_preprocess_block(&$vars, $hook) {
   $vars['classes_array'][] = 'block-' . $vars['zebra'];
 }
 
+/**
+ * Return a themed breadcrumb trail.
+ *
+ * @param $breadcrumb
+ *   An array containing the breadcrumb links.
+ * @return
+ *   A string containing the breadcrumb output.
+ */
+function basic_breadcrumb($variables) {
+  $breadcrumb = $variables['breadcrumb'];
+  // Determine if we are to display the breadcrumb.
+  $show_breadcrumb = theme_get_setting('basic_breadcrumb');
+  if ($show_breadcrumb == 'yes' || $show_breadcrumb == 'admin' && arg(0) == 'admin') {
+
+    // Optionally get rid of the homepage link.
+    $show_breadcrumb_home = theme_get_setting('basic_breadcrumb_home');
+    if (!$show_breadcrumb_home) {
+      array_shift($breadcrumb);
+    }
+
+    // Return the breadcrumb with separators.
+    if (!empty($breadcrumb)) {
+      $breadcrumb_separator = theme_get_setting('basic_breadcrumb_separator');
+      $trailing_separator = $title = '';
+      if (theme_get_setting('basic_breadcrumb_title')) {
+        if ($title = drupal_get_title()) {
+          $trailing_separator = $breadcrumb_separator;
+        }
+      }
+      elseif (theme_get_setting('basic_breadcrumb_trailing')) {
+        $trailing_separator = $breadcrumb_separator;
+      }
+      return '<div class="breadcrumb">' . implode($breadcrumb_separator, $breadcrumb) . "$trailing_separator$title</div>";
+    }
+  }
+  // Otherwise, return an empty string.
+  return '';
+}
+
 /* 	
  * 	Converts a string to a suitable html ID attribute.
  * 	
@@ -126,21 +165,4 @@ function basic_menu_local_tasks() {
     $output[] = $secondary;
   }
   return $output;
-}
-
-/*
- *  Return a themed breadcrumb trail.
- *	Alow you to customize the breadcrumb markup
- */
-
-function basic_breadcrumb($variables) {
-  $breadcrumb = $variables['breadcrumb'];
-
-  if (!empty($breadcrumb)) {
-    // Provide a navigational heading to give context for breadcrumb links to
-    // screen-reader users. Make the heading invisible with .element-invisible.
-    $output = '<strong class="element-invisible">' . t('You are here') . ':</strong>';
-    $output .= '<div class="breadcrumb">' . implode(' » ', $breadcrumb) . '</div>';
-    return $output;
-  }
 }
