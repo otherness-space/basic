@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php print $language->language ?>" lang="<?php print $language->language ?>" dir="<?php print $language->dir ?>">
-
   <head>
+    
     <title><?php print $head_title; ?></title>
     <?php print $head; ?>
     <?php print $styles; ?>
@@ -12,8 +12,7 @@
   </head>
 
   <body class="<?php print $body_classes; ?>">
-    
-    <div id="skip"><a href="#content">Skip to Content</a> <a href="#navigation">Skip to Navigation</a></div>  
+    <div id="skip"><a href="#content"><?php print t('Skip to Content'); ?></a> <a href="#navigation"><?php print t('Skip to Navigation'); ?></a></div>  
     <div id="page">
 
     <!-- ______________________ HEADER _______________________ -->
@@ -103,7 +102,7 @@
           </div>
         </div> <!-- /content-inner /content -->
 
-        <?php if (!empty($primary_links) or !empty($secondary_links)): ?>
+        <?php if (!empty($primary_links) || !empty($secondary_links)): ?>
           <div id="navigation" class="menu <?php if (!empty($primary_links)) { print "with-main-menu"; } if (!empty($secondary_links)) { print " with-sub-menu"; } ?>">
             <?php if (!empty($primary_links)){ print theme('links', $primary_links, array('id' => 'primary', 'class' => 'links main-menu')); } ?>
             <?php if (!empty($secondary_links)){ print theme('links', $secondary_links, array('id' => 'secondary', 'class' => 'links sub-menu')); } ?>

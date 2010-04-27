@@ -6,7 +6,7 @@
     <?php endif; ?>
 
     <?php if ($new) : ?>
-      <span class="new"><?php print drupal_ucfirst($new) ?></span>
+      <span class="new"><?php print drupal_ucfirst($new); ?></span>
     <?php endif; ?>
 
     <?php print $picture; ?>
