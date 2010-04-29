@@ -1,24 +1,16 @@
-/** IE7 styles 
----------------------------------*/
-
-/** Drupal admin tables **/
-
+/* Yes, we all hate IE7 too. */
+/* Drupal admin tables. */
 #content tr.even th,
 #content tr.even td,
 #content tr.odd th,
 #content tr.odd td {
-  border-bottom: 1px solid #ccc; /* IE doesn't display borders on table rows */
+  border-bottom: 1px solid #cccccc;
 }
 
 /* Minor fix for primary and secondary tabs in IE */
-
-ul.primary li a:hover {
-	cursor:pointer;
-	color:#555;
-	text-decoration:none;
-}
-ul.secondary li a:hover{
-	cursor:pointer;
-	color:#555;
-	text-decoration:none;
+ul .primary li a:hover,
+ul .secondary li a:hover {
+  cursor: pointer;
+  color: #555555;
+  text-decoration: none;
 }
