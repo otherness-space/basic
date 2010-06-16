@@ -150,6 +150,18 @@ function basic_preprocess_node(&$vars, $hook) {
   $vars['classes'] = implode(' ', $classes); // Concatenate with spaces
 }
 
+function basic_preprocess_comment_wrapper(&$vars) {
+  $classes = array();
+  $classes[] = 'comment-wrapper';
+  
+  // Provide skinr support.
+  if (module_exists('skinr')) {
+    $classes[] = $vars['skinr'];
+  }
+  $vars['classes'] = implode(' ', $classes);
+}
+
+
 /*
  *	This function create the EDIT LINKS for blocks and menus blocks.
  *	When overing a block (except in IE6), some links appear to edit
