@@ -15,7 +15,9 @@ if (theme_get_setting('zen_tabs')) {
 }
 
 function basic_preprocess_page(&$vars, $hook) {
-
+  if (isset($vars['node_title'])) {
+    $vars['title'] = $vars['node_title'];
+  }
   // Adding a class to #page in wireframe mode
   if (theme_get_setting('wireframe_mode')) {
     $vars['classes_array'][] = 'wireframe-mode';

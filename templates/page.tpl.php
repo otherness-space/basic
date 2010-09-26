@@ -1,4 +1,3 @@
-<div id="skip"><a href="#content">Skip to Content</a> <a href="#navigation">Skip to Navigation</a></div>  
 <div id="page" class="<?php print $classes; ?>"<?php print $attributes; ?>>
 
   <!-- ______________________ HEADER _______________________ -->
@@ -62,9 +61,14 @@
             <?php endif; ?>
 
             <?php print $messages; ?>
-            <?php print render($page['help']); ?> 
+            <?php print render($page['help']); ?>
+
             <?php print render($tabs); ?>
 
+            <?php if ($action_links): ?>
+              <ul class="action-links"><?php print render($action_links); ?></ul>
+            <?php endif; ?>
+            
           </div> <!-- /#content-header -->
         <?php endif; ?>
 
