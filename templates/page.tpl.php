@@ -46,7 +46,7 @@
         </div>
       <?php endif; ?>
 
-      <?php print $search_box; ?>
+      <?php // Uncomment to add the search box.// print $search_box; ?>
 
     </div> <!-- /header -->
 

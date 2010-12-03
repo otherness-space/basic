@@ -27,6 +27,12 @@ stylesheets[all][] = css/default.css
 stylesheets[all][] = css/layout.css
 stylesheets[all][] = css/style.css
 stylesheets[print][] = css/print.css
+
+; Compass Support
+; http://drupal.org/project/compass
+compass[status] = 1
+compass[sass_dir] = sass
+compass[css_dir] = css
              
 settings[basic_zen_tabs]             = 1
 settings[basic_wireframe]            = 0
