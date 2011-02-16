@@ -30,6 +30,7 @@ stylesheets[all][] = css/layout.css
 stylesheets[all][] = css/style.css
 stylesheets[print][] = css/print.css
 
-settings[zen_tabs] = 1
+settings[basic_tabs] = 1
+settings[basic_breadcrumb_separator] = »
 settings[wireframe_mode] = 0
 settings[clear_registry] = 0

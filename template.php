@@ -7,10 +7,13 @@
  
 // Auto-rebuild the theme registry during theme development.
 if (theme_get_setting('clear_registry')) {
+  // Rebuild .info data.
+  system_rebuild_theme_data();
+  // Rebuild theme registry.
   drupal_theme_rebuild();
 }
 // Add Zen Tabs styles
-if (theme_get_setting('zen_tabs')) {
+if (theme_get_setting('basic_tabs')) {
   drupal_add_css( drupal_get_path('theme', 'basic') .'/css/tabs.css');
 }
 
@@ -66,14 +69,27 @@ function basic_breadcrumb($variables) {
       $breadcrumb_separator = theme_get_setting('basic_breadcrumb_separator');
       $trailing_separator = $title = '';
       if (theme_get_setting('basic_breadcrumb_title')) {
-        if ($title = drupal_get_title()) {
+        $item = menu_get_item();
+        if (!empty($item['tab_parent'])) {
+          // If we are on a non-default tab, use the tab's title.
+          $title = check_plain($item['title']);
+        }
+        else {
+          $title = drupal_get_title();
+        }
+        if ($title) {
           $trailing_separator = $breadcrumb_separator;
         }
       }
       elseif (theme_get_setting('basic_breadcrumb_trailing')) {
         $trailing_separator = $breadcrumb_separator;
       }
-      return '<div class="breadcrumb">' . implode($breadcrumb_separator, $breadcrumb) . "$trailing_separator$title</div>";
+
+      // Provide a navigational heading to give context for breadcrumb links to
+      // screen-reader users. Make the heading invisible with .element-invisible.
+      $heading = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
+
+      return $heading . '<div class="breadcrumb">' . implode($breadcrumb_separator, $breadcrumb) . $trailing_separator . $title . '</div>';
     }
   }
   // Otherwise, return an empty string.
@@ -135,36 +151,41 @@ function basic_menu_link(array $variables) {
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
 
-/* 	
- * 	Customize the PRIMARY and SECONDARY LINKS, to allow the admin tabs to work on all browsers
- */ 	
+/**
+ * Override or insert variables into theme_menu_local_task().
+ */
+function basic_preprocess_menu_local_task(&$variables) {
+  $link =& $variables['element']['#link'];
 
-function basic_menu_local_task($variables) {
-  $link = $variables['element']['#link'];
+  // If the link does not contain HTML already, check_plain() it now.
+  // After we set 'html'=TRUE the link will not be sanitized by l().
+  if (empty($link['localized_options']['html'])) {
+    $link['title'] = check_plain($link['title']);
+  }
   $link['localized_options']['html'] = TRUE;
-  return '<li' . (!empty($variables['element']['#active']) ? ' class="active"' : '') . '>' . l('<span class="tab">' . $link['title'] . '</span>', $link['href'], $link['localized_options']) . "</li>\n";
+  $link['title'] = '<span class="tab">' . $link['title'] . '</span>';
 }
 
 /*
  *  Duplicate of theme_menu_local_tasks() but adds clearfix to tabs.
  */
 
-function basic_menu_local_tasks() {
-  $output = array();
-  if ($primary = menu_primary_local_tasks()) {
-    if(menu_secondary_local_tasks()) {
-      $primary['#prefix'] = '<ul class="tabs primary with-secondary clearfix">';
-    }
-    else {
-      $primary['#prefix'] = '<ul class="tabs primary clearfix">';
-    }
-    $primary['#suffix'] = '</ul>';
-    $output[] = $primary;
+function basic_menu_local_tasks(&$variables) {  
+  $output = '';
+
+  if (!empty($variables['primary'])) {
+    $variables['primary']['#prefix'] = '<h2 class="element-invisible">' . t('Primary tabs') . '</h2>';
+    $variables['primary']['#prefix'] .= '<ul class="tabs primary clearfix">';
+    $variables['primary']['#suffix'] = '</ul>';
+    $output .= drupal_render($variables['primary']);
   }
-  if ($secondary = menu_secondary_local_tasks()) {
-    $secondary['#prefix'] = '<ul class="tabs secondary clearfix">';
-    $secondary['#suffix'] = '</ul>';
-    $output[] = $secondary;
+  if (!empty($variables['secondary'])) {
+    $variables['secondary']['#prefix'] = '<h2 class="element-invisible">' . t('Secondary tabs') . '</h2>';
+    $variables['secondary']['#prefix'] .= '<ul class="tabs secondary clearfix">';
+    $variables['secondary']['#suffix'] = '</ul>';
+    $output .= drupal_render($variables['secondary']);
   }
+
   return $output;
+
 }
