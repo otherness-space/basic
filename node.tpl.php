@@ -1,5 +1,4 @@
 <?php
-// $Id$
 ?>
 <div class="<?php print $node_classes ?>" id="node-<?php print $node->nid; ?>">
 	<div class="node-inner">

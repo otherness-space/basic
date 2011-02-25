@@ -1,5 +1,4 @@
 <?php
-// $Id$
 ?>
 <div class="block <?php echo $block_classes; ?> clearfix" id="block-<?php echo $block->module; ?>-<?php echo $block->delta; ?>">
   <div class="block-inner">
