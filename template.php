@@ -1,5 +1,4 @@
 <?php
-// $Id$
 
 //
 //	from ZEN // Override or insert PHPTemplate variables into the page templates.
