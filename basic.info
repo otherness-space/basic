@@ -30,6 +30,12 @@ stylesheets[all][] = css/layout.css
 stylesheets[all][] = css/style.css
 stylesheets[print][] = css/print.css
 
+; Compass Support
+; http://drupal.org/project/compass
+compass[status] = 1
+compass[sass_dir] = sass
+compass[css_dir] = css
+
 settings[basic_tabs] = 1
 settings[basic_breadcrumb_separator] = »
 settings[wireframe_mode] = 0
