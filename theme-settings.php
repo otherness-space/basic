@@ -1,4 +1,5 @@
 <?php
+
 // Form override fo theme settings
 function basic_form_system_theme_settings_alter(&$form, $form_state) {
 

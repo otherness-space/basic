@@ -1,6 +1,6 @@
 <?php
 
-/*
+/**
  * Here we override the default HTML output of drupal.
  * refer to http://drupal.org/node/550722
  */
@@ -41,7 +41,7 @@ function basic_preprocess_node(&$vars) {
 
 function basic_preprocess_block(&$vars, $hook) {
   // Add a striping class.
-  $vars['classes_array'][] = 'block-' . $vars['zebra'];
+  $vars['classes_array'][] = 'block-' . $vars['block_zebra'];
 }
 
 /**
@@ -96,23 +96,21 @@ function basic_breadcrumb($variables) {
   return '';
 }
 
-/* 	
- * 	Converts a string to a suitable html ID attribute.
- * 	
- * 	 http://www.w3.org/TR/html4/struct/global.html#h-7.5.2 specifies what makes a
- * 	 valid ID attribute in HTML. This function:
- * 	
- * 	- Ensure an ID starts with an alpha character by optionally adding an 'n'.
- * 	- Replaces any character except A-Z, numbers, and underscores with dashes.
- * 	- Converts entire string to lowercase.
- * 	
- * 	@param $string
- * 	  The string
- * 	@return
- * 	  The converted string
+/**
+ * Converts a string to a suitable html ID attribute.
+ *
+ * http://www.w3.org/TR/html4/struct/global.html#h-7.5.2 specifies what makes a
+ * valid ID attribute in HTML. This function:
+ *
+ * - Ensure an ID starts with an alpha character by optionally adding an 'n'.
+ * - Replaces any character except A-Z, numbers, and underscores with dashes.
+ * - Converts entire string to lowercase.
+ *
+ * @param $string
+ * 	The string
+ * @return
+ * 	The converted string
  */	
-
-
 function basic_id_safe($string) {
   // Replace with dashes anything that isn't A-Z, numbers, dashes, or underscores.
   $string = strtolower(preg_replace('/[^a-zA-Z0-9_-]+/', '-', $string));
@@ -127,15 +125,15 @@ function basic_id_safe($string) {
  * Generate the HTML output for a menu link and submenu.
  *
  * @param $variables
- *   An associative array containing:
+ *  An associative array containing:
  *   - element: Structured array data for a menu link.
  *
  * @return
- *   A themed HTML string.
+ *  A themed HTML string.
  *
  * @ingroup themeable
+ * 
  */
- 
 function basic_menu_link(array $variables) {
   $element = $variables['element'];
   $sub_menu = '';
@@ -166,10 +164,9 @@ function basic_preprocess_menu_local_task(&$variables) {
   $link['title'] = '<span class="tab">' . $link['title'] . '</span>';
 }
 
-/*
- *  Duplicate of theme_menu_local_tasks() but adds clearfix to tabs.
+/**
+ * Duplicate of theme_menu_local_tasks() but adds clearfix to tabs.
  */
-
 function basic_menu_local_tasks(&$variables) {  
   $output = '';
 
@@ -187,5 +184,4 @@ function basic_menu_local_tasks(&$variables) {
   }
 
   return $output;
-
 }
