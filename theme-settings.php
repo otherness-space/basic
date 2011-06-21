@@ -92,8 +92,7 @@ function basic_settings($saved_settings, $subtheme_defaults = array()) {
   return $form;
 }
 
-
-function _basic_theme(&$existing, $type, $theme, $path) {
+function basic_theme(&$existing, $type, $theme, $path) {
   // Each theme has two possible preprocess functions that can act on a hook.
   // This function applies to every hook.
   $functions[0] = $theme . '_preprocess';
@@ -125,7 +124,6 @@ function _basic_theme(&$existing, $type, $theme, $path) {
   // Since we modify the $existing cache directly, return nothing.
   return array();
 }
-
 
 function basic_theme_get_default_settings($theme) {
   $themes = list_themes();

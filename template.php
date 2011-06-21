@@ -10,9 +10,9 @@ if (theme_get_setting('basic_zen_tabs')) {
   drupal_add_css( drupal_get_path('theme', 'basic') .'/css/tabs.css', 'theme', 'screen');
 }
 
-/*
- *	 This function creates the body classes that are relative to each page
- *	
+/**
+ *	This function creates the body classes that are relative to each page
+ *
  *	@param $vars
  *	  A sequential array of variables to pass to the theme template.
  *	@param $hook
@@ -68,30 +68,31 @@ function basic_preprocess_page(&$vars, $hook) {
       }
     }
   }
-  /*  // Check what the user's browser is and add it as a body class
-      // DEACTIVATED - Only works if page cache is deactivated
-      $user_agent = $_SERVER['HTTP_USER_AGENT'];
-      if($user_agent) {
-        if (strpos($user_agent, 'MSIE')) {
-          $body_classes[] = 'browser-ie';
-        } else if (strpos($user_agent, 'MSIE 6.0')) {
-          $body_classes[] = 'browser-ie6';
-        } else if (strpos($user_agent, 'MSIE 7.0')) {
-          $body_classes[] = 'browser-ie7';
-        } else if (strpos($user_agent, 'MSIE 8.0')) {
-          $body_classes[] = 'browser-ie8'; 
-        } else if (strpos($user_agent, 'Firefox/2')) {
-          $body_classes[] = 'browser-firefox2';
-        } else if (strpos($user_agent, 'Firefox/3')) {
-          $body_classes[] = 'browser-firefox3';
-        }else if (strpos($user_agent, 'Safari')) {
-          $body_classes[] = 'browser-safari';
-        } else if (strpos($user_agent, 'Opera')) {
-          $body_classes[] = 'browser-opera';
-        }
+  /*// Check what the user's browser is and add it as a body class
+    // DEACTIVATED - Only works if page cache is deactivated
+    $user_agent = $_SERVER['HTTP_USER_AGENT'];
+    if($user_agent) {
+      if (strpos($user_agent, 'MSIE')) {
+        $body_classes[] = 'browser-ie';
+      } else if (strpos($user_agent, 'MSIE 6.0')) {
+        $body_classes[] = 'browser-ie6';
+      } else if (strpos($user_agent, 'MSIE 7.0')) {
+        $body_classes[] = 'browser-ie7';
+      } else if (strpos($user_agent, 'MSIE 8.0')) {
+        $body_classes[] = 'browser-ie8'; 
+      } else if (strpos($user_agent, 'Firefox/2')) {
+        $body_classes[] = 'browser-firefox2';
+      } else if (strpos($user_agent, 'Firefox/3')) {
+        $body_classes[] = 'browser-firefox3';
+      }else if (strpos($user_agent, 'Safari')) {
+        $body_classes[] = 'browser-safari';
+      } else if (strpos($user_agent, 'Opera')) {
+        $body_classes[] = 'browser-opera';
       }
+    }
   
-  /* Add template suggestions based on content type
+  /** 
+   * Add template suggestions based on content type
    * You can use a different page template depending on the
    * content type or the node ID
    * For example, if you wish to have a different page template
@@ -110,14 +111,14 @@ function basic_preprocess_page(&$vars, $hook) {
   $vars['body_classes'] = implode(' ', $body_classes); // Concatenate with spaces
 }
 
-/*
- *	 This function creates the NODES classes, like 'node-unpublished' for nodes
- *	 that are not published, or 'node-mine' for node posted by the connected user...
- *	
- *	@param $vars
- *	  A sequential array of variables to pass to the theme template.
- *	@param $hook
- *	  The name of the theme function being called ("node" in this case.)
+/**
+ * This function creates the NODES classes, like 'node-unpublished' for nodes
+ * that are not published, or 'node-mine' for node posted by the connected user...
+ *
+ * @param $vars
+ *  A sequential array of variables to pass to the theme template.
+ * @param $hook
+ *  The name of the theme function being called ("node" in this case.)
  */
 
 function basic_preprocess_node(&$vars, $hook) {
@@ -162,102 +163,102 @@ function basic_preprocess_comment_wrapper(&$vars) {
 }
 
 
-/*
- *	This function create the EDIT LINKS for blocks and menus blocks.
- *	When overing a block (except in IE6), some links appear to edit
- *	or configure the block. You can then edit the block, and once you are
- *	done, brought back to the first page.
+/**
+ * This function create the EDIT LINKS for blocks and menus blocks.
+ * When overing a block (except in IE6), some links appear to edit
+ * or configure the block. You can then edit the block, and once you are
+ * done, brought back to the first page.
  *
  * @param $vars
- *   A sequential array of variables to pass to the theme template.
+ *  A sequential array of variables to pass to the theme template.
  * @param $hook
- *   The name of the theme function being called ("block" in this case.)
+ *  The name of the theme function being called ("block" in this case.)
  */ 
 
 function basic_preprocess_block(&$vars, $hook) {
-    $block = $vars['block'];
+  $block = $vars['block'];
 
-    // special block classes
-    $classes = array('block');
-    $classes[] = basic_id_safe('block-' . $vars['block']->module);
-    $classes[] = basic_id_safe('block-' . $vars['block']->region);
-    $classes[] = basic_id_safe('block-id-' . $vars['block']->bid);
-    $classes[] = 'clearfix';
-    
-    // support for Skinr Module
-    if (module_exists('skinr')) {
-      $classes[] = $vars['skinr'];
-    }
-    
-    $vars['block_classes'] = implode(' ', $classes); // Concatenate with spaces
-
-    if (theme_get_setting('basic_block_editing') && user_access('administer blocks')) {
-        // Display 'edit block' for custom blocks.
-        if ($block->module == 'block') {
-          $edit_links[] = l('<span>' . t('edit block') . '</span>', 'admin/build/block/configure/' . $block->module . '/' . $block->delta,
-            array(
-              'attributes' => array(
-                'title' => t('edit the content of this block'),
-                'class' => 'block-edit',
-              ),
-              'query' => drupal_get_destination(),
-              'html' => TRUE,
-            )
-          );
-        }
-        // Display 'configure' for other blocks.
-        else {
-          $edit_links[] = l('<span>' . t('configure') . '</span>', 'admin/build/block/configure/' . $block->module . '/' . $block->delta,
-            array(
-              'attributes' => array(
-                'title' => t('configure this block'),
-                'class' => 'block-config',
-              ),
-              'query' => drupal_get_destination(),
-              'html' => TRUE,
-            )
-          );
-        }
-        // Display 'edit menu' for Menu blocks.
-        if (($block->module == 'menu' || ($block->module == 'user' && $block->delta == 1)) && user_access('administer menu')) {
-          $menu_name = ($block->module == 'user') ? 'navigation' : $block->delta;
-          $edit_links[] = l('<span>' . t('edit menu') . '</span>', 'admin/build/menu-customize/' . $menu_name,
-            array(
-              'attributes' => array(
-                'title' => t('edit the menu that defines this block'),
-                'class' => 'block-edit-menu',
-              ),
-              'query' => drupal_get_destination(),
-              'html' => TRUE,
-            )
-          );
-        }
-        // Display 'edit menu' for Menu block blocks.
-        elseif ($block->module == 'menu_block' && user_access('administer menu')) {
-          list($menu_name, ) = split(':', variable_get("menu_block_{$block->delta}_parent", 'navigation:0'));
-          $edit_links[] = l('<span>' . t('edit menu') . '</span>', 'admin/build/menu-customize/' . $menu_name,
-            array(
-              'attributes' => array(
-                'title' => t('edit the menu that defines this block'),
-                'class' => 'block-edit-menu',
-              ),
-              'query' => drupal_get_destination(),
-              'html' => TRUE,
-            )
-          );
-        }
-        $vars['edit_links_array'] = $edit_links;
-        $vars['edit_links'] = '<div class="edit">' . implode(' ', $edit_links) . '</div>';
-      }
+  // special block classes
+  $classes = array('block');
+  $classes[] = basic_id_safe('block-' . $vars['block']->module);
+  $classes[] = basic_id_safe('block-' . $vars['block']->region);
+  $classes[] = basic_id_safe('block-id-' . $vars['block']->bid);
+  $classes[] = 'clearfix';
+  
+  // support for Skinr Module
+  if (module_exists('skinr')) {
+    $classes[] = $vars['skinr'];
   }
+  
+  $vars['block_classes'] = implode(' ', $classes); // Concatenate with spaces
 
-/*
+  if (theme_get_setting('basic_block_editing') && user_access('administer blocks')) {
+    // Display 'edit block' for custom blocks.
+    if ($block->module == 'block') {
+      $edit_links[] = l('<span>' . t('edit block') . '</span>', 'admin/build/block/configure/' . $block->module . '/' . $block->delta,
+        array(
+          'attributes' => array(
+            'title' => t('edit the content of this block'),
+            'class' => 'block-edit',
+          ),
+          'query' => drupal_get_destination(),
+          'html' => TRUE,
+        )
+      );
+    }
+    // Display 'configure' for other blocks.
+    else {
+      $edit_links[] = l('<span>' . t('configure') . '</span>', 'admin/build/block/configure/' . $block->module . '/' . $block->delta,
+        array(
+          'attributes' => array(
+            'title' => t('configure this block'),
+            'class' => 'block-config',
+          ),
+          'query' => drupal_get_destination(),
+          'html' => TRUE,
+        )
+      );
+    }
+    // Display 'edit menu' for Menu blocks.
+    if (($block->module == 'menu' || ($block->module == 'user' && $block->delta == 1)) && user_access('administer menu')) {
+      $menu_name = ($block->module == 'user') ? 'navigation' : $block->delta;
+      $edit_links[] = l('<span>' . t('edit menu') . '</span>', 'admin/build/menu-customize/' . $menu_name,
+        array(
+          'attributes' => array(
+            'title' => t('edit the menu that defines this block'),
+            'class' => 'block-edit-menu',
+          ),
+          'query' => drupal_get_destination(),
+          'html' => TRUE,
+        )
+      );
+    }
+    // Display 'edit menu' for Menu block blocks.
+    elseif ($block->module == 'menu_block' && user_access('administer menu')) {
+      list($menu_name, ) = split(':', variable_get("menu_block_{$block->delta}_parent", 'navigation:0'));
+      $edit_links[] = l('<span>' . t('edit menu') . '</span>', 'admin/build/menu-customize/' . $menu_name,
+        array(
+          'attributes' => array(
+            'title' => t('edit the menu that defines this block'),
+            'class' => 'block-edit-menu',
+          ),
+          'query' => drupal_get_destination(),
+          'html' => TRUE,
+        )
+      );
+    }
+    $vars['edit_links_array'] = $edit_links;
+    $vars['edit_links'] = '<div class="edit">' . implode(' ', $edit_links) . '</div>';
+  }
+}
+
+/**
  * Override or insert PHPTemplate variables into the block templates.
  *
- *  @param $vars
- *    An array of variables to pass to the theme template.
- *  @param $hook
- *    The name of the template being rendered ("comment" in this case.)
+ * @param $vars
+ *  An array of variables to pass to the theme template.
+ * @param $hook
+ *  The name of the template being rendered ("comment" in this case.)
  */
 
 function basic_preprocess_comment(&$vars, $hook) {
@@ -299,14 +300,14 @@ function basic_preprocess_comment(&$vars, $hook) {
   $vars['classes'] = implode(' ', $classes);
 }
 
-/* 	
- * 	Customize the PRIMARY and SECONDARY LINKS, to allow the admin tabs to work on all browsers
- * 	An implementation of theme_menu_item_link()
- * 	
- * 	@param $link
- * 	  array The menu item to render.
- * 	@return
- * 	  string The rendered menu item.
+/**
+ * Customize the PRIMARY and SECONDARY LINKS, to allow the admin tabs to work on all browsers
+ * An implementation of theme_menu_item_link()
+ *
+ * @param $link
+ * 	array The menu item to render.
+ * @return
+ * 	string The rendered menu item.
  */ 	
 
 function basic_menu_item_link($link) {
@@ -324,8 +325,8 @@ function basic_menu_item_link($link) {
 }
 
 
-/*
- *  Duplicate of theme_menu_local_tasks() but adds clear-block to tabs.
+/**
+ * Duplicate of theme_menu_local_tasks() but adds clear-block to tabs.
  */
 
 function basic_menu_local_tasks() {
@@ -344,8 +345,8 @@ function basic_menu_local_tasks() {
   return $output;
 }
 
-/* 	
- * 	Add custom classes to menu item
+/**
+ * Add custom classes to menu item
  */	
 	
 function basic_menu_item($link, $has_children, $menu = '', $in_active_trail = FALSE, $extra_class = NULL) {
@@ -356,12 +357,12 @@ function basic_menu_item($link, $has_children, $menu = '', $in_active_trail = FA
   if ($in_active_trail) {
     $class .= ' active-trail';
   }
-#New line added to get unique classes for each menu item
+  // New line added to get unique classes for each menu item
   $css_class = basic_id_safe(str_replace(' ', '_', strip_tags($link)));
   return '<li class="'. $class . ' ' . $css_class . '">' . $link . $menu ."</li>\n";
 }
 
-/*	
+/**
  *	Converts a string to a suitable html ID attribute.
  *	
  *	 http://www.w3.org/TR/html4/struct/global.html#h-7.5.2 specifies what makes a
@@ -372,9 +373,9 @@ function basic_menu_item($link, $has_children, $menu = '', $in_active_trail = FA
  *	- Converts entire string to lowercase.
  *	
  *	@param $string
- *	  The string
+ *	 The string
  *	@return
- *	  The converted string
+ *	 The converted string
  */	
 
 function basic_id_safe($string) {
@@ -388,13 +389,13 @@ function basic_id_safe($string) {
 }
 
 /**
-* Return a themed breadcrumb trail.
-*
-* @param $breadcrumb
-* An array containing the breadcrumb links.
-* @return
-* A string containing the breadcrumb output.
-*/
+ * Return a themed breadcrumb trail.
+ *
+ * @param $breadcrumb
+ *  An array containing the breadcrumb links.
+ * @return
+ *  A string containing the breadcrumb output.
+ */
 function basic_breadcrumb($breadcrumb) {
   // Determine if we are to display the breadcrumb.
   $show_breadcrumb = theme_get_setting('basic_breadcrumb');
