@@ -250,6 +250,20 @@ function basic_preprocess_block(&$vars, $hook) {
     $vars['edit_links_array'] = $edit_links;
     $vars['edit_links'] = '<div class="edit">' . implode(' ', $edit_links) . '</div>';
   }
+
+  // Add first/last block classes
+  $first_last = "";
+  // If block id (count) is 1, it's first in region.
+  if ($vars['block_id'] == '1') {
+    $first_last = " first";
+    $vars['block_classes'] .= $first_last;
+  }
+  // Count amount of blocks about to be rendered in that region.
+  $block_count = count(block_list($vars['block']->region));
+  if ($vars['block_id'] == $block_count) {
+    $first_last = " last";
+    $vars['block_classes'] .= $first_last;
+  }
 }
 
 /**
