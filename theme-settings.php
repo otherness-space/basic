@@ -92,6 +92,9 @@ function basic_settings($saved_settings, $subtheme_defaults = array()) {
   return $form;
 }
 
+/**
+ * Implementation of hook_theme().
+ */
 function basic_theme(&$existing, $type, $theme, $path) {
   // Each theme has two possible preprocess functions that can act on a hook.
   // This function applies to every hook.
