@@ -31,17 +31,52 @@ function basic_preprocess_page(&$vars, $hook) {
   }
   if (!empty($vars['secondary_menu'])) {
     $vars['classes_array'][] = 'with-subnav';
-  }  
+  }
+
+  // Add first/last classes to node listings about to be rendered.
+  if (isset($vars['page']['content']['system_main']['nodes'])) {
+    // All nids about to be loaded (without the #sorted attribute).
+    $nids = element_children($vars['page']['content']['system_main']['nodes']);
+    // Only add first/last classes if there is more than 1 node being rendered.
+    if (count($nids) > 1) {
+      $first_nid = reset($nids);
+      $last_nid = end($nids);
+      $first_node = $vars['page']['content']['system_main']['nodes'][$first_nid]['#node'];
+      $first_node->classes_array = array('first');
+      $last_node = $vars['page']['content']['system_main']['nodes'][$last_nid]['#node'];
+      $last_node->classes_array = array('last');
+    }
+  }
 }
 
 function basic_preprocess_node(&$vars) {
   // Add a striping class.
   $vars['classes_array'][] = 'node-' . $vars['zebra'];
+
+  // Merge first/last class (from basic_preprocess_page) into classes array of current node object.
+  $node = $vars['node'];
+  if (!empty($node->classes_array)) {
+    $vars['classes_array'] = array_merge($vars['classes_array'], $node->classes_array);
+  }
 }
 
 function basic_preprocess_block(&$vars, $hook) {
   // Add a striping class.
   $vars['classes_array'][] = 'block-' . $vars['block_zebra'];
+
+  // Add first/last block classes
+  $first_last = "";
+  // If block id (count) is 1, it's first in region.
+  if ($vars['block_id'] == '1') {
+    $first_last = "first";
+    $vars['classes_array'][] = $first_last;
+  }
+  // Count amount of blocks about to be rendered in that region.
+  $block_count = count(block_list($vars['elements']['#block']->region));
+  if ($vars['block_id'] == $block_count) {
+    $first_last = "last";
+    $vars['classes_array'][] = $first_last;
+  }
 }
 
 /**
