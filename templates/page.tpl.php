@@ -13,7 +13,13 @@
   </head>
 
   <body class="<?php print $body_classes; ?>">
-    <div id="skip"><a href="#content"><?php print t('Skip to Content'); ?></a> <a href="#navigation"><?php print t('Skip to Navigation'); ?></a></div>  
+    <div id="skip">
+      <a href="#content"><?php print t('Skip to Content'); ?></a>
+      <?php if (!empty($primary_links) || !empty($secondary_links)): ?>
+        <a href="#navigation"><?php print t('Skip to Navigation'); ?></a>
+      <?php endif; ?>
+    </div>
+
     <div id="page">
 
     <!-- ______________________ HEADER _______________________ -->
