@@ -1,48 +1,42 @@
-
-name = basic
-
-description = Raincity Studios basic theme for Drupal 7
-
-screenshot = rcs.png
-
-version = 1.0 dev
-
-core = 7.x
-
+name = Basic
+description = Basic starter theme for Drupal 7
+screenshot = images/screenshot.gif
+core = "7.x"
+project = "basic"
 engine = phptemplate
 
-regions[left] = Left sidebar
-regions[right] = Right sidebar
-regions[content] = Content
+regions[page_top] = Page top
 regions[header] = Header
+regions[highlight] = Highlight
+regions[help] = Help
+regions[content] = Content
+regions[sidebar_first] = First sidebar
+regions[sidebar_second] = Second sidebar
 regions[footer] = Footer
+regions[page_bottom] = Page bottom
 
 features[] = logo
 features[] = name
 features[] = slogan
-features[] = mission
 features[] = node_user_picture
 features[] = comment_user_picture
 features[] = search
 features[] = favicon
-features[] = primary_links
+features[] = main_menu
+features[] = secondary_menu
 
-; disabled features, uncomment to activate
-; features[] = secondary_links
-
-
-stylesheets[all][] = style.css
-stylesheets[all][] = css/tabs.css
-
-; comment this for a liquid layout
-stylesheets[all][] = css/layout-fixed.css
-
-; uncomment this for a liquid layout
-; stylesheets[all][] = css/layout-liquid.css
-
-stylesheets[all][] = css/main.css
+stylesheets[all][] = css/default.css
+stylesheets[all][] = css/layout.css
+stylesheets[all][] = css/style.css
 stylesheets[print][] = css/print.css
 
+; Compass Support
+; http://drupal.org/project/compass
+compass[status] = 1
+compass[sass_dir] = sass
+compass[css_dir] = css
 
-php = 4.3.3
-
+settings[basic_tabs] = 1
+settings[basic_breadcrumb_separator] = »
+settings[wireframe_mode] = 0
+settings[clear_registry] = 0
