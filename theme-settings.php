@@ -58,6 +58,33 @@ function basic_form_system_theme_settings_alter(&$form, $form_state) {
     '#description'   => t('Useful when the breadcrumb is not placed just before the title.'),
     '#suffix'        => '</div>', // #div-basic-breadcrumb
   );
+
+  //IE specific settings.
+  $form['options_settings']['basic_ie'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Internet Explorer Stylesheets'),
+    '#attributes' => array('id' => 'basic-ie'),
+  );
+  $form['options_settings']['basic_ie']['basic_ie_enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enable Internet Explorer stylesheets in theme'),
+    '#default_value' => theme_get_setting('basic_ie_enabled'),
+    '#description' => t('If you check this box you can choose which IE stylesheets in theme get rendered on display.'),
+  );
+  $form['options_settings']['basic_ie']['basic_ie_enabled_css'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Check which IE versions you want to enable additional .css stylesheets for.'),
+    '#states' => array(
+      'visible' => array(
+        ':input[name="basic_ie_enabled"]' => array('checked' => TRUE),
+      ),
+    ),
+  );
+  $form['options_settings']['basic_ie']['basic_ie_enabled_css']['basic_ie_enabled_versions'] = array(
+    '#type' => 'checkboxes',
+    '#options' => array('ie6' => 'Internet Explorer 6', 'ie7' => 'Internet Explorer 7', 'ie8' => 'Internet Explorer 8'),
+    '#default_value' => theme_get_setting('basic_ie_enabled_versions'),
+  );
   
   $form['options_settings']['wireframe_mode'] = array(
     '#type' => 'checkbox',
