@@ -82,14 +82,19 @@ function basic_form_system_theme_settings_alter(&$form, $form_state) {
   );
   $form['options_settings']['basic_ie']['basic_ie_enabled_css']['basic_ie_enabled_versions'] = array(
     '#type' => 'checkboxes',
-    '#options' => array('ie6' => 'Internet Explorer 6', 'ie7' => 'Internet Explorer 7', 'ie8' => 'Internet Explorer 8'),
+    '#options' => array(
+    	'ie6' => t('Internet Explorer 6'), 
+    	'ie7' => t('Internet Explorer 7'),
+    	'ie8' => t('Internet Explorer 8'),
+    ),
     '#default_value' => theme_get_setting('basic_ie_enabled_versions'),
   );
   
   $form['options_settings']['wireframe_mode'] = array(
     '#type' => 'checkbox',
     '#title' =>  t('Wireframe Mode - Display borders around main layout elements'),
-    '#description'   => t('<a href="!link">Wireframes</a> are useful when prototyping a website.', array('!link' => 'http://www.boxesandarrows.com/view/html_wireframes_and_prototypes_all_gain_and_no_pain')),
+    '#description'   => t('<a href="!link">Wireframes</a> are useful when prototyping a website.', 
+    	array('!link' => 'http://www.boxesandarrows.com/view/html_wireframes_and_prototypes_all_gain_and_no_pain')),
     '#default_value' => theme_get_setting('wireframe_mode'),
   );
   $form['options_settings']['clear_registry'] = array(

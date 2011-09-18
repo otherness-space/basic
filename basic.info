@@ -40,3 +40,7 @@ settings[basic_tabs] = 1
 settings[basic_breadcrumb_separator] = »
 settings[wireframe_mode] = 0
 settings[clear_registry] = 0
+settings[basic_ie_enabled] = 0
+settings[basic_ie_enabled_versions][ie6] = 0
+settings[basic_ie_enabled_versions][ie7] = 0
+settings[basic_ie_enabled_versions][ie8] = 0
