@@ -12,6 +12,7 @@ if (theme_get_setting('clear_registry')) {
   // Rebuild theme registry.
   drupal_theme_rebuild();
 }
+
 // Add Zen Tabs styles
 if (theme_get_setting('basic_tabs')) {
   drupal_add_css( drupal_get_path('theme', 'basic') .'/css/tabs.css');
@@ -232,6 +233,5 @@ function basic_menu_local_tasks(&$variables) {
     $variables['secondary']['#suffix'] = '</ul>';
     $output .= drupal_render($variables['secondary']);
   }
-
   return $output;
 }

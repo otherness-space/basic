@@ -2,7 +2,7 @@
 
   <!-- ______________________ HEADER _______________________ -->
 
-  <div id="header">
+  <header id="header">
 
     <?php if ($logo): ?>
       <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
@@ -11,7 +11,7 @@
     <?php endif; ?>
 
     <?php if ($site_name || $site_slogan): ?>
-      <div id="name-and-slogan">
+      <hgroup id="name-and-slogan">
 
         <?php if ($site_name): ?>
           <?php if ($title): ?>
@@ -29,7 +29,7 @@
           <div id="site-slogan"><?php print $site_slogan; ?></div>
         <?php endif; ?>
 
-      </div>
+      </hgroup>
     <?php endif; ?>
 
     <?php if ($page['header']): ?>
@@ -38,7 +38,7 @@
       </div>
     <?php endif; ?>
 
-  </div> <!-- /header -->
+  </header> <!-- /header -->
   
   <?php if ($main_menu || $secondary_menu): ?>
     <nav id="navigation" class="menu <?php if (!empty($main_menu)) {print "with-primary";} 
@@ -107,9 +107,8 @@
 		      </div>
 		    <?php endif; ?> <!-- /sidebar-second -->
 
-      </div> <!-- /content-inner /content -->
-      
-    </div> <!-- /content -->
+      </div>
+    </div> <!-- /content-inner /content -->
 
   </div> <!-- /main -->
 

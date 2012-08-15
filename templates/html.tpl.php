@@ -9,7 +9,7 @@
   <?php print $styles; ?>
   <?php print $scripts; ?>
 </head>
-<body class="<?php print $classes; ?>" <?php print $attributes;?>>
+<body class="<?php print $classes; ?>" <?php print $attributes; ?>>
   <div id="skip">
     <a href="#main-menu"><?php print t('Jump to Navigation'); ?></a>
   </div>

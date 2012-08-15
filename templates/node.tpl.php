@@ -1,26 +1,30 @@
 <article id="node-<?php print $node->nid; ?>" class="<?php print $classes; ?>">
 	<div class="node-inner">
     
-    <?php if (!$page): ?>
-    	<header>
-    		<?php print render($title_prefix); ?>
-		      <h2<?php print $title_attributes; ?>>
-		      	<a href="<?php print $node_url; ?>"><?php print $title; ?></a>
-		      </h2>
-	      <?php print render($title_suffix); ?>
-      </header>
-    <?php endif; ?>
+  <?php if ($title_prefix || $title_suffix || $display_submitted || $unpublished || !$page && $title): ?>
+    <header>
+      <?php print render($title_prefix); ?>
+      <?php if (!$page && $title): ?>
+        <h2<?php print $title_attributes; ?>><a href="<?php print $node_url; ?>"><?php print $title; ?></a></h2>
+      <?php endif; ?>
+      <?php print render($title_suffix); ?>
 
-	  <?php if ($display_submitted || $user_picture): ?>
-	    <footer class="author">
-	      <?php print $user_picture; ?>
-	      <?php print $submitted; ?>
-	    </footer>
-	  <?php endif; ?>
+      <?php if ($display_submitted): ?>
+        <div class="submitted">
+          <?php print $user_picture; ?>
+          <?php print $submitted; ?>
+        </div>
+      <?php endif; ?>
+
+      <?php if ($unpublished): ?>
+        <p class="unpublished"><?php print t('Unpublished'); ?></p>
+      <?php endif; ?>
+    </header>
+  <?php endif; ?>
 
   	<div class="content">
   	  <?php 
-  	    // We hide the comments and links now so that we can render them later.
+  	    // We hide the comments to render below.
         hide($content['comments']);
         hide($content['links']);
         print render($content);
@@ -38,8 +42,8 @@
 	    	<?php print render($content['links']); ?>
 	    </div> <!-- /links -->
 	  <?php endif; ?>
+
+    <?php print render($content['comments']); ?>
         
 	</div> <!-- /node-inner -->
 </article> <!-- /article #node -->
-
-<?php print render($content['comments']); ?>

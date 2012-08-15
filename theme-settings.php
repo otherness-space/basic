@@ -58,6 +58,7 @@ function basic_form_system_theme_settings_alter(&$form, $form_state) {
     '#description'   => t('Useful when the breadcrumb is not placed just before the title.'),
     '#suffix'        => '</div>', // #div-basic-breadcrumb
   );
+<<<<<<< HEAD
 
   //IE specific settings.
   $form['options_settings']['basic_ie'] = array(
@@ -89,12 +90,18 @@ function basic_form_system_theme_settings_alter(&$form, $form_state) {
     ),
     '#default_value' => theme_get_setting('basic_ie_enabled_versions'),
   );
+=======
+>>>>>>> 7.x-2.x
   
   $form['options_settings']['wireframe_mode'] = array(
     '#type' => 'checkbox',
     '#title' =>  t('Wireframe Mode - Display borders around main layout elements'),
+<<<<<<< HEAD
     '#description'   => t('<a href="!link">Wireframes</a> are useful when prototyping a website.', 
     	array('!link' => 'http://www.boxesandarrows.com/view/html_wireframes_and_prototypes_all_gain_and_no_pain')),
+=======
+    '#description'   => t('<a href="!link">Wireframes</a> are useful when prototyping a website.', array('!link' => 'http://www.boxesandarrows.com/view/html_wireframes_and_prototypes_all_gain_and_no_pain')),
+>>>>>>> 7.x-2.x
     '#default_value' => theme_get_setting('wireframe_mode'),
   );
   $form['options_settings']['clear_registry'] = array(
