@@ -84,30 +84,30 @@
             
           </div> <!-- /#content-header -->
         <?php endif; ?>
-        
-		    <?php if ($page['sidebar_first']): ?>
-		      <div id="sidebar-first" class="column sidebar first">
-		        <div id="sidebar-first-inner" class="inner">
-		          <?php print render($page['sidebar_first']); ?>
-		        </div>
-		      </div>
-		    <?php endif; ?> <!-- /sidebar-first -->
 
         <div id="content-area">
           <?php print render($page['content']) ?>
         </div>
 
         <?php print $feed_icons; ?>
-        
-		    <?php if ($page['sidebar_second']): ?>
-		      <div id="sidebar-second" class="column sidebar second">
-		        <div id="sidebar-second-inner" class="inner">
-		          <?php print render($page['sidebar_second']); ?>
-		        </div>
-		      </div>
-		    <?php endif; ?> <!-- /sidebar-second -->
 
       </div>
+
+    <?php if ($page['sidebar_first']): ?>
+      <div id="sidebar-first" class="column sidebar first">
+        <div id="sidebar-first-inner" class="inner">
+          <?php print render($page['sidebar_first']); ?>
+        </div>
+      </div>
+    <?php endif; ?> <!-- /sidebar-first -->
+    
+    <?php if ($page['sidebar_second']): ?>
+      <div id="sidebar-second" class="column sidebar second">
+        <div id="sidebar-second-inner" class="inner">
+          <?php print render($page['sidebar_second']); ?>
+        </div>
+      </div>
+    <?php endif; ?> <!-- /sidebar-second -->
     </div> <!-- /content-inner /content -->
 
   </div> <!-- /main -->

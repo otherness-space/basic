@@ -1,16 +1,8 @@
 /* Use this stylesheet for print styles only. */
-<<<<<<< HEAD
-/* line 2, ../sass/print.sass */
-=======
->>>>>>> 7.x-2.x
 * {
   background-color: transparent;
 }
 
-<<<<<<< HEAD
-/* line 5, ../sass/print.sass */
-=======
->>>>>>> 7.x-2.x
 .sidebar,
 #navigation,
 #header-region,
@@ -23,18 +15,10 @@
   display: none;
 }
 
-<<<<<<< HEAD
-/* line 16, ../sass/print.sass */
-=======
->>>>>>> 7.x-2.x
 #page {
   width: 100%;
 }
 
-<<<<<<< HEAD
-/* line 19, ../sass/print.sass */
-=======
->>>>>>> 7.x-2.x
 #content,
 #content #content-inner,
 .content,
@@ -43,19 +27,11 @@
   width: auto;
 }
 
-<<<<<<< HEAD
-/* line 27, ../sass/print.sass */
-=======
->>>>>>> 7.x-2.x
 a:hover, a:active, a:link, a:visited {
   color: black;
 }
 
 /* CSS2 selector to add visible href after links. */
-<<<<<<< HEAD
-/* line 35, ../sass/print.sass */
-=======
->>>>>>> 7.x-2.x
 #content a:link:after, #content a:visited:after {
   content: " (" attr(href) ") ";
   font-size: 0.8em;

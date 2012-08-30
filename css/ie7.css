@@ -1,9 +1,5 @@
 /* Yes, we all hate IE7 too. */
 /* Drupal admin tables. */
-<<<<<<< HEAD
-/* line 6, ../sass/ie7.sass */
-=======
->>>>>>> 7.x-2.x
 #content tr.even th,
 #content tr.even td,
 #content tr.odd th,
@@ -12,10 +8,6 @@
 }
 
 /* Minor fix for primary and secondary tabs in IE */
-<<<<<<< HEAD
-/* line 14, ../sass/ie7.sass */
-=======
->>>>>>> 7.x-2.x
 ul .primary li a:hover,
 ul .secondary li a:hover {
   cursor: pointer;
