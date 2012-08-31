@@ -1,4 +1,5 @@
 /* Font styles. */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\000032}}
 body {
   margin: 0;
   /* Setting up font size, leading and font family
@@ -8,17 +9,20 @@ body {
 }
 
 /* Links */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\0000311}}
 a:link, a:visited {
   color: blue;
   text-decoration: none;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\0000316}}
 a:hover, a:active {
   color: red;
   text-decoration: underline;
 }
 
 /* Titles. */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\0000321}}
 #site-name {
   font-size: 2.2em;
   line-height: 1.3em;
@@ -27,10 +31,12 @@ a:hover, a:active {
   margin: 0;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\0000328}}
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.3em;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\0000331}}
 h1 {
   font-size: 2.2em;
   font-weight: 300;
@@ -38,64 +44,76 @@ h1 {
   margin: 0;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\0000337}}
 h2 {
   font-size: 1.8em;
   font-weight: 300;
   margin-bottom: 0.75em;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\0000342}}
 h3 {
   font-size: 1.4em;
   margin-bottom: 1em;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\0000346}}
 h4 {
   font-size: 1.2em;
   margin-bottom: 0.8em;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\0000350}}
 h5 {
   font-size: 1.1em;
   font-weight: 600;
   margin-bottom: 0;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\0000355}}
 h6 {
   font-size: 1em;
   font-weight: bold;
 }
 
 /* Paragraph styles. */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\0000360}}
 p {
   margin: 0 0 1em 0;
 }
 
 /* List styles. */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\0000364}}
 ul, ol {
   margin-left: 0;
   padding-left: 2em;
 }
 
 /* Table styles. */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\0000369}}
 table {
   width: 99%;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\0000374}}
 tr.even td,
 tr.odd td {
   padding: 10px 5px;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\0000377}}
 tr.odd {
   background-color: white;
 }
 
 /* Code. */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\0000381}}
 pre, code, tt {
   font: 1em "andale mono", "lucida console", monospace;
   line-height: 1.5;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\0000385}}
 pre {
   background-color: #efefef;
   display: block;
@@ -105,30 +123,38 @@ pre {
 }
 
 /* List styles. */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\0000393}}
 ul {
   list-style-type: disc;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\0000395}}
 ul ul {
   list-style-type: circle;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\0000397}}
 ul ul ul {
   list-style-type: square;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\0000399}}
 ul ul ul ul {
   list-style-type: circle;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\00003102}}
 ol {
   list-style-type: decimal;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\00003104}}
 ol ol {
   list-style-type: lower-alpha;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\00003106}}
 ol ol ol {
   list-style-type: decimal;
 }
 
 /* Abbreviation. */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\00003110}}
 abbr {
   border-bottom: 1px dotted #666666;
   cursor: help;
@@ -136,15 +162,18 @@ abbr {
 }
 
 /* UI improvments. */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\00003116}}
 #edit-title {
   font-size: 24px;
   width: 99%;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\00003120}}
 #system-themes-form img {
   width: 100px;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\00003123}}
 .form-item .description {
   font-style: italic;
   line-height: 1.2em;
@@ -153,11 +182,13 @@ abbr {
   color: #777777;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\00003130}}
 #edit-delete {
   color: #cc0000;
 }
 
 /* Console, style from slate theme. */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\00003134}}
 div.messages {
   padding: 9px;
   margin: 1em 0;
@@ -166,18 +197,21 @@ div.messages {
   border: 1px solid #aaccee;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\00003141}}
 div.warning {
   color: #884400;
   background: #ffee66;
   border-color: #eedd55;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\00003146}}
 div.error {
   color: white;
   background: #ee6633;
   border-color: #dd5522;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\00003151}}
 div.status {
   color: #336600;
   background: #ccff88;
@@ -185,18 +219,22 @@ div.status {
 }
 
 /* Region Colors. delete when starting a new theme. */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\00003157}}
 #header, #footer {
   background: #efefef;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\00003160}}
 #sidebar-first {
   background: #e7edff;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\00003163}}
 #sidebar-second {
   background: #ffd075;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/style\.sass}line{font-family:\00003166}}
 #navigation {
   background: #feffa5;
 }

@@ -11,6 +11,34 @@
 // Available functions:
 // http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html
 
+// Import variables and mixins to be used.
+// @import "susy"
+
+// Add Compass' IE and vendor prefix support variables.
+@import "compass/support"  
+
+// Better than Drupal's clearfix.
+@import "compass/utilities/general/clearfix" 
+
+// See http://compass-style.org/help/tutorials/spriting/
+@import "compass/utilities/sprites" 
+
+// Use one CSS3 mixin instead of multiple vendor prefixes.
+@import "compass/css3"     
+
+// Helps set up a vertical rhythm.
+@import "compass/typography/vertical_rhythm" 
+
+// Grids
+
+$total-columns          : 12
+$column-width           : 2.8688525 //  35 / 1220
+$gutter-width           : 1.3114754 //  16 / 1220
+$grid-padding			: 0
+$show-grid-backgrounds  : true
+// -- TODO: this is not offical
+$gutter: 2.1978022%
+
 // Sidebar widths.
 $first_sidebar_width: 190px
 $second_sidebar_width: 200px
