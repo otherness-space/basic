@@ -92,32 +92,33 @@
         <?php print $feed_icons; ?>
 
       </div>
+    </div> <!-- /content-inner /content -->
+
 
     <?php if ($page['sidebar_first']): ?>
-      <div id="sidebar-first" class="column sidebar first">
+      <aside id="sidebar-first" class="column sidebar first">
         <div id="sidebar-first-inner" class="inner">
           <?php print render($page['sidebar_first']); ?>
         </div>
-      </div>
+      </aside>
     <?php endif; ?> <!-- /sidebar-first -->
     
     <?php if ($page['sidebar_second']): ?>
-      <div id="sidebar-second" class="column sidebar second">
+      <aside id="sidebar-second" class="column sidebar second">
         <div id="sidebar-second-inner" class="inner">
           <?php print render($page['sidebar_second']); ?>
         </div>
-      </div>
+      </aside>
     <?php endif; ?> <!-- /sidebar-second -->
-    </div> <!-- /content-inner /content -->
 
   </div> <!-- /main -->
 
   <!-- ______________________ FOOTER _______________________ -->
 
   <?php if ($page['footer']): ?>
-    <div id="footer">
+    <footer id="footer">
       <?php print render($page['footer']); ?>
-    </div> <!-- /footer -->
+    </footer> <!-- /footer -->
   <?php endif; ?>
 
 </div> <!-- /page -->

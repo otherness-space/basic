@@ -13,20 +13,21 @@
 
 /* remove 'auto' and the width to switch to a fluid width
 #page
-  width: 960px
+  width: $page_width
   margin: 0 auto
 
 /* Layout rules. (Disclaimer: do not change if you're not sure you know what you're doing.)
+#page
+  @include zen-grid-container
+
 #content
-  float: left
-  width: 100%
-  padding: 0
+  @include zen-grid-item(10, 4)
 
 #sidebar-first
-  float: left
+  @include zen-grid-item(3, 1)
 
 #sidebar-second
-  float: left
+  @include zen-grid-item(3, 14)
 
 #footer
   float: none
@@ -39,34 +40,6 @@
 .breadcrumb,
 .node
   clear: both
-
-/* Sidebars width
-  --------------
-  Changing the width of the sidebars is dead easy, just change the
-  values below corresponding to the sidebar you want to modify.
-  Make sure you keep negative values as negative values.
-  For example, if I want to increase the width of the left sidebar
-  to 300px, I would have to change each '190' to '300'.
-
-// Left value.
-.two-sidebars,
-.sidebar-first
-  .center
-    margin-left: $first_sidebar_width
-    //@include span_columns(5)
-
-// Left value & negative left value.
-#sidebar-first
-  width: $first_sidebar_width
-
-.two-sidebars,
-.sidebar-second
-  .center
-    margin-right: $second_sidebar_width
-
-// Right value.
-#sidebar-second
-  width: $second_sidebar_width
 
 /* Columns Inner
   -------------

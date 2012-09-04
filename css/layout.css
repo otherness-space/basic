@@ -8,38 +8,68 @@
  * 4. Sidebar Left
  * 5. Sideabr Right */
 /* remove 'auto' and the width to switch to a fluid width */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/layout\.sass}line{font-family:\0000315}}
 #page {
   width: 960px;
   margin: 0 auto;
 }
 
 /* Layout rules. (Disclaimer: do not change if you're not sure you know what you're doing.) */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/layout\.sass}line{font-family:\0000320}}
+#page:before, #page:after {
+  content: "";
+  display: table;
+}
+#page:after {
+  clear: both;
+}
+
 #content {
   float: left;
-  width: 100%;
-  padding: 0;
+  width: 62.5%;
+  margin-left: 18.75%;
+  margin-right: -81.25%;
+  padding-left: 10px;
+  padding-right: 10px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  word-wrap: break-word;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/layout\.sass}line{font-family:\0000325}}
 #sidebar-first {
   float: left;
+  width: 18.75%;
+  margin-left: 0%;
+  margin-right: -18.75%;
+  padding-left: 10px;
+  padding-right: 10px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  word-wrap: break-word;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/layout\.sass}line{font-family:\0000328}}
 #sidebar-second {
   float: left;
+  width: 18.75%;
+  margin-left: 81.25%;
+  margin-right: -100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  word-wrap: break-word;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/layout\.sass}line{font-family:\0000331}}
 #footer {
   float: none;
   clear: both;
 }
 
 /* Layout Helpers */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/layout\.sass}line{font-family:\0000336}}
 #header,
 #footer,
 .mission,
@@ -48,46 +78,15 @@
   clear: both;
 }
 
-/* Sidebars width
- * --------------
- * Changing the width of the sidebars is dead easy, just change the
- * values below corresponding to the sidebar you want to modify.
- * Make sure you keep negative values as negative values.
- * For example, if I want to increase the width of the left sidebar
- * to 300px, I would have to change each '190' to '300'. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/layout\.sass}line{font-family:\0000354}}
-.two-sidebars .center,
-.sidebar-first .center {
-  margin-left: 190px;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/layout\.sass}line{font-family:\0000359}}
-#sidebar-first {
-  width: 190px;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/layout\.sass}line{font-family:\0000364}}
-.two-sidebars .center,
-.sidebar-second .center {
-  margin-right: 200px;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/layout\.sass}line{font-family:\0000368}}
-#sidebar-second {
-  width: 200px;
-}
-
 /* Columns Inner
  * -------------
  * You can change the padding inside the columns without changing the
  * width of them by just usinbg the INNER div of each column */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/layout\.sass}line{font-family:\0000375}}
 .inner {
   padding: 0;
 }
 
 /* Navigation styles */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Applications\/MAMP\/htdocs\/drupalorg\/basic\/sass\/layout\.sass}line{font-family:\0000380}}
 #navigation li {
   list-style-type: none;
   display: inline-block;

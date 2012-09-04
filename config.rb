@@ -6,7 +6,7 @@ images_dir      = "images"
 javascripts_dir = "js"
 
 # Require any additional compass plugins here.
-require 'susy'
+require "susy"
 
 # Firesass for DOM inspector
 sass_options = {:debug_info => false} 
