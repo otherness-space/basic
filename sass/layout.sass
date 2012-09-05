@@ -13,21 +13,26 @@
 
 /* remove 'auto' and the width to switch to a fluid width
 #page
-  width: $page_width
+  // width: $page_width
   margin: 0 auto
 
 /* Layout rules. (Disclaimer: do not change if you're not sure you know what you're doing.)
 #page
-  @include zen-grid-container
+  //@include zen-grid-container
+  @include container($total-columns, $break)
+  @include susy-grid-background
 
 #content
-  @include zen-grid-item(10, 4)
+  //@include zen-grid-item(10, 4)
+  @include span-columns(6)
 
 #sidebar-first
-  @include zen-grid-item(3, 1)
+  //@include zen-grid-item(3, 1)
+  @include span-columns(3)
 
 #sidebar-second
-  @include zen-grid-item(3, 14)
+  //@include zen-grid-item(3, 14)
+  @include span-columns(3 omega)
 
 #footer
   float: none
