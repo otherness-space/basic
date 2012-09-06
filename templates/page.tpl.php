@@ -52,14 +52,6 @@
 
   <div id="main" class="clearfix">
 
-    <?php if ($page['sidebar_first']): ?>
-      <aside id="sidebar-first" class="column sidebar first">
-        <div id="sidebar-first-inner" class="inner">
-          <?php print render($page['sidebar_first']); ?>
-        </div>
-      </aside>
-    <?php endif; ?> <!-- /sidebar-first -->
-
     <div id="content">
       <div id="content-inner" class="inner column center">
 
@@ -101,6 +93,15 @@
 
       </div>
     </div> <!-- /content-inner /content -->
+
+
+    <?php if ($page['sidebar_first']): ?>
+      <aside id="sidebar-first" class="column sidebar first">
+        <div id="sidebar-first-inner" class="inner">
+          <?php print render($page['sidebar_first']); ?>
+        </div>
+      </aside>
+    <?php endif; ?> <!-- /sidebar-first -->
     
     <?php if ($page['sidebar_second']): ?>
       <aside id="sidebar-second" class="column sidebar second">

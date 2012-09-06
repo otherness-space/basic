@@ -20,19 +20,19 @@
 #page
   //@include zen-grid-container
   @include container($total-columns, $break)
-  @include susy-grid-background
+  //@include susy-grid-background
 
 #content
   //@include zen-grid-item(10, 4)
-  @include span-columns(6)
+  @include span-columns(6, $break)
 
 #sidebar-first
   //@include zen-grid-item(3, 1)
-  @include span-columns(3)
+  @include span-columns(3, $break)
 
 #sidebar-second
   //@include zen-grid-item(3, 14)
-  @include span-columns(3 omega)
+  @include span-columns(3 omega, $break)
 
 #footer
   float: none
@@ -60,6 +60,6 @@
     display: inline-block
 	
 // Navigation height.
-.with-navigation
-  #content,
-  .sidebar
+//.with-navigation
+//  #content,
+//  .sidebar
