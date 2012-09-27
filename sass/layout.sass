@@ -11,28 +11,21 @@
   4. Sidebar Left
   5. Sideabr Right
 
-/* remove 'auto' and the width to switch to a fluid width
-#page
-  // width: $page_width
-  margin: 0 auto
-
 /* Layout rules. (Disclaimer: do not change if you're not sure you know what you're doing.)
 #page
-  //@include zen-grid-container
-  @include container($total-columns, $break)
-  //@include susy-grid-background
+  @include zen-grid-container
+  margin-left: auto
+  margin-right: auto
+  width: $zen-grid-width
 
 #content
-  //@include zen-grid-item(10, 4)
-  @include span-columns(6, $break)
+  @include zen-grid-item(10, 4)
 
 #sidebar-first
-  //@include zen-grid-item(3, 1)
-  @include span-columns(3, $break)
+  @include zen-grid-item(3, 1)
 
 #sidebar-second
-  //@include zen-grid-item(3, 14)
-  @include span-columns(3 omega, $break)
+  @include zen-grid-item(3, 14)
 
 #footer
   float: none

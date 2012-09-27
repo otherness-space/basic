@@ -7,46 +7,60 @@
  * 3. Navigation menus
  * 4. Sidebar Left
  * 5. Sideabr Right */
-/* remove 'auto' and the width to switch to a fluid width */
-#page {
-  margin: 0 auto;
-}
-
 /* Layout rules. (Disclaimer: do not change if you're not sure you know what you're doing.) */
 #page {
-  max-width: 460px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 10px;
-  padding-right: 10px;
+  width: 960px;
 }
-#page:after {
+#page:before, #page:after {
   content: "";
   display: table;
-  clear: both;
 }
-@media (min-width: 960px) {
-  #page {
-    max-width: 940px;
-  }
+#page:after {
+  clear: both;
 }
 
 #content {
-  width: 48.93617%;
   float: left;
-  margin-right: 2.12766%;
+  width: 600px;
+  margin-left: 180px;
+  margin-right: -780px;
+  padding-left: 10px;
+  padding-right: 10px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  word-wrap: break-word;
 }
 
 #sidebar-first {
-  width: 23.40426%;
   float: left;
-  margin-right: 2.12766%;
+  width: 180px;
+  margin-left: 0px;
+  margin-right: -180px;
+  padding-left: 10px;
+  padding-right: 10px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  word-wrap: break-word;
 }
 
 #sidebar-second {
-  width: 23.40426%;
-  float: right;
-  margin-right: 0;
+  float: left;
+  width: 180px;
+  margin-left: 780px;
+  margin-right: -960px;
+  padding-left: 10px;
+  padding-right: 10px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  word-wrap: break-word;
 }
 
 #footer {
