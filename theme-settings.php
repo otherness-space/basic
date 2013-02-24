@@ -15,7 +15,6 @@ function basic_form_system_theme_settings_alter(&$form, $form_state) {
     '#description'   => t('Check this if you wish to replace the default tabs by the ZEN tabs'),
     '#default_value' => theme_get_setting('basic_tabs'),
   );
-  
   $form['options_settings']['basic_breadcrumb'] = array(
     '#type'          => 'fieldset',
     '#title'         => t('Breadcrumb settings'),
@@ -56,9 +55,8 @@ function basic_form_system_theme_settings_alter(&$form, $form_state) {
     '#title'         => t('Append the content title to the end of the breadcrumb'),
     '#default_value' => theme_get_setting('basic_breadcrumb_title'),
     '#description'   => t('Useful when the breadcrumb is not placed just before the title.'),
-    '#suffix'        => '</div>', // #div-basic-breadcrumb
+    '#suffix'        => '</div>', // #div-basic-breadcrumb-collapse"
   );
-<<<<<<< HEAD
 
   //IE specific settings.
   $form['options_settings']['basic_ie'] = array(
@@ -84,24 +82,16 @@ function basic_form_system_theme_settings_alter(&$form, $form_state) {
   $form['options_settings']['basic_ie']['basic_ie_enabled_css']['basic_ie_enabled_versions'] = array(
     '#type' => 'checkboxes',
     '#options' => array(
-    	'ie6' => t('Internet Explorer 6'), 
-    	'ie7' => t('Internet Explorer 7'),
-    	'ie8' => t('Internet Explorer 8'),
+      'ie6' => t('Internet Explorer 6'),
+      'ie7' => t('Internet Explorer 7'),
+      'ie8' => t('Internet Explorer 8'),
     ),
     '#default_value' => theme_get_setting('basic_ie_enabled_versions'),
   );
-=======
->>>>>>> 7.x-2.x
-  
   $form['options_settings']['wireframe_mode'] = array(
     '#type' => 'checkbox',
     '#title' =>  t('Wireframe Mode - Display borders around main layout elements'),
-<<<<<<< HEAD
-    '#description'   => t('<a href="!link">Wireframes</a> are useful when prototyping a website.', 
-    	array('!link' => 'http://www.boxesandarrows.com/view/html_wireframes_and_prototypes_all_gain_and_no_pain')),
-=======
     '#description'   => t('<a href="!link">Wireframes</a> are useful when prototyping a website.', array('!link' => 'http://www.boxesandarrows.com/view/html_wireframes_and_prototypes_all_gain_and_no_pain')),
->>>>>>> 7.x-2.x
     '#default_value' => theme_get_setting('wireframe_mode'),
   );
   $form['options_settings']['clear_registry'] = array(
@@ -110,5 +100,5 @@ function basic_form_system_theme_settings_alter(&$form, $form_state) {
     '#description'   =>t('During theme development, it can be very useful to continuously <a href="!link">rebuild the theme registry</a>. WARNING: this is a huge performance penalty and must be turned off on production websites.', array('!link' => 'http://drupal.org/node/173880#theme-registry')),
     '#default_value' => theme_get_setting('clear_registry'),
   );
-  
+
 }
