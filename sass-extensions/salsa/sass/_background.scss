@@ -7,7 +7,7 @@
 @import "compass/layout/grid-background";
 @import "compass/css3/transition";
 
-// Apply this to your container to get a visible grid background generated 
+// Apply this to your container to get a visible grid background generated
 // on-the-fly using css3 gradients. These can be used for testing your elements
 // positioning on the grid.
 @mixin salsa-background {
@@ -16,7 +16,7 @@
   $column: $container-width / $columns - $gutter-width;
 
   @include column-grid-background($columns, $column, $gutter-width, $space, #ccea7e, #e6ffa8, true);
-  
+
   // Grid toggler (as in Sasson)
   background-repeat: repeat-x;
   @include transition(background-size 0.5s);

@@ -19,7 +19,7 @@
 // Box sizing
 
 // Apply this where you want your elements to contain their padding and borders,
-// this allows salsa to minimize browsers rounding errors and to use pixels or 
+// this allows salsa to minimize browsers rounding errors and to use pixels or
 // even em gutters and not be bound to %.
 // Paul Irish wrote about it here - http://paulirish.com/2012/box-sizing-border-box-ftw/
 @mixin box-sizing($model: border-box) {
@@ -85,41 +85,41 @@
 }
 
 // grid(<$width> [<container>], [<$position>])
-// 
-// grid() is the heart of the layout system, it allows you to define 
+//
+// grid() is the heart of the layout system, it allows you to define
 // grid-element's width and position.
-// 
-// $width: 
+//
+// $width:
 //    - Can be unitless and represent the number of columns to span.
-//    - May have any kind of width unit (e.g. px, em, % etc.) and provide 
+//    - May have any kind of width unit (e.g. px, em, % etc.) and provide
 //      complete control over the element's with, even if not complying with
-//      the grid layout or if using a grid is not your cup of tea. 
+//      the grid layout or if using a grid is not your cup of tea.
 // $position:
 //    - Can be unitless and represent the column number the element starts on
-//    - May have any kind of width unit (e.g. px, em, % etc.) and provide 
+//    - May have any kind of width unit (e.g. px, em, % etc.) and provide
 //      complete control over the element's position, similar to absolute
 //      positioning only that elements are NOT removed from the normal flow.
 //    - May be 'row' to force a new grid row
-//    
+//
 // Examples:
 //    - Simple grid element spanning 4 columns starting from the 12th column
-//        
+//
 //        @include grid(4, 12);
-//        
+//
 //    - a 40% wide element pushed 60% off the grid's first column
-// 
+//
 //        @include grid(40%, 60%);
-//        
+//
 // Nested grids -
 //    - You may provide $width as a simple fraction, so if you want an element
 //      to span 3 columns inside a 6 columns (nested) grid container, you'll
 //      probably use 3/6 as $width.
 //    - $position too.
 //    - note: 6/6 = 1 column, not 6 columns out of 6, use 100% instead.
-//    
+//
 //    Example: 2 column grid element nested inside a 6 columns nested-container,
 //             starting from the 4th column.
-//    
+//
 //             @include grid(2/6, 4/6);
 //
 @mixin grid($width, $position: false) {
@@ -158,7 +158,7 @@
         #{$flow}: $position * 100% / $columns;
       }
       @else { // unit (px/%/em etc.)
-        #{$flow}: $position;        
+        #{$flow}: $position;
       }
     }
   }

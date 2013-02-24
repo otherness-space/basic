@@ -39,10 +39,10 @@
     <?php endif; ?>
 
   </header> <!-- /header -->
-  
+
   <?php if ($main_menu || $secondary_menu): ?>
-    <nav id="navigation" class="menu <?php if (!empty($main_menu)) {print "with-primary";} 
-    	if (!empty($secondary_menu)) {print " with-secondary";} ?>">
+    <nav id="navigation" class="menu <?php if (!empty($main_menu)) {print "with-primary";}
+      if (!empty($secondary_menu)) {print " with-secondary";} ?>">
       <?php print theme('links', array('links' => $main_menu, 'attributes' => array('id' => 'primary', 'class' => array('links', 'clearfix', 'main-menu')))); ?>
       <?php print theme('links', array('links' => $secondary_menu, 'attributes' => array('id' => 'secondary', 'class' => array('links', 'clearfix', 'sub-menu')))); ?>
     </nav> <!-- /navigation -->
@@ -63,7 +63,7 @@
             <?php if ($page['highlight']): ?>
               <div id="highlight"><?php print render($page['highlight']) ?></div>
             <?php endif; ?>
-            
+
             <?php print render($title_prefix); ?>
 
             <?php if ($title): ?>
@@ -81,7 +81,7 @@
             <?php if ($action_links): ?>
               <ul class="action-links"><?php print render($action_links); ?></ul>
             <?php endif; ?>
-            
+
           </div> <!-- /#content-header -->
         <?php endif; ?>
 
@@ -102,7 +102,7 @@
         </div>
       </aside>
     <?php endif; ?> <!-- /sidebar-first -->
-    
+
     <?php if ($page['sidebar_second']): ?>
       <aside id="sidebar-second" class="column sidebar second">
         <div id="sidebar-second-inner" class="inner">
