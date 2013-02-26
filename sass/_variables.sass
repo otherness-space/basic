@@ -11,8 +11,10 @@
 // Available functions:
 // http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html
 
-// Import variables and mixins to be used.
-@import "zen"
+// Import variables and mixins to be used (Bourbon and Neat)
+@import "components/bourbon/bourbon"
+@import "components/neat/neat"
+@import "components/neat/neat-helpers"
 
 // Add Compass' IE and vendor prefix support variables.
 @import "compass/support"
@@ -29,22 +31,20 @@
 // Helps set up a vertical rhythm.
 @import "compass/typography/vertical_rhythm"
 
-// Grids
-$zen-column-count: 16
-$zen-gutter-width: 20px
-$zen-grid-width: 960px
 
-// Grids based on 960.gs
-$total-columns: 6
-$column-width: 60px
-$gutter-width: 20px
-$grid-padding: 10px
-$break: 12
+// Change visual grid.
+$visual-grid: true
+$visual-grid-color: #EEEEEE
 
-// Uncomment to create fluid.
-// $container-style: fluid
-// Uncomment to contain fluid width.
-// $container-width: 80%
+// Change the grid settings
+$column: 90px
+$gutter: 30px
+$grid-columns: 12 
+$max-width: em(1088)
+
+// Define your breakpoints
+$mobile: new-breakpoint(max-width 480px 4)
+$tablet: new-breakpoint(max-width 768px 8)
 
 // Widths.
 $page_width: 960px

@@ -1,12 +1,13 @@
 # These are the root folders for theme assets:
 css_dir         = "css"
 sass_dir        = "sass"
-extensions_dir  = "sass-extensions"
+extensions_dir  = "sass/components"
 images_dir      = "images"
 javascripts_dir = "js"
 
 # Require any additional compass plugins here.
-require "susy"
+require "bourbon"
+require "neat"
 
 # Firesass for DOM inspector
 sass_options = {:debug_info => false}

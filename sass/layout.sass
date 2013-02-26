@@ -13,19 +13,26 @@
 
 /* Layout rules. (Disclaimer: do not change if you're not sure you know what you're doing.)
 #page
-  @include zen-grid-container
+  @include outer-container
   margin-left: auto
   margin-right: auto
-  width: $zen-grid-width
+  width: $max-width
+  @include media(max-width $max-width)
+    width: auto
 
 #content
-  @include zen-grid-item(10, 4)
+  @include span-columns(8)
+  @include media(max-width $max-width)
+    @include span-columns(12)
 
 #sidebar-first
-  @include zen-grid-item(3, 1)
+  @include span-columns(4)
+  @include media(max-width $max-width)
+    @include span-columns(12)
 
-#sidebar-second
-  @include zen-grid-item(3, 14)
+// TODO figure out 2 column layout.
+//#sidebar-second
+//  @include span-columns(2)
 
 #footer
   float: none
