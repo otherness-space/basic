@@ -30,6 +30,9 @@ function basic_preprocess_html(&$vars) {
     if (in_array('ie8', $basic_ie_enabled_versions, TRUE)) {
       drupal_add_css(path_to_theme() . '/css/ie8.css', array('group' => CSS_THEME, 'browsers' => array('IE' => 'IE 8', '!IE' => FALSE), 'preprocess' => FALSE));
     }
+    f (in_array('ie9', $basic_ie_enabled_versions, TRUE)) {
+      drupal_add_css(path_to_theme() . '/css/ie8.css', array('group' => CSS_THEME, 'browsers' => array('IE' => 'IE 8', '!IE' => FALSE), 'preprocess' => FALSE));
+    }
   }
 }
 
