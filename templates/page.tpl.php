@@ -52,8 +52,7 @@
 
   <div id="main" class="clearfix">
 
-    <div id="content">
-      <div id="content-inner" class="inner column center">
+    <section id="content">
 
         <?php if ($breadcrumb || $title|| $messages || $tabs || $action_links): ?>
           <div id="content-header">
@@ -91,23 +90,17 @@
 
         <?php print $feed_icons; ?>
 
-      </div>
-    </div> <!-- /content-inner /content -->
-
+    </section> <!-- /content-inner /content -->
 
     <?php if ($page['sidebar_first']): ?>
       <aside id="sidebar-first" class="column sidebar first">
-        <div id="sidebar-first-inner" class="inner">
-          <?php print render($page['sidebar_first']); ?>
-        </div>
+        <?php print render($page['sidebar_first']); ?>
       </aside>
     <?php endif; ?> <!-- /sidebar-first -->
-
+    
     <?php if ($page['sidebar_second']): ?>
       <aside id="sidebar-second" class="column sidebar second">
-        <div id="sidebar-second-inner" class="inner">
-          <?php print render($page['sidebar_second']); ?>
-        </div>
+        <?php print render($page['sidebar_second']); ?>
       </aside>
     <?php endif; ?> <!-- /sidebar-second -->
 

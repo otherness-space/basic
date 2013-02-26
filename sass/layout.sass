@@ -17,22 +17,36 @@
   margin-left: auto
   margin-right: auto
   width: $max-width
+  // Collapse to fluid width once the browser width goes below current max width.
   @include media(max-width $max-width)
     width: auto
 
 #content
-  @include span-columns(8)
-  @include media(max-width $max-width)
-    @include span-columns(12)
+  @include span-columns(7)
+  @include shift(2)
+  @include media($tablet)
+    @include span-columns(4)
+    @include shift(2)
+  @include media($mobile)
+    @include span-columns(4)
+    @include shift(0)
 
 #sidebar-first
-  @include span-columns(4)
-  @include media(max-width $max-width)
-    @include span-columns(12)
+  @include span-columns(2)
+  @include shift(-9)
+  @include media($tablet)
+    @include span-columns(2)
+    @include shift(-6)
+  @include media($mobile)
+    @include span-columns(4)
+    @include shift(0)
 
-// TODO figure out 2 column layout.
-//#sidebar-second
-//  @include span-columns(2)
+#sidebar-second
+  @include span-columns(3)
+  @include media($tablet)
+    @include span-columns(2)
+  @include media($mobile)
+    @include span-columns(4)
 
 #footer
   float: none

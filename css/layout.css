@@ -80,17 +80,31 @@ body:before {
   display: block;
   float: left;
   margin-right: 2.12766%;
-  width: 65.95745%;
+  width: 57.44681%;
+  margin-left: 17.02128%;
 }
 #content:last-child {
   margin-right: 0;
 }
-@media screen and (max-width: 68em) {
+@media screen and (max-width: 768px) {
   #content {
     display: block;
     float: left;
-    margin-right: 2.12766%;
+    margin-right: 3.22581%;
+    width: 48.3871%;
+    margin-left: 25.80645%;
+  }
+  #content:last-child {
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 480px) {
+  #content {
+    display: block;
+    float: left;
+    margin-right: 6.66667%;
     width: 100%;
+    margin-left: 0%;
   }
   #content:last-child {
     margin-right: 0;
@@ -101,19 +115,65 @@ body:before {
   display: block;
   float: left;
   margin-right: 2.12766%;
-  width: 31.91489%;
+  width: 14.89362%;
+  margin-left: -76.59574%;
 }
 #sidebar-first:last-child {
   margin-right: 0;
 }
-@media screen and (max-width: 68em) {
+@media screen and (max-width: 768px) {
   #sidebar-first {
     display: block;
     float: left;
-    margin-right: 2.12766%;
-    width: 100%;
+    margin-right: 3.22581%;
+    width: 22.58065%;
+    margin-left: -77.41935%;
   }
   #sidebar-first:last-child {
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 480px) {
+  #sidebar-first {
+    display: block;
+    float: left;
+    margin-right: 6.66667%;
+    width: 100%;
+    margin-left: 0%;
+  }
+  #sidebar-first:last-child {
+    margin-right: 0;
+  }
+}
+
+#sidebar-second {
+  display: block;
+  float: left;
+  margin-right: 2.12766%;
+  width: 23.40426%;
+}
+#sidebar-second:last-child {
+  margin-right: 0;
+}
+@media screen and (max-width: 768px) {
+  #sidebar-second {
+    display: block;
+    float: left;
+    margin-right: 3.22581%;
+    width: 22.58065%;
+  }
+  #sidebar-second:last-child {
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 480px) {
+  #sidebar-second {
+    display: block;
+    float: left;
+    margin-right: 6.66667%;
+    width: 100%;
+  }
+  #sidebar-second:last-child {
     margin-right: 0;
   }
 }
