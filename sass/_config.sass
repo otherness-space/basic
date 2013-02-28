@@ -1,0 +1,36 @@
+// Variables
+// ---------
+// Use the same color all over the place? Need to do
+// some math with height and width and text size?
+// Sass supports variables as well as basic math
+// operations and many useful functions.
+//
+// For complete documentation:
+// http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#variables_
+//
+// Available functions:
+// http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html
+
+// Import variables and mixins to be used (Bourbon and Neat)
+@import "components/bourbon/bourbon"
+@import "components/neat/neat"
+@import "components/neat/neat-helpers"
+
+// Add Compass' IE and vendor prefix support variables.
+@import "compass/support"
+
+// Better than Drupal's clearfix.
+@import "compass/utilities/general/clearfix"
+
+// See http://compass-style.org/help/tutorials/spriting/
+@import "compass/utilities/sprites"
+
+// Use one CSS3 mixin instead of multiple vendor prefixes.
+@import "compass/css3"
+
+// Helps set up a vertical rhythm.
+@import "compass/typography/vertical_rhythm"
+
+// Import local files
+@import "_variables.sass"
+@import "_mixins.sass"

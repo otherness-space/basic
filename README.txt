@@ -1,37 +1,30 @@
 
 Introduction to Basic
 
-BASIC was originally developed for internal use to develop themes at Raincity Studios (Vancouver)
-After using the ZEN theme for years, we realised that it was getting too complicated, had too much
-files and overrides, so we decided to develop a strip down version of it and BASIC
-was created.
+Basic boasts a clean HTML structure with extensible CSS classes and ID's for unlimited 
+theming possibilities as well as a top-down load order for improved SEO.
 
-ZEN became a fairly big piece of code and we felt like for each project we didn't need most of
-it. So we took what we use all the time in ZEN, and removed all the things we felt were unnecessary.
+Basic's goal is to provide themers the building blocks needed to get their designs up and 
+running quickly and simply.
 
-The layout was also modified to make it easier to modify. Most of the CSS was brought down to a
-strict minimum, and the templates were also recoded to make them as clear as possible.
+Basic is perfect if you want a simple, smart, and flexible theme starter.
 
-BASIC is not intended for beginners, and if you're not sure, try ZEN first, and maybe later
-try basic.
-BASIC is now used for professional projects by multiple drupal agencies around the world.
+Less code spam, more ham.
 
 __________________________________________________________________________________________
 
 Installation
 
-- Download Basic from http://drupal.org/project/basic
-- Unpack the downloaded file and place the Basic folder in your Drupal installation under
-  one of the following locations:
+- Basic utilizes SASS for adaptive grids and layouts and general structure of the site.
+  It's recommended to use SASS for building out your theme. You are required to download
+  the following Ruby Gems and plugins:
 
-    * sites/all/themes
-    * sites/default/themes
-    * sites/example.com/themes
+  - SASS (http://sass-lang.com/)
+  - Compass (http://compass-style.org/)
+  - Bourbon (http://bourbon.io/)
+  - Boubon Neat (http://neat.bourbon.io/)
 
-- Log in as an administrator on your Drupal site and go to
-  Administer > Site building > Themes (admin/build/themes) and make Basic the default theme.
-
-- if you want to change the name of the theme from 'basic' to another name like 'mytheme',
+- Basic is meant to be YOUR theme. To change the name of the theme from 'basic' to another name like 'mytheme',
 follow these steps (to do BEFORE enabling the theme) :
 
     - rename the theme folder to 'mytheme'
@@ -47,33 +40,33 @@ ________________________________________________________________________________
 What are the files for ?
 ------------------------
 
-- basic.info => provide informations about the theme, like regions, css, settings, js ...
+- basic.info                => provide informations about the theme, like regions, css, settings, js ...
 - block-system-main.tpl.php => template to edit the content
-- block.tpl.php => template to edit the blocks
-- comment.tpl.php => template to edit the comments
-- node.tpl.php => template to edit the nodes (in content)
-- page.tpl.php => template to edit the page
-- template.php => used to modify drupal's default behavior before outputting HTML through
-  the theme
-- theme-settings => used to create additional settings in the theme settings page
+- block.tpl.php             => template to edit the blocks
+- comment.tpl.php           => template to edit the comments
+- node.tpl.php              => template to edit the nodes (in content)
+- page.tpl.php              => template to edit the page
+- template.php              => used to modify drupal's default behavior before outputting HTML through
+                               the theme
+- theme-settings            => used to create additional settings in the theme settings page
 
-In /CSS
+In /SASS
 -------
 
-- default.css => define default classes, browser resets and admin styles
-- ie6 => used to debug IE6
-- ie7 => used to debug IE7
-- layout.css => define the layout of the theme
-- print.css => define the way the theme look like when printed
-- style.css => contains some default font styles. that's where you can add custom css
-- tabs.css => styles for the admin tabs (from ZEN)
+- default.sass  => define default classes, browser resets and admin styles (compiles to css/default.css)
+- ie8.sass      => used to debug IE8 (compiles to css/ie8.css)
+- ie9.sass      => used to debug IE9 (compiles to css/ie9.css)
+- layout.sass   => define the layout of the theme (compiles to css/layout.css)
+- print.sass    => define the way the theme look like when printed (compiles to css/print.css)
+- style.sass    => contains some default font styles. that's where you can add custom css (compiles to css/style.css)
+- tabs.sass     => styles for the admin tabs (from ZEN)
 
 __________________________________________________________________________________________
 
 Changing the Layout
 
 The layout used in Basic is fairly similar to the Holy Grail method. It has been tested on
-all major browser including IE (5>8), Opera, Firefox, Safari, Chrome ...
+all major browser including IE (5>10), Opera, Firefox, Safari, Chrome ...
 The purpose of this method is to have a minimal markup for an ideal display.
 For accessibility and search engine optimization, the best order to display a page is ]
 the following :
@@ -107,5 +100,4 @@ or bug report:
 http://drupal.org/project/issues/basic
 
 Current maintainers:
-* Hubert Florin (couzinhub) -http://drupal.org/user/133581
 * Steve Krueger (SteveK) -http://drupal.org/user/111656
