@@ -19,6 +19,46 @@ if (theme_get_setting('basic_tabs')) {
 }
 
 function basic_preprocess_html(&$vars) {
+  global $user;
+
+  //Add role name classes (to allow css based show for admin/hidden from user)
+  foreach ($user->roles as $role){
+    $vars['classes_array'][] = 'role-' . basic_id_safe($role);
+  }
+
+  if (!$vars['is_front']) {
+    // Add unique classes for each page and website section
+    $path = drupal_get_path_alias($_GET['q']);
+    list($section, ) = explode('/', $path, 2);
+    $vars['classes_array'][] = 'with-subnav';
+    $vars['classes_array'][] = basic_id_safe('page-'. $path);
+    $vars['classes_array'][] = basic_id_safe('section-'. $section);
+
+    if (arg(0) == 'node') {
+      if (arg(1) == 'add') {
+        if ($section == 'node') {
+          // Remove 'section-node'
+          array_pop( $vars['classes_array'] );
+        }
+        // Add 'section-node-add'
+        $vars['classes_array'][] = 'section-node-add';
+      }
+      elseif (is_numeric(arg(1)) && (arg(2) == 'edit' || arg(2) == 'delete')) {
+        if ($section == 'node') {
+          // Remove 'section-node'
+          array_pop( $vars['classes_array']);
+        }
+        // Add 'section-node-edit' or 'section-node-delete'
+        $vars['classes_array'][] = 'section-node-'. arg(2); 
+      }
+    }
+  } 
+  //for normal un-themed edit pages
+  if ((arg(0) == 'node') && (arg(2) == 'edit')) {
+    $vars['template_files'][] =  'page';
+  }
+
+  // Add IE classes.
   if (theme_get_setting('basic_ie_enabled')) {
     $basic_ie_enabled_versions = theme_get_setting('basic_ie_enabled_versions');
     if (in_array('ie8', $basic_ie_enabled_versions, TRUE)) {
@@ -32,6 +72,7 @@ function basic_preprocess_html(&$vars) {
       drupal_add_css(path_to_theme() . '/css/ie10.css', array('group' => CSS_THEME, 'browsers' => array('IE' => 'IE 10', '!IE' => FALSE), 'preprocess' => FALSE));
     }
   }
+
 }
 
 function basic_preprocess_page(&$vars, $hook) {
