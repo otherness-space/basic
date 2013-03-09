@@ -1,4 +1,4 @@
-// Variables
+// Config
 // ---------
 // Use the same color all over the place? Need to do
 // some math with height and width and text size?
@@ -11,6 +11,11 @@
 // Available functions:
 // http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html
 
+// Available functions:
+// SASS:				http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html
+// Bourbon:				http://bourbon.io/docs/
+// Boubon Neat (grid):	https://github.com/thoughtbot/neat#using-the-grid
+
 // Import variables and mixins to be used (Bourbon and Neat)
 @import "components/bourbon/bourbon"
 @import "components/neat/neat"
@@ -19,3 +24,17 @@
 // Import local files
 @import "_variables.sass"
 @import "_mixins.sass"
+
+// Bourbon grid display. Comment out to remove display.
+$visual-grid: true
+$visual-grid-color: #EEEEEE
+
+// Setup the column, grid, and gutter amounts.
+$column: 90px
+$gutter: 30px
+$grid-columns: 12 
+$max-width: em(1088)
+
+// Define your breakpoints.
+$mobile: new-breakpoint(max-width 480px 4)
+$tablet: new-breakpoint(max-width 768px 8)

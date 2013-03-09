@@ -57,7 +57,7 @@
   display: block;
   float: left;
   margin-right: 2.35765%;
-  width: 57.35098%; }
+  width: 74.41059%; }
   .one-sidebar.sidebar-second #content:last-child {
     margin-right: 0; }
   @media screen and (max-width: 768px) {
@@ -65,7 +65,7 @@
       display: block;
       float: left;
       margin-right: 3.57866%;
-      width: 100%; }
+      width: 74.10533%; }
       .one-sidebar.sidebar-second #content:last-child {
         margin-right: 0; } }
   @media screen and (max-width: 480px) {
@@ -75,6 +75,32 @@
       margin-right: 7.42297%;
       width: 100%; }
       .one-sidebar.sidebar-second #content:last-child {
+        margin-right: 0; } }
+.one-sidebar.sidebar-first #content {
+  display: block;
+  float: left;
+  margin-right: 2.35765%;
+  width: 57.35098%;
+  margin-left: 17.05961%; }
+  .one-sidebar.sidebar-first #content:last-child {
+    margin-right: 0; }
+  @media screen and (max-width: 768px) {
+    .one-sidebar.sidebar-first #content {
+      display: block;
+      float: left;
+      margin-right: 3.57866%;
+      width: 61.158%;
+      margin-left: 25.89467%; }
+      .one-sidebar.sidebar-first #content:last-child {
+        margin-right: 0; } }
+  @media screen and (max-width: 480px) {
+    .one-sidebar.sidebar-first #content {
+      display: block;
+      float: left;
+      margin-right: 7.42297%;
+      width: 100%;
+      margin-left: 0%; }
+      .one-sidebar.sidebar-first #content:last-child {
         margin-right: 0; } }
 .two-sidebars #content {
   display: block;
@@ -119,7 +145,9 @@
       width: 22.316%;
       margin-left: -77.684%; }
       #sidebar-first:last-child {
-        margin-right: 0; } }
+        margin-right: 0; }
+      .sidebar-first #sidebar-first {
+        margin-left: -90.63133%; } }
   @media screen and (max-width: 480px) {
     #sidebar-first {
       display: block;
@@ -128,7 +156,9 @@
       width: 100%;
       margin-left: 0%; }
       #sidebar-first:last-child {
-        margin-right: 0; } }
+        margin-right: 0; }
+      .sidebar-first #sidebar-first {
+        margin-left: 0%; } }
 
 #sidebar-second {
   display: block;
