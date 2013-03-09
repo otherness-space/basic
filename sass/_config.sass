@@ -16,14 +16,9 @@
 // Bourbon:				http://bourbon.io/docs/
 // Boubon Neat (grid):	https://github.com/thoughtbot/neat#using-the-grid
 
-// Import variables and mixins to be used (Bourbon and Neat)
+// Import variables and mixins to be used (Bourbon)
 @import "components/bourbon/bourbon"
-@import "components/neat/neat"
 @import "components/neat/neat-helpers"
-
-// Import local files
-@import "_variables.sass"
-@import "_mixins.sass"
 
 // Bourbon grid display. Comment out to remove display.
 $visual-grid: true
@@ -32,9 +27,18 @@ $visual-grid-color: #EEEEEE
 // Setup the column, grid, and gutter amounts.
 $column: 90px
 $gutter: 30px
-$grid-columns: 12 
+$grid-columns: 12
 $max-width: em(1088)
 
 // Define your breakpoints.
 $mobile: new-breakpoint(max-width 480px 4)
 $tablet: new-breakpoint(max-width 768px 8)
+
+// Import grid to be used (Bourbon Neat).
+// We load this after we provide our overrides: https://github.com/thoughtbot/neat#changing-the-defaults
+@import "components/neat/neat"
+
+// Import local files
+@import "_variables.sass"
+@import "_mixins.sass"
+
