@@ -61,7 +61,7 @@ function basic_preprocess_page(&$vars, $hook) {
   // Allow page override template suggestions based on node content type.
   if (isset($vars['node']->type) && isset($vars['node']->nid)) {
     $vars['theme_hook_suggestions'][] = 'page__' . $vars['node']->type;
-    $vars['theme_hook_suggestions'][] = "page__node__" . $variables['node']->nid;
+    $vars['theme_hook_suggestions'][] = "page__node__" . $vars['node']->nid;
   }
 }
 
