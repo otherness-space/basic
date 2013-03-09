@@ -79,7 +79,7 @@ function basic_preprocess_page(&$vars, $hook) {
   if (isset($vars['node_title'])) {
     $vars['title'] = $vars['node_title'];
   }
-  // Adding classes wether #navigation is here or not
+  // Adding classes whether #navigation is here or not
   if (!empty($vars['main_menu']) or !empty($vars['sub_menu'])) {
     $vars['classes_array'][] = 'with-navigation';
   }

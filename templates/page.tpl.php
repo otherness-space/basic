@@ -59,8 +59,8 @@
 
             <?php print $breadcrumb; ?>
 
-            <?php if ($page['highlight']): ?>
-              <div id="highlight"><?php print render($page['highlight']) ?></div>
+            <?php if ($page['highlighted']): ?>
+              <div id="highlighted"><?php print render($page['highlighted']) ?></div>
             <?php endif; ?>
 
             <?php print render($title_prefix); ?>
