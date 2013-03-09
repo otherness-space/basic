@@ -1,8 +1,9 @@
 
 Introduction to Basic
 
-Basic boasts a clean HTML structure with extensible CSS classes and ID's for unlimited 
-theming possibilities as well as a top-down load order for improved SEO.
+Basic boasts a clean HTML5 structure with extensible CSS classes and ID's for unlimited 
+theming possibilities as well as a top-down load order for improved SEO. It is fully
+responsive out-of-the-box and provides an adaptive, elegant, SASS based grid system (Bourbon Neat).
 
 Basic's goal is to provide themers the building blocks needed to get their designs up and 
 running quickly and simply.
@@ -99,4 +100,4 @@ or bug report:
 http://drupal.org/project/issues/basic
 
 Current maintainers:
-* Steve Krueger (SteveK) -http://drupal.org/user/111656
+* Steve Krueger (SteveK) -http://drupal.org/user/111656 (http://thejibe.com)
