@@ -151,17 +151,11 @@ div.status {
   border-color: #bbee77; }
 
 /* Region Colors. delete when starting a new theme. */
-#header, #footer {
-  background: #efefef; }
-
-#sidebar-first {
-  background: #e7edff; }
-
-#sidebar-second {
-  background: #ffd075; }
-
+#header, #footer,
+#sidebar-first,
+#sidebar-second,
 #navigation {
-  background: #feffa5; }
+  background: rgba(170, 170, 170, 0.2); }
 
 * {
   -webkit-box-sizing: border-box;

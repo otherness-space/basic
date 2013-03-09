@@ -39,7 +39,7 @@
     // 100% width for mobile devices.
     @include media($mobile)
       @include span-columns(4)
-  .both-sidebars &  
+  .two-sidebars &  
     // Span this div 7 columns wide.
     @include span-columns(7)
     // Shift it to the right 2 columns to accommodate for the first sidebar.
@@ -69,11 +69,11 @@
 
 #sidebar-second
   // Span this div 3 columns wide.
-  @include span-columns(4)
-  @include shift(1)
+  @include span-columns(3)
+  @include shift(0)
   // Similar logic for tablets.
   @include media($tablet)
-    @include span-columns(8)
+    @include span-columns(2)
     @include shift(0)
   // 100% width for mobile devices.
   @include media($mobile)
