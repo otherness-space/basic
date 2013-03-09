@@ -42,6 +42,8 @@ compass[sass_dir] = sass
 compass[css_dir] = css
 
 settings[basic_tabs] = 1
+settings[basic_breadcrumb] = 1
+settings[basic_breadcrumb_home] = 1
 settings[basic_breadcrumb_separator] = »
 settings[clear_registry] = 0
 settings[basic_ie_enabled] = 0

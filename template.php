@@ -57,6 +57,11 @@ function basic_preprocess_page(&$vars, $hook) {
       $last_node->classes_array = array('last');
     }
   }
+
+  // Allow page override template suggestions based on node content type.
+  if (isset($vars['node']->type)) {
+    $vars['theme_hook_suggestions'][] = 'page__' . $vars['node']->type;
+  }
 }
 
 function basic_preprocess_node(&$vars) {
