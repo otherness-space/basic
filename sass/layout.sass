@@ -41,7 +41,7 @@
       @include span-columns(4)
   .one-sidebar.sidebar-first &
     // Span this div 7 columns wide.
-    @include span-columns(7)
+    @include span-columns(10)
     @include shift(2)
     // Same logic for tablets.
     @include media($tablet)
@@ -70,6 +70,8 @@
   @include span-columns(2)
   // Shift it to the left 9 columns to place it in the far left column.
   @include shift(-9)
+  .sidebar-first &
+    @include shift(-12)
   // Similar logic for tablets.
   @include media($tablet)
     @include span-columns(2)
