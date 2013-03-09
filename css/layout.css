@@ -1,8 +1,7 @@
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 /* Layout
  * ------
@@ -15,127 +14,152 @@
  * 5. Sideabr Right */
 /* Layout rules. (Disclaimer: do not change if you're not sure you know what you're doing.) */
 #page {
-  overflow: hidden;
   *zoom: 1;
   max-width: 68em;
   margin-left: auto;
   margin-right: auto;
   margin-left: auto;
   margin-right: auto;
-  width: 68em;
-}
-@media screen and (max-width: 68em) {
-  #page {
-    width: auto;
-  }
-}
+  width: 68em; }
+  #page:before, #page:after {
+    content: " ";
+    display: table; }
+  #page:after {
+    clear: both; }
+  @media screen and (max-width: 68em) {
+    #page {
+      width: auto; } }
 
-#content {
+.no-sidebars #content {
+  display: block;
+  float: left;
+  margin-right: 2.35765%;
+  width: 100%; }
+  .no-sidebars #content:last-child {
+    margin-right: 0; }
+  @media screen and (max-width: 768px) {
+    .no-sidebars #content {
+      display: block;
+      float: left;
+      margin-right: 3.57866%;
+      width: 100%; }
+      .no-sidebars #content:last-child {
+        margin-right: 0; } }
+  @media screen and (max-width: 480px) {
+    .no-sidebars #content {
+      display: block;
+      float: left;
+      margin-right: 7.42297%;
+      width: 100%; }
+      .no-sidebars #content:last-child {
+        margin-right: 0; } }
+.one-sidebar.sidebar-second #content {
+  display: block;
+  float: left;
+  margin-right: 2.35765%;
+  width: 57.35098%; }
+  .one-sidebar.sidebar-second #content:last-child {
+    margin-right: 0; }
+  @media screen and (max-width: 768px) {
+    .one-sidebar.sidebar-second #content {
+      display: block;
+      float: left;
+      margin-right: 3.57866%;
+      width: 100%; }
+      .one-sidebar.sidebar-second #content:last-child {
+        margin-right: 0; } }
+  @media screen and (max-width: 480px) {
+    .one-sidebar.sidebar-second #content {
+      display: block;
+      float: left;
+      margin-right: 7.42297%;
+      width: 100%; }
+      .one-sidebar.sidebar-second #content:last-child {
+        margin-right: 0; } }
+.both-sidebars #content {
   display: block;
   float: left;
   margin-right: 2.35765%;
   width: 57.35098%;
-  margin-left: 17.05961%;
-}
-#content:last-child {
-  margin-right: 0;
-}
-@media screen and (max-width: 768px) {
-  #content {
-    display: block;
-    float: left;
-    margin-right: 3.57866%;
-    width: 48.21067%;
-    margin-left: 25.89467%;
-  }
-  #content:last-child {
-    margin-right: 0;
-  }
-}
-@media screen and (max-width: 480px) {
-  #content {
-    display: block;
-    float: left;
-    margin-right: 7.42297%;
-    width: 100%;
-    margin-left: 0%;
-  }
-  #content:last-child {
-    margin-right: 0;
-  }
-}
+  margin-left: 17.05961%; }
+  .both-sidebars #content:last-child {
+    margin-right: 0; }
+  @media screen and (max-width: 768px) {
+    .both-sidebars #content {
+      display: block;
+      float: left;
+      margin-right: 3.57866%;
+      width: 48.21067%;
+      margin-left: 25.89467%; }
+      .both-sidebars #content:last-child {
+        margin-right: 0; } }
+  @media screen and (max-width: 480px) {
+    .both-sidebars #content {
+      display: block;
+      float: left;
+      margin-right: 7.42297%;
+      width: 100%;
+      margin-left: 0%; }
+      .both-sidebars #content:last-child {
+        margin-right: 0; } }
 
 #sidebar-first {
   display: block;
   float: left;
   margin-right: 2.35765%;
   width: 14.70196%;
-  margin-left: -76.76824%;
-}
-#sidebar-first:last-child {
-  margin-right: 0;
-}
-@media screen and (max-width: 768px) {
-  #sidebar-first {
-    display: block;
-    float: left;
-    margin-right: 3.57866%;
-    width: 22.316%;
-    margin-left: -77.684%;
-  }
+  margin-left: -76.76824%; }
   #sidebar-first:last-child {
-    margin-right: 0;
-  }
-}
-@media screen and (max-width: 480px) {
-  #sidebar-first {
-    display: block;
-    float: left;
-    margin-right: 7.42297%;
-    width: 100%;
-    margin-left: 0%;
-  }
-  #sidebar-first:last-child {
-    margin-right: 0;
-  }
-}
+    margin-right: 0; }
+  @media screen and (max-width: 768px) {
+    #sidebar-first {
+      display: block;
+      float: left;
+      margin-right: 3.57866%;
+      width: 22.316%;
+      margin-left: -77.684%; }
+      #sidebar-first:last-child {
+        margin-right: 0; } }
+  @media screen and (max-width: 480px) {
+    #sidebar-first {
+      display: block;
+      float: left;
+      margin-right: 7.42297%;
+      width: 100%;
+      margin-left: 0%; }
+      #sidebar-first:last-child {
+        margin-right: 0; } }
 
 #sidebar-second {
   display: block;
   float: left;
   margin-right: 2.35765%;
-  width: 23.23176%;
-}
-#sidebar-second:last-child {
-  margin-right: 0;
-}
-@media screen and (max-width: 768px) {
-  #sidebar-second {
-    display: block;
-    float: left;
-    margin-right: 3.57866%;
-    width: 22.316%;
-  }
+  width: 31.76157%;
+  margin-left: 8.5298%; }
   #sidebar-second:last-child {
-    margin-right: 0;
-  }
-}
-@media screen and (max-width: 480px) {
-  #sidebar-second {
-    display: block;
-    float: left;
-    margin-right: 7.42297%;
-    width: 100%;
-  }
-  #sidebar-second:last-child {
-    margin-right: 0;
-  }
-}
+    margin-right: 0; }
+  @media screen and (max-width: 768px) {
+    #sidebar-second {
+      display: block;
+      float: left;
+      margin-right: 3.57866%;
+      width: 100%;
+      margin-left: 0%; }
+      #sidebar-second:last-child {
+        margin-right: 0; } }
+  @media screen and (max-width: 480px) {
+    #sidebar-second {
+      display: block;
+      float: left;
+      margin-right: 7.42297%;
+      width: 100%;
+      margin-left: 0%; }
+      #sidebar-second:last-child {
+        margin-right: 0; } }
 
 #footer {
   float: none;
-  clear: both;
-}
+  clear: both; }
 
 /* Layout Helpers */
 #header,
@@ -143,19 +167,16 @@
 .mission,
 .breadcrumb,
 .node {
-  clear: both;
-}
+  clear: both; }
 
 /* Columns Inner
  * -------------
  * You can change the padding inside the columns without changing the
  * width of them by just usinbg the INNER div of each column */
 .inner {
-  padding: 0;
-}
+  padding: 0; }
 
 /* Navigation styles */
 #navigation li {
   list-style-type: none;
-  display: inline-block;
-}
+  display: inline-block; }

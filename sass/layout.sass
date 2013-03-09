@@ -21,18 +21,37 @@
     width: auto
 
 #content
-  // Span this div 7 columns wide.
-  @include span-columns(7)
-  // Shift it to the right 2 columns to accommodate for the first sidebar.
-  @include shift(2)
-  // Same logic for tablets.
-  @include media($tablet)
-    @include span-columns(4)
+  .no-sidebars &
+    // Span this div 7 columns wide.
+    @include span-columns(12)
+    // Same logic for tablets.
+    @include media($tablet)
+      @include span-columns(8)
+    // 100% width for mobile devices.
+    @include media($mobile)
+      @include span-columns(4)
+  .one-sidebar.sidebar-second &
+    // Span this div 7 columns wide.
+    @include span-columns(7)
+    // Same logic for tablets.
+    @include media($tablet)
+      @include span-columns(8)
+    // 100% width for mobile devices.
+    @include media($mobile)
+      @include span-columns(4)
+  .both-sidebars &  
+    // Span this div 7 columns wide.
+    @include span-columns(7)
+    // Shift it to the right 2 columns to accommodate for the first sidebar.
     @include shift(2)
-  // 100% width for mobile devices.
-  @include media($mobile)
-    @include span-columns(4)
-    @include shift(0)
+    // Same logic for tablets.
+    @include media($tablet)
+      @include span-columns(4)
+      @include shift(2)
+    // 100% width for mobile devices.
+    @include media($mobile)
+      @include span-columns(4)
+      @include shift(0)
 
 #sidebar-first
   // Span this div 2 columns wide.
@@ -50,13 +69,16 @@
 
 #sidebar-second
   // Span this div 3 columns wide.
-  @include span-columns(3)
+  @include span-columns(4)
+  @include shift(1)
   // Similar logic for tablets.
   @include media($tablet)
-    @include span-columns(2)
+    @include span-columns(8)
+    @include shift(0)
   // 100% width for mobile devices.
   @include media($mobile)
     @include span-columns(4)
+    @include shift(0)
 
 #footer
   float: none

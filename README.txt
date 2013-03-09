@@ -20,7 +20,6 @@ Installation
   the following Ruby Gems and plugins:
 
   - SASS (http://sass-lang.com/)
-  - Compass (http://compass-style.org/)
   - Bourbon (http://bourbon.io/)
   - Boubon Neat (http://neat.bourbon.io/)
 
