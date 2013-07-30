@@ -1,0 +1,14 @@
+<div id="block-{{ block.module }}-{{ block.delta }}" class="{{ attributes.class }} clearfix"{{ attributes }}>
+  <div class="block-inner">
+
+    {{ title_prefix }}
+    {% if block.subject %}
+      <h2 class="block-title"{{ title_attributes }}>{{ block.subject }}</h2>
+    {% endif %}
+    {{ title_suffix }}
+
+    <div class="content" {{ content_attributes }}>
+      {{ content }}
+    </div>
+  </div>
+</div> <!-- /block-inner /block -->

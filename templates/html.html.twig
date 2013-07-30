@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="{{ language.language }}" version="XHTML+RDFa 1.0" dir="{{ language.dir }}" {{ rdf_namespaces }}>
+
+<head profile="{{ grddl_profile }}">
+  {{ head }}
+  <title>{{ head_title }}</title>
+  {{ styles }}
+  {{ scripts }}
+  <meta name="viewport" content="width=device-width">
+</head>
+<body class="{{ attributes.class }}"{{ attributes }}>
+  <div id="skip">
+    <a href="#main-menu">{{ 'Jump to Navigation'|t }}</a>
+  </div>
+  {{ page_top }}
+  {{ page }}
+  {{ page_bottom }}
+</body>
+</html>

@@ -1,0 +1,27 @@
+<article class="{{ attributes.class }} {{ zebra }}">
+  <header>
+    {{ title_prefix) }}
+    <h3 class="title">{{ title }}</h3>
+    {{ title_suffix) }}
+
+    {% if new %}
+      <mark class="new">{{ new|capitalize }}</mark>
+    {% endif %}
+
+    {{ picture }}
+
+    <span class="submitted">{{ submitted }}</span>
+  </header>
+
+  <div class="content">
+    {% hide( content.links) %}
+      {{ content }}
+    {% if signature %}
+      <footer class="signature">{{ signature }}</footer>
+    {% endif %}
+  </div>
+
+  {% if content.links %}
+    <div class="links">{{ content.links) }}</div>
+  {% endif %}
+</article><!-- /comment -->
