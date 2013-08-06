@@ -79,15 +79,15 @@ function basic_form_system_theme_settings_alter(&$form, $form_state) {
       ),
     ),
   );
-  $form['options_settings']['basic_ie']['basic_ie_enabled_css']['basic_ie_enabled_versions'] = array(
-    '#type' => 'checkboxes',
-    '#options' => array(
-      'ie8' => t('Internet Explorer 8'),
-      'ie9' => t('Internet Explorer 9'),
-      'ie10' => t('Internet Explorer 10'),
-    ),
-    '#default_value' => theme_get_setting('basic_ie_enabled_versions'),
-  );
+  //$form['options_settings']['basic_ie']['basic_ie_enabled_css']['basic_ie_enabled_versions'] = array(
+  //  '#type' => 'checkboxes',
+  //  '#options' => array(
+  //    'ie8' => t('Internet Explorer 8'),
+  //    'ie9' => t('Internet Explorer 9'),
+  //    'ie10' => t('Internet Explorer 10'),
+  //  ),
+  //  '#default_value' => theme_get_setting('basic_ie_enabled_versions'),
+  //);
   $form['options_settings']['clear_registry'] = array(
     '#type' => 'checkbox',
     '#title' =>  t('Rebuild theme registry on every page.'),

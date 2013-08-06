@@ -3,11 +3,11 @@
    set comment_form = content.comment_form;
 %}
 <section class="comments {{ attributes.class }}"{{ attributes }}>
-  {{ title_prefix) }}
+  {{ title_prefix }}
   {% if comments and node.type != 'forum' %}
     <h2 class="title">{{ 'Comments'|t }}</h2>
   {% endif %}
-  {{ title_suffix) }}
+  {{ title_suffix }}
 
   {{ comments }}
 

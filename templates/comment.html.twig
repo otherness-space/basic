@@ -1,8 +1,8 @@
 <article class="{{ attributes.class }} {{ zebra }}">
   <header>
-    {{ title_prefix) }}
+    {{ title_prefix }}
     <h3 class="title">{{ title }}</h3>
-    {{ title_suffix) }}
+    {{ title_suffix }}
 
     {% if new %}
       <mark class="new">{{ new|capitalize }}</mark>
@@ -14,7 +14,7 @@
   </header>
 
   <div class="content">
-    {% hide( content.links) %}
+    {% hide(content.links) %}
       {{ content }}
     {% if signature %}
       <footer class="signature">{{ signature }}</footer>
@@ -22,6 +22,6 @@
   </div>
 
   {% if content.links %}
-    <div class="links">{{ content.links) }}</div>
+    <div class="links">{{ content.links }}</div>
   {% endif %}
 </article><!-- /comment -->

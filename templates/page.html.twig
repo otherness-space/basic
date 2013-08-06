@@ -33,7 +33,7 @@
 
     {% if page.header %}
       <div id="header-region">
-        {{ page.header) }}
+        {{ page.header }}
       </div>
     {% endif %}
 
@@ -41,8 +41,8 @@
 
   {% if main_menu or secondary_menu %}
     <nav id="navigation" class="menu{% if main_menu %} with-primary{% endif %}{% if secondary_menu %} with-secondary{% endif %}">
-      {{ theme('links', array('links' =>  main_menu, 'attributes' => array('id' => 'primary', 'class' => array('links', 'clearfix', 'main-menu')))) }}
-      {{ theme('links', array('links' =>  secondary_menu, 'attributes' => array('id' => 'secondary', 'class' => array('links', 'clearfix', 'sub-menu')))) }}
+      {{ main_menu }}
+      {{ secondary_menu }}
     </nav> <!-- /navigation -->
   {% endif %}
 
@@ -52,7 +52,7 @@
 
     <section id="content">
 
-        {% if breadcrumb or titleor messages or tabs or action_links %}
+        {% if breadcrumb or title or messages or tabs or action_links %}
           <div id="content-header">
 
             {{ breadcrumb }}
@@ -61,22 +61,22 @@
               <div id="highlighted">{{ page.highlighted }}</div>
             {% endif %}
 
-            {{ title_prefix) }}
+            {{ title_prefix }}
 
             {% if title %}
               <h1 class="title">{{ title }}</h1>
             {% endif %}
 
-            {{ title_suffix) }}
+            {{ title_suffix }}
             {{ messages }}
-            {{ page.help) }}
+            {{ page.help }}
 
             {% if tabs %}
-              <div class="tabs">{{ tabs) }}</div>
+              <div class="tabs">{{ tabs }}</div>
             {% endif %}
 
             {% if action_links %}
-              <ul class="action-links">{{ action_links) }}</ul>
+              <ul class="action-links">{{ action_links }}</ul>
             {% endif %}
 
           </div> <!-- /#content-header -->
@@ -92,13 +92,13 @@
 
     {% if page.sidebar_first %}
       <aside id="sidebar-first" class="column sidebar first">
-        {{ page.sidebar_first) }}
+        {{ page.sidebar_first }}
       </aside>
     {% endif %} <!-- /sidebar-first -->
 
     {% if page.sidebar_second %}
       <aside id="sidebar-second" class="column sidebar second">
-        {{ page.sidebar_second) }}
+        {{ page.sidebar_second }}
       </aside>
     {% endif %} <!-- /sidebar-second -->
 
@@ -108,7 +108,7 @@
 
   {% if page.footer %}
     <footer id="footer">
-      {{ page.footer) }}
+      {{ page.footer }}
     </footer> <!-- /footer -->
   {% endif %}
 

@@ -1,8 +1,7 @@
 name: Basic
 description: 'HTML5, SASS, Responsive grid base theme.'
-package: Core
-version: VERSION
 core: 8.x
+type: theme
 stylesheets:
   all:
     - css/default.css
