@@ -99,3 +99,4 @@ http://drupal.org/project/issues/basic
 
 Current maintainers:
 * Steve Krueger (SteveK) -http://drupal.org/user/111656 (http://thejibe.com)
+* Niall Morgan (lil.destro) -https://drupal.org/user/597808 (http://thejibe.com)
