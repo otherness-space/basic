@@ -2,7 +2,7 @@
 
 /**
  * Here we override the default HTML output of drupal.
- * refer to http://drupal.org/node/550722
+ * refer to https://drupal.org/node/457740
  */
 
 // Auto-rebuild the theme registry during theme development.
