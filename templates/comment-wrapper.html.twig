@@ -1,18 +1,15 @@
-{%
-   set comments = content.comments;
-   set comment_form = content.comment_form;
-%}
 <section class="comments {{ attributes.class }}"{{ attributes }}>
-  {{ title_prefix }}
-  {% if comments and node.type != 'forum' %}
+  {% if comments and (entity.entityType != 'node' or entity.bundle != 'forum') %}
+    {{ title_prefix }}
     <h2 class="title">{{ 'Comments'|t }}</h2>
+    {{ title_suffix }}
   {% endif %}
-  {{ title_suffix }}
 
   {{ comments }}
 
-  {% if comment_form %}
+  {% if form %}
     <h2 class="title comment-form">{{ 'Add new comment'|t }}</h2>
-    {{ comment_form }}
+    {{ form }}
   {% endif %}
+
 </section>
