@@ -15,7 +15,7 @@ body:before {
   height: 100%;
   left: 0;
   margin: 0 auto;
-  max-width: 68em;
+  max-width: 83.69231em;
   opacity: 0.4;
   position: fixed;
   right: 0;
@@ -50,18 +50,18 @@ body:before {
 /* Layout rules. (Disclaimer: do not change if you're not sure you know what you're doing.) */
 #page {
   *zoom: 1;
-  max-width: 68em;
+  max-width: 83.69231em;
   margin-left: auto;
   margin-right: auto;
   margin-left: auto;
   margin-right: auto;
-  width: 68em; }
+  width: 83.69231em; }
   #page:before, #page:after {
     content: " ";
     display: table; }
   #page:after {
     clear: both; }
-  @media screen and (max-width: 68em) {
+  @media screen and (max-width: 83.69231em) {
     #page {
       width: auto; } }
 
