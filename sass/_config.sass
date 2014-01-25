@@ -15,7 +15,6 @@
 // SASS:        http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html
 // Bourbon:       http://bourbon.io/docs/
 // Boubon Neat (grid):  https://github.com/thoughtbot/neat#using-the-grid
-
 // Import variables and mixins to be used (Bourbon)
 @import "components/bourbon/bourbon"
 @import "components/neat/neat-helpers"
@@ -47,5 +46,7 @@ $tablet: new-breakpoint(max-width 768px 8)
 @import "components/neat/neat"
 
 // Import local files
+// If you'd like to nest your sass files in folders and programatically load in sass files with wildcard paths,
+// see SASS Globbing: https://github.com/chriseppstein/sass-globbing
 @import "_variables.sass"
 @import "_mixins.sass"
