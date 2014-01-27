@@ -52,7 +52,21 @@ function basic_form_system_theme_settings_alter(&$form, $form_state) {
     '#suffix'        => '</div>', // #div-basic-breadcrumb-collapse"
   );
 
-  //IE specific settings.
+  // Guard support
+  // TODO: still need to output livereload JS file
+  $form['options_settings']['basic_livereload'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('LiveReload Settings'),
+    '#attributes' => array('id' => 'basic-livereload'),
+  );
+  $form['options_settings']['basic_livereload']['basic_livereload_enabled'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enable LiveReload support for theme'),
+    '#default_value' => theme_get_setting('basic_livereload_enabled'),
+    '#description' => t('Checking this box will automatically add the LiveReload JS to your theme for development. You will not require the browser plugin.'),
+  );
+
+  // IE specific settings.
   $form['options_settings']['basic_ie'] = array(
     '#type' => 'fieldset',
     '#title' => t('Internet Explorer Stylesheets'),

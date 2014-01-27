@@ -4,33 +4,21 @@
  *
  * Compare this with default CSS found in the system module's stylesheet (a copy
  * of which is in drupal5-reference.css, line 510.) */
-/* line 8, ../sass/tabs.sass */
 div.tabs {
-  margin: 0 0 5px 0;
-}
+  margin: 0 0 5px 0; }
 
-/* line 11, ../sass/tabs.sass */
 ul.primary, ul.secondary {
   width: 100%;
-  border-bottom: 1px solid silver;
-}
+  border-bottom: 1px solid silver; }
 
-/* line 15, ../sass/tabs.sass */
 ul.primary {
   padding-left: 1%;
-  margin: 0;
-}
-/* line 18, ../sass/tabs.sass */
-ul.primary a {
-  border-bottom: 0;
-  border: 1px solid silver;
-}
+  margin: 0; }
+  ul.primary a {
+    border-bottom: 0;
+    border: 1px solid silver; }
 
-/* line 22, ../sass/tabs.sass */
 ul.secondary {
-  margin: 0;
-}
-/* line 24, ../sass/tabs.sass */
-ul.secondary a {
-  padding: 8px 1em 5px 1em;
-}
+  margin: 0; }
+  ul.secondary a {
+    padding: 8px 1em 5px 1em; }

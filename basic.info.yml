@@ -23,3 +23,5 @@ regions:
   footer: Footer
 settings:
   shortcut_module_link: '0'
+  basic_livereload: false
+  basic_breadcrumb_trailing: '>'
