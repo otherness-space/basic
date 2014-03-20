@@ -11,8 +11,10 @@
   $display-table: is-display-table($container-display-table, $display);
 
   @if $display-table  {
+    $padding: get-padding-for-table-layout($columns, $container-columns);
     display: table-cell;
-    width: percentage($columns / $container-columns);
+    padding-#{$direction}: $padding;
+    width: flex-grid($columns, $container-columns) + $padding;
   } @else {
     float: #{$opposite-direction};
 
