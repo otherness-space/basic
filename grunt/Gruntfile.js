@@ -4,9 +4,6 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         watch: {
-            options: {
-                livereload: true, // Set this to false if you do not wish to enable live reloading.
-            },
             // This is where we set up all the tasks we'd like grunt to watch for changes.
             scripts: {
                 files: ['js/source/*.js'],
@@ -92,6 +89,22 @@ module.exports = function(grunt) {
                 }]
             }
         },
+        browserSync: {
+            dev: {
+                bsFiles: {
+                    src : [
+                        'css/*.css',
+                        'templates/*.php',
+                        'images/optimized/*.{png,jpg,gif}',
+                        'js/build/*.js'
+                    ]
+                },
+                options: {
+                    watchTask: true,
+                    injectChanges: false
+                }
+            }
+        },
     });
     // This is where we tell Grunt we plan to use this plug-in.
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -99,11 +112,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-spritesmith');
+    grunt.loadNpmTasks('grunt-browser-sync');
     // Now that we've loaded the package.json and the node_modules we set the base path
     // for the actual execution of the tasks
     grunt.file.setBase('../')
     // This is where we tell Grunt what to do when we type "grunt" into the terminal.
     // Note. if you'd like to run and of the tasks individually you can do so by typing 'grunt mytaskname' alternatively
     // you can type 'grunt watch' to automatically track your files for changes.
-    grunt.registerTask('default', ['uglify','imagemin','sprite','watch','sass']);
+    grunt.registerTask('default', ['browserSync','watch']);
 };
