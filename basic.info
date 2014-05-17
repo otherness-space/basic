@@ -1,6 +1,6 @@
 name = Basic
 description = HTML5, SASS, Responsive grid base theme.
-screenshot = images/screenshot.gif
+screenshot = images/optimized/screenshot.gif
 core = "7.x"
 project = "basic"
 engine = phptemplate
