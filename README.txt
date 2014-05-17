@@ -76,6 +76,21 @@ the following :
 
 This is how the page template is buit in basic, and it works in fluid and fixed layout.
 Refers to the notes in layout.css to see how to modify the layout.
+__________________________________________________________________________________________
+
+Using Grunt
+
+In order to use grunt (http://gruntjs.com/) with basic you will need to install a few programs.
+These will only be installed the first time you start a project using Basic with Grunt.
+
+Getting Started
+
+1. Navigate to http://nodejs.org/ and install node.js.
+2. Once you have node installed you will be able to use the npm (node package manager) to install the rest.
+   In order for grunt to work in terminal we are going to need the grunt cli. Open a new terminal window and type "npm install -g grunt-cli" , this will install the cli globally. Restart terminal when that is complete and you will now be able to use grunt commands.
+
+How To Use Grunt
+
 
 __________________________________________________________________________________________
 
