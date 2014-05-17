@@ -33,6 +33,7 @@ stylesheets[all][] = css/normalize.css
 stylesheets[print][] = css/print.css
 
 ; Scripts
+scripts[] = js/build/scripts.js
 scripts[] = js/build/modernizr.js
 
 settings[basic_tabs] = 1
