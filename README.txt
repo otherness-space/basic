@@ -88,8 +88,11 @@ Getting Started
 1. Navigate to http://nodejs.org/ and install node.js.
 2. Once you have node installed you will be able to use the npm (node package manager) to install the rest.
    In order for grunt to work in terminal we are going to need the grunt cli. Open a new terminal window and type "npm install -g grunt-cli" , this will install the cli globally. Restart terminal when that is complete and you will now be able to use grunt commands.
+3. Unzip the grunt.zip file in the root of basic.
 
 How To Use Grunt
+
+1. cd into the grunt folder and type in "grunt" to start the watch task.
 
 
 __________________________________________________________________________________________
