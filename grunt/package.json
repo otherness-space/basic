@@ -9,8 +9,6 @@
     "grunt-contrib-imagemin": "^0.7.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-contrib-sass": "^0.7.3",
-    "grunt-sprite-generator": "0.0.4",
-    "grunt-spritesmith": "^1.26.0",
     "grunt-autoprefixer": "^0.7.3",
     "grunt-browser-sync": "^0.9.1"
   }

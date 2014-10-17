@@ -1,5 +1,7 @@
 
+========================
 Introduction to Basic
+========================
 
 Basic boasts a clean HTML5 structure with extensible CSS classes and ID's for unlimited
 theming possibilities as well as a top-down load order for improved SEO. It is fully
@@ -12,31 +14,34 @@ Basic is perfect if you want a simple, smart, and flexible theme starter.
 
 Less code spam, more ham.
 
-__________________________________________________________________________________________
-
+===============
 Installation
+===============
 
-- Basic utilizes SASS for adaptive grids and layouts and general structure of the site.
-  It's recommended to use SASS for building out your theme. You are required to download
-  the following Ruby Gems and plugins:
+Basic utilizes SASS for adaptive grids and layouts and general structure of the site.
+It's recommended to use SASS for building out your theme. You are required to download
+the following Ruby Gems and plugins:
 
   - SASS (http://sass-lang.com/)
   - Bourbon (http://bourbon.io/)
   - Boubon Neat (http://neat.bourbon.io/)
 
-- Basic is meant to be YOUR theme. To change the name of the theme from 'basic' to another name like 'mytheme',
+Basic is meant to be YOUR theme. To change the name of the theme from 'basic' to another name like 'mytheme',
 follow these steps (to do BEFORE enabling the theme) :
 
-    - rename the theme folder to 'mytheme'
-    - rename basic.info to mytheme.info
-    - Edit basic.info and change the name, description, project (can be deleted), replace all other instances of "basic" ie. [basic_tabs] would become [mytheme_tabs]
-    - In template.php change each iteration of 'basic' to 'mytheme'
-    - In theme-settings.php change each iteration of 'basic' to 'mytheme'
+  - rename the theme folder to 'mytheme'
+  - rename basic.info to mytheme.info
+  - Edit basic.info and change the name, description, project (can be deleted), replace all other instances of "basic" ie. [basic_tabs] would become [mytheme_tabs]
+  - In template.php change each iteration of 'basic' to 'mytheme'
+  - In theme-settings.php change each iteration of 'basic' to 'mytheme'
 
-__________________________________________________________________________________________
+To use SASS and automatically compile it within your theme, please refer to "Using Grunt" in the documentation below. If you would like to use SASS' internal watch functionality, simply CD into your theme directory and run:
 
+"sass --watch sass:css"
+
+===========================
 What are the files for ?
-------------------------
+===========================
 
 - basic.info                => provide informations about the theme, like regions, css, settings, js ...
 - block-system-main.tpl.php => template to edit the content
@@ -48,8 +53,9 @@ What are the files for ?
                                the theme
 - theme-settings            => used to create additional settings in the theme settings page
 
+============
 In /SASS
--------
+============
 
 - default.sass  => define default classes, browser resets and admin styles (compiles to css/default.css)
 - ie8.sass      => used to debug IE8 (compiles to css/ie8.css)
@@ -59,9 +65,10 @@ In /SASS
 - style.sass    => contains some default font styles. that's where you can add custom css (compiles to css/style.css)
 - tabs.sass     => styles for the admin tabs (from ZEN)
 
-__________________________________________________________________________________________
 
+========================
 Changing the Layout
+========================
 
 The layout used in Basic is fairly similar to the Holy Grail method. It has been tested on
 all major browser including IE (5>10), Opera, Firefox, Safari, Chrome ...
@@ -76,9 +83,10 @@ the following :
 
 This is how the page template is buit in basic, and it works in fluid and fixed layout.
 Refers to the notes in layout.css to see how to modify the layout.
-__________________________________________________________________________________________
 
+==============
 Using Grunt
+==============
 
 In order to use grunt (http://gruntjs.com/) with basic you will need to install a few programs.
 These will only be installed the first time you start a project using Basic with Grunt.
@@ -88,7 +96,6 @@ Getting Started
 1. Navigate to http://nodejs.org/ and install node.js.
 2. Once you have node installed you will be able to use the npm (node package manager) to install the rest.
    In order for grunt to work in terminal we are going to need the grunt cli. Open a new terminal window and type "npm install -g grunt-cli" , this will install the cli globally. Restart terminal when that is complete and you will now be able to use grunt commands.
-3. Unzip the grunt.zip file in the root of basic.
 
 How To Use Grunt
 
