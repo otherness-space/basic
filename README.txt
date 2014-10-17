@@ -39,6 +39,12 @@ To use SASS and automatically compile it within your theme, please refer to "Usi
 
 "sass --watch sass:css"
 
+If you would like to add browser sync support to your theme, please include the follow JS snippet before the closing </body> tag in the html.tpl.php file:
+
+<script type='text/javascript'>//<![CDATA[
+;document.write("<script defer src='//HOST:3000/socket.io/socket.io.js'><\/script><script defer src='//HOST:3001/client/browser-sync-client.0.9.1.js'><\/script>".replace(/HOST/g, location.hostname));
+//]]></script>
+
 ===========================
 What are the files for ?
 ===========================
