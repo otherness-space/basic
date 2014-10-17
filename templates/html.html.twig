@@ -4,8 +4,8 @@
 <head>
   {{ head }}
   <title>{{ head_title }}</title>
-  {{ styles }}
-  {{ scripts }}
+  {{ page.styles }}
+  {{ page.scripts }}
   <meta name="viewport" content="width=device-width">
 </head>
 <body class="{{ attributes.class }}"{{ attributes }}>
@@ -13,7 +13,7 @@
     <a href="#main-menu">{{ 'Jump to Navigation'|t }}</a>
   </div>
   {{ page_top }}
-  {{ page }}
+  {{ page.content }}
   {{ page_bottom }}
   {# TODO: We need to dynamically load this in. #}
   <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
