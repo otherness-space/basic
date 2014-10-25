@@ -159,6 +159,9 @@ function basic_preprocess_block(&$vars, $hook) {
     $first_last = "last";
     $vars['classes_array'][] = $first_last;
   }
+
+  // Simple Classes.
+  $vars['classes_array'] = array('block');
 }
 
 /**
@@ -280,7 +283,7 @@ function basic_preprocess_menu_local_task(&$variables) {
     $link['title'] = check_plain($link['title']);
   }
   $link['localized_options']['html'] = TRUE;
-  $link['title'] = '<span class="tab">' . $link['title'] . '</span>';
+  $link['title'] = '<span class="tab ' . drupal_html_class('task-' . $link['title']) . '">' . $link['title'] . '</span>';
 }
 
 /**

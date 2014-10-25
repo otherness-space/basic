@@ -57,7 +57,7 @@
       <section id="content">
   
           <?php if ($breadcrumb || $title|| $messages || $tabs || $action_links): ?>
-            <div id="content-header">
+            <!-- <div id="content-header"> -->
 
               <?php print $breadcrumb; ?>
 
@@ -83,7 +83,7 @@
                 <ul class="action-links"><?php print render($action_links); ?></ul>
               <?php endif; ?>
 
-            </div> <!-- /#content-header -->
+            <!-- </div> /#content-header -->
           <?php endif; ?>
 
           <div id="content-area">
@@ -95,13 +95,13 @@
       </section> <!-- /content-inner /content -->
 
       <?php if ($page['sidebar_first']): ?>
-        <aside id="sidebar-first" class="column sidebar first">
+        <aside id="sidebar-first">
           <?php print render($page['sidebar_first']); ?>
         </aside>
       <?php endif; ?> <!-- /sidebar-first -->
 
       <?php if ($page['sidebar_second']): ?>
-        <aside id="sidebar-second" class="column sidebar second">
+        <aside id="sidebar-second">
           <?php print render($page['sidebar_second']); ?>
         </aside>
       <?php endif; ?> <!-- /sidebar-second -->
