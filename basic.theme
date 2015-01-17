@@ -9,6 +9,7 @@ use Drupal\Core\Template\Attribute;
 
 function basic_preprocess_html(&$vars) {
   // Get current user.
+
   $user = \Drupal::currentUser();
 
   //Add role name classes (to allow css based show for admin/hidden from user)
@@ -46,6 +47,7 @@ function basic_preprocess_html(&$vars) {
     //    $vars['attributes']['class'][] = 'section-node-'. arg(2);
     //  }
     //}
+
   //}
 
   // For normal un-themed edit pages
@@ -81,20 +83,20 @@ function basic_preprocess_page(&$vars, $hook) {
 
   // TODO: see if we can move this to the preprocess_html() page so we can add the class to the <body>.
   // This code is quite bloated too.
-  if (!empty($vars['page']['sidebar_first']) && empty($vars['page']['sidebar_second'])) {
-    $vars['attributes']['class'][] = 'one-sidebar';
-    $vars['attributes']['class'][] = 'sidebar-first';
-  }
-  if (empty($vars['page']['sidebar_first']) && !empty($vars['page']['sidebar_second'])) {
-    $vars['attributes']['class'][] = 'one-sidebar';
-    $vars['attributes']['class'][] = 'sidebar-second';
-  }
-  if (!empty($vars['page']['sidebar_first']) && !empty($vars['page']['sidebar_second'])) {
-    $vars['attributes']['class'][] = 'two-sidebars';
-  }
-  if (empty($vars['page']['sidebar_first']) && empty($vars['page']['sidebar_second'])) {
-    $vars['attributes']['class'][] = 'no-sidebars';
-  }
+  // if (!empty($vars['page']['sidebar_first']) && empty($vars['page']['sidebar_second'])) {
+  //   $vars['attributes']['class'][] = 'one-sidebar';
+  //   $vars['attributes']['class'][] = 'sidebar-first';
+  // }
+  // if (empty($vars['page']['sidebar_first']) && !empty($vars['page']['sidebar_second'])) {
+  //   $vars['attributes']['class'][] = 'one-sidebar';
+  //   $vars['attributes']['class'][] = 'sidebar-second';
+  // }
+  // if (!empty($vars['page']['sidebar_first']) && !empty($vars['page']['sidebar_second'])) {
+  //   $vars['attributes']['class'][] = 'two-sidebars';
+  // }
+  // if (empty($vars['page']['sidebar_first']) && empty($vars['page']['sidebar_second'])) {
+  //   $vars['attributes']['class'][] = 'no-sidebars';
+  // }
   //$vars['attributes']['classes'][] = $classes;
 
   // Add first/last classes to node listings about to be rendered.
@@ -220,6 +222,7 @@ function basic_menu_link(array $variables) {
 /**
  * Override or insert variables into theme_menu_local_task().
  */
+
 //function basic_preprocess_menu_local_task(&$variables) {
   //$link =& $variables['element']['#link'];
 
