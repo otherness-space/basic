@@ -16,8 +16,7 @@
   </header>
 
   <div class="content">
-    {% hide(content.links) %}
-      {{ content }}
+    {{ content|without('links') }}
     {% if signature %}
       <footer class="signature">{{ signature }}</footer>
     {% endif %}
