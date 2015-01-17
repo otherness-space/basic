@@ -9,44 +9,44 @@ use Drupal\Core\Template\Attribute;
 
 function basic_preprocess_html(&$vars) {
   // Get current user.
-  $user = \Drupal::currentUser();
-
-  //Add role name classes (to allow css based show for admin/hidden from user)
-  $roles = $user->getRoles();
-  foreach ($roles as $role){
-    $vars['attributes']['class'][] = drupal_html_class('role-' . $role);
-  }
-
-  // If we're on the front page.
-  if (!$vars['is_front']) {
-    // Add unique classes for each page and website section
-    $path = ''; //TODO: drupal_get_path_alias($_GET['q']);
-    list($section, ) = explode('/', $path, 2);
-    $vars['attributes']['class'][] = 'with-subnav';
-    $vars['attributes']['class'][] = drupal_html_class('page-'. $path);
-    $vars['attributes']['class'][] = drupal_html_class('section-'. $section);
-
-    if (arg(0) == 'node') {
-      if (arg(1) == 'add') {
-        if ($section == 'node') {
-          // Remove 'section-node'
-          // TODO: Check what this does.
-          array_pop( $vars['attributes']['class'] );
-        }
-        // Add 'section-node-add'
-        $vars['attributes']['class'][] = 'section-node-add';
-      }
-      elseif (is_numeric(arg(1)) && (arg(2) == 'edit' || arg(2) == 'delete')) {
-        if ($section == 'node') {
-          // Remove 'section-node'
-          // TODO: Check what this does.
-          array_pop( $vars['attributes']['class']);
-        }
-        // Add 'section-node-edit' or 'section-node-delete'
-        $vars['attributes']['class'][] = 'section-node-'. arg(2);
-      }
-    }
-  }
+  //$user = \Drupal::currentUser();
+//
+  ////Add role name classes (to allow css based show for admin/hidden from user)
+  //$roles = $user->getRoles();
+  //foreach ($roles as $role){
+  //  $vars['attributes']['class'][] = drupal_html_class('role-' . $role);
+  //}
+//
+  //// If we're on the front page.
+  //if (!$vars['is_front']) {
+  //  // Add unique classes for each page and website section
+  //  $path = ''; //TODO: drupal_get_path_alias($_GET['q']);
+  //  list($section, ) = explode('/', $path, 2);
+  //  $vars['attributes']['class'][] = 'with-subnav';
+  //  $vars['attributes']['class'][] = drupal_html_class('page-'. $path);
+  //  $vars['attributes']['class'][] = drupal_html_class('section-'. $section);
+//
+  //  if (arg(0) == 'node') {
+  //    if (arg(1) == 'add') {
+  //      if ($section == 'node') {
+  //        // Remove 'section-node'
+  //        // TODO: Check what this does.
+  //        array_pop( $vars['attributes']['class'] );
+  //      }
+  //      // Add 'section-node-add'
+  //      $vars['attributes']['class'][] = 'section-node-add';
+  //    }
+  //    elseif (is_numeric(arg(1)) && (arg(2) == 'edit' || arg(2) == 'delete')) {
+  //      if ($section == 'node') {
+  //        // Remove 'section-node'
+  //        // TODO: Check what this does.
+  //        array_pop( $vars['attributes']['class']);
+  //      }
+  //      // Add 'section-node-edit' or 'section-node-delete'
+  //      $vars['attributes']['class'][] = 'section-node-'. arg(2);
+  //    }
+  //  }
+  //}
 
   ////for normal un-themed edit pages
   //if ((arg(0) == 'node') && (arg(2) == 'edit')) {
@@ -81,20 +81,20 @@ function basic_preprocess_page(&$vars, $hook) {
 
   // TODO: see if we can move this to the preprocess_html() page so we can add the class to the <body>.
   // This code is quite bloated too.
-  if (!empty($vars['page']['sidebar_first']) && empty($vars['page']['sidebar_second'])) {
-    $vars['attributes']['class'][] = 'one-sidebar';
-    $vars['attributes']['class'][] = 'sidebar-first';
-  }
-  if (empty($vars['page']['sidebar_first']) && !empty($vars['page']['sidebar_second'])) {
-    $vars['attributes']['class'][] = 'one-sidebar';
-    $vars['attributes']['class'][] = 'sidebar-second';
-  }
-  if (!empty($vars['page']['sidebar_first']) && !empty($vars['page']['sidebar_second'])) {
-    $vars['attributes']['class'][] = 'two-sidebars';
-  }
-  if (empty($vars['page']['sidebar_first']) && empty($vars['page']['sidebar_second'])) {
-    $vars['attributes']['class'][] = 'no-sidebars';
-  }
+  // if (!empty($vars['page']['sidebar_first']) && empty($vars['page']['sidebar_second'])) {
+  //   $vars['attributes']['class'][] = 'one-sidebar';
+  //   $vars['attributes']['class'][] = 'sidebar-first';
+  // }
+  // if (empty($vars['page']['sidebar_first']) && !empty($vars['page']['sidebar_second'])) {
+  //   $vars['attributes']['class'][] = 'one-sidebar';
+  //   $vars['attributes']['class'][] = 'sidebar-second';
+  // }
+  // if (!empty($vars['page']['sidebar_first']) && !empty($vars['page']['sidebar_second'])) {
+  //   $vars['attributes']['class'][] = 'two-sidebars';
+  // }
+  // if (empty($vars['page']['sidebar_first']) && empty($vars['page']['sidebar_second'])) {
+  //   $vars['attributes']['class'][] = 'no-sidebars';
+  // }
   //$vars['attributes']['classes'][] = $classes;
 
 //
@@ -203,34 +203,34 @@ function basic_preprocess_node(&$vars) {
  *
  */
 function basic_menu_link(array $variables) {
-  $element = $variables['element'];
-  $sub_menu = '';
-
-  if ($element['#below']) {
-    $sub_menu = drupal_render($element['#below']);
-  }
-  //krumo($element);
-  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
-  // Adding a class depending on the TITLE of the link (not constant)
-  $element['#attributes']['class'][] = drupal_html_class('menu-' . $element['#title']);
-  // Adding a class depending on the ID of the link (constant)
-  $element['#attributes']['class'][] = 'mid-' . $element['#original_link']['mlid'];
-  return '<li' . new Attribute($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+  // $element = $variables['element'];
+  // $sub_menu = '';
+// 
+  // if ($element['#below']) {
+  //   $sub_menu = drupal_render($element['#below']);
+  // }
+  // //krumo($element);
+  // $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  // // Adding a class depending on the TITLE of the link (not constant)
+  // $element['#attributes']['class'][] = drupal_html_class('menu-' . $element['#title']);
+  // // Adding a class depending on the ID of the link (constant)
+  // $element['#attributes']['class'][] = 'mid-' . $element['#original_link']['mlid'];
+  // return '<li' . new Attribute($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
 
 /**
  * Override or insert variables into theme_menu_local_task().
  */
 function basic_preprocess_menu_local_task(&$variables) {
-  $link =& $variables['element']['#link'];
-
-  // If the link does not contain HTML already, check_plain() it now.
-  // After we set 'html'=TRUE the link will not be sanitized by l().
-  if (empty($link['localized_options']['html'])) {
-    $link['title'] = check_plain($link['title']);
-  }
-  $link['localized_options']['html'] = TRUE;
-  $link['title'] = '<span class="tab">' . $link['title'] . '</span>';
+  // $link =& $variables['element']['#link'];
+// 
+  // // If the link does not contain HTML already, check_plain() it now.
+  // // After we set 'html'=TRUE the link will not be sanitized by l().
+  // if (empty($link['localized_options']['html'])) {
+  //   $link['title'] = check_plain($link['title']);
+  // }
+  // $link['localized_options']['html'] = TRUE;
+  // $link['title'] = '<span class="tab">' . $link['title'] . '</span>';
 }
 
 /**
