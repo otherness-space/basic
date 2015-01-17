@@ -1,0 +1,11 @@
+base:
+  version: VERSION
+  css:
+    theme:
+      css/default.css: {}
+      css/layout.css: {}
+      css/style.css: {}
+      css/tabs.css: {}
+      css/print.css: { media: print }
+  js:
+    js/modernizr.js: {}
