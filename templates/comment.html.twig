@@ -16,13 +16,13 @@
   </header>
 
   <div class="content">
-    {{ content|without('links') }}
+
+    {{ content }}
+
     {% if signature %}
       <footer class="signature">{{ signature }}</footer>
     {% endif %}
+
   </div>
 
-  {% if content.links %}
-    <div class="links">{{ content.links }}</div>
-  {% endif %}
 </article><!-- /comment -->
