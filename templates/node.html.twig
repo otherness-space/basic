@@ -23,7 +23,7 @@
 
   <div class="content">
 
-    {{ content }}
+    {{ content|without('comment', 'links') }}
 
   </div> <!-- /content -->
 
@@ -39,5 +39,5 @@
     </div> <!-- /links -->
   {% endif %}
 
-  {{ content.comments }}
+  {{ content.comment }}
 </article> <!-- /article #node -->
