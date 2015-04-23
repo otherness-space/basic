@@ -22,7 +22,6 @@
   {% endif %}
 
   <div class="content">
-
     {{ content|without('comment', 'links') }}
 
   </div> <!-- /content -->
@@ -30,6 +29,7 @@
   {% if content.links.terms %}
     <div class="terms">
       {{ content.links.terms }}
+      }
     </div> <!-- /terms -->
   {% endif %}
 
