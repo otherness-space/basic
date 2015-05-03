@@ -1,4 +1,4 @@
-<article id="node-{{ node.id }}" class="{{ attributes.class }}">
+<article{{ attributes.addAttribute('id', 'node-' ~ node.id) }}>
 
   {% if title_prefix or title_suffix or display_submitted or unpublished or page is empty and label %}
     <header>

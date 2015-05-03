@@ -7,44 +7,44 @@
 
 use Drupal\Core\Template\Attribute;
 
-function basic_preprocess_html(&$vars) {
+function basic_preprocess_html(&$variables) {
   // Get current user.
 
   $user = \Drupal::currentUser();
 
-  //Add role name classes (to allow css based show for admin/hidden from user)
+  // Add role name classes (to allow css based show for admin/hidden from user).
   $roles = $user->getRoles();
   foreach ($roles as $role){
-    $vars['attributes']['class'][] = 'role-' . $role;
+    $variables['attributes']['class'][] = 'role-' . $role;
   }
 
   // If we're on the front page.
-  //if (!$vars['is_front']) {
+  //if (!$variables['is_front']) {
     // Add unique classes for each page and website section
     //$path = ''; //TODO: drupal_get_path_alias($_GET['q']);
     //list($section, ) = explode('/', $path, 2);
-    //$vars['attributes']['class'][] = 'with-subnav';
-    //$vars['attributes']['class'][] = 'page-'. $path;
-    //$vars['attributes']['class'][] = 'section-'. $section;
+    //$variables['attributes']['class'][] = 'with-subnav';
+    //$variables['attributes']['class'][] = 'page-'. $path;
+    //$variables['attributes']['class'][] = 'section-'. $section;
 
     //if (arg(0) == 'node') {
     //  if (arg(1) == 'add') {
     //    if ($section == 'node') {
     //      // Remove 'section-node'
     //      // TODO: Check what this does.
-    //      array_pop( $vars['attributes']['class'] );
+    //      array_pop( $variables['attributes']['class'] );
     //    }
     //    // Add 'section-node-add'
-    //    $vars['attributes']['class'][] = 'section-node-add';
+    //    $variables['attributes']['class'][] = 'section-node-add';
     //  }
     //  elseif (is_numeric(arg(1)) && (arg(2) == 'edit' || arg(2) == 'delete')) {
     //    if ($section == 'node') {
     //      // Remove 'section-node'
     //      // TODO: Check what this does.
-    //      array_pop( $vars['attributes']['class']);
+    //      array_pop( $variables['attributes']['class']);
     //    }
         // Add 'section-node-edit' or 'section-node-delete'
-    //    $vars['attributes']['class'][] = 'section-node-'. arg(2);
+    //    $variables['attributes']['class'][] = 'section-node-'. arg(2);
     //  }
     //}
 
@@ -52,7 +52,7 @@ function basic_preprocess_html(&$vars) {
 
   // For normal un-themed edit pages
   //if ((arg(0) == 'node') && (arg(2) == 'edit')) {
-    //$vars['template_files'][] =  'page';
+    //$variables['template_files'][] =  'page';
   //}
 
   // Add IE classes.
@@ -72,68 +72,71 @@ function basic_preprocess_html(&$vars) {
     //die();
 }
 
-function basic_preprocess_page(&$vars, $hook) {
-  // Adding classes whether #navigation is here or not
-  if (!empty($vars['main_menu']) or !empty($vars['sub_menu'])) {
-    $vars['attributes']['classes'][] = 'with-navigation';
+/**
+ * Implements hook_preprocess_page().
+ */
+function basic_preprocess_page(&$variables, $hook) {
+  // Adding classes whether #navigation is here or not.
+  if (!empty($variables['main_menu']) or !empty($variables['sub_menu'])) {
+    $variables['attributes']['classes'][] = 'with-navigation';
   }
-  if (!empty($vars['secondary_menu'])) {
-    $vars['attributes']['classes'][] = 'with-subnav';
+  if (!empty($variables['secondary_menu'])) {
+    $variables['attributes']['classes'][] = 'with-subnav';
   }
 
   // TODO: see if we can move this to the preprocess_html() page so we can add the class to the <body>.
   // This code is quite bloated too.
-  // if (!empty($vars['page']['sidebar_first']) && empty($vars['page']['sidebar_second'])) {
-  //   $vars['attributes']['class'][] = 'one-sidebar';
-  //   $vars['attributes']['class'][] = 'sidebar-first';
+  // if (!empty($variables['page']['sidebar_first']) && empty($variables['page']['sidebar_second'])) {
+  //   $variables['attributes']['class'][] = 'one-sidebar';
+  //   $variables['attributes']['class'][] = 'sidebar-first';
   // }
-  // if (empty($vars['page']['sidebar_first']) && !empty($vars['page']['sidebar_second'])) {
-  //   $vars['attributes']['class'][] = 'one-sidebar';
-  //   $vars['attributes']['class'][] = 'sidebar-second';
+  // if (empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
+  //   $variables['attributes']['class'][] = 'one-sidebar';
+  //   $variables['attributes']['class'][] = 'sidebar-second';
   // }
-  // if (!empty($vars['page']['sidebar_first']) && !empty($vars['page']['sidebar_second'])) {
-  //   $vars['attributes']['class'][] = 'two-sidebars';
+  // if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
+  //   $variables['attributes']['class'][] = 'two-sidebars';
   // }
-  // if (empty($vars['page']['sidebar_first']) && empty($vars['page']['sidebar_second'])) {
-  //   $vars['attributes']['class'][] = 'no-sidebars';
+  // if (empty($variables['page']['sidebar_first']) && empty($variables['page']['sidebar_second'])) {
+  //   $variables['attributes']['class'][] = 'no-sidebars';
   // }
-  //$vars['attributes']['classes'][] = $classes;
+  //$variables['attributes']['classes'][] = $classes;
 
   // Add first/last classes to node listings about to be rendered.
-//  if (isset($vars['page']['content']['system_main']['nodes'])) {
+//  if (isset($variables['page']['content']['system_main']['nodes'])) {
 //    // All nids about to be loaded (without the #sorted attribute).
-//    $nids = element_children($vars['page']['content']['system_main']['nodes']);
+//    $nids = element_children($variables['page']['content']['system_main']['nodes']);
 //    // Only add first/last classes if there is more than 1 node being rendered.
 //    if (count($nids) > 1) {
 //      $first_nid = reset($nids);
 //      $last_nid = end($nids);
-//      $first_node = $vars['page']['content']['system_main']['nodes'][$first_nid]['#node'];
+//      $first_node = $variables['page']['content']['system_main']['nodes'][$first_nid]['#node'];
 //      $first_node->classes_array = array('first');
-//      $last_node = $vars['page']['content']['system_main']['nodes'][$last_nid]['#node'];
+//      $last_node = $variables['page']['content']['system_main']['nodes'][$last_nid]['#node'];
 //      $last_node->classes_array = array('last');
 //    }
 //  }
 //
 //  // Allow page override template suggestions based on node content type.
-//  if (isset($vars['node']->type) && isset($vars['node']->nid)) {
-//    $vars['theme_hook_suggestions'][] = 'page__' . $vars['node']->type;
-//    $vars['theme_hook_suggestions'][] = "page__node__" . $vars['node']->nid;
+//  if (isset($variables['node']->type) && isset($variables['node']->nid)) {
+//    $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']->type;
+//    $variables['theme_hook_suggestions'][] = "page__node__" . $variables['node']->nid;
 //  }
 }
 
-//function basic_preprocess_node(&$vars) {
-  //krumo($vars);
+//function basic_preprocess_node(&$variables) {
+  //krumo($variables);
   //die();
   //// Add a striping class.
-  //$vars['attributes']['class'][] = 'node-' . $vars['zebra'];
+  //$variables['attributes']['class'][] = 'node-' . $variables['zebra'];
 
   //// Add $unpublished variable.
-  //$vars['unpublished'] = (!$vars['status']) ? TRUE : FALSE;
+  //$variables['unpublished'] = (!$variables['status']) ? TRUE : FALSE;
 
   //// Merge first/last class (from basic_preprocess_page) into classes array of current node object.
-  //$node = $vars['node'];
+  //$node = $variables['node'];
   //if (!empty($node->classes_array)) {
-  //  $vars['attributes']['class'][] = array_merge($vars['attributes']['class'], $node->classes_array);
+  //  $variables['attributes']['class'][] = array_merge($variables['attributes']['class'], $node->classes_array);
   //}
 //}
 
@@ -191,38 +194,8 @@ function basic_preprocess_page(&$vars, $hook) {
 //}
 
 /**
- * Generate the HTML output for a menu link and submenu.
- *
- * @param $variables
- *  An associative array containing:
- *   - element: Structured array data for a menu link.
- *
- * @return
- *  A themed HTML string.
- *
- * @ingroup themeable
- *
- */
-function basic_menu_link(array $variables) {
-  $element = $variables['element'];
-  $sub_menu = '';
-
-  if ($element['#below']) {
-    $sub_menu = drupal_render($element['#below']);
-  }
-  //krumo($element);
-  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
-  // Adding a class depending on the TITLE of the link (not constant)
-  $element['#attributes']['class'][] = 'menu-' . $element['#title'];
-  // Adding a class depending on the ID of the link (constant)
-  $element['#attributes']['class'][] = 'mid-' . $element['#original_link']['mlid'];
-  return '<li' . new Attribute($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
-}
-
-/**
  * Override or insert variables into theme_menu_local_task().
  */
-
 //function basic_preprocess_menu_local_task(&$variables) {
   //$link =& $variables['element']['#link'];
 

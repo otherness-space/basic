@@ -1,13 +1,19 @@
 <?php
 
-// Form override fo theme settings
-function basic_form_system_theme_settings_alter(&$form, $form_state) {
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_system_theme_settings_alter().
+ *
+ * Form override fo theme settings.
+ */
+function basic_form_system_theme_settings_alter(array &$form, FormStateInterface $form_state) {
 
   $form['options_settings'] = array(
     '#type' => 'fieldset',
     '#title' => t('Theme Specific Settings'),
     '#collapsible' => FALSE,
-    '#collapsed' => FALSE
+    '#collapsed' => FALSE,
   );
   $form['options_settings']['basic_breadcrumb'] = array(
     '#type'          => 'fieldset',
@@ -19,10 +25,10 @@ function basic_form_system_theme_settings_alter(&$form, $form_state) {
     '#title'         => t('Display breadcrumb'),
     '#default_value' => theme_get_setting('basic_breadcrumb'),
     '#options'       => array(
-                          'yes'   => t('Yes'),
-                          'admin' => t('Only in admin section'),
-                          'no'    => t('No'),
-                        ),
+      'yes'   => t('Yes'),
+      'admin' => t('Only in admin section'),
+      'no'    => t('No'),
+    ),
   );
   $form['options_settings']['basic_breadcrumb']['basic_breadcrumb_separator'] = array(
     '#type'          => 'textfield',
@@ -31,7 +37,8 @@ function basic_form_system_theme_settings_alter(&$form, $form_state) {
     '#default_value' => theme_get_setting('basic_breadcrumb_separator'),
     '#size'          => 5,
     '#maxlength'     => 10,
-    '#prefix'        => '<div id="div-basic-breadcrumb-collapse">', // jquery hook to show/hide optional widgets
+     // jQuery hook to show/hide optional widgets.
+    '#prefix'        => '<div id="div-basic-breadcrumb-collapse">',
   );
   $form['options_settings']['basic_breadcrumb']['basic_breadcrumb_home'] = array(
     '#type'          => 'checkbox',
@@ -102,5 +109,4 @@ function basic_form_system_theme_settings_alter(&$form, $form_state) {
     '#description'   =>t('During theme development, it can be very useful to continuously <a href="!link">rebuild the theme registry</a>. WARNING: this is a huge performance penalty and must be turned off on production websites.', array('!link' => 'http://drupal.org/node/173880#theme-registry')),
     '#default_value' => theme_get_setting('clear_registry'),
   );
-
 }
