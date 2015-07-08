@@ -20,7 +20,7 @@ module.exports = function(grunt) {
                 }
             },
             css: {
-                files: ['sass/*.sass', 'sass/**/*.sass'],
+                files: ['sass/*.sass', 'sass/**/*.sass', 'sass/*.scss', 'sass/**/*.scss'],
                 tasks: ['sass'],
                 options: {
                     spawn: false,
