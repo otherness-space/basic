@@ -10,6 +10,6 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-contrib-sass": "^0.7.3",
     "grunt-autoprefixer": "^0.7.3",
-    "grunt-browser-sync": "^0.9.1"
+    "grunt-browser-sync": "^2.1.3"
   }
 }
