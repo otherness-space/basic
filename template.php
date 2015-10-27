@@ -142,26 +142,26 @@ function basic_preprocess_node(&$vars) {
   }
 }
 
-function basic_preprocess_block(&$vars, $hook) {
-  // Add a striping class.
-  $vars['classes_array'][] = 'block-' . $vars['block_zebra'];
+/**
+ * Implements hook_preprocess_block().
+ */
+function basic_preprocess_block(&$variables) {
+  // Add a zebra striping class.
+  $variables['classes_array'][] = 'block-' . $variables['block_zebra'];
 
-  // Add first/last block classes
-  $first_last = "";
+  // Add first/last block classes.
   // If block id (count) is 1, it's first in region.
-  if ($vars['block_id'] == '1') {
-    $first_last = "first";
-    $vars['classes_array'][] = $first_last;
+  if ($variables['block_id'] == '1') {
+    $variables['classes_array'][] = 'first';
   }
-  // Count amount of blocks about to be rendered in that region.
-  $block_count = count(block_list($vars['elements']['#block']->region));
-  if ($vars['block_id'] == $block_count) {
-    $first_last = "last";
-    $vars['classes_array'][] = $first_last;
+  // Count amount of blocks about to be rendered in the same region.
+  $block_count = count(block_list($variables['elements']['#block']->region));
+  if ($variables['block_id'] == $block_count) {
+    $variables['classes_array'][] = 'last';
   }
 
-  // Simple Classes.
-  $vars['classes_array'] = array('block');
+  // Add simple classes.
+  $variables['classes_array'][] = 'block';
 }
 
 /**
