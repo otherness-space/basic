@@ -49,51 +49,46 @@
     <div class="container">
       <section id="content">
 
-        {% if breadcrumb or title or messages or tabs or action_links %}
-          <div id="content-header">
+        <div id="content-header">
 
-            {{ breadcrumb }}
+          {{ breadcrumb }}
 
-            {% if page.highlighted %}
-              <div id="highlighted">{{ page.highlighted }}</div>
-            {% endif %}
+          {% if page.highlighted|render %}
+            <div id="highlighted">{{ page.highlighted }}</div>
+          {% endif %}
 
-            {{ title_prefix }}
+          {{ title_prefix }}
 
-            {% if title %}
-              <h1 class="title">{{ title }}</h1>
-            {% endif %}
+          {% if title %}
+            <h1 class="title">{{ title }}</h1>
+          {% endif %}
 
-            {{ title_suffix }}
-            {{ messages }}
-            {{ page.help }}
+          {{ title_suffix }}
+          {{ page.help }}
 
-            {% if tabs %}
-              <div class="tabs">{{ tabs }}</div>
-            {% endif %}
+          {% if tabs %}
+            <div class="tabs">{{ tabs }}</div>
+          {% endif %}
 
-            {% if action_links %}
-              <ul class="action-links">{{ action_links }}</ul>
-            {% endif %}
+          {% if action_links %}
+            <ul class="action-links">{{ action_links }}</ul>
+          {% endif %}
 
-          </div> <!-- /#content-header -->
-        {% endif %}
+        </div> <!-- /#content-header -->
 
         <div id="content-area">
           {{ page.content }}
         </div>
 
-        {{ feed_icons }}
-
       </section> <!-- /content-inner /content -->
 
-      {% if page.sidebar_first %}
+      {% if page.sidebar_first|render %}
         <aside id="sidebar-first" class="column sidebar first">
           {{ page.sidebar_first }}
         </aside>
       {% endif %} <!-- /sidebar-first -->
 
-      {% if page.sidebar_second %}
+      {% if page.sidebar_second|render %}
         <aside id="sidebar-second" class="column sidebar second">
           {{ page.sidebar_second }}
         </aside>
@@ -103,7 +98,7 @@
 
   <!-- ______________________ FOOTER _______________________ -->
 
-  {% if page.footer %}
+  {% if page.footer|render %}
     <footer id="footer">
       <div class="container">
         {{ page.footer }}
