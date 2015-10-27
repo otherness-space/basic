@@ -169,7 +169,7 @@ function basic_preprocess_page(&$variables, $hook) {
 //        $item = menu_get_item();
 //        if (!empty($item['tab_parent'])) {
 //          // If we are on a non-default tab, use the tab's title.
-//          $title = check_plain($item['title']);
+//          $title = $item['title'];
 //        }
 //        else {
 //          $title = drupal_get_title();
@@ -198,13 +198,6 @@ function basic_preprocess_page(&$variables, $hook) {
  */
 //function basic_preprocess_menu_local_task(&$variables) {
   //$link =& $variables['element']['#link'];
-
-  // If the link does not contain HTML already, check_plain() it now.
-  // After we set 'html'=TRUE the link will not be sanitized by l().
-  //if (empty($link['localized_options']['html'])) {
-  //  $link['title'] = check_plain($link['title']);
-  //}
-  //$link['localized_options']['html'] = TRUE;
   //$link['title'] = '<span class="tab">' . $link['title'] . '</span>';
 //}
 
