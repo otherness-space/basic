@@ -10,34 +10,27 @@
 // wrapping it with an "anonymous closure". See:
 // - https://drupal.org/node/1446420
 // - http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth
-(function ($, Drupal, window, document, undefined) {
+(function ($, Drupal, window, document) {
 
+  // To understand behaviors, see https://drupal.org/node/756722#behaviors
+  Drupal.behaviors.basic = {
+    attach: function (context, settings) {
+      $(window).load(function () {
+        // Execute code once the window is fully loaded.
+      });
 
-// To understand behaviors, see https://drupal.org/node/756722#behaviors
-Drupal.behaviors.basic = {
-  attach: function(context, settings) {
+      $(window).resize(function () {
+        // Execute code when the window is resized.
+      });
 
-    $(window).ready(function() {
-      // Execute code once the window is ready.
-    });
+      $(window).scroll(function () {
+        // Execute code when the window scrolls.
+      });
 
-    $(window).load(function() {
-      // Execute code once the window is fully loaded.
-    });
+      $(document).ready(function () {
+        // Execute code once the DOM is ready.
+      });
+    }
+  };
 
-    $(window).resize(function() {
-      // Execute code when the window is resized.
-    });
-
-    $(window).scroll(function () {
-      // Execute code when the window scrolls.
-    });
-
-    $(document).ready(function() {
-      // Execute code once the DOM is ready.
-    });
-  }
-};
-
-
-})(jQuery, Drupal, this, this.document);
+} (jQuery, Drupal, this, this.document));
