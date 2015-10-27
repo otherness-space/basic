@@ -1,30 +1,38 @@
-// directional-property mixins are shorthands
-// for writing properties like the following
-//
-// @include margin(null 0 10px);
-// ------
-// margin-right: 0;
-// margin-bottom: 10px;
-// margin-left: 0;
-//
-// - or -
-//
-// @include border-style(dotted null);
-// ------
-// border-top-style: dotted;
-// border-bottom-style: dotted;
-//
-// ------
-//
-// Note: You can also use false instead of null
+@charset "UTF-8";
+
+/// Directional-property mixins are shorthands for writing properties like the following
+///
+/// @ignore You can also use `false` instead of `null`.
+///
+/// @param {List} $vals
+///   List of directional values
+///
+/// @example scss - Usage
+///   .element {
+///     @include border-style(dotted null);
+///     @include margin(null 0 10px);
+///   }
+///
+/// @example css - CSS Output
+///   .element {
+///     border-bottom-style: dotted;
+///     border-top-style: dotted;
+///     margin-bottom: 10px;
+///     margin-left: 0;
+///     margin-right: 0;
+///   }
+///
+/// @require {function} contains-falsy
+///
+/// @return {List}
 
 @function collapse-directionals($vals) {
   $output: null;
 
-  $a: nth( $vals, 1 );
-  $b: if( length($vals) < 2, $a, nth($vals, 2));
-  $c: if( length($vals) < 3, $a, nth($vals, 3));
-  $d: if( length($vals) < 2, $a, nth($vals, if( length($vals) < 4, 2, 4) ));
+  $a: nth($vals, 1);
+  $b: if(length($vals) < 2, $a, nth($vals, 2));
+  $c: if(length($vals) < 3, $a, nth($vals, 3));
+  $d: if(length($vals) < 2, $a, nth($vals, if(length($vals) < 4, 2, 4)));
 
   @if $a == 0 { $a: 0; }
   @if $b == 0 { $b: 0; }
@@ -39,15 +47,19 @@
   @return $output;
 }
 
-@function contains-falsy($list) {
-  @each $item in $list {
-    @if not $item {
-      @return true;
-    }
-  }
-
-  @return false;
-}
+/// Output directional properties, for instance `margin`.
+///
+/// @access private
+///
+/// @param {String} $pre
+///   Prefix to use
+/// @param {String} $suf
+///   Suffix to use
+/// @param {List} $vals
+///   List of values
+///
+/// @require {function} collapse-directionals
+/// @require {function} contains-falsy
 
 @mixin directional-property($pre, $suf, $vals) {
   // Property Names
@@ -64,49 +76,21 @@
 
     @if length($vals) == 1 {
       @if nth($vals, 1) { #{$right}: nth($vals, 1); }
-    }
-    @else {
+    } @else {
       @if nth($vals, 2) { #{$right}: nth($vals, 2); }
     }
 
-    // prop: top/bottom right/left
     @if length($vals) == 2 {
       @if nth($vals, 1) { #{$bottom}: nth($vals, 1); }
       @if nth($vals, 2) { #{$left}:   nth($vals, 2); }
-    }
-    // prop: top right/left bottom
-    @else if length($vals) == 3 {
+    } @else if length($vals) == 3 {
       @if nth($vals, 3) { #{$bottom}: nth($vals, 3); }
       @if nth($vals, 2) { #{$left}:   nth($vals, 2); }
-    }
-    // prop: top right bottom left
-    @else if length($vals) == 4 {
+    } @else if length($vals) == 4 {
       @if nth($vals, 3) { #{$bottom}: nth($vals, 3); }
       @if nth($vals, 4) { #{$left}:   nth($vals, 4); }
     }
-  }
-  // prop: top/right/bottom/left
-  @else {
+  } @else {
     #{$all}: $vals;
   }
-}
-
-@mixin margin($vals...) {
-  @include directional-property(margin, false, $vals...);
-}
-
-@mixin padding($vals...) {
-  @include directional-property(padding, false, $vals...);
-}
-
-@mixin border-style($vals...) {
-  @include directional-property(border, style, $vals...);
-}
-
-@mixin border-color($vals...) {
-  @include directional-property(border, color, $vals...);
-}
-
-@mixin border-width($vals...) {
-  @include directional-property(border, width, $vals...);
 }
