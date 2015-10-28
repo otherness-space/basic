@@ -3,10 +3,10 @@ source 'https://rubygems.org'
 group :development do
 
   # Sass, Compass and extensions.
-  gem 'sass'           # Sass.
-  gem 'sass-globbing'  # Import Sass files based on globbing pattern.
-  gem 'bourbon'        # Import Bourbon SASS framework.
-  gem 'neat'           # Import Bourbon Neat grid framework
+  gem 'sass'          # Sass.
+  gem 'sass-globbing' # Import Sass files based on globbing pattern.
+  gem 'bourbon'       # Import Bourbon SASS framework.
+  gem 'neat'          # Import Bourbon Neat grid framework
 
   # Dependency to prevent polling. Setup for multiple OS environments.
   # Optionally remove the lines not specific to your OS.

@@ -43,7 +43,7 @@ To use SASS and automatically compile it within your theme, please refer to
 "Using Grunt" in the documentation below. If you would like to use SASS'
 internal watch functionality, simply CD into your theme directory and run:
 
-"sass --watch sass:css"
+"sass -r sass-globbing --watch sass:css"
 
 If you would like to add browser sync support to your theme, please include the
 follow JS snippet before the closing </body> tag in the html.tpl.php file:
@@ -82,7 +82,6 @@ In /sass Folder
 - style.sass    => contains some default font styles. that's where you can add
                    custom css (compiles to css/style.css)
 - tabs.sass     => styles for the admin tabs (from ZEN)
-
 
 ===================
 Changing the Layout

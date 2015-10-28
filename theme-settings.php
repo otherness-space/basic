@@ -5,7 +5,7 @@ use Drupal\Core\Form\FormStateInterface;
 /**
  * Implements hook_form_system_theme_settings_alter().
  *
- * Form override fo theme settings.
+ * Form override for theme settings.
  */
 function basic_form_system_theme_settings_alter(array &$form, FormStateInterface $form_state) {
 
@@ -56,7 +56,7 @@ function basic_form_system_theme_settings_alter(array &$form, FormStateInterface
     '#title'         => t('Append the content title to the end of the breadcrumb'),
     '#default_value' => theme_get_setting('basic_breadcrumb_title'),
     '#description'   => t('Useful when the breadcrumb is not placed just before the title.'),
-    '#suffix'        => '</div>', // #div-basic-breadcrumb-collapse"
+    '#suffix'        => '</div>', // #div-basic-breadcrumb-collapse
   );
 
   // Guard support
@@ -94,19 +94,19 @@ function basic_form_system_theme_settings_alter(array &$form, FormStateInterface
       ),
     ),
   );
-  //$form['options_settings']['basic_ie']['basic_ie_enabled_css']['basic_ie_enabled_versions'] = array(
-  //  '#type' => 'checkboxes',
-  //  '#options' => array(
-  //    'ie8' => t('Internet Explorer 8'),
-  //    'ie9' => t('Internet Explorer 9'),
-  //    'ie10' => t('Internet Explorer 10'),
-  //  ),
-  //  '#default_value' => theme_get_setting('basic_ie_enabled_versions'),
-  //);
+  $form['options_settings']['basic_ie']['basic_ie_enabled_css']['basic_ie_enabled_versions'] = array(
+    '#type' => 'checkboxes',
+    '#options' => array(
+      'ie8' => t('Internet Explorer 8'),
+      'ie9' => t('Internet Explorer 9'),
+      'ie10' => t('Internet Explorer 10'),
+    ),
+    '#default_value' => theme_get_setting('basic_ie_enabled_versions'),
+  );
   $form['options_settings']['clear_registry'] = array(
     '#type' => 'checkbox',
-    '#title' =>  t('Rebuild theme registry on every page.'),
-    '#description'   =>t('During theme development, it can be very useful to continuously <a href="!link">rebuild the theme registry</a>. WARNING: this is a huge performance penalty and must be turned off on production websites.', array('!link' => 'http://drupal.org/node/173880#theme-registry')),
+    '#title' => t('Rebuild theme registry on every page.'),
+    '#description' => t('During theme development, it can be very useful to continuously <a href="!link">rebuild the theme registry</a>. WARNING: this is a huge performance penalty and must be turned off on production websites.', array('!link' => 'http://drupal.org/node/173880#theme-registry')),
     '#default_value' => theme_get_setting('clear_registry'),
   );
 }
