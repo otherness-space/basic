@@ -19,7 +19,7 @@ function basic_preprocess_html(&$variables) {
   }
 
   // If we're on the front page.
-  //if (!$variables['is_front']) {
+  if (!$variables['is_front']) {
     // Add unique classes for each page and website section
     //$path = ''; //TODO: drupal_get_path_alias($_GET['q']);
     //list($section, ) = explode('/', $path, 2);
@@ -47,8 +47,7 @@ function basic_preprocess_html(&$variables) {
     //    $variables['attributes']['class'][] = 'section-node-'. arg(2);
     //  }
     //}
-
-  //}
+  }
 
   // For normal un-themed edit pages
   //if ((arg(0) == 'node') && (arg(2) == 'edit')) {
@@ -56,20 +55,15 @@ function basic_preprocess_html(&$variables) {
   //}
 
   // Add IE classes.
-  //if (theme_get_setting('basic_ie_enabled')) {
-  //  $basic_ie_enabled_versions = theme_get_setting('basic_ie_enabled_versions');
-  //  if (in_array('ie8', $basic_ie_enabled_versions, TRUE)) {
-  //    drupal_add_css(path_to_theme() . '/css/ie8.css', array('group' => CSS_THEME, 'browsers' => ray('IE' =>// 'IE 8', '!IE' => FALSE), 'preprocess' => FALSE));
-  //    drupal_add_js(path_to_theme() . '/js/selectivizr-min.js');
-  //  }
-  //  if (in_array('ie9', $basic_ie_enabled_versions, TRUE)) {
-  //    drupal_add_css(path_to_theme() . '/css/ie9.css', array('group' => CSS_THEME, 'browsers' => ray('IE' =>// 'IE 9', '!IE' => FALSE), 'preprocess' => FALSE));
-  //  }
-  //  if (in_array('ie10', $basic_ie_enabled_versions, TRUE)) {
-  //    drupal_add_css(path_to_theme() . '/css/ie10.css', array('group' => CSS_THEME, 'browsers' => ray('IE' =//> 'IE 10', '!IE' => FALSE), 'preprocess' => FALSE));
-  //  }
-  //}
-    //die();
+  if (theme_get_setting('basic_ie_enabled')) {
+    $basic_ie_enabled_versions = array_flip(theme_get_setting('basic_ie_enabled_versions'));
+    if (!empty($basic_ie_enabled_versions['ie8'])) {
+      $variables['#attached']['library'][] = 'basic/ie8';
+    }
+    if (!empty($basic_ie_enabled_versions['ie9'])) {
+      $variables['#attached']['library'][] = 'basic/ie9';
+    }
+  }
 }
 
 /**

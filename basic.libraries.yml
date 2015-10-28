@@ -9,3 +9,17 @@ base:
       css/print.css: { media: print }
   js:
     js/modernizr.js: {}
+
+ie8:
+  version: VERSION
+  css:
+    theme:
+      css/ie8.css: { browsers: { IE: 'lte IE 8', '!IE': false }, preprocess: false }
+  js:
+    js/selectivizr-min.js: { weight: -22, browsers: { IE: 'lte IE 8', '!IE': false }, minified: true, preprocess: false }
+
+ie9:
+  version: VERSION
+  css:
+    theme:
+      css/ie9.css: { browsers: { IE: 'IE 9', '!IE': false }, preprocess: false }

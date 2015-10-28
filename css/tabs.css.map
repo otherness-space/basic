@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": ";;;;;;AAOA,QAAQ;EACN,MAAM,EAAE,SAAS;;;AAGjB,QAAE;EACA,KAAK,EAAE,IAAI;EACX,aAAa,EAAE,gBAAgB;;AAEjC,QAAE;EACA,OAAO,EAAE,YAAY;;AAEvB,OAAC;EACC,MAAM,EAAE,gBAAgB;EACxB,aAAa,EAAE,CAAC;EAChB,aAAa,EAAE,WAAW",
-"sources": ["../sass/tabs.sass"],
-"names": [],
-"file": "tabs.css"
-}
