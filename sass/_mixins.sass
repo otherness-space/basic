@@ -17,9 +17,6 @@
 
 // Rounded corners mixin.
 @mixin border-radius($top: 10px, $right: $top, $bottom: $top, $left: $right)
-  border-radius: $top $right $bottom $left
+  -webkit-border-radius: $top $right $bottom $left
   -moz-border-radius: $top $right $bottom $left
-  -webkit-border-top-left-radius: $top
-  -webkit-border-top-right-radius: $right
-  -webkit-border-bottom-right-radius: $bottom
-  -webkit-border-bottom-left-radius: $left
+  border-radius: $top $right $bottom $left
