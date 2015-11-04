@@ -33,12 +33,26 @@
 <!DOCTYPE html>
 <html{{ html_attributes }}>
   <head>
-    <head-placeholder token="{{ placeholder_token|raw }}">
+    <head-placeholder token="{{ placeholder_token }}">
     <title>{{ head_title|safe_join(' | ') }}</title>
-    <css-placeholder token="{{ placeholder_token|raw }}">
-    <js-placeholder token="{{ placeholder_token|raw }}">
+    <css-placeholder token="{{ placeholder_token }}">
+    <js-placeholder token="{{ placeholder_token }}">
   </head>
-  <body{{ attributes }}>
+  {% set classes = [] %}
+  {% for role in user.roles %}
+    {% set classes = classes|merge(['role-' ~ role|clean_class]) %}
+  {% endfor %}
+
+  {% set sidebar_first = page.sidebar_first|render %}
+  {% set sidebar_second = page.sidebar_second|render %}
+  <body{{ attributes.addClass(classes,
+    not is_front ? 'with-subnav',
+    sidebar_first ? 'sidebar-first',
+    sidebar_second ? 'sidebar-second',
+    (sidebar_first and not sidebar_second) or (sidebar_second and not sidebar_first) ? 'one-sidebar',
+    (sidebar_first and sidebar_second) ? 'two-sidebar',
+    (not sidebar_first and not sidebar_second) ? 'no-sidebar'
+  ) }}>
     <div id="skip">
       <a href="#main-menu" class="visually-hidden focusable skip-link">
         {{ 'Skip to main navigation'|t }}
@@ -47,7 +61,7 @@
     {{ page_top }}
     {{ page }}
     {{ page_bottom }}
-    <js-bottom-placeholder token="{{ placeholder_token|raw }}">
+    <js-bottom-placeholder token="{{ placeholder_token }}">
     {# TODO: We need to dynamically load this in.
     <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
     #}

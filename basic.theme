@@ -1,58 +1,19 @@
 <?php
 
-/**
- * Here we override the default HTML output of drupal.
- * refer to http://drupal.org/node/550722
- */
-
 use Drupal\Core\Template\Attribute;
 
 function basic_preprocess_html(&$variables) {
   // Get current user.
-
-  $user = \Drupal::currentUser();
-
-  // Add role name classes (to allow css based show for admin/hidden from user).
-  $roles = $user->getRoles();
-  foreach ($roles as $role){
-    $variables['attributes']['class'][] = 'role-' . $role;
-  }
+  $variables['user'] = \Drupal::currentUser();
 
   // If we're on the front page.
   if (!$variables['is_front']) {
     // Add unique classes for each page and website section
-    //$path = ''; //TODO: drupal_get_path_alias($_GET['q']);
-    //list($section, ) = explode('/', $path, 2);
-    //$variables['attributes']['class'][] = 'with-subnav';
-    //$variables['attributes']['class'][] = 'page-'. $path;
-    //$variables['attributes']['class'][] = 'section-'. $section;
-
-    //if (arg(0) == 'node') {
-    //  if (arg(1) == 'add') {
-    //    if ($section == 'node') {
-    //      // Remove 'section-node'
-    //      // TODO: Check what this does.
-    //      array_pop( $variables['attributes']['class'] );
-    //    }
-    //    // Add 'section-node-add'
-    //    $variables['attributes']['class'][] = 'section-node-add';
-    //  }
-    //  elseif (is_numeric(arg(1)) && (arg(2) == 'edit' || arg(2) == 'delete')) {
-    //    if ($section == 'node') {
-    //      // Remove 'section-node'
-    //      // TODO: Check what this does.
-    //      array_pop( $variables['attributes']['class']);
-    //    }
-        // Add 'section-node-edit' or 'section-node-delete'
-    //    $variables['attributes']['class'][] = 'section-node-'. arg(2);
-    //  }
-    //}
+    // $path = ''; //TODO: drupal_get_path_alias($_GET['q']);
+    // list($section, ) = explode('/', $path, 2);
+    // $variables['attributes']['class'][] = 'page-' . $path;
+    // $variables['attributes']['class'][] = 'section-' . $section;
   }
-
-  // For normal un-themed edit pages
-  //if ((arg(0) == 'node') && (arg(2) == 'edit')) {
-    //$variables['template_files'][] =  'page';
-  //}
 
   // Add IE classes.
   if (theme_get_setting('basic_ie_enabled')) {
@@ -67,151 +28,39 @@ function basic_preprocess_html(&$variables) {
 }
 
 /**
- * Implements hook_preprocess_page().
+ * Implements template_preprocess_breadcrumb().
  */
-function basic_preprocess_page(&$variables, $hook) {
-  // Adding classes whether #navigation is here or not.
-  if (!empty($variables['main_menu']) or !empty($variables['sub_menu'])) {
-    $variables['attributes']['classes'][] = 'with-navigation';
-  }
-  if (!empty($variables['secondary_menu'])) {
-    $variables['attributes']['classes'][] = 'with-subnav';
+function basic_preprocess_breadcrumb(&$variables) {
+  $breadcrumb = &$variables['breadcrumb'];
+  // Determine if we are to display the breadcrumb.
+  $variables['show_breadcrumb'] = theme_get_setting('basic_breadcrumb');
+  $variables['admin_route'] = \Drupal::service('router.admin_context')->isAdminRoute();
+
+  // Optionally get rid of the homepage link.
+  $show_breadcrumb_home = theme_get_setting('basic_breadcrumb_home');
+  if (!$show_breadcrumb_home) {
+    array_shift($breadcrumb);
   }
 
-  // TODO: see if we can move this to the preprocess_html() page so we can add the class to the <body>.
-  // This code is quite bloated too.
-  // if (!empty($variables['page']['sidebar_first']) && empty($variables['page']['sidebar_second'])) {
-  //   $variables['attributes']['class'][] = 'one-sidebar';
-  //   $variables['attributes']['class'][] = 'sidebar-first';
+  $variables['separator'] = theme_get_setting('basic_breadcrumb_separator');
+  // $trailing_separator = $title = '';
+  // if (theme_get_setting('basic_breadcrumb_title')) {
+  //   $item = menu_get_item();
+  //   if (!empty($item['tab_parent'])) {
+  //     // If we are on a non-default tab, use the tab's title.
+  //     $title = $item['title'];
+  //   }
+  //   else {
+  //     $title = drupal_get_title();
+  //   }
+  //   if ($title) {
+  //     $trailing_separator = $breadcrumb_separator;
+  //   }
   // }
-  // if (empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
-  //   $variables['attributes']['class'][] = 'one-sidebar';
-  //   $variables['attributes']['class'][] = 'sidebar-second';
+  // elseif (theme_get_setting('basic_breadcrumb_trailing')) {
+  //   $trailing_separator = $breadcrumb_separator;
   // }
-  // if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
-  //   $variables['attributes']['class'][] = 'two-sidebars';
-  // }
-  // if (empty($variables['page']['sidebar_first']) && empty($variables['page']['sidebar_second'])) {
-  //   $variables['attributes']['class'][] = 'no-sidebars';
-  // }
-  //$variables['attributes']['classes'][] = $classes;
-
-  // Add first/last classes to node listings about to be rendered.
-//  if (isset($variables['page']['content']['system_main']['nodes'])) {
-//    // All nids about to be loaded (without the #sorted attribute).
-//    $nids = element_children($variables['page']['content']['system_main']['nodes']);
-//    // Only add first/last classes if there is more than 1 node being rendered.
-//    if (count($nids) > 1) {
-//      $first_nid = reset($nids);
-//      $last_nid = end($nids);
-//      $first_node = $variables['page']['content']['system_main']['nodes'][$first_nid]['#node'];
-//      $first_node->classes_array = array('first');
-//      $last_node = $variables['page']['content']['system_main']['nodes'][$last_nid]['#node'];
-//      $last_node->classes_array = array('last');
-//    }
-//  }
-//
-//  // Allow page override template suggestions based on node content type.
-//  if (isset($variables['node']->type) && isset($variables['node']->nid)) {
-//    $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']->type;
-//    $variables['theme_hook_suggestions'][] = "page__node__" . $variables['node']->nid;
-//  }
+  //
+  // return $heading . '<div class="breadcrumb">' . implode($breadcrumb_separator, $breadcrumb) . $trailing_separator . $title . '</div>';
 }
 
-//function basic_preprocess_node(&$variables) {
-  //krumo($variables);
-  //die();
-  //// Add a striping class.
-  //$variables['attributes']['class'][] = 'node-' . $variables['zebra'];
-
-  //// Add $unpublished variable.
-  //$variables['unpublished'] = (!$variables['status']) ? TRUE : FALSE;
-
-  //// Merge first/last class (from basic_preprocess_page) into classes array of current node object.
-  //$node = $variables['node'];
-  //if (!empty($node->classes_array)) {
-  //  $variables['attributes']['class'][] = array_merge($variables['attributes']['class'], $node->classes_array);
-  //}
-//}
-
-
-/**
- * Return a themed breadcrumb trail.
- *
- * @param $breadcrumb
- *   An array containing the breadcrumb links.
- * @return
- *   A string containing the breadcrumb output.
- */
-//function basic_breadcrumb($variables) {
-//  $breadcrumb = $variables['breadcrumb'];
-//  // Determine if we are to display the breadcrumb.
-//  $show_breadcrumb = theme_get_setting('basic_breadcrumb');
-//  if ($show_breadcrumb == 'yes' || $show_breadcrumb == 'admin' && arg(0) == 'admin') {
-//
-//    // Optionally get rid of the homepage link.
-//    $show_breadcrumb_home = theme_get_setting('basic_breadcrumb_home');
-//    if (!$show_breadcrumb_home) {
-//      array_shift($breadcrumb);
-//    }
-//
-//    // Return the breadcrumb with separators.
-//    if (!empty($breadcrumb)) {
-//      $breadcrumb_separator = theme_get_setting('basic_breadcrumb_separator');
-//      $trailing_separator = $title = '';
-//      if (theme_get_setting('basic_breadcrumb_title')) {
-//        $item = menu_get_item();
-//        if (!empty($item['tab_parent'])) {
-//          // If we are on a non-default tab, use the tab's title.
-//          $title = $item['title'];
-//        }
-//        else {
-//          $title = drupal_get_title();
-//        }
-//        if ($title) {
-//          $trailing_separator = $breadcrumb_separator;
-//        }
-//      }
-//      elseif (theme_get_setting('basic_breadcrumb_trailing')) {
-//        $trailing_separator = $breadcrumb_separator;
-//      }
-//
-//      // Provide a navigational heading to give context for breadcrumb links to
-//      // screen-reader users. Make the heading invisible with .element-invisible.
-//      $heading = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
-//
-//      return $heading . '<div class="breadcrumb">' . implode($breadcrumb_separator, $breadcrumb) . $trailing_separator . $title . '</div>';
-//    }
-//  }
-//  // Otherwise, return an empty string.
-//  return '';
-//}
-
-/**
- * Override or insert variables into theme_menu_local_task().
- */
-//function basic_preprocess_menu_local_task(&$variables) {
-  //$link =& $variables['element']['#link'];
-  //$link['title'] = '<span class="tab">' . $link['title'] . '</span>';
-//}
-
-/**
- * Duplicate of theme_menu_local_tasks() but adds clearfix to tabs.
- */
-//function basic_menu_local_tasks(&$variables) {
-//  $output = '';
-//
-//  if (!empty($variables['primary'])) {
-//    $variables['primary']['#prefix'] = '<h2 class="element-invisible">' . t('Primary tabs') . '</h2>';
-//    $variables['primary']['#prefix'] .= '<ul class="tabs primary clearfix">';
-//    $variables['primary']['#suffix'] = '</ul>';
-//    $output .= drupal_render($variables['primary']);
-//  }
-//  if (!empty($variables['secondary'])) {
-//    $variables['secondary']['#prefix'] = '<h2 class="element-invisible">' . t('Secondary tabs') . '</h2>';
-//    $variables['secondary']['#prefix'] .= '<ul class="tabs secondary clearfix">';
-//    $variables['secondary']['#suffix'] = '</ul>';
-//    $output .= drupal_render($variables['secondary']);
-//  }
-//  return $output;
-//}

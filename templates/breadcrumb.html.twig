@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Theme override for a breadcrumb trail.
+ *
+ * Available variables:
+ * - breadcrumb: Breadcrumb trail items.
+ */
+#}
+{% if breadcrumb and (show_breadcrumb == 'yes' or (show_breadcrumb == 'admin' and admin_route)) %}
+  <nav class="breadcrumb" role="navigation" aria-labelledby="system-breadcrumb">
+    <h2 id="system-breadcrumb" class="visually-hidden">{{ 'You are here'|t }}</h2>
+
+    {% for item in breadcrumb %}
+      {% if not loop.last %}{
+        {{ separator }}
+      {% endif %}
+      {% if item.url %}
+        <a href="{{ item.url }}">{{ item.text }}</a>
+      {% else %}
+        {{ item.text }}
+      {% endif %}
+
+    {% endfor %}
+
+  </nav>
+{% endif %}

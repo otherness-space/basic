@@ -18,8 +18,8 @@
         </div>
       {% endif %}
 
-      {% if unpublished %}
-        <p class="unpublished">{{ 'Unpublished'|t }}</p>
+      {% if not node.published %}
+        <p class="node--unpublished">{{ 'Unpublished'|t }}</p>
       {% endif %}
     </header>
   {% endif %}
