@@ -15,61 +15,18 @@ function basic_form_system_theme_settings_alter(array &$form, FormStateInterface
     '#collapsible' => FALSE,
     '#collapsed' => FALSE,
   );
-  $form['options_settings']['basic_breadcrumb'] = array(
-    '#type'          => 'fieldset',
-    '#title'         => t('Breadcrumb settings'),
-    '#attributes'    => array('id' => 'basic-breadcrumb'),
-  );
-  $form['options_settings']['basic_breadcrumb']['basic_breadcrumb'] = array(
-    '#type'          => 'select',
-    '#title'         => t('Display breadcrumb'),
-    '#default_value' => theme_get_setting('basic_breadcrumb'),
-    '#options'       => array(
-      'yes'   => t('Yes'),
-      'admin' => t('Only in admin section'),
-      'no'    => t('No'),
-    ),
-  );
-  $form['options_settings']['basic_breadcrumb']['basic_breadcrumb_separator'] = array(
-    '#type'          => 'textfield',
-    '#title'         => t('Breadcrumb separator'),
-    '#description'   => t('Text only. Don’t forget to include spaces.'),
-    '#default_value' => theme_get_setting('basic_breadcrumb_separator'),
-    '#size'          => 5,
-    '#maxlength'     => 10,
-     // jQuery hook to show/hide optional widgets.
-    '#prefix'        => '<div id="div-basic-breadcrumb-collapse">',
-  );
-  $form['options_settings']['basic_breadcrumb']['basic_breadcrumb_home'] = array(
-    '#type'          => 'checkbox',
-    '#title'         => t('Show home page link in breadcrumb'),
-    '#default_value' => theme_get_setting('basic_breadcrumb_home'),
-  );
-  $form['options_settings']['basic_breadcrumb']['basic_breadcrumb_trailing'] = array(
-    '#type'          => 'checkbox',
-    '#title'         => t('Append a separator to the end of the breadcrumb'),
-    '#default_value' => theme_get_setting('basic_breadcrumb_trailing'),
-    '#description'   => t('Useful when the breadcrumb is placed just before the title.'),
-  );
-  $form['options_settings']['basic_breadcrumb']['basic_breadcrumb_title'] = array(
-    '#type'          => 'checkbox',
-    '#title'         => t('Append the content title to the end of the breadcrumb'),
-    '#default_value' => theme_get_setting('basic_breadcrumb_title'),
-    '#description'   => t('Useful when the breadcrumb is not placed just before the title.'),
-    '#suffix'        => '</div>', // #div-basic-breadcrumb-collapse
-  );
 
   // Guard support
   // TODO: still need to output livereload JS file
-  $form['options_settings']['basic_livereload'] = array(
+  $form['options_settings']['basic_browser_sync'] = array(
     '#type' => 'fieldset',
     '#title' => t('LiveReload Settings'),
     '#attributes' => array('id' => 'basic-livereload'),
   );
-  $form['options_settings']['basic_livereload']['basic_livereload_enabled'] = array(
+  $form['options_settings']['basic_browser_sync']['basic_browser_sync_enabled'] = array(
     '#type' => 'checkbox',
     '#title' => t('Enable LiveReload support for theme'),
-    '#default_value' => theme_get_setting('basic_livereload_enabled'),
+    '#default_value' => theme_get_setting('basic_browser_sync_enabled'),
     '#description' => t('Checking this box will automatically add the LiveReload JS to your theme for development. You will not require the browser plugin.'),
   );
 

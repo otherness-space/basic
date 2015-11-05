@@ -74,14 +74,12 @@ In /sass Folder
 
 - default.sass  => define default classes, browser resets and admin styles
                    (compiles to css/default.css)
-- ie8.sass      => used to debug IE8 (compiles to css/ie8.css)
-- ie9.sass      => used to debug IE9 (compiles to css/ie9.css)
 - layout.sass   => define the layout of the theme (compiles to css/layout.css)
 - print.sass    => define the way the theme look like when printed
                    (compiles to css/print.css)
 - style.sass    => contains some default font styles. that's where you can add
                    custom css (compiles to css/style.css)
-- tabs.sass     => styles for the admin tabs (from ZEN)
+- tabs.sass     => styles for the admin tabs
 
 ===================
 Changing the Layout

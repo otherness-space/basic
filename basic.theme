@@ -1,7 +1,8 @@
 <?php
 
-use Drupal\Core\Template\Attribute;
-
+/**
+ * Prepares variables for the html.html.twig template.
+ */
 function basic_preprocess_html(&$variables) {
   // Get current user.
   $variables['user'] = \Drupal::currentUser();
@@ -17,50 +18,6 @@ function basic_preprocess_html(&$variables) {
 
   // Add IE classes.
   if (theme_get_setting('basic_ie_enabled')) {
-    $basic_ie_enabled_versions = array_flip(theme_get_setting('basic_ie_enabled_versions'));
-    if (!empty($basic_ie_enabled_versions['ie8'])) {
-      $variables['#attached']['library'][] = 'basic/ie8';
-    }
-    if (!empty($basic_ie_enabled_versions['ie9'])) {
-      $variables['#attached']['library'][] = 'basic/ie9';
-    }
+    $variables['ie_enabled_versions'] = array_flip(theme_get_setting('basic_ie_enabled_versions'));
   }
 }
-
-/**
- * Implements template_preprocess_breadcrumb().
- */
-function basic_preprocess_breadcrumb(&$variables) {
-  $breadcrumb = &$variables['breadcrumb'];
-  // Determine if we are to display the breadcrumb.
-  $variables['show_breadcrumb'] = theme_get_setting('basic_breadcrumb');
-  $variables['admin_route'] = \Drupal::service('router.admin_context')->isAdminRoute();
-
-  // Optionally get rid of the homepage link.
-  $show_breadcrumb_home = theme_get_setting('basic_breadcrumb_home');
-  if (!$show_breadcrumb_home) {
-    array_shift($breadcrumb);
-  }
-
-  $variables['separator'] = theme_get_setting('basic_breadcrumb_separator');
-  // $trailing_separator = $title = '';
-  // if (theme_get_setting('basic_breadcrumb_title')) {
-  //   $item = menu_get_item();
-  //   if (!empty($item['tab_parent'])) {
-  //     // If we are on a non-default tab, use the tab's title.
-  //     $title = $item['title'];
-  //   }
-  //   else {
-  //     $title = drupal_get_title();
-  //   }
-  //   if ($title) {
-  //     $trailing_separator = $breadcrumb_separator;
-  //   }
-  // }
-  // elseif (theme_get_setting('basic_breadcrumb_trailing')) {
-  //   $trailing_separator = $breadcrumb_separator;
-  // }
-  //
-  // return $heading . '<div class="breadcrumb">' . implode($breadcrumb_separator, $breadcrumb) . $trailing_separator . $title . '</div>';
-}
-

@@ -7,21 +7,19 @@
  * - breadcrumb: Breadcrumb trail items.
  */
 #}
-{% if breadcrumb and (show_breadcrumb == 'yes' or (show_breadcrumb == 'admin' and admin_route)) %}
+{% if breadcrumb %}
   <nav class="breadcrumb" role="navigation" aria-labelledby="system-breadcrumb">
-    <h2 id="system-breadcrumb" class="visually-hidden">{{ 'You are here'|t }}</h2>
-
+    <h2 id="system-breadcrumb" class="visually-hidden">{{ 'Breadcrumb'|t }}</h2>
+    <ol>
     {% for item in breadcrumb %}
-      {% if not loop.last %}{
-        {{ separator }}
-      {% endif %}
-      {% if item.url %}
-        <a href="{{ item.url }}">{{ item.text }}</a>
-      {% else %}
-        {{ item.text }}
-      {% endif %}
-
+      <li>
+        {% if item.url %}
+          <a href="{{ item.url }}">{{ item.text }}</a>
+        {% else %}
+          {{ item.text }}
+        {% endif %}
+      </li>
     {% endfor %}
-
+    </ol>
   </nav>
 {% endif %}
