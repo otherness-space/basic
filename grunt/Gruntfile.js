@@ -20,7 +20,7 @@ module.exports = function(grunt) {
                 }
             },
             css: {
-                files: ['sass/*.sass', 'sass/**/*.sass'],
+                files: ['sass/*.sass', 'sass/**/*.sass', 'sass/*.scss', 'sass/**/*.scss'],
                 tasks: ['sass'],
                 options: {
                     spawn: false,
@@ -59,7 +59,6 @@ module.exports = function(grunt) {
             dist: {
                 options: {
                     style: 'expanded', // This controls the compiled css and can be changed to nested, compact or compressed
-                    sourcemap: 'true',
                     require: 'sass-globbing',
                 },
                 files: [{
