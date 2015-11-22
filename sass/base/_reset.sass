@@ -1,0 +1,56 @@
+// About Reset Styles
+// --------------------
+// Used to establish general rules, browser reset, or admin user interface styles.
+
+*
+  margin: 0
+  padding: 0
+
+
+// Clear Floats Without Structural Markup
+// ---------------------------------------
+// https://css-tricks.com/snippets/css/clear-fix/ */
+
+.clearfix
+  &:after
+    content: ""
+    display: table
+    clear: both
+
+// Clear classes
+.clearleft, .clearl, .cleft
+  clear: left
+
+.clearright, .clearr, .cright
+  clear: right
+
+.clear, .clearboth, .clearall
+  clear: both
+
+// Float classes
+.floatleft, .fleft, .floatl
+  float: left
+  margin: 0 10px 5px 0
+
+.floatright, .fright, .floatr
+  float: right
+  margin: 0 0 5px 10px
+
+
+// "Skip to Main Content" link
+// ---------------------------
+// This link useful for both visually impaired people and those with mobility impairments
+// who cannot use a mouse. http://www.webaim.org/techniques/css/invisiblecontent/
+
+#skip a
+  &:link, &:hover, &:visited
+    position: absolute
+    left: -10000px
+    top: auto
+    width: 1px
+    height: 1px
+    overflow: hidden
+  &:active, &:focus
+    position: static
+    width: auto
+    height: auto

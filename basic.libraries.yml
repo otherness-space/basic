@@ -1,11 +1,15 @@
 base:
   version: VERSION
   css:
-    theme:
-      css/default.css: {}
+    base:
+      css/normalize.css: {}
+      css/base.css: {}
+    layout:
       css/layout.css: {}
-      css/style.css: {}
-      css/tabs.css: {}
+    components:
+      css/components.css: {}
+    theme:
+      css/theme.css: {}
       css/print.css: { media: print }
   js:
     js/modernizr.js: {}
