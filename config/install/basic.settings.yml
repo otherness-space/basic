@@ -1,0 +1,6 @@
+browser_sync_enabled: false
+clear_registry: false
+ie_enabled: false
+ie_enabled_versions:
+  ie8: false
+  ie9: false

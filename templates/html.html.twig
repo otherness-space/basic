@@ -50,7 +50,7 @@
   </head>
   {% set classes = [] %}
   {% for role in user.roles %}
-    {% set classes = classes|merge(['role-' ~ role|clean_class]) %}
+    {% set classes = classes|merge(['role--' ~ role|clean_class]) %}
   {% endfor %}
 
   {% set sidebar_first = page.sidebar_first|render %}
