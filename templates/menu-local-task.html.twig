@@ -16,4 +16,4 @@
  * @ingroup themeable
  */
 #}
-<li{{ attributes.addClass(is_active ? 'is-active') }}><span class="tab">{{ link }}</span></li>
+<li{{ attributes.addClass('tabs__tab').addClass(is_active ? 'tabs__tab--active') }}>{{ link }}</li>

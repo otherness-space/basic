@@ -6,7 +6,7 @@ version: VERSION
 core: 8.x
 
 libraries:
-  - basic/base
+  - basic/global
 
 regions:
   header: Header

@@ -23,6 +23,9 @@
  * @see template_preprocess_status_messages()
  */
 #}
+
+{{ attach_library('basic/messages') }}
+
 {% for type, messages in message_list %}
   {%
     set classes = [
