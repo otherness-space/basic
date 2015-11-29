@@ -54,9 +54,24 @@ body:before {
 }
 
 /* Navigation styles */
+.breadcrumb li {
+  list-style-type: none;
+  display: inline-block;
+}
+
+/* Navigation styles */
 #navigation li {
   list-style-type: none;
   display: inline-block;
+}
+
+/* Site Title */
+.site-name {
+  font-size: 2.2em;
+  line-height: 1.3em;
+  font-weight: 300;
+  padding: 0 0 0.5em;
+  margin: 0;
 }
 
 /*# sourceMappingURL=components.css.map */

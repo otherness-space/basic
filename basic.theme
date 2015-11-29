@@ -4,9 +4,6 @@
  * Prepares variables for the html.html.twig template.
  */
 function basic_preprocess_html(&$variables) {
-  // Get current user.
-  $variables['user'] = \Drupal::currentUser();
-
   // If we're on the front page.
   if (!$variables['is_front']) {
     // Add unique classes for each page and website section
@@ -17,7 +14,7 @@ function basic_preprocess_html(&$variables) {
   }
 
   // Add IE classes.
-  if (theme_get_setting('basic_ie_enabled')) {
-    $variables['ie_enabled_versions'] = array_flip(theme_get_setting('basic_ie_enabled_versions'));
+  if (theme_get_setting('ie_enabled')) {
+    $variables['ie_enabled_versions'] = array_flip(theme_get_setting('ie_enabled_versions'));
   }
 }
