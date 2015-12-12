@@ -2,9 +2,19 @@ basic.settings:
   type: theme_settings
   label: 'Basic theme settings'
   mapping:
-    browser_sync_enabled:
-      type: boolean
+    browser_sync:
+      type: mapping
       label: 'Enable Browser Sync'
+      mapping:
+        enabled:
+          type: boolean
+          label: 'Enable Browser Sync'
+        host:
+          type: string
+          label: 'Host'
+        port:
+          type: integer
+          label: 'Port'
     clear_registry:
       type: boolean
       label: 'Enable clear Registry'

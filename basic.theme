@@ -1,20 +1,37 @@
 <?php
 
 /**
+ * @file
+ * Theme and preprocess functions for Basic.
+ */
+
+use Drupal\Core\Cache\CacheableMetadata;
+
+/**
  * Prepares variables for the html.html.twig template.
  */
 function basic_preprocess_html(&$variables) {
   // If we're on the front page.
   if (!$variables['is_front']) {
-    // Add unique classes for each page and website section
-    // $path = ''; //TODO: drupal_get_path_alias($_GET['q']);
-    // list($section, ) = explode('/', $path, 2);
-    // $variables['attributes']['class'][] = 'page-' . $path;
-    // $variables['attributes']['class'][] = 'section-' . $section;
+    // Add unique classes for each page and website section.
+    $path = \Drupal::service('path.current')->getPath();
+    $alias = \Drupal::service('path.alias_manager')->getAliasByPath($path);
+    $alias = trim($alias, '/');
+    if (!empty($alias)) {
+      $variables['attributes']['class'][] = 'page-' . $alias;
+      list($section, ) = explode('/', $alias, 2);
+      if (!empty($section)) {
+        $variables['attributes']['class'][] = 'section-' . $section;
+      }
+    }
   }
 
-  // Add IE classes.
-  if (theme_get_setting('ie_enabled')) {
-    $variables['ie_enabled_versions'] = array_flip(theme_get_setting('ie_enabled_versions'));
-  }
+  // Add cachability metadata.
+  $theme_name = \Drupal::theme()->getActiveTheme()->getName();
+  $theme_settings = \Drupal::config($theme_name . '.settings');
+  CacheableMetadata::createFromRenderArray($variables)
+    ->addCacheableDependency($theme_settings)
+    ->applyTo($variables);
+  // Union all theme setting variables to the html.html.twig template.
+  $variables += $theme_settings->getOriginal();
 }

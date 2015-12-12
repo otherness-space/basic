@@ -77,7 +77,8 @@ module.exports = function(grunt) {
             'css/*.css',
             'templates/*.twig',
             'images/optimized/*.{png,jpg,gif}',
-            'js/build/*.js'
+            'js/build/*.js',
+            '*.theme'
           ]
         },
         options: {
