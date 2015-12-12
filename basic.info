@@ -44,4 +44,3 @@ settings[clear_registry] = 0
 settings[basic_ie_enabled] = 0
 settings[basic_ie_enabled_versions][ie8] = 0
 settings[basic_ie_enabled_versions][ie9] = 0
-settings[basic_ie_enabled_versions][ie10] = 0
