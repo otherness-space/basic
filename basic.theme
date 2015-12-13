@@ -17,6 +17,7 @@ function basic_preprocess_html(&$variables) {
     $path = \Drupal::service('path.current')->getPath();
     $alias = \Drupal::service('path.alias_manager')->getAliasByPath($path);
     $alias = trim($alias, '/');
+    $alias = str_replace('/', '-' , $alias);
     if (!empty($alias)) {
       $variables['attributes']['class'][] = 'page-' . $alias;
       list($section, ) = explode('/', $alias, 2);
