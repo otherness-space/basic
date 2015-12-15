@@ -2,10 +2,17 @@
 
 /**
  * @file
- * Theme and preprocess functions for Basic.
+ * Preprocess functions for Basic.
  */
 
 use Drupal\Core\Cache\CacheableMetadata;
+
+// Auto-rebuild the theme registry during theme development.
+// @todo Doesn't seem to notice the template name changes.
+if (theme_get_setting('clear_registry')) {
+  \Drupal::service('theme_handler')->rebuildThemeData();
+  \Drupal::service('theme.registry')->reset();
+}
 
 /**
  * Prepares variables for the html.html.twig template.
