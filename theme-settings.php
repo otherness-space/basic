@@ -83,7 +83,6 @@ function basic_form_system_theme_settings_alter(&$form, $form_state) {
     '#options' => array(
       'ie8' => t('Internet Explorer 8'),
       'ie9' => t('Internet Explorer 9'),
-      'ie10' => t('Internet Explorer 10'),
     ),
     '#default_value' => theme_get_setting('basic_ie_enabled_versions'),
   );
