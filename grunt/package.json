@@ -13,7 +13,8 @@
     "grunt-contrib-sass": "^0.9.2",
     "grunt-contrib-uglify": "^0.4.1",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-notify": "^0.3.1"
+    "grunt-notify": "^0.3.1",
+    "grunt-svgmin": "^3.1.0"
   },
   "description": "=========================== How to Use Grunt with Basic ===========================",
   "main": "Gruntfile.js",
