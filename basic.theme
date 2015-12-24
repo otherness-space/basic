@@ -18,6 +18,16 @@ if (theme_get_setting('clear_registry')) {
  * Prepares variables for the html.html.twig template.
  */
 function basic_preprocess_html(&$variables) {
+
+  try {
+    $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
+  }
+  catch (Exception $e) {
+    // If the database is not yet available, set default values for these
+    // variables.
+    $variables['is_front'] = FALSE;
+  }
+
   // If we're on the front page.
   if (!$variables['is_front']) {
     // Add unique classes for each page and website section.
