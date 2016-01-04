@@ -26,10 +26,10 @@ features[] = main_menu
 features[] = secondary_menu
 
 ; Stylesheets
+stylesheets[all][] = css/normalize.css
 stylesheets[all][] = css/default.css
 stylesheets[all][] = css/layout.css
 stylesheets[all][] = css/style.css
-stylesheets[all][] = css/normalize.css
 stylesheets[print][] = css/print.css
 
 ; Scripts
