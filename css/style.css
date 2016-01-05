@@ -7,11 +7,11 @@ html {
 }
 
 body:before {
-  background-image: -webkit-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-  background-image: -moz-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-  background-image: -ms-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-  background-image: -o-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-  background-image: linear-gradient(to left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
+  background-image: -webkit-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+  background-image: -moz-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+  background-image: -ms-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+  background-image: -o-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+  background-image: linear-gradient(to left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
   content: "";
   display: inline-block;
   height: 100%;
@@ -27,11 +27,11 @@ body:before {
 }
 @media screen and (min-width: 20em) {
   body:before {
-    background-image: -webkit-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-    background-image: -moz-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-    background-image: -ms-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-    background-image: -o-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-    background-image: linear-gradient(to left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
+    background-image: -webkit-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+    background-image: -moz-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+    background-image: -ms-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+    background-image: -o-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+    background-image: linear-gradient(to left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
   }
 }
 @media screen and (min-width: 45em) {
@@ -250,11 +250,11 @@ html {
 }
 
 body:before {
-  background-image: -webkit-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-  background-image: -moz-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-  background-image: -ms-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-  background-image: -o-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-  background-image: linear-gradient(to left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
+  background-image: -webkit-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+  background-image: -moz-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+  background-image: -ms-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+  background-image: -o-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+  background-image: linear-gradient(to left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
   content: "";
   display: inline-block;
   height: 100%;
@@ -270,11 +270,11 @@ body:before {
 }
 @media screen and (min-width: 20em) {
   body:before {
-    background-image: -webkit-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-    background-image: -moz-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-    background-image: -ms-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-    background-image: -o-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-    background-image: linear-gradient(to left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
+    background-image: -webkit-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+    background-image: -moz-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+    background-image: -ms-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+    background-image: -o-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+    background-image: linear-gradient(to left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
   }
 }
 @media screen and (min-width: 45em) {
@@ -296,6 +296,72 @@ body:before {
   }
 }
 
+label {
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+
+input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], input:not([type]), textarea,
+textarea,
+select[multiple=multiple] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: border-color 0.1s ease-in-out;
+  -moz-transition: border-color 0.1s ease-in-out;
+  transition: border-color 0.1s ease-in-out;
+  background-color: white;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding: 6.66667px;
+  max-width: 100%;
+}
+input[type="color"]:hover, input[type="date"]:hover, input[type="datetime"]:hover, input[type="datetime-local"]:hover, input[type="email"]:hover, input[type="month"]:hover, input[type="number"]:hover, input[type="password"]:hover, input[type="search"]:hover, input[type="tel"]:hover, input[type="text"]:hover, input[type="time"]:hover, input[type="url"]:hover, input[type="week"]:hover, input:not([type]):hover, textarea:hover,
+textarea:hover,
+select[multiple=multiple]:hover {
+  border-color: #999999;
+}
+input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="email"]:focus, input[type="month"]:focus, input[type="number"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="text"]:focus, input[type="time"]:focus, input[type="url"]:focus, input[type="week"]:focus, input:not([type]):focus, textarea:focus,
+textarea:focus,
+select[multiple=multiple]:focus {
+  border-color: black;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline;
+  margin-right: 5px;
+}
+
+input[type="file"] {
+  width: auto;
+  padding-bottom: 10px;
+}
+
+select {
+  max-width: 100%;
+  width: auto;
+  margin-bottom: 20px;
+}
+
+input[type="submit"] {
+  background: transparent;
+  border: 1px solid black;
+  padding: 6.66667px 10px;
+  -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+input[type="submit"]:hover {
+  background-color: black;
+  color: white;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -305,11 +371,11 @@ html {
 }
 
 body:before {
-  background-image: -webkit-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-  background-image: -moz-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-  background-image: -ms-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-  background-image: -o-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-  background-image: linear-gradient(to left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
+  background-image: -webkit-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+  background-image: -moz-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+  background-image: -ms-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+  background-image: -o-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+  background-image: linear-gradient(to left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
   content: "";
   display: inline-block;
   height: 100%;
@@ -325,11 +391,11 @@ body:before {
 }
 @media screen and (min-width: 20em) {
   body:before {
-    background-image: -webkit-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-    background-image: -moz-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-    background-image: -ms-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-    background-image: -o-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
-    background-image: linear-gradient(to left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80%, #EEEEEE 80%, #EEEEEE 100%, transparent 100%);
+    background-image: -webkit-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+    background-image: -moz-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+    background-image: -ms-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+    background-image: -o-linear-gradient(left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
+    background-image: linear-gradient(to left, transparent 0, #EEEEEE 0, #EEEEEE 20%, transparent 20%, transparent 26.66667%, #EEEEEE 26.66667%, #EEEEEE 46.66667%, transparent 46.66667%, transparent 53.33333%, #EEEEEE 53.33333%, #EEEEEE 73.33333%, transparent 73.33333%, transparent 80.0%, #EEEEEE 80.0%, #EEEEEE 100.0%, transparent 100.0%);
   }
 }
 @media screen and (min-width: 45em) {
