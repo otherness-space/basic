@@ -1,5 +1,6 @@
 * {
-  background-color: transparent; }
+  background-color: transparent;
+}
 
 .sidebar,
 #navigation,
@@ -10,24 +11,29 @@
 .tabs,
 .feed-icon,
 .links {
-  display: none; }
+  display: none;
+}
 
 #page {
-  width: 100%; }
+  width: 100%;
+}
 
 #content,
 #content #content-inner,
 .content,
 .title {
   margin: 20px 0;
-  width: auto; }
+  width: auto;
+}
 
 a:hover, a:active, a:link, a:visited {
-  color: black; }
+  color: black;
+}
 
 #content a:link:after, #content a:visited:after {
   content: " (" attr(href) ") ";
   font-size: 0.8em;
-  font-weight: normal; }
+  font-weight: normal;
+}
 
 /*# sourceMappingURL=print.css.map */
