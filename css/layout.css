@@ -186,7 +186,7 @@ body:before {
   #sidebar-first:last-child {
     margin-right: 0;
   }
-  .sidebar-first #sidebar-first {
+  .one-sidebar.sidebar-first #sidebar-first {
     margin-left: -103.22581%;
   }
 }
@@ -201,7 +201,7 @@ body:before {
   #sidebar-first:last-child {
     margin-right: 0;
   }
-  .sidebar-first #sidebar-first {
+  .one-sidebar.sidebar-first #sidebar-first {
     margin-left: -101.69492%;
   }
 }
