@@ -29,7 +29,7 @@ to download the following Ruby Gems and plugins:
 
 Basic is meant to be YOUR theme. To change the name of the theme from 'basic' to
 another name like 'mytheme', follow these steps (to do BEFORE enabling the
-theme):
+theme) :
 
   - rename the theme folder to 'mytheme'
   - rename basic.info to mytheme.info
@@ -43,18 +43,20 @@ To use SASS and automatically compile it within your theme, please refer to
 "Using Grunt" in the documentation below. If you would like to use SASS'
 internal watch functionality, simply CD into your theme directory and run:
 
-"sass -r sass-globbing --watch sass:css"
+"sass -r sass-globbing --style expanded --watch sass:css"
 
 If you would like to add browser sync support to your theme, please include the
 follow JS snippet before the closing </body> tag in the html.tpl.php file:
 
-<script>
-document.write("<script defer src='//HOST:3000/socket.io/socket.io.js'><\/script><script defer src='//HOST:3001/client/browser-sync-client.0.9.1.js'><\/script>".replace(/HOST/g, location.hostname));
-</script>
+<script type='text/javascript'>//<![CDATA[ ;document.write("<script defer
+src='//HOST:3000/socket.io/socket.io.js'><\/script><script defer
+src='//HOST:3001/client/browser-sync-
+client.0.9.1.js'><\/script>".replace(/HOST/g, location.hostname));
+//]]></script>
 
-=======================
-What are the files for?
-=======================
+========================
+What are the files for ?
+========================
 
 - basic.info                => provide informations about the theme, like
                                regions, css, settings, js ...
@@ -68,18 +70,21 @@ What are the files for?
 - theme-settings            => used to create additional settings in the theme
                                settings page
 
-===============
-In /sass Folder
-===============
+============
+In /SASS
+============
 
 - default.sass  => define default classes, browser resets and admin styles
                    (compiles to css/default.css)
+- ie8.sass      => used to debug IE8 (compiles to css/ie8.css)
+- ie9.sass      => used to debug IE9 (compiles to css/ie9.css)
 - layout.sass   => define the layout of the theme (compiles to css/layout.css)
 - print.sass    => define the way the theme look like when printed
                    (compiles to css/print.css)
 - style.sass    => contains some default font styles. that's where you can add
-                   custom css (compiles to css/style.css)
-- tabs.sass     => styles for the admin tabs
+                  custom css (compiles to css/style.css)
+- tabs.sass     => styles for the admin tabs (from ZEN)
+
 
 ===================
 Changing the Layout
@@ -112,13 +117,14 @@ Getting Started
 1. Navigate to http://nodejs.org/ and install node.js.
 2. Once you have node installed you will be able to use the npm (node package
    manager) to install the rest. In order for grunt to work in terminal we are
-   going to need the grunt cli. Open a new terminal window and type
-   "npm install -g grunt-cli" , this will install the cli globally. Restart the
-   terminal after it is complete and you will now be able to use grunt commands.
+   going to need the grunt cli. Open a new terminal window and type "npm install
+   -g grunt-cli" , this will install the cli globally. Restart terminal when
+   that is complete and you will now be able to use grunt commands.
 
 How To Use Grunt
 
 1. cd into the grunt folder and type in "grunt" to start the watch task.
+
 
 ________________________________________________________________________________
 
