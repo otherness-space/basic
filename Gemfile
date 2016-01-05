@@ -4,7 +4,11 @@ group :development do
 
   # Sass, Compass and extensions.
   gem 'sass'          # Sass.
-  gem 'sass-globbing' # Import Sass files based on globbing pattern.
+  # Explicit version due to
+  # https://github.com/chriseppstein/sass-globbing/issues/19
+  gem 'sass-globbing', '1.1.0' # Import Sass files based on globbing pattern.
+  # These are here to keep the sass version in check.
+  # The libraries are installed in the sass/components directory.
   gem 'bourbon'       # Import Bourbon SASS framework.
   gem 'neat'          # Import Bourbon Neat grid framework
 
