@@ -1,4 +1,5 @@
-<article{{ attributes.addAttribute('id', 'node-' ~ node.id) }}>
+{# The 'node' class is required for contextual edit links. #}
+<article{{ attributes.addClass('node') }}>
 
   {% if title_prefix or title_suffix or display_submitted or unpublished or page is empty and label %}
     <header>
