@@ -3,5 +3,10 @@
 // LAYOUT: Macro arrangement of a web page, including any grid systems.
 // Read more about SMACSS categorization for Drupal Themes: https://www.drupal.org/node/1887922
 
-// Import wildcard files and folders using sass-globbing
-@import "layout/layout--grid"
+// Import complied layout/_layout.scss generated with grunt-sass-globbing.
+// This file is complied separately so we can pull in config dependacies above
+// while also maintaining Drupal's SMACSS structure.
+@import "layout/layout"
+
+// If you are not using grunt-sass-globbing, import additional files in the layout directory here.
+// @import "layout/new-partial"
