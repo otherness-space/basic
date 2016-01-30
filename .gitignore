@@ -1,4 +1,5 @@
 *.scssc
 *.sassc
 *.map
-grunt/node_modules
+node_modules
+.sass-cache

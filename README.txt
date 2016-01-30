@@ -119,6 +119,10 @@ packages:
 
   npm install
 
+To install the Ruby Gem bundles, type:
+
+bundle install
+
 This will install the neccissary node_modules to run grunt. In order for grunt 
 to work in terminal we are going to need the grunt cli. Open a new terminal 
 window and type:
