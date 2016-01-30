@@ -3,10 +3,10 @@
 Introduction to Basic
 =====================
 
-Basic boasts a clean HTML5 structure with extensible CSS classes and ID's for
+Basic boasts a clean HTML5 structure with extensible CSS classes and IDs for
 unlimited theming possibilities as well as a top-down load order for improved
 SEO. It is fully responsive out-of-the-box and provides an adaptive, elegant,
-SASS based grid system (Bourbon Neat).
+SASS-based grid system (Bourbon Neat).
 
 Basic's goal is to provide themers the building blocks needed to get their
 designs up and running quickly and simply.
@@ -28,31 +28,60 @@ to download the following Ruby Gems and plugins:
   - Boubon Neat (http://neat.bourbon.io/)
 
 Basic is meant to be YOUR theme. To change the name of the theme from 'basic' to
-another name like 'mytheme', follow these steps (to do BEFORE enabling the
-theme):
+another name like 'mytheme', follow these steps BEFORE enabling the theme:
 
   - rename the theme folder to 'mytheme'
   - rename basic.info.yml to mytheme.info.yml
-  - Edit basic.info.yml and change the name, description, project (can be
-    deleted), replace all other instances of "basic" ie. [basic_tabs] would
-    become [mytheme_tabs]
-  - In mytheme.theme change each iteration of 'basic' to 'mytheme'
-  - In theme-settings.php change each iteration of 'basic' to 'mytheme'
+  - edit basic.info.yml and change the name, description, project (can be
+    deleted), and change all other instances of 'basic' to 'mytheme'
+  - rename basic.theme to mytheme.theme
+  - in basic.theme, change each instance of 'basic' to 'mytheme'
+  - rename config/schema/basic.schema.yml to mytheme.schema.yml
+  - rename each file in config/install from block.block.basic_tools.yml (for
+    example) to block.block.mytheme_tools.yml
+  - in every file in config/install, change each instance of 'basic' to 'mytheme'
+  - in js/source/scripts.js, change each instance of 'basic' to 'mytheme'
+  - in theme-settings.php, change each instance of 'basic' to 'mytheme'
+
+When renaming, remember the following:
+
+  - Do not simply replace every instance of 'basic' in every file in the theme. 
+    Most of Basic's dependencies use the word 'basic' somewhere and renaming 
+    these instances will cause Basic to break in unpredictable ways.
+
+  - If you don't rename all these files, you may get a vague and unhelpful 
+    error message when attempting to enable your theme: "The website 
+    encountered an unexpected error. Please try again later." Turn on a higher 
+    level of error logging in your server's php.ini to help determine what 
+    you've missed.
+
+  - If you don't bother renaming Basic in the above locations, be advised that 
+    you will run into conflicts with other versions of Basic on your site. If 
+    your site uses more than one theme based on Basic, make sure at least one 
+    of the themes has been renamed properly!
+
+
+============================
+How to compile SASS in Basic
+============================
 
 To use SASS and automatically compile it within your theme, please refer to
-"Using Grunt" in the documentation below. If you would like to use SASS'
-internal watch functionality, simply CD into your theme directory and run:
+"How to Use Grunt with Basic" in the documentation below.
+
+If you don't like Grunt, or would just prefer to use SASS' internal watch 
+functionality, simply cd into your theme directory and run:
 
   sass -r sass-globbing --style expanded --watch sass:css
 
-If you would like to add browser sync support to your theme, please include the
-follow JS snippet before the closing </body> tag in the html.html.twig file:
+If you would like to add BrowserSync support to your theme, please include the
+following JS snippet before the closing </body> tag in the html.html.twig file:
 
 <script type='text/javascript'>//<![CDATA[ ;document.write("<script defer
 src='//HOST:3000/socket.io/socket.io.js'><\/script><script defer
 src='//HOST:3001/client/browser-sync-
 client.0.9.1.js'><\/script>".replace(/HOST/g, location.hostname));
 //]]></script>
+
 
 ========================
 What are the files for ?
@@ -64,17 +93,17 @@ What are the files for ?
 - comment.html.twig         => template to edit the comments
 - node.html.twig            => template to edit the nodes (in content)
 - page.html.twig            => template to edit the page
-- mytheme.theme             => used to modify drupal's default behavior before
+- mytheme.theme             => used to modify Drupal's default behavior before
                                outputting HTML through the theme
-- theme-settings            => used to create additional settings in the theme
+- theme-settings.php        => used to create additional settings in the theme
                                settings page
 
 ============
 In /SASS
 ============
 
-- layout.sass   => define the layout of the theme (compiles to css/layout.css)
-- print.sass    => define the way the theme look like when printed (compiles to
+- layout.sass   => defines the layout of the theme (compiles to css/layout.css)
+- print.sass    => defines the way the theme looks when printed (compiles to
                    css/print.css)
 - tabs.sass     => styles for the admin tabs
 
@@ -84,18 +113,18 @@ Changing the Layout
 ===================
 
 The layout used in Basic is fairly similar to the Holy Grail method. It has been
-tested on all major browser including IE (5>10), Opera, Firefox, Safari, Chrome
-... The purpose of this method is to have a minimal markup for an ideal display.
-For accessibility and search engine optimization, the best order to display a
-page is ] the following :
+tested on all major browsers including IE (5 to >10), Opera, Firefox, Safari,
+and Chrome. The purpose of this method is to have a minimal markup for an ideal
+display. For accessibility and search engine optimization, the best order to 
+display a page is the following:
 
 1. header
 2. content
 3. sidebars
 4. footer
 
-This is how the page template is buit in basic, and it works in fluid and fixed
-layout. Refers to the notes in layout.css to see how to modify the layout.
+This is how the page template is buit in Basic, and it works in fluid and fixed
+layout. Refer to the notes in layout.sass to see how to modify the layout.
 
 
 ===========================
@@ -107,50 +136,50 @@ There are various package managers that can handle this for you.
 
 https://nodejs.org/download/
 
-Once Node.JS is installed, go to the root folder of basic and install your grunt
+Once Node.JS is installed, go to the root folder of Basic and install your Grunt
 packages:
 
   npm install
 
 To install the Ruby Gem bundles, type:
 
-bundle install
+  bundle install
 
-This will install the neccissary node_modules to run grunt. In order for grunt
-to work in terminal we are going to need the grunt cli. Open a new terminal
-window and type:
+This will install the neccessary node_modules to run Grunt. In order for Grunt
+to work from the command line we are going to need the Grunt CLI. Open a new
+Terminal window and type:
 
   npm install -g grunt-cli
 
-This will install the cli globally. Restart terminal when that is complete and
-you will now be able to use grunt commands.
+This will install the CLI globally. Restart terminal when that is complete and
+you will now be able to use Grunt commands.
 
-Once installed, and while in the root folder of basic, run grunt via the command
+Once installed, cd to the root folder of Basic and run Grunt via the command 
 line:
 
   grunt
 
-This will initialize grunt and start watching changes to your SASS files. Voila!
+This will initialize Grunt and start watching changes to your SASS files. Voilà!
 
 
 ________________________________________________________________________________
 
 UPDATING BASIC
 
-Once you start using basic, you will massively change it until a point where it
-has nothing to do with basic anymore. Unlike ZEN, basic is not intended to be
-use as a base theme for a sub-theme (even though it is possible to do so).
-Because of this, it is not necessary to update your theme when a new version of
-BASIC comes out. Always see Basic as a STARTER, and as soon as you start using
-it, it is not BASIC anymore, but your own theme.
+Once you start using Basic, you will massively change it until you reach the
+point where it has nothing to do with Basic anymore. Unlike Zen, Basic is not 
+intended to be use as a base theme for a sub-theme (even though it is possible
+to do so). Because of this, it is not necessary to update your theme when a new
+version of Basic comes out. Always see Basic as a STARTER, and as soon as you 
+start using it, it is not Basic anymore, but your own theme.
 
-If you didn't rename your theme, but you don't want to be notified when basic
+If you didn't rename your theme, but you don't want to be notified when Basic
 has a new version by the update module, simply delete "project = "basic" in
-basic.info.yml
+basic.info.yml.
 ________________________________________________________________________________
 
-Thanks for using BASIC, and remember to use the issue queue in drupal.org for
-any question or bug report:
+Thanks for using Basic, and remember to use the issue queue in drupal.org for
+any questions or bug reports:
 
 http://drupal.org/project/issues/basic
 
