@@ -28,10 +28,7 @@ module.exports = function(grunt) {
       },
       css: {
         files: ['sass/*.sass', 'sass/**/*.sass', 'sass/*.scss', 'sass/**/*.scss'],
-        tasks: ['sass']
-        // options: {
-        //   spawn: false,
-        // }
+        tasks: ['sass_globbing', 'sass']
       }
     },
     uglify: {
@@ -96,6 +93,20 @@ module.exports = function(grunt) {
         }
       }
     },
+    sass_globbing: {
+      your_target: {
+        files: {
+          'sass/base/_base.scss': ['sass/base/*.sass', 'sass/base/*.scss'],
+          'sass/components/_components.scss': ['sass/components/*.sass', 'sass/components/*.scss'],
+          'sass/layout/_layout.scss': ['sass/layout/*.sass', 'sass/layout/*.scss'],
+          'sass/theme/_theme.scss': ['sass/theme/*.sass', 'sass/theme/*.scss']
+        },
+        options: {
+          useSingleQuotes: false,
+          signature: '// Generated with grunt-sass-globbing. If you are not using grunt-sass-globbing, add files to the appropriate directory (eg: sass/components) and import into the corresponding file (eg: sass/components.sass).'
+        }
+      }
+    },
     browserSync: {
       dev: {
         bsFiles: {
@@ -119,6 +130,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-svgmin');
   grunt.loadNpmTasks('grunt-sass');
+  grunt.loadNpmTasks('grunt-sass-globbing');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-browser-sync');
   // Now that we've loaded the package.json and the node_modules we set the base path
