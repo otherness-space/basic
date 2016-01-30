@@ -25,7 +25,7 @@ to download the following Ruby Gems and plugins:
 
   - SASS (http://sass-lang.com/)
   - Bourbon (http://bourbon.io/)
-  - Boubon Neat (http://neat.bourbon.io/)
+  - Bourbon Neat (http://neat.bourbon.io/)
 
 Basic is meant to be YOUR theme. To change the name of the theme from 'basic' to
 another name like 'mytheme', follow these steps BEFORE enabling the theme:
@@ -42,6 +42,9 @@ another name like 'mytheme', follow these steps BEFORE enabling the theme:
   - in every file in config/install, change each instance of 'basic' to 'mytheme'
   - in js/source/scripts.js, change each instance of 'basic' to 'mytheme'
   - in theme-settings.php, change each instance of 'basic' to 'mytheme'
+  - in templates/html.html.twig, change each instance of 'basic' to 'mytheme'
+  - in templates/menu-local-tasks.html.twig, change each instance of 'basic' to 'mytheme'
+  - in templates/status-messages.html.twig, change each instance of 'basic' to 'mytheme'
 
 When renaming, remember the following:
 
