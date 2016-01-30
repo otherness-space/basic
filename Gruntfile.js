@@ -28,10 +28,10 @@ module.exports = function(grunt) {
       },
       css: {
         files: ['sass/*.sass', 'sass/**/*.sass', 'sass/*.scss', 'sass/**/*.scss'],
-        tasks: ['sass'],
-        options: {
-          spawn: false,
-        }
+        tasks: ['sass']
+        // options: {
+        //   spawn: false,
+        // }
       }
     },
     uglify: {
@@ -79,19 +79,21 @@ module.exports = function(grunt) {
     },
     sass: {
       // This will compile all of our sass files
-      // Additional configuration options can be found at https://github.com/gruntjs/grunt-contrib-sass
+      // Additional configuration options can be found at https://github.com/sindresorhus/grunt-sass
+      options: {
+        sourceMap: true,
+        outputStyle: 'nested', // This controls the compiled css and can be changed to nested, compact or compressed
+        precision: 5
+      },
       dist: {
-        options: {
-          style: 'expanded', // This controls the compiled css and can be changed to nested, compact or compressed
-          require: 'sass-globbing',
-        },
-        files: [{
-          expand: true,
-          cwd: 'sass/',
-          src: ['*.sass'],
-          dest: 'css/',
-          ext: '.css'
-        }]
+        files: {
+          'css/base.css': 'sass/base.sass',
+          'css/components.css': 'sass/components.sass',
+          'css/layout.css': 'sass/layout.sass',
+          'css/theme.css': 'sass/theme.sass',
+          'css/tabs.css': 'sass/tabs.sass',
+          'css/messages.css': 'sass/messages.sass'
+        }
       }
     },
     browserSync: {
@@ -116,7 +118,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-svgmin');
-  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-browser-sync');
   // Now that we've loaded the package.json and the node_modules we set the base path
