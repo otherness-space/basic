@@ -2,7 +2,7 @@
   "name": "basic",
   "version": "0.1.0",
   "scripts": {
-    "postinstall": "sh npm_post.sh"
+    "postinstall": "bower install"
   },
   "dependencies": {
     "grunt": "^0.4.5",

@@ -1,9 +1,7 @@
 html {
-  box-sizing: border-box;
-}
+  box-sizing: border-box; }
 
 *, *::after, *::before {
-  box-sizing: inherit;
-}
+  box-sizing: inherit; }
 
 /*# sourceMappingURL=theme.css.map */

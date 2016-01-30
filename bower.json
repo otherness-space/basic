@@ -1,0 +1,10 @@
+{
+  "name": "Core Brands",
+  "version": "0.0.1",
+  "dependencies": {
+    "normalize.css": "latest",
+    "bourbon": "4.2.*",
+    "neat": "1.7.*"
+  },
+  "private": true
+}
