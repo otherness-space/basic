@@ -29,14 +29,14 @@ to download the following Ruby Gems and plugins:
 
 Basic is meant to be YOUR theme. To change the name of the theme from 'basic' to
 another name like 'mytheme', follow these steps (to do BEFORE enabling the
-theme) :
+theme):
 
   - rename the theme folder to 'mytheme'
-  - rename basic.info to mytheme.info
-  - Edit basic.info and change the name, description, project (can be deleted),
-    replace all other instances of "basic" ie. [basic_tabs] would become
-    [mytheme_tabs]
-  - In template.php change each iteration of 'basic' to 'mytheme'
+  - rename basic.info.yml to mytheme.info.yml
+  - Edit basic.info.yml and change the name, description, project (can be
+    deleted), replace all other instances of "basic" ie. [basic_tabs] would
+    become [mytheme_tabs]
+  - In mytheme.theme change each iteration of 'basic' to 'mytheme'
   - In theme-settings.php change each iteration of 'basic' to 'mytheme'
 
 To use SASS and automatically compile it within your theme, please refer to
@@ -46,7 +46,7 @@ internal watch functionality, simply CD into your theme directory and run:
   sass -r sass-globbing --style expanded --watch sass:css
 
 If you would like to add browser sync support to your theme, please include the
-follow JS snippet before the closing </body> tag in the html.tpl.php file:
+follow JS snippet before the closing </body> tag in the html.html.twig file:
 
 <script type='text/javascript'>//<![CDATA[ ;document.write("<script defer
 src='//HOST:3000/socket.io/socket.io.js'><\/script><script defer
@@ -58,14 +58,13 @@ client.0.9.1.js'><\/script>".replace(/HOST/g, location.hostname));
 What are the files for ?
 ========================
 
-- basic.info                => provide informations about the theme, like
+- basic.info.yml            => provide informations about the theme, like
                                regions, css, settings, js ...
-- block-system-main.tpl.php => template to edit the content
-- block.tpl.php             => template to edit the blocks
-- comment.tpl.php           => template to edit the comments
-- node.tpl.php              => template to edit the nodes (in content)
-- page.tpl.php              => template to edit the page
-- template.php              => used to modify drupal's default behavior before
+- block.html.twig           => template to edit the blocks
+- comment.html.twig         => template to edit the comments
+- node.html.twig            => template to edit the nodes (in content)
+- page.html.twig            => template to edit the page
+- mytheme.theme             => used to modify drupal's default behavior before
                                outputting HTML through the theme
 - theme-settings            => used to create additional settings in the theme
                                settings page
@@ -74,16 +73,10 @@ What are the files for ?
 In /SASS
 ============
 
-- default.sass  => define default classes, browser resets and admin styles
-                   (compiles to css/default.css)
-- ie8.sass      => used to debug IE8 (compiles to css/ie8.css)
-- ie9.sass      => used to debug IE9 (compiles to css/ie9.css)
 - layout.sass   => define the layout of the theme (compiles to css/layout.css)
-- print.sass    => define the way the theme look like when printed
-                   (compiles to css/print.css)
-- style.sass    => contains some default font styles. that's where you can add
-                  custom css (compiles to css/style.css)
-- tabs.sass     => styles for the admin tabs (from ZEN)
+- print.sass    => define the way the theme look like when printed (compiles to
+                   css/print.css)
+- tabs.sass     => styles for the admin tabs
 
 
 ===================
@@ -96,10 +89,10 @@ tested on all major browser including IE (5>10), Opera, Firefox, Safari, Chrome
 For accessibility and search engine optimization, the best order to display a
 page is ] the following :
 
-    1. header
-    2. content
-    3. sidebars
-    4. footer
+1. header
+2. content
+3. sidebars
+4. footer
 
 This is how the page template is buit in basic, and it works in fluid and fixed
 layout. Refers to the notes in layout.css to see how to modify the layout.
@@ -123,13 +116,13 @@ To install the Ruby Gem bundles, type:
 
 bundle install
 
-This will install the neccissary node_modules to run grunt. In order for grunt 
-to work in terminal we are going to need the grunt cli. Open a new terminal 
+This will install the neccissary node_modules to run grunt. In order for grunt
+to work in terminal we are going to need the grunt cli. Open a new terminal
 window and type:
 
   npm install -g grunt-cli
 
-This will install the cli globally. Restart terminal when that is complete and 
+This will install the cli globally. Restart terminal when that is complete and
 you will now be able to use grunt commands.
 
 Once installed, and while in the root folder of basic, run grunt via the command
@@ -153,7 +146,7 @@ it, it is not BASIC anymore, but your own theme.
 
 If you didn't rename your theme, but you don't want to be notified when basic
 has a new version by the update module, simply delete "project = "basic" in
-basic.info
+basic.info.yml
 ________________________________________________________________________________
 
 Thanks for using BASIC, and remember to use the issue queue in drupal.org for
@@ -164,4 +157,4 @@ http://drupal.org/project/issues/basic
 Current maintainers:
 * Steve Krueger (SteveK) - https://www.drupal.org/u/stevek
 * Leah Marsh (leahtard) - https://www.drupal.org/u/leahtard
-* Joel Pittet (joelpittet) - https://www.drupal.org/u/joelpittet
+* Joël Pittet (joelpittet) - https://www.drupal.org/u/joelpittet
