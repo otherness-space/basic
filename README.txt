@@ -43,7 +43,7 @@ To use SASS and automatically compile it within your theme, please refer to
 "Using Grunt" in the documentation below. If you would like to use SASS'
 internal watch functionality, simply CD into your theme directory and run:
 
-"sass -r sass-globbing --style expanded --watch sass:css"
+  sass -r sass-globbing --style expanded --watch sass:css
 
 If you would like to add browser sync support to your theme, please include the
 follow JS snippet before the closing </body> tag in the html.tpl.php file:
@@ -104,26 +104,36 @@ page is ] the following :
 This is how the page template is buit in basic, and it works in fluid and fixed
 layout. Refers to the notes in layout.css to see how to modify the layout.
 
-===========
-Using Grunt
-===========
 
-In order to use grunt (http://gruntjs.com/) with basic you will need to install
-a few programs. These will only be installed the first time you start a project
-using Basic with Grunt.
+===========================
+How to Use Grunt with Basic
+===========================
 
-Getting Started
+Grunt (http://gruntjs.com/) requires Node.JS to be installed on your machine.
+There are various package managers that can handle this for you.
 
-1. Navigate to http://nodejs.org/ and install node.js.
-2. Once you have node installed you will be able to use the npm (node package
-   manager) to install the rest. In order for grunt to work in terminal we are
-   going to need the grunt cli. Open a new terminal window and type "npm install
-   -g grunt-cli" , this will install the cli globally. Restart terminal when
-   that is complete and you will now be able to use grunt commands.
+https://nodejs.org/download/
 
-How To Use Grunt
+Once Node.JS is installed, go to the root folder of basic and install your grunt
+packages:
 
-1. cd into the grunt folder and type in "grunt" to start the watch task.
+  npm install
+
+This will install the neccissary node_modules to run grunt. In order for grunt 
+to work in terminal we are going to need the grunt cli. Open a new terminal 
+window and type:
+
+  npm install -g grunt-cli
+
+This will install the cli globally. Restart terminal when that is complete and 
+you will now be able to use grunt commands.
+
+Once installed, and while in the root folder of basic, run grunt via the command
+line:
+
+  grunt
+
+This will initialize grunt and start watching changes to your SASS files. Voila!
 
 
 ________________________________________________________________________________
@@ -140,7 +150,6 @@ it, it is not BASIC anymore, but your own theme.
 If you didn't rename your theme, but you don't want to be notified when basic
 has a new version by the update module, simply delete "project = "basic" in
 basic.info
-
 ________________________________________________________________________________
 
 Thanks for using BASIC, and remember to use the issue queue in drupal.org for
@@ -149,5 +158,6 @@ any question or bug report:
 http://drupal.org/project/issues/basic
 
 Current maintainers:
-* Steve Krueger (SteveK) -http://drupal.org/user/111656 (http://thejibe.com)
-* Niall Morgan (lil.destro) -https://drupal.org/user/597808 (http://thejibe.com)
+* Steve Krueger (SteveK) - https://www.drupal.org/u/stevek
+* Leah Marsh (leahtard) - https://www.drupal.org/u/leahtard
+* Joel Pittet (joelpittet) - https://www.drupal.org/u/joelpittet
