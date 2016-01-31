@@ -27,20 +27,20 @@
 
   <div{{ content_attributes.addClass('content') }}>
     {{ content|without('links') }}
-  </div><!-- /content -->
+  </div><!-- /.content -->
 
   {% if content.links.terms %}
     <div class="terms">
       {{ content.links.terms }}
       }
-    </div><!-- /terms -->
+    </div><!-- /.terms -->
   {% endif %}
 
   {% if content.links %}
     <div class="links">
       {{ content.links }}
-    </div><!-- /links -->
+    </div><!-- /.links -->
   {% endif %}
 
   {{ content.comment }}
-</article><!-- /article #node -->
+</article><!-- /.node -->

@@ -1,11 +1,10 @@
-/* Use this stylesheet for print styles only. */
+// Use this stylesheet for print styles only.
 *
   background-color: transparent
 
 .sidebar,
 #navigation,
 #header-region,
-#search-theme-form,
 #footer,
 .breadcrumb,
 .tabs,
@@ -17,7 +16,6 @@
   width: 100%
 
 #content,
-#content #content-inner,
 .title
   margin: 20px 0
   width: auto
@@ -29,9 +27,10 @@ a
   &:visited
     color: black
 
-/* CSS2 selector to add visible href after links. */
+// CSS2 selector to add visible href after links.
 #content a
-  &:link:after, &:visited:after
+  &:link:after,
+  &:visited:after
     content: " (" attr(href) ") "
     font-size: 0.8em
     font-weight: normal
