@@ -13,22 +13,22 @@ module.exports = function(grunt) {
         },
       },
       images: {
-        files: ['images/source/**/*.{png,jpg,gif}', 'images/source/*.{png,jpg,gif}'],
+        files: ['images/source/{,*/}*.{png,jpg,gif}'],
         tasks: ['imagemin'],
         options: {
           spawn: false,
         }
       },
       vector: {
-        files: ['images/source/**/*.svg', 'images/source/*.svg'],
+        files: ['images/source/{,*/}*.svg'],
         tasks: ['svgmin'],
         options: {
           spawn: false,
         }
       },
       css: {
-        files: ['sass/*.sass', 'sass/**/*.sass', 'sass/*.scss', 'sass/**/*.scss'],
-        tasks: ['sass_globbing', 'sass']
+        files: ['sass/{,*/}*.{scss,sass}'],
+        tasks: ['sass']
       }
     },
     uglify: {
