@@ -20,9 +20,8 @@ Installation
 ============
 
 Basic utilizes SASS for adaptive grids and layouts and general structure of the
-site. It's recommended to use SASS for building out your theme. You are required
-to download the following Ruby Gems and plugins:
-
+site. It's recommended to use SASS for building out your theme. The following
+packages are included via 'npm install'
   - SASS (http://sass-lang.com/)
   - Bourbon (http://bourbon.io/)
   - Bourbon Neat (http://neat.bourbon.io/)
@@ -30,23 +29,23 @@ to download the following Ruby Gems and plugins:
 Basic is meant to be YOUR theme. To change the name of the theme from 'basic' to
 another name like 'mytheme', follow these steps BEFORE enabling the theme:
 
-  - rename the theme folder to 'mytheme'
-  - rename basic.info.yml to mytheme.info.yml
+  - Rename the theme folder to 'mytheme'
+  - Rename basic.info.yml to mytheme.info.yml
   - edit basic.info.yml and change the name, description, project (can be
     deleted), and change all other instances of 'basic' to 'mytheme'
-  - rename basic.theme to mytheme.theme
+  - Rename basic.theme to mytheme.theme
   - in basic.theme, change each instance of 'basic' to 'mytheme'
-  - rename config/schema/basic.schema.yml to mytheme.schema.yml
-  - rename each file in config/install from block.block.basic_tools.yml (for
+  - Rename config/schema/basic.schema.yml to mytheme.schema.yml
+  - Rename each file in config/install from block.block.basic_tools.yml (for
     example) to block.block.mytheme_tools.yml
-  - in every file in config/install, change each instance of 'basic' to
+  - Every file in config/install, change each instance of 'basic' to
     'mytheme'
-  - in js/source/scripts.js, change each instance of 'basic' to 'mytheme'
-  - in theme-settings.php, change each instance of 'basic' to 'mytheme'
-  - in templates/html.html.twig, change each instance of 'basic' to 'mytheme'
-  - in templates/menu-local-tasks.html.twig, change each instance of 'basic' to
+  - In js/source/scripts.js, change each instance of 'basic' to 'mytheme'
+  - In theme-settings.php, change each instance of 'basic' to 'mytheme'
+  - In templates/html.html.twig, change each instance of 'basic' to 'mytheme'
+  - In templates/menu-local-tasks.html.twig, change each instance of 'basic' to
     'mytheme'
-  - in templates/status-messages.html.twig, change each instance of 'basic' to
+  - In templates/status-messages.html.twig, change each instance of 'basic' to
     'mytheme'
 
 When renaming, remember the following:
@@ -144,10 +143,6 @@ Once Node.JS is installed, go to the root folder of Basic and install your Grunt
 packages:
 
   npm install
-
-To install the Ruby Gem bundles, type:
-
-  bundle install
 
 This will install the neccessary node_modules to run Grunt. In order for Grunt
 to work from the command line we are going to need the Grunt CLI. Open a new
