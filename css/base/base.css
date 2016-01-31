@@ -141,7 +141,6 @@ dl dd {
   margin: 0;
 }
 
-/* Images */
 picture,
 img {
   max-width: 100%;
@@ -215,7 +214,6 @@ hr {
   margin: 1.5em 0;
 }
 
-/* Code */
 pre, code, tt {
   font: 1em "andale mono", "lucida console", monospace;
   line-height: 1.5;
@@ -229,7 +227,6 @@ pre {
   border: 1px solid #aaaaaa;
 }
 
-/* Abbreviation */
 abbr {
   border-bottom: 1px dotted #666666;
   cursor: help;
