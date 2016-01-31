@@ -74,7 +74,7 @@ To use SASS and automatically compile it within your theme, please refer to
 If you don't like Grunt, or would just prefer to use SASS' internal watch 
 functionality, simply cd into your theme directory and run:
 
-  sass -r sass-globbing --style expanded --watch sass:css
+  sass --style expanded --watch sass:css
 
 If you would like to add BrowserSync support to your theme, please include the
 following JS snippet before the closing </body> tag in the html.html.twig file:
