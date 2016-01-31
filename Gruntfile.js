@@ -1,3 +1,6 @@
+/**
+ * @file
+ */
 module.exports = function(grunt) {
 
   // This is where we configure each task that we'd like to run.
@@ -79,7 +82,8 @@ module.exports = function(grunt) {
       // Additional configuration options can be found at https://github.com/sindresorhus/grunt-sass
       options: {
         sourceMap: true,
-        outputStyle: 'expanded', // This controls the compiled css and can be changed to nested, compact or compressed
+        // This controls the compiled css and can be changed to nested, compact or compressed.
+        outputStyle: 'expanded',
         precision: 5
       },
       dist: {
@@ -107,7 +111,8 @@ module.exports = function(grunt) {
         },
         options: {
           watchTask: true,
-          injectChanges: false // Change this to "true" if you'd like the css to be injected rather than a browser refresh. In order for this to work with Drupal you will need to install https://drupal.org/project/link_css keep in mind though that this should not be run on a production site.
+          // Change this to "true" if you'd like the css to be injected rather than a browser refresh. In order for this to work with Drupal you will need to install https://drupal.org/project/link_css keep in mind though that this should not be run on a production site.
+          injectChanges: false
         }
       }
     },

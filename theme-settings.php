@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @file
+ */
+
 use Drupal\Core\Form\FormStateInterface;
 
 /**
@@ -8,15 +12,12 @@ use Drupal\Core\Form\FormStateInterface;
  * Form override for theme settings.
  */
 function basic_form_system_theme_settings_alter(array &$form, FormStateInterface $form_state) {
-
   $form['options_settings'] = [
     '#type' => 'fieldset',
     '#title' => t('Theme Specific Settings'),
     '#collapsible' => FALSE,
     '#collapsed' => FALSE,
   ];
-
-  // Guard support.
   $form['options_settings']['basic_browser_sync'] = [
     '#type' => 'fieldset',
     '#title' => t('BrowserSync Settings'),

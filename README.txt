@@ -15,6 +15,7 @@ Basic is perfect if you want a simple, smart, and flexible theme starter.
 
 Less code spam, more ham.
 
+
 ============
 Installation
 ============
@@ -78,9 +79,9 @@ functionality, simply cd into your theme directory and run:
   sass --style expanded --watch sass:css
 
 
-========================
-What are the files for ?
-========================
+=======================
+What are the files for?
+=======================
 
 - basic.info.yml
   Provide informations about the theme, like regions and libraries.
@@ -100,7 +101,7 @@ What are the files for ?
 
 
 ============
-In /SASS
+In /sass
 ============
 
 - layout/layout.sass
@@ -121,10 +122,10 @@ and Chrome. The purpose of this method is to have a minimal markup for an ideal
 display. For accessibility and search engine optimization, the best order to
 display a page is the following:
 
-1. header
-2. content
-3. sidebars
-4. footer
+1. Header
+2. Content
+3. Sidebars
+4. Footer
 
 This is how the page template is buit in Basic, and it works in fluid and fixed
 layout. Refer to the notes in layout.sass to see how to modify the layout.
@@ -161,9 +162,9 @@ line:
 This will initialize Grunt and start watching changes to your SASS files. Voilà!
 
 
-________________________________________________________________________________
-
-UPDATING BASIC
+==============
+Updating Basic
+==============
 
 Once you start using Basic, you will massively change it until you reach the
 point where it has nothing to do with Basic anymore. Unlike Zen, Basic is not
@@ -175,14 +176,21 @@ start using it, it is not Basic anymore, but your own theme.
 If you didn't rename your theme, but you don't want to be notified when Basic
 has a new version by the update module, simply delete "project = "basic" in
 basic.info.yml.
-________________________________________________________________________________
+
+
+================
+Bugs & Questions
+================
 
 Thanks for using Basic, and remember to use the issue queue in drupal.org for
 any questions or bug reports:
 
 http://drupal.org/project/issues/basic
 
+
+====================
 Current maintainers:
-* Steve Krueger (SteveK) - https://www.drupal.org/u/stevek
-* Leah Marsh (leahtard) - https://www.drupal.org/u/leahtard
+====================
+* Steve Krueger (SteveK)   - https://www.drupal.org/u/stevek
+* Leah Marsh (leahtard)    - https://www.drupal.org/u/leahtard
 * Joël Pittet (joelpittet) - https://www.drupal.org/u/joelpittet

@@ -12,11 +12,9 @@ ul.tabs {
   margin: 0 0 5px;
   border-bottom: 1px solid silver;
 }
-
 ul.tabs li {
   display: inline-block;
 }
-
 ul.tabs a {
   display: block;
   border: solid 1px silver;

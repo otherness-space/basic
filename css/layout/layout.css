@@ -14,7 +14,6 @@ html {
   margin-right: auto;
   width: auto;
 }
-
 .container::after {
   clear: both;
   content: "";
@@ -24,7 +23,6 @@ html {
 .no-sidebars #content {
   width: 100%;
 }
-
 @media screen and (min-width: 45em) {
   .no-sidebars #content {
     float: left;
@@ -36,7 +34,6 @@ html {
     margin-right: 0;
   }
 }
-
 @media screen and (min-width: 60em) {
   .no-sidebars #content {
     float: left;
@@ -48,11 +45,9 @@ html {
     margin-right: 0;
   }
 }
-
 .one-sidebar.sidebar-second #content {
   width: 100%;
 }
-
 @media screen and (min-width: 45em) {
   .one-sidebar.sidebar-second #content {
     float: left;
@@ -64,7 +59,6 @@ html {
     margin-right: 0;
   }
 }
-
 @media screen and (min-width: 60em) {
   .one-sidebar.sidebar-second #content {
     float: left;
@@ -76,11 +70,9 @@ html {
     margin-right: 0;
   }
 }
-
 .one-sidebar.sidebar-first #content {
   width: 100%;
 }
-
 @media screen and (min-width: 45em) {
   .one-sidebar.sidebar-first #content {
     float: left;
@@ -93,7 +85,6 @@ html {
     margin-right: 0;
   }
 }
-
 @media screen and (min-width: 60em) {
   .one-sidebar.sidebar-first #content {
     float: left;
@@ -106,11 +97,9 @@ html {
     margin-right: 0;
   }
 }
-
 .two-sidebars #content {
   width: 100%;
 }
-
 @media screen and (min-width: 45em) {
   .two-sidebars #content {
     float: left;
@@ -123,7 +112,6 @@ html {
     margin-right: 0;
   }
 }
-
 @media screen and (min-width: 60em) {
   .two-sidebars #content {
     float: left;
@@ -140,7 +128,6 @@ html {
 #sidebar-first {
   width: 100%;
 }
-
 @media screen and (min-width: 45em) {
   #sidebar-first {
     float: left;
@@ -156,7 +143,6 @@ html {
     margin-left: -103.22581%;
   }
 }
-
 @media screen and (min-width: 60em) {
   #sidebar-first {
     float: left;
@@ -176,7 +162,6 @@ html {
 #sidebar-second {
   width: 100%;
 }
-
 @media screen and (min-width: 45em) {
   #sidebar-second {
     float: left;
@@ -189,7 +174,6 @@ html {
     margin-right: 0;
   }
 }
-
 @media screen and (min-width: 60em) {
   #sidebar-second {
     float: left;
