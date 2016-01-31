@@ -84,12 +84,13 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'css/base.css': 'sass/base.sass',
-          'css/components.css': 'sass/components.sass',
-          'css/layout.css': 'sass/layout.sass',
-          'css/theme.css': 'sass/theme.sass',
-          'css/tabs.css': 'sass/tabs.sass',
-          'css/messages.css': 'sass/messages.sass'
+          'css/base/base.css': 'sass/base/base.sass',
+          'css/components/components.css': 'sass/components/components.sass',
+          'css/components/tabs.css': 'sass/components/tabs.sass',
+          'css/components/messages.css': 'sass/components/messages.sass',
+          'css/layout/layout.css': 'sass/layout/layout.sass',
+          'css/theme/theme.css': 'sass/theme/theme.sass',
+          'css/theme/print.css': 'sass/theme/print.sass'
         }
       }
     },

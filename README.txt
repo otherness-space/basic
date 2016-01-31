@@ -105,10 +105,10 @@ What are the files for ?
 In /SASS
 ============
 
-- layout.sass   => defines the layout of the theme (compiles to css/layout.css)
-- print.sass    => defines the way the theme looks when printed (compiles to
-                   css/print.css)
-- tabs.sass     => styles for the admin tabs
+- layout/layout.sass   => defines the layout of the theme (compiles to css/layout/layout.css)
+- theme/print.sass     => defines the way the theme looks when printed (compiles to
+                   css/theme/print.css)
+- components/tabs.sass     => styles for the admin tabs (compiles to css/components/tabs.css)
 
 
 ===================
