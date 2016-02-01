@@ -2,6 +2,9 @@
 
 use Drupal\Core\Form\FormStateInterface;
 
+// Set theme name to use in the key values.
+$theme_name = \Drupal::theme()->getActiveTheme()->getName();
+
 /**
  * Implements hook_form_system_theme_settings_alter().
  *
@@ -16,20 +19,20 @@ function basic_form_system_theme_settings_alter(array &$form, FormStateInterface
     '#collapsed' => FALSE,
   ];
 
-  // Guard support.
-  $form['options_settings']['basic_browser_sync'] = [
+  // BrowserSync support.
+  $form['options_settings'][$theme_name . '_browser_sync'] = [
     '#type' => 'fieldset',
     '#title' => t('BrowserSync Settings'),
   ];
-  $form['options_settings']['basic_browser_sync']['browser_sync']['#tree'] = TRUE;
-  $form['options_settings']['basic_browser_sync']['browser_sync']['enabled'] = [
+  $form['options_settings'][$theme_name . '_browser_sync']['browser_sync']['#tree'] = TRUE;
+  $form['options_settings'][$theme_name . '_browser_sync']['browser_sync']['enabled'] = [
     '#type' => 'checkbox',
     '#title' => t('Enable BrowserSync support for theme'),
     '#default_value' => theme_get_setting('browser_sync.enabled'),
     '#description' => t("Checking this box will automatically add the BrowserSync JS to your theme for development."),
   ];
 
-  $form['options_settings']['basic_browser_sync']['browser_sync']['host'] = [
+  $form['options_settings'][$theme_name . '_browser_sync']['browser_sync']['host'] = [
     '#type' => 'textfield',
     '#title' => t('BrowserSync host'),
     '#default_value' => theme_get_setting('browser_sync.host'),
@@ -39,7 +42,7 @@ function basic_form_system_theme_settings_alter(array &$form, FormStateInterface
     ],
   ];
 
-  $form['options_settings']['basic_browser_sync']['browser_sync']['port'] = [
+  $form['options_settings'][$theme_name . '_browser_sync']['browser_sync']['port'] = [
     '#type' => 'number',
     '#title' => t('Enable BrowserSync support for theme'),
     '#default_value' => theme_get_setting('browser_sync.port'),
@@ -54,20 +57,20 @@ function basic_form_system_theme_settings_alter(array &$form, FormStateInterface
     '#type' => 'fieldset',
     '#title' => t('Internet Explorer Stylesheets'),
   ];
-  $form['options_settings']['basic_ie']['ie_enabled'] = [
+  $form['options_settings'][$theme_name . '_ie']['ie_enabled'] = [
     '#type' => 'checkbox',
     '#title' => t('Enable Internet Explorer stylesheets in theme'),
     '#default_value' => theme_get_setting('ie_enabled'),
     '#description' => t('If you check this box you can choose which IE stylesheets in theme get rendered on display.'),
   ];
-  $form['options_settings']['basic_ie']['ie_enabled_css'] = [
+  $form['options_settings'][$theme_name . '_ie']['ie_enabled_css'] = [
     '#type' => 'fieldset',
     '#title' => t('Which IE versions you want to enable ".lt-ie" CSS classes'),
     '#states' => [
       'visible' => [':input[name="ie_enabled"]' => ['checked' => TRUE]],
     ],
   ];
-  $form['options_settings']['basic_ie']['ie_enabled_css']['ie_enabled_versions'] = [
+  $form['options_settings'][$theme_name . '_ie']['ie_enabled_css']['ie_enabled_versions'] = [
     '#type' => 'checkboxes',
     '#options' => [
       'ie8' => t('Internet Explorer 8'),
