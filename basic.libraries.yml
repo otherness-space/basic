@@ -3,14 +3,14 @@ global:
   css:
     base:
       bower_components/normalize.css/normalize.css: {}
-      css/base.css: {}
+      css/base/base.css: {}
     layout:
-      css/layout.css: {}
+      css/layout/layout.css: {}
     component:
-      css/components.css: {}
+      css/components/components.css: {}
     theme:
-      css/theme.css: {}
-      css/print.css: { media: print }
+      css/theme/theme.css: {}
+      css/theme/print.css: { media: print }
   js:
     js/modernizr.js: {}
 
@@ -18,13 +18,13 @@ tabs:
   version: VERSION
   css:
     component:
-      css/tabs.css: {}
+      css/components/tabs.css: {}
 
 messages:
   version: VERSION
   css:
     component:
-      css/messages.css: {}
+      css/components/messages.css: {}
 
 ie8:
   version: VERSION

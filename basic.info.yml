@@ -1,6 +1,6 @@
 name: Basic
 type: theme
-description: 'HTML5, SASS, Responsive grid base theme.'
+description: 'HTML5, SASS, Responsive grid starter theme.'
 package: Core
 version: VERSION
 core: 8.x

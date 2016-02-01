@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @file
+ */
+
 use Drupal\Core\Form\FormStateInterface;
 
 // Set theme name to use in the key values.
@@ -11,16 +15,19 @@ $theme_name = \Drupal::theme()->getActiveTheme()->getName();
  * Form override for theme settings.
  */
 function basic_form_system_theme_settings_alter(array &$form, FormStateInterface $form_state) {
-
   $form['options_settings'] = [
     '#type' => 'fieldset',
     '#title' => t('Theme Specific Settings'),
     '#collapsible' => FALSE,
     '#collapsed' => FALSE,
   ];
+<<<<<<< HEAD
 
   // BrowserSync support.
   $form['options_settings'][$theme_name . '_browser_sync'] = [
+=======
+  $form['options_settings']['basic_browser_sync'] = [
+>>>>>>> c2c740dd5dba7f0b68ceff29c5ea2581d0d575c2
     '#type' => 'fieldset',
     '#title' => t('BrowserSync Settings'),
   ];
@@ -78,14 +85,4 @@ function basic_form_system_theme_settings_alter(array &$form, FormStateInterface
     ],
     '#default_value' => array_keys(array_filter(theme_get_setting('ie_enabled_versions'))) ?: [],
   ];
-
-  // Clear theme registry.
-  // @todo, this feature needs to be tested as it doesn't seem to be working in
-  // D8 the same way.
-  //$form['options_settings']['clear_registry'] = [
-  //  '#type' => 'checkbox',
-  //  '#title' => t('Rebuild theme registry on every page.'),
-  //  '#description' => t('During theme development, it can be very useful to continuously <a href=":link">rebuild the theme registry</a>. WARNING: this is a huge performance penalty and must be turned off on production websites.', [':link' => 'http://drupal.org/node/173880#theme-registry']),
-  //  '#default_value' => theme_get_setting('clear_registry'),
-  //];
 }
