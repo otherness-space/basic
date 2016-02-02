@@ -2,12 +2,8 @@
 
 /**
  * @file
- * Drush hooks and include commands..
+ * Drush hooks and include commands for Basic theme.
  */
-
-// if (!function_exists('omega_theme_get_setting')) {
-//   require_once dirname(__FILE__) . '/omega.inc';
-// }
 
 /**
  * Implements hook_drush_command().
@@ -15,7 +11,7 @@
 function basic_drush_command() {
 
   $items['basic-install'] = array(
-    'description' => dt('Run through the installation process of the basic theme.'),
+    'description' => dt('Run through the installation process of the Basic theme.'),
     'aliases' => array('binstall'),
   );
 
@@ -54,9 +50,12 @@ function basic_drush_help($section) {
  * Implements drush_hook_COMMAND().
  */
 function drush_basic_install() {
-
   // Prompt the user what we're doing.
-  drush_confirm(dt('Welcome to the Basic Install. We will perform the automated tasks for you to use your new theme. We will create a copy of the basic theme and store it within the same folder. Do you wish to continue?'));
+  drush_print('-----------------------------');
+  drush_print(dt('Welcome to the Basic Install!'));
+  drush_print('-----------------------------');
+  drush_print(dt('We will perform the automated tasks for you to use your new theme. We will create a copy of the Basic theme and store it within the same folder.'));
+  drush_confirm(dt('Do you wish to continue?'));
 
   // Rebuild the theme data so that we can safely check for the existence of
   // themes by using the information provided by list_themes().
@@ -64,7 +63,7 @@ function drush_basic_install() {
   $theme_handler->rebuildThemeData();
 
   // Prompt for a theme name.
-  $name = drush_prompt(dt('Please enter the name of that you want for your theme'), 'Basic theme copy');
+  $name = drush_prompt(dt('Please enter the name of that you want for your theme'), 'My Theme');
 
   // Try to generate a machine-readable name. If that fails, prompt for one.
   if (!$machine_name = drush_basic_generate_theme_name($name)) {
@@ -77,26 +76,26 @@ function drush_basic_install() {
 
   // Set the destination of the new theme.
   drush_set_option('destination', 'themes');
-// 
+//
 //   // Let the user choose a destination.
 //   $destination = drush_prompt(dt('Please choose a destination. This is where your sub-theme will be placed'), 'sites/all/themes');
 //   drush_set_option('destination', $destination);
-//  
+//
 //   // Optionally skip readme files when generating the subtheme.
 //   drush_set_option('no-readme', !drush_confirm(dt("Do you want to keep the starterkit's readme files?")));
-// 
+//
 //   // Finally, let the user choose to directly enable the subtheme.
 //   if ($enable = drush_confirm(dt('Do you want to enable your new theme?'))) {
 //     drush_set_option('set-default', drush_confirm(dt('Do you want to make your new theme the default theme?')));
 //   }
 //   drush_set_option('enable', $enable);
-// 
+//
 //   // Finally, let the user decide whether he/she wants to download the libraries directly.
 //   if (is_file("{$starterkits[$starterkit]['path']}/libraries.make")) {
 //     drush_set_option('with-libraries', drush_confirm(dt('Do you want to download the libraries defined in libraries.make now?')));
 //   }
-// 
-  
+//
+
 
   // Try to generate a machine-readable name. If that fails, prompt for one.
   if (!$machine_name = drush_get_option('machine-name', drush_basic_generate_theme_name($name))) {
@@ -112,38 +111,36 @@ function drush_basic_install() {
     return drush_set_error('BASIC_COPY_PATH', dt('The path @path already exists.', array('@path' => $destination)));
   }
 
-  // Create a temporary directory so we don't leave any stale files if an
-  // operation fails.
-  $temporary = drush_tempdir() . '/' . $machine_name;
+  // // Create a temporary directory so we don't leave any stale files if an
+  // // operation fails.
+  // $temporary = drush_tempdir() . '/' . $machine_name;
 
   // Try to copy basic to the destination path of the new theme.
-  // if (!drush_copy_dir('themes/basic', $temporary)) {
+  // if (!basic_copy_dir('themes/basic', $temporary)) {
   //   return drush_set_error('BASIC_COPY_GENERATE_THEME', dt('Failed to generate theme.'));
   // }
+  $destination_path = 'themes/' . $machine_name;
 
   // Copy into main folder.
-  drush_copy_dir('themes/basic', 'themes/' . $machine_name);
+  basic_copy_dir('themes/basic', $destination_path);
 
   // Recursively rewrite the file names and contents of all the files that are
   // now in the subtheme's directory to represent the human- and
   // machine-readable names of the subtheme.
-  $camel = strtr(ucwords(strtr($machine_name, array('_' => ' ', '.' => '_ '))), array(' ' => ''));
   $search = array(
     'basic' => $machine_name,
     'Basic' => $name,
-    'basic_' => str_replace('_', '-', $machine_name),
-    'basic' => $camel,
-    'basic' => lcfirst($camel),
   );
 
   // @TODO: Change to temp dir.
-  if (!drush_basic_rewrite_recursive('themes/' . $machine_name, array_keys($search), array_values($search))) {
+  if (!drush_basic_rewrite_recursive($destination_path, array_keys($search), array_values($search))) {
     return drush_set_error('BASIC_COPY_GENERATE_THEME', dt('Failed to rewrite files and contents while generating theme.'));
   }
 
-  drush_op('chdir', 'themes/' . $machine_name);
 
-  drush_shell_exec('npm install');
+  // @TODO: this is slow, prompt first and try to show output.
+  // drush_op('chdir', $destination_path);
+  // drush_shell_exec('npm install');
 
   return;
   // Delete the .starterkit.inc file.
@@ -160,40 +157,37 @@ function drush_basic_install() {
   // base theme (if any).
   if (empty($info['regions'])) {
     // We explicitly avoid reading from the generated theme info array for this
-    // and get the raw, unprocessed .info file data of the base theme instead to
-    // prevent any system- or module-provided regions to leak into our theme's
-    // .info file (e.g. via hook_system_info_alter() as used by the dashboard
-    // module).
-    $basetheme_info = drupal_parse_info_file(drupal_get_path('theme', $basetheme) . "/$basetheme.info");
+    // and get the raw, unprocessed .info.yml file data of the base theme
+    // instead to prevent any system- or module-provided regions to leak into
+    // our theme's .info.yml file (e.g. via hook_system_info_alter() as used by
+    // the dashboard module).
+    $basetheme_info = drupal_parse_info_file(drupal_get_path('theme', $basetheme) . "/$basetheme.info.yml");
     if (!empty($basetheme_info['regions'])) {
       $info['regions'] = $basetheme_info['regions'];
     }
   }
 
-  // Write to the new .info file.
-  $file = $temporary . '/' . $machine_name . '.info';
+  // Write to the new .info.yml file.
+  $file = $temporary . '/' . $machine_name . '.info.yml';
   if (!file_put_contents($file, drush_omega_compose_info_file($info))) {
     return drush_set_error('BASIC_COPY_GENERATE_THEME', dt('Failed to generate subtheme.'));
   }
-
-  
 
   // Move the new subtheme to its destination.
   if (!drush_op('drush_mkdir', dirname($destination)) || !drush_op('drush_move_dir', $temporary, $destination)) {
     return drush_set_error('BASIC_COPY_GENERATE_THEME', dt('Failed to generate subtheme.'));
   }
 
-  // Rebuild the theme caches so that  we can do some final tasks.
-  drupal_theme_rebuild();
-  system_rebuild_theme_data();
+  // Rebuild the theme caches so that we can do some final tasks.
+  $theme_handler->rebuildThemeData();
 
   if (($default = drush_get_option('set-default')) || !drush_get_option('enable')) {
     // Enable the subtheme.
-    drush_op('theme_enable', array($machine_name));
+    //drush_op('theme_enable', array($machine_name));
 
     if ($default) {
       // Make the newly created subtheme the default theme.
-      drush_op('variable_set', 'theme_default', $machine_name);
+      // drush_op('variable_set', 'theme_default', $machine_name);
     }
   }
 
@@ -224,8 +218,10 @@ function drush_basic_install() {
  *   The generated machine-readable name.
  */
 function drush_basic_generate_theme_name($string) {
-  // Machine-readable names have to start with a lowercase letter.
-  $string = preg_replace('/^[^a-z]+/', '', strtolower($string));
+  // Lowercase to start.
+  $string = strtolower($string);
+  //  // Machine-readable names have to start with a lowercase letter.
+  //  $string = preg_replace('/^[^a-z]+/', '', strtolower($string));
   // Machine-readable names may only contain alphanumeric characters and
   // underscores.
   $string = preg_replace('/[^a-z0-9_]+/', '_', $string);
@@ -288,7 +284,6 @@ function drush_basic_require_valid_theme_name($message, $default = NULL) {
   }
 }
 
-
 /**
  * Recursively rewrites (and renames) all files in a given path.
  *
@@ -328,8 +323,14 @@ function drush_basic_rewrite_recursive($path, $search, $replace) {
     }
     elseif ($item->isFile()) {
       // If it is a file, try to replace its contents.
-      $contents = file_get_contents($pathname);
-      if (($changed = preg_replace($search, $replace, $contents)) === NULL) {
+      $content = file_get_contents($pathname);
+
+      // Nothing to replace in empty files.
+      if (empty($content)) {
+        continue;
+      }
+
+      if (($changed_content = str_replace($search, $replace, $content)) === NULL) {
         return drush_set_error('REWRITE_FAILURE', dt('There was an error while trying to rewrite !path (!search to !replace)', array(
           '!path' => $pathname,
           '!search' => $search,
@@ -337,139 +338,118 @@ function drush_basic_rewrite_recursive($path, $search, $replace) {
         )));
       }
 
-      if ($contents !== $changed) {
-        file_put_contents($pathname, $changed);
+      if ($content !== $changed_content) {
+        file_put_contents($pathname, $changed_content);
       }
-    }
-
-    // Try to rename (move) the file if the name was changed.
-    $original = basename($pathname);
-    if (($renamed = preg_replace($search, $replace, $original)) === NULL) {
-      return drush_set_error('REWRITE_FAILURE', dt('There was an error while trying to rewrite !path (!search to !replace)', array(
-        '!path' => $path,
-        '!search' => $search,
-        '!replace' => $replace,
-      )));
-    }
-
-    // Move (rename) if the file or directory name was changed.
-    if ($original !== $renamed) {
-      $new = dirname($pathname) . "/$renamed";
-      if (!drush_move_dir($pathname, $new, TRUE)) {
-        return FALSE;
-      };
     }
   }
 
   return TRUE;
 }
 
-
 /**
- * Discovers layouts, extensions or other plugins in the theme trail.
+ * Copy $src to $dest.
  *
- * @param string $type
- *   A theme extension type (e.g. layout or extension).
- * @param string $theme
- *   (Optional) The key (machine-readable name) of a theme. Defaults to the key
- *   of the current theme.
- *
- * @return array
- *   An array containing the discovered definitions.
+ * @param $src
+ *   The directory to copy.
+ * @param $dest
+ *   The destination to copy the source to, including the new name of
+ *   the directory.  To copy directory "a" from "/b" to "/c", then
+ *   $src = "/b/a" and $dest = "/c/a".  To copy "a" to "/c" and rename
+ *   it to "d", then $dest = "/c/d".
+ * @param $overwrite
+ *   Action to take if destination already exists.
+ *     - FILE_EXISTS_OVERWRITE - completely removes existing directory.
+ *     - FILE_EXISTS_ABORT - aborts the operation.
+ *     - FILE_EXISTS_MERGE - Leaves existing files and directories in place.
+ * @return
+ *   TRUE on success, FALSE on failure.
  */
-function basic_discovery($type, $theme = NULL) {
-  $theme = isset($theme) ? $theme : $GLOBALS['theme_key'];
-
-  if (($discovery = &drupal_static(__FUNCTION__, array())) && isset($discovery[$theme][$type])) {
-    return $discovery[$theme][$type];
-  }
-
-  $discovery[$theme][$type] = array();
-
-  // Retrieve all themes from the theme trail of the given theme.
-  // Get list of current themes.
-  $theme_handler = \Drupal::service('theme_handler');
-  $themes = $theme === FALSE ? $theme_handler->listInfo() : basic_theme_trail($theme);
-
-  // Collect paths to all sub-themes grouped by base themes. These will be
-  // used for filtering. This allows base themes to have sub-themes in its
-  // folder hierarchy without affecting the base themes template discovery.
-  $paths = array();
-  foreach (list_themes() as $key => $info) {
-    if (!empty($info->base_theme)) {
-      $paths[$info->base_theme][$key] = dirname($info->filename);
+function basic_copy_dir($src, $dest, $overwrite = FILE_EXISTS_ABORT) {
+  // Preflight based on $overwrite if $dest exists.
+  if (file_exists($dest)) {
+    if ($overwrite === FILE_EXISTS_OVERWRITE) {
+      drush_op('drush_delete_dir', $dest, TRUE);
+    }
+    elseif ($overwrite === FILE_EXISTS_ABORT) {
+      return drush_set_error('DRUSH_DESTINATION_EXISTS', dt('Destination directory !dest already exists.', array('!dest' => $dest)));
+    }
+    elseif ($overwrite === FILE_EXISTS_MERGE) {
+      // $overwrite flag may indicate we should merge instead.
+      drush_log(dt('Merging existing !dest directory', array('!dest' => $dest)));
     }
   }
-  foreach ($paths as $basetheme => $subthemes) {
-    foreach ($subthemes as $subtheme => $path) {
-      if (isset($paths[$subtheme])) {
-        $paths[$basetheme] = array_merge($paths[$basetheme], $paths[$subtheme]);
-      }
-    }
+  // $src readable?
+  if (!is_readable($src)) {
+    return drush_set_error('DRUSH_SOURCE_NOT_EXISTS', dt('Source directory !src is not readable or does not exist.', array('!src' => $src)));
+  }
+  // $dest writable?
+  if (!is_writable(dirname($dest))) {
+    return drush_set_error('DRUSH_DESTINATION_NOT_WRITABLE', dt('Destination directory !dest is not writable.', array('!dest' => dirname($dest))));
+  }
+  // Try to do a recursive copy.
+  if (@drush_op('_basic_recursive_copy', $src, $dest)) {
+    return TRUE;
   }
 
-  $strlen = strlen($type) + 1;
-  foreach ($themes as $key => $label) {
-    // Retrieve the array of paths that should be ignored for this theme.
-    $ignore = isset($paths[$key]) ? $paths[$key] : array();
-    $path = drupal_get_path('theme', $key);
-
-    // Support files without '.inc' extension for backwards compatibility.
-    foreach (file_scan_directory($path, '/\.' . $type . '(\.inc)?$/', array('key' => 'name')) as $name => $file) {
-      // Ignore sub-theme implementations for the current theme.
-      if (strpos($file->uri, str_replace($ignore, '', $file->uri)) !== 0) {
-        continue;
-      }
-
-      if (substr($name, -$strlen) === '.' . $type) {
-        $name = substr($name, 0, strlen($name) - $strlen);
-      }
-
-      if ($info = drupal_parse_info_file($file->uri)) {
-        $discovery[$theme][$type][$name] = array(
-          'name' => $name,
-          'path' => dirname($file->uri),
-          'file' => $file->uri,
-          'info' => $info,
-          'theme' => $key,
-        );
-      }
-    }
-  }
-
-  return $discovery[$theme][$type];
+  return drush_set_error('DRUSH_COPY_DIR_FAILURE', dt('Unable to copy !src to !dest.', array('!src' => $src, '!dest' => $dest)));
 }
 
 /**
- * Builds the full theme trail (deepest base theme first) for a theme.
- *
- * @param string $theme
- *   (Optional) The key (machine-readable name) of a theme. Defaults to the key
- *   of the current theme.
- *
- * @return array
- *   An array of all themes in the trail, keyed by theme key.
+ * Internal function called by basic_copy_dir; do not use directly.
  */
-function basic_theme_trail($theme = NULL) {
-  $theme = isset($theme) ? $theme : $GLOBALS['theme_key'];
+function _basic_recursive_copy($src, $destination) {
+  static $machine_name;
+  if (!isset($machine_name)) {
+    $machine_name = drush_get_option('machine-name');
+  }
+  // All subdirectories and contents.
+  $ignore_directories = array(
+    'node_modules',
+    'bower_components',
+  );
+  $no_mask = '/^' . implode('|', $ignore_directories) . '$/';
 
-  if (($cache = &drupal_static(__FUNCTION__)) && isset($cache[$theme])) {
-    return $cache[$theme];
+  if (is_dir($src)) {
+    if (!drush_mkdir($destination, TRUE)) {
+      return FALSE;
+    }
+    $dir_handle = opendir($src);
+    while ($file = readdir($dir_handle)) {
+      if ($file[0] != '.' && !preg_match($no_mask, $file)) {
+        if (_basic_recursive_copy("$src/$file", "$destination/$file") !== TRUE) {
+          return FALSE;
+        }
+      }
+    }
+    closedir($dir_handle);
+  }
+  elseif (is_link($src)) {
+    symlink(readlink($src), $destination);
+  }
+  elseif (!copy($src, $destination)) {
+    return FALSE;
   }
 
-  $cache[$theme] = array();
-
-  if ($theme == $GLOBALS['theme'] && isset($GLOBALS['theme_info']->base_themes)) {
-    $cache[$theme] = $GLOBALS['theme_info']->base_themes;
+  // Rename files with basic.
+  if (strpos($destination, 'basic') !== FALSE) {
+    $renamed_destination = str_replace('basic', $machine_name, $destination);
+    rename($destination, $renamed_destination);
   }
 
-  $themes = list_themes();
-  if (empty($cache[$theme]) && isset($themes[$theme]->info['base theme'])) {
-    $cache[$theme] = system_find_base_themes($themes, $theme);
+  // Preserve file modification time.
+  touch($destination, filemtime($src));
+
+  // Preserve execute permission.
+  if (!is_link($src) && !drush_is_windows()) {
+    // Get execute bits of $src.
+    $execperms = fileperms($src) & 0111;
+    // Apply execute permissions if any.
+    if ($execperms > 0) {
+      $perms = fileperms($destination) | $execperms;
+      chmod($destination, $perms);
+    }
   }
 
-  // Add our current subtheme ($key) to that array.
-  $cache[$theme][$theme] = $themes[$theme]->info['name'];
-
-  return $cache[$theme];
+  return TRUE;
 }
