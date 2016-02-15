@@ -6,7 +6,9 @@ version: VERSION
 core: 8.x
 
 libraries:
+  - core/normalize
   - basic/global
+
 
 regions:
   header: Header
