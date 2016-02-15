@@ -3,4 +3,5 @@
 .sass-cache
 *.map
 node_modules
+bower_components
 .DS_Store
