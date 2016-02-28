@@ -18,8 +18,6 @@ function basic_form_system_theme_settings_alter(array &$form, FormStateInterface
   $form['options_settings'] = [
     '#type' => 'fieldset',
     '#title' => t('Theme Specific Settings'),
-    '#collapsible' => FALSE,
-    '#collapsed' => FALSE,
   ];
 
   // BrowserSync support.
