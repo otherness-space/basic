@@ -112,6 +112,18 @@ In /sass
   Styles for the admin tabs (compiles to css/components/tabs.css)
 
 
+============
+In /js
+============
+
+- modernizr.js
+  Modernizr detects HTML and CSS features and applies classes to the <html> object you can then reference in your stylesheets. Use the URL at the top of the modernizr.js file to customize the features you wish to detect.
+- selectivizr-min.js
+  This script will only be loaded for Internet Explorer 8 through the ie8 theme library. It will provide a JS fallback for CSS :nth-child, an important part of the Bourbon Neat grid system, as it is not supported in Internet Explorer 8.
+- build/scripts.js & source/scripts.js
+  When using Grunt, save files to the source folder and a minified version will automatically be saved to the build folder. See comments in basic.libraries.yml file to enable the starter scripts.js file.
+
+
 ===================
 Changing the Layout
 ===================
