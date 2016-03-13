@@ -34,6 +34,7 @@ another name like 'mytheme', follow these steps BEFORE enabling the theme:
   - Rename basic.info.yml to mytheme.info.yml
   - edit basic.info.yml and change the name, description, project (can be
     deleted), and change all other instances of 'basic' to 'mytheme'
+  - Rename basic.libraries.yml to mytheme.libraries.yml
   - Rename basic.theme to mytheme.theme
   - in basic.theme, change each instance of 'basic' to 'mytheme'
   - Rename config/schema/basic.schema.yml to mytheme.schema.yml
