@@ -50,6 +50,26 @@ function basic_drush_help($section) {
  * Implements drush_hook_COMMAND().
  */
 function drush_basic_install() {
+  drush_print('Checking for npm...');
+  $npm_check_output = drush_shell_exec('npm version 2>&1');
+  if(strpos($npm_check_output, 'command not found')) {
+    drush_print('NPM could not be found. Please install npm (https://nodejs.org/en/) and try again.');
+    exit();
+  }
+  else {
+    drush_print('npm was found.');
+  }
+
+  drush_print('Checking for bower...');
+  $bower_check_output = drush_shell_exec('bower 2>&1');
+  if(strpos($bower_check_output, 'command not found')) {
+    drush_print('Bower could not be found. Please install bower (npm install -g bower) and try again.');
+    exit();
+  }
+  else {
+    drush_print('bower was found.');
+  }
+
   // Prompt the user what we're doing.
   drush_print('-----------------------------');
   drush_print(dt('Welcome to the Basic Install!'));
@@ -76,26 +96,6 @@ function drush_basic_install() {
 
   // Set the destination of the new theme.
   drush_set_option('destination', 'themes');
-//
-//   // Let the user choose a destination.
-//   $destination = drush_prompt(dt('Please choose a destination. This is where your sub-theme will be placed'), 'sites/all/themes');
-//   drush_set_option('destination', $destination);
-//
-//   // Optionally skip readme files when generating the subtheme.
-//   drush_set_option('no-readme', !drush_confirm(dt("Do you want to keep the starterkit's readme files?")));
-//
-//   // Finally, let the user choose to directly enable the subtheme.
-//   if ($enable = drush_confirm(dt('Do you want to enable your new theme?'))) {
-//     drush_set_option('set-default', drush_confirm(dt('Do you want to make your new theme the default theme?')));
-//   }
-//   drush_set_option('enable', $enable);
-//
-//   // Finally, let the user decide whether he/she wants to download the libraries directly.
-//   if (is_file("{$starterkits[$starterkit]['path']}/libraries.make")) {
-//     drush_set_option('with-libraries', drush_confirm(dt('Do you want to download the libraries defined in libraries.make now?')));
-//   }
-//
-
 
   // Try to generate a machine-readable name. If that fails, prompt for one.
   if (!$machine_name = drush_get_option('machine-name', drush_basic_generate_theme_name($name))) {
@@ -111,18 +111,17 @@ function drush_basic_install() {
     return drush_set_error('BASIC_COPY_PATH', dt('The path @path already exists.', array('@path' => $destination)));
   }
 
-  // // Create a temporary directory so we don't leave any stale files if an
-  // // operation fails.
-  // $temporary = drush_tempdir() . '/' . $machine_name;
+  $temporary = \Drupal::config('system.file')->get('path.temporary');
 
-  // Try to copy basic to the destination path of the new theme.
-  // if (!basic_copy_dir('themes/basic', $temporary)) {
-  //   return drush_set_error('BASIC_COPY_GENERATE_THEME', dt('Failed to generate theme.'));
-  // }
   $destination_path = 'themes/' . $machine_name;
+  $temp_path = $temporary . '/' . $machine_name;
 
-  // Copy into main folder.
-  basic_copy_dir('themes/basic', $destination_path);
+  if(is_dir($temp_path)) {
+    basic_rm_dir($temp_path);
+  }
+
+  // Copy into temp directory.
+  basic_copy_dir('themes/basic', $temp_path);
 
   // Recursively rewrite the file names and contents of all the files that are
   // now in the subtheme's directory to represent the human- and
@@ -133,10 +132,30 @@ function drush_basic_install() {
   );
 
   // @TODO: Change to temp dir.
-  if (!drush_basic_rewrite_recursive($destination_path, array_keys($search), array_values($search))) {
+  if (!drush_basic_rewrite_recursive($temp_path, array_keys($search), array_values($search))) {
     return drush_set_error('BASIC_COPY_GENERATE_THEME', dt('Failed to rewrite files and contents while generating theme.'));
   }
 
+  // Copy from temp folder into new theme's folder.
+  basic_copy_dir($temp_path, $destination_path);
+
+  // Run npm install on the new theme folder.
+  drush_print(dt("Building node dependencies for the theme @theme. This could take a couple minutes.", array(
+      '@theme' => $machine_name)));
+  drush_op('chdir', DRUPAL_ROOT . '/' . $destination_path);
+  drush_shell_exec('npm install');
+  drush_print(dt("Node dependancies have been successfully built."));
+
+  // Run npm install on the new theme folder.
+  drush_print(dt("Building bower dependencies for the theme @theme...", array(
+      '@theme' => $machine_name)));
+  drush_shell_exec('bower install');
+  drush_print(dt("Bower dependancies have been successfully built.\n"));
+
+  // Notify user of successful installation.
+  drush_print(dt("------------------------------------------------------------------"));
+  drush_print(dt("The new theme, @theme, has been successfully derived from Basic.", array('@theme' => $machine_name)));
+  drush_print(dt("------------------------------------------------------------------"));
 
   // @TODO: this is slow, prompt first and try to show output.
   // drush_op('chdir', $destination_path);
@@ -181,17 +200,8 @@ function drush_basic_install() {
   // Rebuild the theme caches so that we can do some final tasks.
   $theme_handler->rebuildThemeData();
 
-  if (($default = drush_get_option('set-default')) || !drush_get_option('enable')) {
-    // Enable the subtheme.
-    //drush_op('theme_enable', array($machine_name));
-
-    if ($default) {
-      // Make the newly created subtheme the default theme.
-      // drush_op('variable_set', 'theme_default', $machine_name);
-    }
-  }
-
   // Execute the theme's libraries.make file unless disabled.
+  echo "DESTINATION EQUALS: " . $destination;
   if (drush_get_option('with-libraries') && is_file("$destination/libraries.make")) {
     drush_op('chdir', $destination);
     drush_invoke_process('@self', 'make', array('libraries.make'), array(
@@ -310,6 +320,7 @@ function drush_basic_rewrite_recursive($path, $search, $replace) {
 
   // If the file actually is a directory, proceed with the recursion.
   $directory = new DirectoryIterator($path);
+
   foreach ($directory as $item) {
     if ($item->isDot()) {
       // Do not process '..' and '.'.
@@ -327,6 +338,7 @@ function drush_basic_rewrite_recursive($path, $search, $replace) {
 
       // Nothing to replace in empty files.
       if (empty($content)) {
+        unlink($pathname);
         continue;
       }
 
@@ -452,4 +464,26 @@ function _basic_recursive_copy($src, $destination) {
   }
 
   return TRUE;
+}
+
+/**
+ * Recursively removes all files within the provided directory. USE WITH CAUTION.
+ *
+ * @param  string $dir File path for the directory you want to delte.
+ */
+function basic_rm_dir($dir) {
+  if (is_dir($dir)) {
+    $objects = scandir($dir);
+    foreach ($objects as $object) {
+      if ($object != "." && $object != "..") {
+        if (is_dir($dir . "/" . $object)) {
+          basic_rm_dir($dir . "/" . $object);
+        }
+        else {
+          unlink($dir . "/" . $object);
+        }
+      }
+    }
+    rmdir($dir);
+  }
 }
