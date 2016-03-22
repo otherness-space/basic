@@ -27,8 +27,22 @@ packages are included via 'npm install'
   - Bourbon (http://bourbon.io/)
   - Bourbon Neat (http://neat.bourbon.io/)
 
-Basic is meant to be YOUR theme. To change the name of the theme from 'basic' to
-another name like 'mytheme', follow these steps BEFORE enabling the theme:
+Basic is meant to be YOUR theme. Follow one of the two methods below and you can
+rename 'basic' to another name like 'mytheme'. You're also welcome to keep 'basic'.
+
+1. DRUSH: The provided drush install script will duplicate the basic theme folder
+   and rename all appropriate files and content to the new theme name you provide.
+
+  - Download and install the basic theme: $ drush en basic
+  - Run the provided drush install script: $ drush basic-install
+  - The script will first ask you to enter your theme name (eg. My Theme). Second,
+    it will ask you to enter a machine name (eg. my_theme).
+  - After complete, you can enable your new theme: $drush en my_theme
+  - At this time, you can uninstall basic: $drush pmu basic
+  - Commence work on your theme!
+
+2. MANUAL: To manually change the name of the theme follow these steps BEFORE
+   enabling the theme:
 
   - Rename the theme folder to 'mytheme'
   - Rename basic.info.yml to mytheme.info.yml
@@ -50,17 +64,14 @@ another name like 'mytheme', follow these steps BEFORE enabling the theme:
   - In templates/status-messages.html.twig, change each instance of 'basic' to
     'mytheme'
 
-When renaming, remember the following:
-
+  When renaming, remember the following:
   - Do not simply replace every instance of 'basic' in every file in the theme.
     Most of Basic's dependencies use the word 'basic' somewhere and renaming
     these instances will cause Basic to break in unpredictable ways.
-
   - If you don't rename all these files, you may get a vague and unhelpful error
     message when attempting to enable your theme: "The website encountered an
     unexpected error. Please try again later." Turn on a higher level of error
     logging in your server's php.ini to help determine what you've missed.
-
   - If you don't bother renaming Basic in the above locations, be advised that
     you will run into conflicts with other versions of Basic on your site. If
     your site uses more than one theme based on Basic, make sure at least one of
