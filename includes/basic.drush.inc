@@ -15,19 +15,6 @@ function basic_drush_command() {
     'aliases' => array('binstall'),
   );
 
-  // $items['basic-grunt'] = array(
-  //   'description' => dt('Runs grunt for the given theme including SASS watch and BrowserSync by default.'),
-  //   'arguments' => array(
-  //     'name' => dt('The name of your subtheme.'),
-  //   ),
-  //  'options' => array(
-  //    'screen' => dt('Run guard watch in a detached screen.'),
-  //    'force-polling' => dt('Polling is required for making guard watch work with remote file systems e.g. in case of virtual environments where guard runs on the guest but the files are modified on the host.'),
-  //    'latency' => dt("Sometimes it seems to be required to set a latency (e.g. 5) if working with --force-polling because otherwise file changes are detected twice. Hence, not setting a latency might affect your system performance."),
-  //   ),
-  //   'aliases' => array('basicgrunt'),
-  // );
-
   return $items;
 }
 
@@ -39,10 +26,6 @@ function basic_drush_help($section) {
 
     case 'drush:basic-install':
       return dt('Runs through an automated process for installing and renaming your theme to use as your own.');
-
-    // case 'drush:basic-grunt':
-    //   return dt('Runs guard for the given theme including Compass and LiveReload by default.');
-
   }
 }
 
@@ -131,7 +114,6 @@ function drush_basic_install() {
     'Basic' => $name,
   );
 
-  // @TODO: Change to temp dir.
   if (!drush_basic_rewrite_recursive($temp_path, array_keys($search), array_values($search))) {
     return drush_set_error('BASIC_COPY_GENERATE_THEME', dt('Failed to rewrite files and contents while generating theme.'));
   }
@@ -157,13 +139,7 @@ function drush_basic_install() {
   drush_print(dt("The new theme, @theme, has been successfully derived from Basic.", array('@theme' => $machine_name)));
   drush_print(dt("------------------------------------------------------------------"));
 
-  // @TODO: this is slow, prompt first and try to show output.
-  // drush_op('chdir', $destination_path);
-  // drush_shell_exec('npm install');
-
   return;
-  // Delete the .starterkit.inc file.
-  // drush_delete_dir($temporary . '/' . basename($starterkit['file']));
 
   // Put the name and description for the new subtheme in place.
   $info = array(
@@ -230,8 +206,8 @@ function drush_basic_install() {
 function drush_basic_generate_theme_name($string) {
   // Lowercase to start.
   $string = strtolower($string);
-  //  // Machine-readable names have to start with a lowercase letter.
-  //  $string = preg_replace('/^[^a-z]+/', '', strtolower($string));
+  // Machine-readable names have to start with a lowercase letter.
+  // $string = preg_replace('/^[^a-z]+/', '', strtolower($string));
   // Machine-readable names may only contain alphanumeric characters and
   // underscores.
   $string = preg_replace('/[^a-z0-9_]+/', '_', $string);
