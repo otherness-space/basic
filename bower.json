@@ -1,9 +1,0 @@
-{
-  "name": "Basic",
-  "version": "0.0.1",
-  "dependencies": {
-    "bourbon": "4.2.*",
-    "neat": "1.7.*"
-  },
-  "private": true
-}

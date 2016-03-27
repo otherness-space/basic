@@ -43,16 +43,6 @@ function drush_basic_install() {
     drush_print('npm was found.');
   }
 
-  drush_print('Checking for bower...');
-  $bower_check_output = drush_shell_exec('bower 2>&1');
-  if(strpos($bower_check_output, 'command not found')) {
-    drush_print('Bower could not be found. Please install bower (npm install -g bower) and try again.');
-    exit();
-  }
-  else {
-    drush_print('bower was found.');
-  }
-
   // Prompt the user what we're doing.
   drush_print('-----------------------------');
   drush_print(dt('Welcome to the Basic Install!'));
@@ -127,12 +117,6 @@ function drush_basic_install() {
   drush_op('chdir', DRUPAL_ROOT . '/' . $destination_path);
   drush_shell_exec('npm install');
   drush_print(dt("Node dependancies have been successfully built."));
-
-  // Run npm install on the new theme folder.
-  drush_print(dt("Building bower dependencies for the theme @theme...", array(
-      '@theme' => $machine_name)));
-  drush_shell_exec('bower install');
-  drush_print(dt("Bower dependancies have been successfully built.\n"));
 
   // Notify user of successful installation.
   drush_print(dt("------------------------------------------------------------------"));
@@ -394,7 +378,6 @@ function _basic_recursive_copy($src, $destination) {
   // All subdirectories and contents.
   $ignore_directories = array(
     'node_modules',
-    'bower_components',
   );
   $no_mask = '/^' . implode('|', $ignore_directories) . '$/';
 
@@ -443,9 +426,12 @@ function _basic_recursive_copy($src, $destination) {
 }
 
 /**
- * Recursively removes all files within the provided directory. USE WITH CAUTION.
+ * Recursively removes all files within the provided directory.
  *
- * @param  string $dir File path for the directory you want to delte.
+ * USE WITH CAUTION.
+ *
+ * @param string $dir
+ *   File path for the directory you want to delete.
  */
 function basic_rm_dir($dir) {
   if (is_dir($dir)) {
