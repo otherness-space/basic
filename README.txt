@@ -28,15 +28,17 @@ packages are included via 'npm install'
   - Bourbon Neat (http://neat.bourbon.io/)
 
 Basic is meant to be YOUR theme. Follow one of the two methods below and you can
-rename 'basic' to another name like 'mytheme'. You're also welcome to keep 'basic'.
+rename 'basic' to another name like 'mytheme'. You're also welcome to keep
+'basic'.
 
-1. DRUSH: The provided drush install script will duplicate the basic theme folder
-   and rename all appropriate files and content to the new theme name you provide.
+1. DRUSH: The provided drush install script will duplicate the basic theme
+   folder and rename all appropriate files and content to the new theme name you
+   provide.
 
   - Download and install the basic theme: $ drush en basic
   - Run the provided drush install script: $ drush basic-install
-  - The script will first ask you to enter your theme name (eg. My Theme). Second,
-    it will ask you to enter a machine name (eg. my_theme).
+  - The script will first ask you to enter your theme name (eg. My Theme).
+    Second, it will ask you to enter a machine name (eg. my_theme).
   - After complete, you can enable your new theme: $drush en my_theme
   - At this time, you can uninstall basic: $drush pmu basic
   - Commence work on your theme!
@@ -85,10 +87,18 @@ How to compile SASS in Basic
 To use SASS and automatically compile it within your theme, please refer to "How
 to Use Grunt with Basic" in the documentation below.
 
+Install node-sass:
+
+  npm install node-sass -g
+
 If you don't like Grunt, or would just prefer to use SASS' internal watch
 functionality, simply cd into your theme directory and run:
 
-  sass --style expanded --watch sass:css
+  node-sass sass -o css --output-style expanded --source-map true --watch
+
+Or simply compile the latest:
+
+  node-sass sass -o css --output-style expanded --source-map true
 
 
 =======================
@@ -129,11 +139,19 @@ In /js
 ============
 
 - modernizr.js
-  Modernizr detects HTML and CSS features and applies classes to the <html> object you can then reference in your stylesheets. Use the URL at the top of the modernizr.js file to customize the features you wish to detect.
+  Modernizr detects HTML and CSS features and applies classes to
+  the <html> object you can then reference in your stylesheets. Use the URL at
+  the top of the modernizr.js file to customize the features you wish to detect.
 - selectivizr-min.js
-  This script will only be loaded for Internet Explorer 8 through the ie8 theme library. It will provide a JS fallback for CSS :nth-child, an important part of the Bourbon Neat grid system, as it is not supported in Internet Explorer 8.
+  This script will only be loaded for Internet Explorer 8
+  through the ie8 theme library. It will provide a JS fallback for CSS :nth-
+  child, an important part of the Bourbon Neat grid system, as it is not
+  supported in Internet Explorer 8.
 - build/scripts.js & source/scripts.js
-  When using Grunt, save files to the source folder and a minified version will automatically be saved to the build folder. See comments in basic.libraries.yml file to enable the starter scripts.js file.
+  When using Grunt, save files to the
+  source folder and a minified version will automatically be saved to the build
+  folder. See comments in basic.libraries.yml file to enable the starter
+  scripts.js file.
 
 
 ===================
@@ -215,6 +233,8 @@ http://drupal.org/project/issues/basic
 ====================
 Current maintainers:
 ====================
-* Steve Krueger (SteveK)   - https://www.drupal.org/u/stevek
-* Leah Marsh (leahtard)    - https://www.drupal.org/u/leahtard
-* Joël Pittet (joelpittet) - https://www.drupal.org/u/joelpittet
+* Steve Krueger (SteveK)              - https://www.drupal.org/u/stevek
+* Leah Marsh (leahtard)               - https://www.drupal.org/u/leahtard
+* Joël Pittet (joelpittet)            - https://www.drupal.org/u/joelpittet
+* Catherine Winters (CatherineOmega)  - https://www.drupal.org/u/catherineomega
+* Johannes Schmidt (johannez)         - https://www.drupal.org/u/johannez
