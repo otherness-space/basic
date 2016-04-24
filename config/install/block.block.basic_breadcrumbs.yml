@@ -7,8 +7,8 @@ dependencies:
     - basic
 id: basic_breadcrumbs
 theme: basic
-region: breadcrumb
-weight: 0
+region: content
+weight: -45
 provider: null
 plugin: system_breadcrumb_block
 settings:

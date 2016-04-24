@@ -7,7 +7,7 @@ dependencies:
     - basic
 id: basic_help
 theme: basic
-region: content
+region: help
 weight: -30
 provider: null
 plugin: help_block
