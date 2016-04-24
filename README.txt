@@ -35,7 +35,9 @@ rename 'basic' to another name like 'mytheme'. You're also welcome to keep
    folder and rename all appropriate files and content to the new theme name you
    provide.
 
-  - Download and install the basic theme: $ drush en basic
+  - Download and enable the basic theme: $ drush en basic
+  - Set the theme as default $ drush config-set system.theme default basic
+    or copy the includes/basic.drush.inc into your .drush folder.
   - Run the provided drush install script: $ drush basic-install
   - The script will first ask you to enter your theme name (eg. My Theme).
     Second, it will ask you to enter a machine name (eg. my_theme).
