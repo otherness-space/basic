@@ -107,7 +107,7 @@ module.exports = function(grunt) {
             'templates/{,*/}*.php',
             'images/optimized/{,*/}*.{png,jpg,gif,svg}',
             'js/build/{,*/}*.js',
-            'template.php
+            'template.php'
           ]
         },
         options: {
@@ -129,7 +129,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-browser-sync');
   // Now that we've loaded the package.json and the node_modules we set the base
-  // path for the actual execution of the tasks grunt.file.setBase('/')
+  // path for the actual execution of the tasks
+  grunt.file.setBase('../')
   // This is where we tell Grunt what to do when we type "grunt" into the
   // terminal. Note: if you'd like to run and of the tasks individually you can
   // do so by typing 'grunt mytaskname' alternatively you can type 'grunt watch'
