@@ -387,7 +387,7 @@ function _basic_recursive_copy($src, $destination) {
     }
     $dir_handle = opendir($src);
     while ($file = readdir($dir_handle)) {
-      if ($file[0] != '.' && !preg_match($no_mask, $file)) {
+      if (($file[0] != '.' || $file == '.gitignore') && !preg_match($no_mask, $file)) {
         if (_basic_recursive_copy("$src/$file", "$destination/$file") !== TRUE) {
           return FALSE;
         }
