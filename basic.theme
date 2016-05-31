@@ -45,3 +45,8 @@ function basic_preprocess_html(&$variables) {
   // Union all theme setting variables to the html.html.twig template.
   $variables += $theme_settings->getOriginal();
 }
+
+function basic_preprocess_field(&$variables, $hook) {
+  // Make additional variables available to the template.
+  $variables['bundle'] = $variables['element']['#bundle'];
+}
