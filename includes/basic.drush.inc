@@ -12,6 +12,12 @@ function basic_drush_command() {
 
   $items['basic-install'] = array(
     'description' => dt('Run through the installation process of the Basic theme.'),
+    'options' => array(
+      'destination' => array(
+        'description' => 'Path to which the theme will be placed. If you\'re providing a relative path, note it is relative to the drupal root.',
+        'example-value' => 'themes/',
+      ),
+    ),
     'aliases' => array('binstall'),
   );
 
@@ -47,7 +53,7 @@ function drush_basic_install() {
   drush_print('-----------------------------');
   drush_print(dt('Welcome to the Basic Install!'));
   drush_print('-----------------------------');
-  drush_print(dt('We will perform the automated tasks for you to use your new theme. We will create a copy of the Basic theme and store it within the same folder.'));
+  drush_print(dt('We will perform the automated tasks for you to use your new theme. We will create a copy of the Basic theme and store it in the standard theme directory or in spescified destination.'));
   drush_confirm(dt('Do you wish to continue?'));
 
   // Rebuild the theme data so that we can safely check for the existence of
@@ -67,9 +73,6 @@ function drush_basic_install() {
   // Prompt for a theme name using the automatically generated default if any.
   drush_set_option('machine-name', drush_basic_require_valid_theme_name(dt('Please enter a machine-readable name for your new theme'), $machine_name));
 
-  // Set the destination of the new theme.
-  drush_set_option('destination', 'themes');
-
   // Try to generate a machine-readable name. If that fails, prompt for one.
   if (!$machine_name = drush_get_option('machine-name', drush_basic_generate_theme_name($name))) {
     drush_print(dt("Sorry, I couldn't generate a machine-readable name for @name. Please use the '--machine-name' option to specify it manually.", array(
@@ -77,24 +80,30 @@ function drush_basic_install() {
     )));
   }
 
-  // Check whether the destination path does not exist and bail out if it does
-  // so we don't delete any important data by accident.
-  $destination = drush_get_option('destination', 'themes') . '/' . $machine_name;
-  if (file_exists($destination)) {
-    return drush_set_error('BASIC_COPY_PATH', dt('The path @path already exists.', array('@path' => $destination)));
-  }
-
+  $origin_path = $theme_handler->getTheme('basic')->getPath();
   $temporary = \Drupal::config('system.file')->get('path.temporary');
-
-  $destination_path = 'themes/' . $machine_name;
   $temp_path = $temporary . '/' . $machine_name;
+  $destination_path = drush_basic_get_destination($machine_name);
+
+  // Check whether the destination path exist and bail out if it does,
+  // so we don't delete any important data by accident.
+  if (file_exists($destination_path)) {
+    return drush_set_error('BASIC_COPY_PATH', dt('The path !path already exists.', array(
+      '!path' => $destination_path,
+    )));
+  }
 
   if(is_dir($temp_path)) {
     basic_rm_dir($temp_path);
   }
 
   // Copy into temp directory.
-  basic_copy_dir('themes/basic', $temp_path);
+  if (!basic_copy_dir($origin_path, $temp_path)) {
+    return drush_set_error('DRUSH_COPY_DIR_FAILURE', dt('Failed to copy !origin_path to !temp_path.', array(
+      '!origin_path' => $origin_path,
+      '!temp_path' => $temp_path,
+    )));
+  }
 
   // Recursively rewrite the file names and contents of all the files that are
   // now in the subtheme's directory to represent the human- and
@@ -109,7 +118,12 @@ function drush_basic_install() {
   }
 
   // Copy from temp folder into new theme's folder.
-  basic_copy_dir($temp_path, $destination_path);
+  if (!basic_copy_dir($temp_path, $destination_path)) {
+    return drush_set_error('DRUSH_COPY_DIR_FAILURE', dt('Failed to copy !temp_path to !destination_path.', array(
+      '!temp_path' => $temp_path,
+      '!destination_path' => $destination_path,
+    )));
+  }
 
   // Run npm install on the new theme folder.
   drush_print(dt("Building node dependencies for the theme @theme. This could take a couple minutes.", array(
@@ -120,7 +134,10 @@ function drush_basic_install() {
 
   // Notify user of successful installation.
   drush_print(dt("------------------------------------------------------------------"));
-  drush_print(dt("The new theme, @theme, has been successfully derived from Basic.", array('@theme' => $machine_name)));
+  drush_print(dt("The new theme, !theme, has been successfully derived from Basic and placed in !destination.", array(
+    '!theme' => $machine_name,
+    '!destination' => $destination_path,
+  )));
   drush_print(dt("------------------------------------------------------------------"));
 
   return;
@@ -204,6 +221,32 @@ function drush_basic_require_valid_theme_name($message, $default = NULL) {
 }
 
 /**
+ * Helper function to get proper destination for the new theme.
+ *
+ * @param string $machine_name
+ *   A valid, unique machine-readable name for the new theme.
+ * @return string
+ *   The path to the destination where the new theme should be placed.
+ */
+function drush_basic_get_destination($machine_name) {
+  // Find proper destination if no destination option is provided
+  if ($destination = drush_get_option('destination')) {
+    $destination_path = drush_trim_path($destination) . '/' . $machine_name;
+  }
+  else {
+    $site_root = drush_get_context('DRUSH_DRUPAL_SITE_ROOT');
+    if ($site_root == 'sites/default') {
+      $destination_path = 'themes/' . $machine_name;
+    }
+    else {
+      $destination_path = $site_root . '/themes/' . $machine_name;
+    }
+  }
+  $destination_path = drush_normalize_path($destination_path);
+  return $destination_path;
+}
+
+/**
  * Recursively rewrites (and renames) all files in a given path.
  *
  * @param string $path
@@ -222,7 +265,7 @@ function drush_basic_require_valid_theme_name($message, $default = NULL) {
  */
 function drush_basic_rewrite_recursive($path, $search, $replace) {
   if (!is_dir($path)) {
-    return drush_set_error('INVALID_PATH', dt('The given path @path is not a directory.', array(
+    return drush_set_error('INVALID_PATH', dt('The given path !path is not a directory.', array(
       '!path' => $path,
     )));
   }
