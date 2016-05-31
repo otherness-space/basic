@@ -125,57 +125,6 @@ function drush_basic_install() {
 
   return;
 
-  // Put the name and description for the new subtheme in place.
-  $info = array(
-    'name' => $name,
-    'description' => 'Please provide a description for your theme.',
-    'base theme' => $basetheme,
-  ) + $starterkit['info'];
-
-  // If the starterkit does not provide any regions, use those defined in the
-  // base theme (if any).
-  if (empty($info['regions'])) {
-    // We explicitly avoid reading from the generated theme info array for this
-    // and get the raw, unprocessed .info.yml file data of the base theme
-    // instead to prevent any system- or module-provided regions to leak into
-    // our theme's .info.yml file (e.g. via hook_system_info_alter() as used by
-    // the dashboard module).
-    $basetheme_info = drupal_parse_info_file(drupal_get_path('theme', $basetheme) . "/$basetheme.info.yml");
-    if (!empty($basetheme_info['regions'])) {
-      $info['regions'] = $basetheme_info['regions'];
-    }
-  }
-
-  // Write to the new .info.yml file.
-  $file = $temporary . '/' . $machine_name . '.info.yml';
-  if (!file_put_contents($file, drush_omega_compose_info_file($info))) {
-    return drush_set_error('BASIC_COPY_GENERATE_THEME', dt('Failed to generate subtheme.'));
-  }
-
-  // Move the new subtheme to its destination.
-  if (!drush_op('drush_mkdir', dirname($destination)) || !drush_op('drush_move_dir', $temporary, $destination)) {
-    return drush_set_error('BASIC_COPY_GENERATE_THEME', dt('Failed to generate subtheme.'));
-  }
-
-  // Rebuild the theme caches so that we can do some final tasks.
-  $theme_handler->rebuildThemeData();
-
-  // Execute the theme's libraries.make file unless disabled.
-  echo "DESTINATION EQUALS: " . $destination;
-  if (drush_get_option('with-libraries') && is_file("$destination/libraries.make")) {
-    drush_op('chdir', $destination);
-    drush_invoke_process('@self', 'make', array('libraries.make'), array(
-      'no-core' => TRUE,
-      'contrib-destination' => '.',
-      'yes' => TRUE,
-    ));
-  }
-
-  drush_log(dt('You have successfully created the theme @theme (@name) in @path.', array(
-    '@theme' => $name,
-    '@name' => $machine_name,
-    '@path' => dirname($destination),
-  )), 'success');
 }
 
 /**
