@@ -29,7 +29,6 @@ function basic_drush_command() {
  */
 function basic_drush_help($section) {
   switch ($section) {
-
     case 'drush:basic-install':
       return dt('Runs through an automated process for installing and renaming your theme to use as your own.');
   }
@@ -41,7 +40,7 @@ function basic_drush_help($section) {
 function drush_basic_install() {
   drush_print('Checking for npm...');
   $npm_check_output = drush_shell_exec('npm version 2>&1');
-  if(strpos($npm_check_output, 'command not found')) {
+  if (strpos($npm_check_output, 'command not found')) {
     drush_print('NPM could not be found. Please install npm (https://nodejs.org/en/) and try again.');
     exit();
   }
@@ -93,7 +92,7 @@ function drush_basic_install() {
     )));
   }
 
-  if(is_dir($temp_path)) {
+  if (is_dir($temp_path)) {
     basic_rm_dir($temp_path);
   }
 
@@ -127,7 +126,8 @@ function drush_basic_install() {
 
   // Run npm install on the new theme folder.
   drush_print(dt("Building node dependencies for the theme @theme. This could take a couple minutes.", array(
-      '@theme' => $machine_name)));
+    '@theme' => $machine_name,
+  )));
   drush_op('chdir', DRUPAL_ROOT . '/' . $destination_path);
   drush_shell_exec('npm install');
   drush_print(dt("Node dependancies have been successfully built."));
@@ -139,9 +139,6 @@ function drush_basic_install() {
     '!destination' => $destination_path,
   )));
   drush_print(dt("------------------------------------------------------------------"));
-
-  return;
-
 }
 
 /**
@@ -225,11 +222,12 @@ function drush_basic_require_valid_theme_name($message, $default = NULL) {
  *
  * @param string $machine_name
  *   A valid, unique machine-readable name for the new theme.
+ *
  * @return string
  *   The path to the destination where the new theme should be placed.
  */
 function drush_basic_get_destination($machine_name) {
-  // Find proper destination if no destination option is provided
+  // Find proper destination if no destination option is provided.
   if ($destination = drush_get_option('destination')) {
     $destination_path = drush_trim_path($destination) . '/' . $machine_name;
   }
@@ -314,19 +312,20 @@ function drush_basic_rewrite_recursive($path, $search, $replace) {
 /**
  * Copy $src to $dest.
  *
- * @param $src
+ * @param string $src
  *   The directory to copy.
- * @param $dest
+ * @param string $dest
  *   The destination to copy the source to, including the new name of
  *   the directory.  To copy directory "a" from "/b" to "/c", then
  *   $src = "/b/a" and $dest = "/c/a".  To copy "a" to "/c" and rename
  *   it to "d", then $dest = "/c/d".
- * @param $overwrite
+ * @param int $overwrite
  *   Action to take if destination already exists.
  *     - FILE_EXISTS_OVERWRITE - completely removes existing directory.
  *     - FILE_EXISTS_ABORT - aborts the operation.
  *     - FILE_EXISTS_MERGE - Leaves existing files and directories in place.
- * @return
+ *
+ * @return bool
  *   TRUE on success, FALSE on failure.
  */
 function basic_copy_dir($src, $dest, $overwrite = FILE_EXISTS_ABORT) {
