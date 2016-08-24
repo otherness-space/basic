@@ -2,6 +2,7 @@
 
 /**
  * @file
+ * Provides an additional config form for theme settings.
  */
 
 use Drupal\Core\Form\FormStateInterface;
