@@ -1,3 +1,9 @@
+<?php
+
+/**
+ * @file
+ */
+?>
 <article class="<?php print $classes; ?>" data-nid="<?php print $node->nid; ?>" >
 
   <?php if ($title_prefix || $title_suffix || $display_submitted || $unpublished || !$page && $title): ?>

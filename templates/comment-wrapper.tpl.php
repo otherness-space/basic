@@ -1,6 +1,11 @@
 <?php
-  $comments = render($content['comments']);
-  $comment_form = render($content['comment_form']);
+
+/**
+ * @file
+ */
+
+$comments = render($content['comments']);
+$comment_form = render($content['comment_form']);
 ?>
 <section class="comments <?php print $classes; ?>"<?php print $attributes; ?>>
   <?php print render($title_prefix); ?>

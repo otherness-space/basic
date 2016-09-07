@@ -1,3 +1,9 @@
-<?php if ($content): ?>
-  <?php print $content; ?>
-<?php endif; ?>
+<?php
+
+/**
+ * @file
+ */
+
+if ($content):
+  print $content;
+endif;

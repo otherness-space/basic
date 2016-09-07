@@ -1,3 +1,9 @@
+<?php
+
+/**
+ * @file
+ */
+?>
 <div id="page" class="<?php print $classes; ?>"<?php print $attributes; ?>>
 
   <!-- ______________________ HEADER _______________________ -->
@@ -37,8 +43,10 @@
   </header> <!-- /header -->
 
   <?php if ($main_menu || $secondary_menu): ?>
-    <nav id="navigation" class="menu <?php if (!empty($main_menu)) {print "with-primary";}
-      if (!empty($secondary_menu)) {print " with-secondary";} ?>">
+    <nav id="navigation" class="menu <?php if (!empty($main_menu)) {print "with-primary";
+   }
+      if (!empty($secondary_menu)) {print " with-secondary";
+      } ?>">
       <div class="container">
         <?php print theme('links', array('links' => $main_menu, 'attributes' => array('id' => 'primary', 'class' => array('main-menu')))); ?>
         <?php print theme('links', array('links' => $secondary_menu, 'attributes' => array('id' => 'secondary', 'class' => array('sub-menu')))); ?>

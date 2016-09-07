@@ -1,12 +1,19 @@
 <?php
 
-// Form override for theme settings
+/**
+ * @file
+ * Form override for theme settings.
+ */
+
+/**
+ * Impelements hook_form_system_theme_settings_alter().
+ */
 function basic_form_system_theme_settings_alter(&$form, $form_state) {
   $form['options_settings'] = array(
     '#type' => 'fieldset',
     '#title' => t('Theme Specific Settings'),
     '#collapsible' => FALSE,
-    '#collapsed' => FALSE
+    '#collapsed' => FALSE,
   );
   $form['options_settings']['basic_tabs'] = array(
     '#type' => 'checkbox',
@@ -36,7 +43,8 @@ function basic_form_system_theme_settings_alter(&$form, $form_state) {
     '#default_value' => theme_get_setting('basic_breadcrumb_separator'),
     '#size' => 5,
     '#maxlength' => 10,
-    '#prefix' => '<div id="div-basic-breadcrumb-collapse">', // jquery hook to show/hide optional widgets
+    // Jquery hook to show/hide optional widgets.
+    '#prefix' => '<div id="div-basic-breadcrumb-collapse">',
   );
   $form['options_settings']['basic_breadcrumb']['basic_breadcrumb_home'] = array(
     '#type' => 'checkbox',
@@ -54,10 +62,10 @@ function basic_form_system_theme_settings_alter(&$form, $form_state) {
     '#title' => t('Append the content title to the end of the breadcrumb'),
     '#default_value' => theme_get_setting('basic_breadcrumb_title'),
     '#description' => t('Useful when the breadcrumb is not placed just before the title.'),
-    '#suffix' => '</div>', // #div-basic-breadcrumb-collapse
+    '#suffix' => '</div>',
   );
 
-  //IE specific settings.
+  // IE specific settings.
   $form['options_settings']['basic_ie'] = array(
     '#type' => 'fieldset',
     '#title' => t('Internet Explorer Stylesheets'),
@@ -89,9 +97,7 @@ function basic_form_system_theme_settings_alter(&$form, $form_state) {
   $form['options_settings']['clear_registry'] = array(
     '#type' => 'checkbox',
     '#title' => t('Rebuild theme registry on every page.'),
-    '#description' =>t('During theme development, it can be very useful to continuously <a href="!link">rebuild the theme registry</a>. WARNING: this is a huge performance penalty and must be turned off on production websites.', array('!link' => 'http://drupal.org/node/173880#theme-registry')),
+    '#description' => t('During theme development, it can be very useful to continuously <a href="@url">rebuild the theme registry</a>. WARNING: this is a huge performance penalty and must be turned off on production websites.', array('@url' => 'http://drupal.org/node/173880#theme-registry')),
     '#default_value' => theme_get_setting('clear_registry'),
   );
 }
-
-
