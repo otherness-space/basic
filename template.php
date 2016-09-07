@@ -23,63 +23,63 @@ if (theme_get_setting('basic_tabs')) {
 /**
  * Implements hook_preprocess_html().
  */
-function basic_preprocess_html(&$vars) {
+function basic_preprocess_html(&$variables) {
   global $user, $language;
 
   // Add role name classes (to allow css based show for admin/hidden from user).
   foreach ($user->roles as $role) {
-    $vars['classes_array'][] = 'role-' . basic_id_safe($role);
+    $variables['classes_array'][] = 'role-' . basic_id_safe($role);
   }
 
   // HTML Attributes
   // Use a proper attributes array for the html attributes.
-  $vars['html_attributes'] = array();
-  $vars['html_attributes']['lang'][] = $language->language;
-  $vars['html_attributes']['dir'][] = $language->dir;
+  $variables['html_attributes'] = array();
+  $variables['html_attributes']['lang'][] = $language->language;
+  $variables['html_attributes']['dir'][] = $language->dir;
 
   // Convert RDF Namespaces into structured data using drupal_attributes.
-  $vars['rdf_namespaces'] = array();
+  $variables['rdf_namespaces'] = array();
   if (function_exists('rdf_get_namespaces')) {
     foreach (rdf_get_namespaces() as $prefix => $uri) {
       $prefixes[] = $prefix . ': ' . $uri;
     }
-    $vars['rdf_namespaces']['prefix'] = implode(' ', $prefixes);
+    $variables['rdf_namespaces']['prefix'] = implode(' ', $prefixes);
   }
 
   // Flatten the HTML attributes and RDF namespaces arrays.
-  $vars['html_attributes'] = drupal_attributes($vars['html_attributes']);
-  $vars['rdf_namespaces'] = drupal_attributes($vars['rdf_namespaces']);
+  $variables['html_attributes'] = drupal_attributes($variables['html_attributes']);
+  $variables['rdf_namespaces'] = drupal_attributes($variables['rdf_namespaces']);
 
-  if (!$vars['is_front']) {
+  if (!$variables['is_front']) {
     // Add unique classes for each page and website section.
     $path = drupal_get_path_alias($_GET['q']);
     list($section,) = explode('/', $path, 2);
-    $vars['classes_array'][] = 'with-subnav';
-    $vars['classes_array'][] = basic_id_safe('page-' . $path);
-    $vars['classes_array'][] = basic_id_safe('section-' . $section);
+    $variables['classes_array'][] = 'with-subnav';
+    $variables['classes_array'][] = basic_id_safe('page-' . $path);
+    $variables['classes_array'][] = basic_id_safe('section-' . $section);
 
     if (arg(0) == 'node') {
       if (arg(1) == 'add') {
         if ($section == 'node') {
           // Remove 'section-node'.
-          array_pop($vars['classes_array']);
+          array_pop($variables['classes_array']);
         }
         // Add 'section-node-add'.
-        $vars['classes_array'][] = 'section-node-add';
+        $variables['classes_array'][] = 'section-node-add';
       }
       elseif (is_numeric(arg(1)) && (arg(2) == 'edit' || arg(2) == 'delete')) {
         if ($section == 'node') {
           // Remove 'section-node'.
-          array_pop($vars['classes_array']);
+          array_pop($variables['classes_array']);
         }
         // Add 'section-node-edit' or 'section-node-delete'.
-        $vars['classes_array'][] = 'section-node-' . arg(2);
+        $variables['classes_array'][] = 'section-node-' . arg(2);
       }
     }
   }
   // For normal un-themed edit pages.
   if ((arg(0) == 'node') && (arg(2) == 'edit')) {
-    $vars['template_files'][] = 'page';
+    $variables['template_files'][] = 'page';
   }
 
   // Add IE classes.
@@ -106,55 +106,55 @@ function basic_preprocess_html(&$vars) {
 /**
  * Implements hook_preprocess_page().
  */
-function basic_preprocess_page(&$vars, $hook) {
-  if (isset($vars['node_title'])) {
-    $vars['title'] = $vars['node_title'];
+function basic_preprocess_page(&$variables, $hook) {
+  if (isset($variables['node_title'])) {
+    $variables['title'] = $variables['node_title'];
   }
   // Adding classes whether #navigation is here or not.
-  if (!empty($vars['main_menu']) or !empty($vars['sub_menu'])) {
-    $vars['classes_array'][] = 'with-navigation';
+  if (!empty($variables['main_menu']) or !empty($variables['sub_menu'])) {
+    $variables['classes_array'][] = 'with-navigation';
   }
-  if (!empty($vars['secondary_menu'])) {
-    $vars['classes_array'][] = 'with-subnav';
+  if (!empty($variables['secondary_menu'])) {
+    $variables['classes_array'][] = 'with-subnav';
   }
 
   // Add first/last classes to node listings about to be rendered.
-  if (isset($vars['page']['content']['system_main']['nodes'])) {
+  if (isset($variables['page']['content']['system_main']['nodes'])) {
     // All nids about to be loaded (without the #sorted attribute).
-    $nids = element_children($vars['page']['content']['system_main']['nodes']);
+    $nids = element_children($variables['page']['content']['system_main']['nodes']);
     // Only add first/last classes if there is more than 1 node being rendered.
     if (count($nids) > 1) {
       $first_nid = reset($nids);
       $last_nid = end($nids);
-      $first_node = $vars['page']['content']['system_main']['nodes'][$first_nid]['#node'];
+      $first_node = $variables['page']['content']['system_main']['nodes'][$first_nid]['#node'];
       $first_node->classes_array = array('first');
-      $last_node = $vars['page']['content']['system_main']['nodes'][$last_nid]['#node'];
+      $last_node = $variables['page']['content']['system_main']['nodes'][$last_nid]['#node'];
       $last_node->classes_array = array('last');
     }
   }
 
   // Allow page override template suggestions based on node content type.
-  if (isset($vars['node']->type) && isset($vars['node']->nid)) {
-    $vars['theme_hook_suggestions'][] = 'page__' . $vars['node']->type;
-    $vars['theme_hook_suggestions'][] = "page__node__" . $vars['node']->nid;
+  if (isset($variables['node']->type) && isset($variables['node']->nid)) {
+    $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']->type;
+    $variables['theme_hook_suggestions'][] = "page__node__" . $variables['node']->nid;
   }
 }
 
 /**
  * Implements hook_preprocess_node().
  */
-function basic_preprocess_node(&$vars) {
+function basic_preprocess_node(&$variables) {
   // Add a striping class.
-  $vars['classes_array'][] = 'node-' . $vars['zebra'];
+  $variables['classes_array'][] = 'node-' . $variables['zebra'];
 
   // Add $unpublished variable.
-  $vars['unpublished'] = (!$vars['status']) ? TRUE : FALSE;
+  $variables['unpublished'] = (!$variables['status']) ? TRUE : FALSE;
 
   // Merge first/last class (from basic_preprocess_page) into classes array of
   // current node object.
-  $node = $vars['node'];
+  $node = $variables['node'];
   if (!empty($node->classes_array)) {
-    $vars['classes_array'] = array_merge($vars['classes_array'], $node->classes_array);
+    $variables['classes_array'] = array_merge($variables['classes_array'], $node->classes_array);
   }
 }
 
