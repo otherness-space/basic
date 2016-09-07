@@ -3,6 +3,7 @@
 /**
  * @file
  * Here we override the default HTML output of drupal.
+ *
  * Refer to https://drupal.org/node/457740.
  */
 
@@ -25,7 +26,7 @@ if (theme_get_setting('basic_tabs')) {
 function basic_preprocess_html(&$vars) {
   global $user, $language;
 
-  // Add role name classes (to allow css based show for admin/hidden from user)
+  // Add role name classes (to allow css based show for admin/hidden from user).
   foreach ($user->roles as $role) {
     $vars['classes_array'][] = 'role-' . basic_id_safe($role);
   }
@@ -85,11 +86,19 @@ function basic_preprocess_html(&$vars) {
   if (theme_get_setting('basic_ie_enabled')) {
     $basic_ie_enabled_versions = theme_get_setting('basic_ie_enabled_versions');
     if (in_array('ie8', $basic_ie_enabled_versions, TRUE)) {
-      drupal_add_css(path_to_theme() . '/css/ie8.css', array('group' => CSS_THEME, 'browsers' => array('IE' => 'IE 8', '!IE' => FALSE), 'preprocess' => FALSE));
+      drupal_add_css(path_to_theme() . '/css/ie8.css', array(
+        'group' => CSS_THEME,
+        'browsers' => array('IE' => 'IE 8', '!IE' => FALSE),
+        'preprocess' => FALSE,
+      ));
       drupal_add_js(path_to_theme() . '/js/build/selectivizr-min.js');
     }
     if (in_array('ie9', $basic_ie_enabled_versions, TRUE)) {
-      drupal_add_css(path_to_theme() . '/css/ie9.css', array('group' => CSS_THEME, 'browsers' => array('IE' => 'IE 9', '!IE' => FALSE), 'preprocess' => FALSE));
+      drupal_add_css(path_to_theme() . '/css/ie9.css', array(
+        'group' => CSS_THEME,
+        'browsers' => array('IE' => 'IE 9', '!IE' => FALSE),
+        'preprocess' => FALSE,
+      ));
     }
   }
 }
@@ -141,7 +150,8 @@ function basic_preprocess_node(&$vars) {
   // Add $unpublished variable.
   $vars['unpublished'] = (!$vars['status']) ? TRUE : FALSE;
 
-  // Merge first/last class (from basic_preprocess_page) into classes array of current node object.
+  // Merge first/last class (from basic_preprocess_page) into classes array of
+  // current node object.
   $node = $vars['node'];
   if (!empty($node->classes_array)) {
     $vars['classes_array'] = array_merge($vars['classes_array'], $node->classes_array);
@@ -171,13 +181,7 @@ function basic_preprocess_block(&$variables) {
 }
 
 /**
- * Return a themed breadcrumb trail.
- *
- * @param $breadcrumb
- *   An array containing the breadcrumb links.
- *
- * @return
- *   A string containing the breadcrumb output.
+ * Implements theme_breadcrumb().
  */
 function basic_breadcrumb($variables) {
   $breadcrumb = $variables['breadcrumb'];
@@ -213,7 +217,8 @@ function basic_breadcrumb($variables) {
       }
 
       // Provide a navigational heading to give context for breadcrumb links to
-      // screen-reader users. Make the heading invisible with .element-invisible.
+      // screen-reader users. Make the heading invisible with
+      // .element-invisible.
       $heading = '<h2 class="element-invisible">' . t('You are here') . '</h2>';
 
       return $heading . '<div class="breadcrumb">' . implode($breadcrumb_separator, $breadcrumb) . $trailing_separator . $title . '</div>';
@@ -233,14 +238,15 @@ function basic_breadcrumb($variables) {
  * - Replaces any character except A-Z, numbers, and underscores with dashes.
  * - Converts entire string to lowercase.
  *
- * @param $string
- *   The string
+ * @param string $string
+ *   The string.
  *
- * @return
- *   The converted string
+ * @return string
+ *   The converted string.
  */
 function basic_id_safe($string) {
-  // Replace with dashes anything that isn't A-Z, numbers, dashes, or underscores.
+  // Replace with dashes anything that isn't A-Z, numbers, dashes, or
+  // underscores.
   $string = strtolower(preg_replace('/[^a-zA-Z0-9_-]+/', '-', $string));
   // If the first character is not a-z, add 'n' in front.
   // Don't use ctype_alpha since its locale aware.
@@ -251,16 +257,7 @@ function basic_id_safe($string) {
 }
 
 /**
- * Generate the HTML output for a menu link and submenu.
- *
- * @param $variables
- *   An associative array containing:
- *   - element: Structured array data for a menu link.
- *
- * @return
- *   A themed HTML string.
- *
- * @ingroup themeable
+ * Implements theme_menu_link().
  */
 function basic_menu_link(array $variables) {
   $element = $variables['element'];
@@ -280,7 +277,7 @@ function basic_menu_link(array $variables) {
 }
 
 /**
- * Override or insert variables into theme_menu_local_task().
+ * Implements hook_preprocess_menu_local_task().
  */
 function basic_preprocess_menu_local_task(&$variables) {
   $link =& $variables['element']['#link'];
@@ -295,6 +292,8 @@ function basic_preprocess_menu_local_task(&$variables) {
 }
 
 /**
+ * Implements theme_menu_local_tasks().
+ *
  * Duplicate of theme_menu_local_tasks() but adds clearfix to tabs.
  */
 function basic_menu_local_tasks(&$variables) {
@@ -312,5 +311,6 @@ function basic_menu_local_tasks(&$variables) {
     $variables['secondary']['#suffix'] = '</ul>';
     $output .= drupal_render($variables['secondary']);
   }
+
   return $output;
 }

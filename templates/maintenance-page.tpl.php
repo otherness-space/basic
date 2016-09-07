@@ -14,7 +14,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes; ?>>
-
   <div id="page" class="<?php print $classes; ?>"<?php print $attributes; ?>>
 
     <!-- ______________________ HEADER _______________________ -->
@@ -43,7 +42,7 @@
         <?php endif; ?>
 
       </div>
-    </header> <!-- /header -->
+    </header><!-- /header -->
 
     <!-- ______________________ MAIN _______________________ -->
 
@@ -60,13 +59,10 @@
             </div></div>
           <?php endif; ?>
 
-        </section> <!-- /content-inner /content -->
+        </section><!-- /content -->
 
       </div>
-    </div> <!-- /main -->
-
-  </div> <!-- /page -->
-
+    </div><!-- /main -->
+  </div><!-- /page -->
 </body>
-
 </html>
