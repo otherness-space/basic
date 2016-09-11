@@ -12,6 +12,7 @@ html {
   color: #919191;
   background-color: #ddd;
   border: 1px solid #c4c4c4;
+  word-wrap: break-word;
 }
 
 .messages pre {
