@@ -10,11 +10,14 @@
 // wrapping it with an "anonymous closure". See:
 // - https://drupal.org/node/1446420
 // - http://www.adequatelygood.com/2010/3/JavaScript-Module-Pattern-In-Depth
-(function ($, Drupal, window, document) {
+(function (Drupal, $, window) {
 
-  // To understand behaviors, see https://drupal.org/node/756722#behaviors
+  // To understand behaviors, see https://www.drupal.org/node/2269515
   Drupal.behaviors.basic = {
     attach: function (context, settings) {
+
+      // Execute code once the DOM is ready. $(document).ready() not required within Drupal.behaviors.
+
       $(window).load(function () {
         // Execute code once the window is fully loaded.
       });
@@ -27,10 +30,7 @@
         // Execute code when the window scrolls.
       });
 
-      $(document).ready(function () {
-        // Execute code once the DOM is ready.
-      });
     }
   };
 
-} (jQuery, Drupal, this, this.document));
+} (Drupal, jQuery, this));
