@@ -24,4 +24,12 @@ html {
   margin: 0;
 }
 
+.pager__item {
+  display: inline;
+}
+
+.pager__item a {
+  display: inline-block;
+}
+
 /*# sourceMappingURL=components.css.map */
