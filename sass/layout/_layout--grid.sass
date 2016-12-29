@@ -14,24 +14,16 @@
 
 .container
   @include outer-container
-  margin-left: auto
-  margin-right: auto
   width: auto
 
 #content
   .no-sidebars &
-    // 100% width for small screens.
-    @include fill-parent
-    // Same logic for medium screens.
-    @include media($medium-screen-up)
-      @include span-columns(8)
-    // Same logic for large screens.
-    @include media($large-screen-up)
-      @include span-columns(12)
+    // 100% width for small screens. No definitions required.
+    // Same logic for medium screens. No definitions required.
+    // Same logic for large screens. No definitions required.
 
   .one-sidebar.sidebar-second &
-    // 100% width for small screens.
-    @include fill-parent
+    // 100% width for small screens. No definitions required.
     // Span this div 6 columns wide for medium screens.
     @include media($medium-screen-up)
       @include span-columns(6)
@@ -40,8 +32,7 @@
       @include span-columns(8)
 
   .one-sidebar.sidebar-first &
-    // 100% width for small screens.
-    @include fill-parent
+    // 100% width for small screens. No definitions required.
     // Span this div 6 columns wide for medium screens.
     @include media($medium-screen-up)
       @include span-columns(6)
@@ -52,8 +43,7 @@
       @include shift(3)
 
   .two-sidebars &
-    // 100% width for small screens.
-    @include fill-parent
+    // 100% width for small screens. No definitions required.
     // Span this div 4 columns wide for medium screens.
     @include media($medium-screen-up)
       @include span-columns(4)
@@ -64,8 +54,7 @@
       @include shift(3)
 
 #sidebar-first
-  // 100% width for small screens.
-  @include fill-parent
+  // 100% width for small screens. No definitions required.
   // Span this div 2 columns wide for medium screens.
   @include media($medium-screen-up)
     @include span-columns(2)
@@ -82,8 +71,7 @@
       @include shift(-12)
 
 #sidebar-second
-  // 100% width for small screens.
-  @include fill-parent
+  // 100% width for small screens. No definitions required.
   // Span this div 2 columns wide for medium screens.
   @include media($medium-screen-up)
     @include span-columns(2)
