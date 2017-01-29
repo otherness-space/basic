@@ -19,7 +19,7 @@ html {
   display: block;
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 45) {
   .one-sidebar.sidebar-second #content {
     float: left;
     display: block;
@@ -31,7 +31,7 @@ html {
   }
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 60) {
   .one-sidebar.sidebar-second #content {
     float: left;
     display: block;
@@ -43,7 +43,7 @@ html {
   }
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 45) {
   .one-sidebar.sidebar-first #content {
     float: left;
     display: block;
@@ -56,7 +56,7 @@ html {
   }
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 60) {
   .one-sidebar.sidebar-first #content {
     float: left;
     display: block;
@@ -69,7 +69,7 @@ html {
   }
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 45) {
   .two-sidebars #content {
     float: left;
     display: block;
@@ -82,7 +82,7 @@ html {
   }
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 60) {
   .two-sidebars #content {
     float: left;
     display: block;
@@ -95,7 +95,7 @@ html {
   }
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 45) {
   #sidebar-first {
     float: left;
     display: block;
@@ -111,7 +111,7 @@ html {
   }
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 60) {
   #sidebar-first {
     float: left;
     display: block;
@@ -127,7 +127,7 @@ html {
   }
 }
 
-@media screen and (min-width: 720px) {
+@media screen and (min-width: 45) {
   #sidebar-second {
     float: left;
     display: block;
@@ -140,7 +140,7 @@ html {
   }
 }
 
-@media screen and (min-width: 960px) {
+@media screen and (min-width: 60) {
   #sidebar-second {
     float: left;
     display: block;
