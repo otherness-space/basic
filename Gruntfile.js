@@ -31,7 +31,7 @@ module.exports = function(grunt) {
       },
       css: {
         files: ['sass/{,*/}*.{scss,sass}'],
-        tasks: ['sass']
+        tasks: ['sass', 'postcss']
       }
     },
     uglify: {
@@ -98,6 +98,25 @@ module.exports = function(grunt) {
         }
       }
     },
+    postcss:{
+      options: {
+        processors: [
+          require('pixrem')(),
+          require('autoprefixer')({browsers: 'last 5 versions'})
+        ]
+      },
+      dist:{
+        files:{
+          'css/base/base.css': 'css/base/base.css',
+          'css/components/components.css': 'css/components/components.css',
+          'css/components/tabs.css': 'css/components/tabs.css',
+          'css/components/messages.css': 'css/components/messages.css',
+          'css/layout/layout.css': 'css/layout/layout.css',
+          'css/theme/theme.css': 'css/theme/theme.css',
+          'css/theme/print.css': 'css/theme/print.css'
+        }
+      }
+    },
     browserSync: {
       dev: {
         bsFiles: {
@@ -122,6 +141,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-svgmin');
   grunt.loadNpmTasks('grunt-sass');
+  grunt.loadNpmTasks('grunt-postcss');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-browser-sync');
   // Now that we've loaded the package.json and the node_modules we set the base path

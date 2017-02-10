@@ -19,7 +19,7 @@ html {
   display: block;
 }
 
-@media screen and (min-width: 45) {
+@media screen and (min-width: 45em) {
   .one-sidebar.sidebar-second #content {
     float: left;
     display: block;
@@ -31,7 +31,7 @@ html {
   }
 }
 
-@media screen and (min-width: 60) {
+@media screen and (min-width: 60em) {
   .one-sidebar.sidebar-second #content {
     float: left;
     display: block;
@@ -43,7 +43,7 @@ html {
   }
 }
 
-@media screen and (min-width: 45) {
+@media screen and (min-width: 45em) {
   .one-sidebar.sidebar-first #content {
     float: left;
     display: block;
@@ -56,7 +56,7 @@ html {
   }
 }
 
-@media screen and (min-width: 60) {
+@media screen and (min-width: 60em) {
   .one-sidebar.sidebar-first #content {
     float: left;
     display: block;
@@ -69,7 +69,7 @@ html {
   }
 }
 
-@media screen and (min-width: 45) {
+@media screen and (min-width: 45em) {
   .two-sidebars #content {
     float: left;
     display: block;
@@ -82,7 +82,7 @@ html {
   }
 }
 
-@media screen and (min-width: 60) {
+@media screen and (min-width: 60em) {
   .two-sidebars #content {
     float: left;
     display: block;
@@ -95,7 +95,7 @@ html {
   }
 }
 
-@media screen and (min-width: 45) {
+@media screen and (min-width: 45em) {
   #sidebar-first {
     float: left;
     display: block;
@@ -111,7 +111,7 @@ html {
   }
 }
 
-@media screen and (min-width: 60) {
+@media screen and (min-width: 60em) {
   #sidebar-first {
     float: left;
     display: block;
@@ -127,7 +127,7 @@ html {
   }
 }
 
-@media screen and (min-width: 45) {
+@media screen and (min-width: 45em) {
   #sidebar-second {
     float: left;
     display: block;
@@ -140,7 +140,7 @@ html {
   }
 }
 
-@media screen and (min-width: 60) {
+@media screen and (min-width: 60em) {
   #sidebar-second {
     float: left;
     display: block;
@@ -172,5 +172,3 @@ html {
 .node {
   clear: both;
 }
-
-/*# sourceMappingURL=layout.css.map */

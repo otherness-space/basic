@@ -7,7 +7,9 @@ html {
 }
 
 button, input[type="button"], input[type="reset"], input[type="submit"] {
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   background-color: #555;
   border: 0;
   border-radius: 2px;
@@ -22,7 +24,10 @@ button, input[type="button"], input[type="reset"], input[type="submit"] {
   padding: 0.75em 1.5em;
   text-decoration: none;
   transition: background-color 150ms ease;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   vertical-align: middle;
   white-space: nowrap;
 }
@@ -110,7 +115,9 @@ textarea {
 }
 
 [type="search"] {
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 
 [type="checkbox"],
@@ -262,5 +269,3 @@ abbr {
   cursor: help;
   white-space: nowrap;
 }
-
-/*# sourceMappingURL=base.css.map */
