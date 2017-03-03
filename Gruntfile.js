@@ -9,28 +9,28 @@ module.exports = function(grunt) {
     watch: {
       // This is where we set up all the tasks we'd like grunt to watch for changes.
       scripts: {
-        files: ['js/source/{,*/}*.js'],
+        files: ['js/source/**/*.js'],
         tasks: ['uglify'],
         options: {
           spawn: false,
         },
       },
       images: {
-        files: ['images/source/{,*/}*.{png,jpg,gif}'],
+        files: ['images/source/**/*.{png,jpg,gif}'],
         tasks: ['imagemin'],
         options: {
           spawn: false,
         }
       },
       vector: {
-        files: ['images/source/{,*/}*.svg'],
+        files: ['images/source/**/*.svg'],
         tasks: ['svgmin'],
         options: {
           spawn: false,
         }
       },
       css: {
-        files: ['sass/{,*/}*.{scss,sass}'],
+        files: ['sass/**/*.{scss,sass}'],
         tasks: ['sass', 'postcss']
       }
     },
@@ -44,7 +44,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'js/source',
-          src: '{,*/}*.js',
+          src: '**/*.js',
           dest: 'js/build'
         }]
       }
@@ -55,7 +55,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'images/source/',
-          src: ['{,*/}*.{png,jpg,gif}' ],
+          src: ['**/*.{png,jpg,gif}'],
           dest: 'images/optimized/'
         }]
       }
@@ -72,7 +72,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'images/source/',
-          src: ['{,*/}*.svg' ],
+          src: ['**/*.svg'],
           dest: 'images/optimized/'
         }]
       }
@@ -121,10 +121,10 @@ module.exports = function(grunt) {
       dev: {
         bsFiles: {
           src : [
-            'css/{,*/}*.css',
-            'templates/{,*/}*.twig',
-            'images/optimized/{,*/}*.{png,jpg,gif,svg}',
-            'js/build/{,*/}*.js',
+            'css/**/*.css',
+            'templates/**/*.twig',
+            'images/optimized/**/*.{png,jpg,gif,svg}',
+            'js/build/**/*.js',
             '*.theme'
           ]
         },
