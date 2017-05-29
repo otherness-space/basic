@@ -1,27 +1,18 @@
-// Bourbon grid display. Set to "true" to turn on.
-// $visual-grid: false
-// $visual-grid-color: #EEEEEE
-// $visual-grid-index: back
-// $visual-grid-opacity: 0.4
-
-// Set to false if you'd like to remove the responsiveness
-$responsive: true
-
-// Neat Overrides
-$column: 60px
-$gutter: 20px
-$grid-columns: 4
+// Bourbon grid display.
+$grid-visual: #EEEEEE
 
 // We set the max width of the page.
 $font-size:     16px
-$max-width:     1200px
+$gutter:        20px
 
 // Breakpoints
 $small-screen:  320px
 $medium-screen: 720px
 $large-screen:  960px
+$max-screen: 1200px
 
 // Define your mobile first breakpoints using min-width
-$small-screen-up:   new-breakpoint(min-width #{$small-screen/$font-size}em 4)
-$medium-screen-up:  new-breakpoint(min-width #{$medium-screen/$font-size}em 8)
-$large-screen-up:   new-breakpoint(min-width #{$large-screen/$font-size}em 12)
+$small-screen-up: (columns: 4, gutter: $gutter, media: $small-screen)
+$medium-screen-up: (columns: 8, gutter: $gutter, media: $medium-screen)
+$large-screen-up: (columns: 12, gutter: $gutter, media: $large-screen)
+$max-screen-up: (columns: 12, gutter: $gutter, media: $max-screen)

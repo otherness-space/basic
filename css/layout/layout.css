@@ -1,15 +1,6 @@
-html {
-  box-sizing: border-box;
-}
-
-*, *::after, *::before {
-  box-sizing: inherit;
-}
-
 .container {
+  margin: auto;
   max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
   width: auto;
 }
 
@@ -19,137 +10,97 @@ html {
   display: block;
 }
 
-@media screen and (min-width: 45em) {
+@media only screen and (min-width: 720px) {
   .one-sidebar.sidebar-second #content {
+    width: calc(75% - 35px);
     float: left;
-    display: block;
-    margin-right: 3.22581%;
-    width: 74.19355%;
-  }
-  .one-sidebar.sidebar-second #content:last-child {
-    margin-right: 0;
+    margin-left: 20px;
   }
 }
 
-@media screen and (min-width: 60em) {
+@media only screen and (min-width: 960px) {
   .one-sidebar.sidebar-second #content {
+    width: calc(66.66667% - 33.33333px);
     float: left;
-    display: block;
-    margin-right: 2.12766%;
-    width: 65.95745%;
-  }
-  .one-sidebar.sidebar-second #content:last-child {
-    margin-right: 0;
+    margin-left: 20px;
   }
 }
 
-@media screen and (min-width: 45em) {
+@media only screen and (min-width: 720px) {
   .one-sidebar.sidebar-first #content {
+    width: calc(75% - 35px);
     float: left;
-    display: block;
-    margin-right: 3.22581%;
-    width: 74.19355%;
-    margin-left: 25.80645%;
-  }
-  .one-sidebar.sidebar-first #content:last-child {
-    margin-right: 0;
+    margin-left: 20px;
+    margin-left: calc(25% - 25px + 40px);
   }
 }
 
-@media screen and (min-width: 60em) {
+@media only screen and (min-width: 960px) {
   .one-sidebar.sidebar-first #content {
+    width: calc(75% - 35px);
     float: left;
-    display: block;
-    margin-right: 2.12766%;
-    width: 74.46809%;
-    margin-left: 25.53191%;
-  }
-  .one-sidebar.sidebar-first #content:last-child {
-    margin-right: 0;
+    margin-left: 20px;
+    margin-left: calc(25% - 25px + 40px);
   }
 }
 
-@media screen and (min-width: 45em) {
+@media only screen and (min-width: 720px) {
   .two-sidebars #content {
+    width: calc(50% - 30px);
     float: left;
-    display: block;
-    margin-right: 3.22581%;
-    width: 48.3871%;
-    margin-left: 25.80645%;
-  }
-  .two-sidebars #content:last-child {
-    margin-right: 0;
+    margin-left: 20px;
+    margin-left: calc(25% - 25px + 40px);
   }
 }
 
-@media screen and (min-width: 60em) {
+@media only screen and (min-width: 960px) {
   .two-sidebars #content {
+    width: calc(41.66667% - 28.33333px);
     float: left;
-    display: block;
-    margin-right: 2.12766%;
-    width: 40.42553%;
-    margin-left: 25.53191%;
-  }
-  .two-sidebars #content:last-child {
-    margin-right: 0;
+    margin-left: 20px;
+    margin-left: calc(25% - 25px + 40px);
   }
 }
 
-@media screen and (min-width: 45em) {
+@media only screen and (min-width: 720px) {
   #sidebar-first {
+    width: calc(25% - 25px);
     float: left;
-    display: block;
-    margin-right: 3.22581%;
-    width: 22.58065%;
-    margin-left: -77.41935%;
-  }
-  #sidebar-first:last-child {
-    margin-right: 0;
+    margin-left: 20px;
+    margin-left: calc(-75% - 5px + 40px);
   }
   .one-sidebar.sidebar-first #sidebar-first {
-    margin-left: -103.22581%;
+    margin-left: calc(-100% - 0px + 40px);
   }
 }
 
-@media screen and (min-width: 60em) {
+@media only screen and (min-width: 960px) {
   #sidebar-first {
+    width: calc(25% - 25px);
     float: left;
-    display: block;
-    margin-right: 2.12766%;
-    width: 23.40426%;
-    margin-left: -68.08511%;
-  }
-  #sidebar-first:last-child {
-    margin-right: 0;
+    margin-left: 20px;
+    margin-left: calc(-66.66667% - 6.66667px + 40px);
   }
   .one-sidebar.sidebar-first #sidebar-first {
-    margin-left: -102.12766%;
+    margin-left: calc(-100% - 0px + 40px);
   }
 }
 
-@media screen and (min-width: 45em) {
+@media only screen and (min-width: 720px) {
   #sidebar-second {
+    width: calc(25% - 25px);
     float: left;
-    display: block;
-    margin-right: 3.22581%;
-    width: 22.58065%;
-    margin-left: 0%;
-  }
-  #sidebar-second:last-child {
-    margin-right: 0;
+    margin-left: 20px;
+    margin-left: calc(0% - 20px + 40px);
   }
 }
 
-@media screen and (min-width: 60em) {
+@media only screen and (min-width: 960px) {
   #sidebar-second {
+    width: calc(33.33333% - 26.66667px);
     float: left;
-    display: block;
-    margin-right: 2.12766%;
-    width: 31.91489%;
-    margin-left: 0%;
-  }
-  #sidebar-second:last-child {
-    margin-right: 0;
+    margin-left: 20px;
+    margin-left: calc(0% - 20px + 40px);
   }
 }
 
@@ -172,3 +123,4 @@ html {
 .node {
   clear: both;
 }
+/*# sourceMappingURL=layout.css.map */

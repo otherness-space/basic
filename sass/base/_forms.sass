@@ -69,3 +69,8 @@ select
   margin-bottom: $base-spacing
   max-width: 100%
   width: auto
+
+// Required to override normalize.css, which defines this as 'content-box'
+// Required as of Bourbon 5, since the otu put of $all-text-inputs has reduced in specificity from Bourbon 4
+input[type="search"]
+  box-sizing: border-box
