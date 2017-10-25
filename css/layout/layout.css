@@ -1,13 +1,56 @@
 .container {
   margin: auto;
   max-width: 1200px;
-  width: auto;
 }
 
 .container::after {
   clear: both;
   content: "";
   display: block;
+}
+
+#header-region {
+  width: calc(100% - 40px);
+  float: left;
+  margin-left: 20px;
+}
+
+@media only screen and (min-width: 720px) {
+  #header-region {
+    width: calc(100% - 40px);
+    float: left;
+    margin-left: 20px;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  #header-region {
+    width: calc(100% - 40px);
+    float: left;
+    margin-left: 20px;
+  }
+}
+
+.no-sidebar #content {
+  width: calc(100% - 40px);
+  float: left;
+  margin-left: 20px;
+}
+
+@media only screen and (min-width: 720px) {
+  .no-sidebar #content {
+    width: calc(100% - 40px);
+    float: left;
+    margin-left: 20px;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .no-sidebar #content {
+    width: calc(100% - 40px);
+    float: left;
+    margin-left: 20px;
+  }
 }
 
 @media only screen and (min-width: 720px) {
@@ -104,9 +147,26 @@
   }
 }
 
-#footer {
-  float: none;
-  clear: both;
+#footer-region {
+  width: calc(100% - 40px);
+  float: left;
+  margin-left: 20px;
+}
+
+@media only screen and (min-width: 720px) {
+  #footer-region {
+    width: calc(100% - 40px);
+    float: left;
+    margin-left: 20px;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  #footer-region {
+    width: calc(100% - 40px);
+    float: left;
+    margin-left: 20px;
+  }
 }
 
 #header, #footer,

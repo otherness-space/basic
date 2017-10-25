@@ -16,13 +16,27 @@
   @include grid-container
   margin: auto
   max-width: $max-screen
-  width: auto
+
+#header-region
+  // 100% width for small screens.
+  @include grid-column(4)
+  // Same logic for medium screens.
+  @include grid-media($medium-screen-up)
+    @include grid-column(8)
+  // Same logic for large screens.
+  @include grid-media($large-screen-up)
+    @include grid-column(12)
 
 #content
   .no-sidebar &
-    // 100% width for small screens. No definitions required.
-    // Same logic for medium screens. No definitions required.
-    // Same logic for large screens. No definitions required.
+    // 100% width for small screens.
+    @include grid-column(4)
+    // Same logic for medium screens.
+    @include grid-media($medium-screen-up)
+      @include grid-column(8)
+    // Same logic for large screens.
+    @include grid-media($large-screen-up)
+      @include grid-column(12)
 
   .one-sidebar.sidebar-second &
     // 100% width for small screens. No definitions required.
@@ -83,9 +97,15 @@
     @include grid-column(4)
     @include grid-push(0)
 
-#footer
-  float: none
-  clear: both
+#footer-region
+  // 100% width for small screens.
+  @include grid-column(4)
+  // Same logic for medium screens.
+  @include grid-media($medium-screen-up)
+    @include grid-column(8)
+  // Same logic for large screens.
+  @include grid-media($large-screen-up)
+    @include grid-column(12)
 
 // Region Colors. Delete when starting a new theme.
 #header, #footer,
