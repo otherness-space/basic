@@ -12,6 +12,22 @@
 // Layout rules.
 // (Disclaimer: do not change if you're not sure you know what you're doing.)
 
+html
+  background-color: $viewport-background-color
+  box-sizing: border-box
+
+*,
+*::before,
+*::after
+  box-sizing: inherit
+
+html,
+body
+  height: 100%
+
+body
+  margin: 0
+
 .container
   @include grid-container
   margin: auto
