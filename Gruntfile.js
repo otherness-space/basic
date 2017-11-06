@@ -131,6 +131,8 @@ module.exports = function(grunt) {
         },
         options: {
           watchTask: true,
+          // Allows users to specify a proxy by passing a command line argument "--proxy=[proxyurl]" when invoking grunt
+          proxy: grunt.option('proxy'),
           // Change this to "true" if you'd like the css to be injected rather than a browser refresh. In order for this to work with Drupal you will need to install https://drupal.org/project/link_css keep in mind though that this should not be run on a production site.
           injectChanges: false
         }
