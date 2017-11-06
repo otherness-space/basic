@@ -104,6 +104,10 @@ textarea {
   color: #858585;
 }
 
+[type='color']::-moz-placeholder, [type='date']::-moz-placeholder, [type='datetime']::-moz-placeholder, [type='datetime-local']::-moz-placeholder, [type='email']::-moz-placeholder, [type='month']::-moz-placeholder, [type='number']::-moz-placeholder, [type='password']::-moz-placeholder, [type='search']::-moz-placeholder, [type='tel']::-moz-placeholder, [type='text']::-moz-placeholder, [type='time']::-moz-placeholder, [type='url']::-moz-placeholder, [type='week']::-moz-placeholder, input:not([type])::-moz-placeholder, textarea::-moz-placeholder {
+  color: #858585;
+}
+
 [type='color']:-ms-input-placeholder, [type='date']:-ms-input-placeholder, [type='datetime']:-ms-input-placeholder, [type='datetime-local']:-ms-input-placeholder, [type='email']:-ms-input-placeholder, [type='month']:-ms-input-placeholder, [type='number']:-ms-input-placeholder, [type='password']:-ms-input-placeholder, [type='search']:-ms-input-placeholder, [type='tel']:-ms-input-placeholder, [type='text']:-ms-input-placeholder, [type='time']:-ms-input-placeholder, [type='url']:-ms-input-placeholder, [type='week']:-ms-input-placeholder, input:not([type]):-ms-input-placeholder, textarea:-ms-input-placeholder {
   color: #858585;
 }
