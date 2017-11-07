@@ -20,10 +20,9 @@ Less code spam, more ham.
 Installation
 ============
 
-Basic utilizes SASS for adaptive grids and layouts and general structure of the
-site. It's recommended to use SASS for building out your theme. The following
+Basic utilizes a Sass framework for adaptive grids and layouts and general structure of the
+site. It's recommended to use Sass for building out your theme. The following
 packages are included via 'npm install'
-  - SASS (http://sass-lang.com/)
   - Bourbon (http://bourbon.io/)
   - Bourbon Neat (http://neat.bourbon.io/)
 
@@ -83,17 +82,17 @@ rename 'basic' to another name like 'mytheme'. You're also welcome to keep
 
 
 ============================
-How to compile SASS in Basic
+How to compile Sass in Basic
 ============================
 
-To use SASS and automatically compile it within your theme, please refer to "How
-to Use Grunt with Basic" in the documentation below.
+To use Sass and automatically compile it within your theme, please refer to "How
+to Use Gulp with Basic" in the documentation below.
 
 Install node-sass:
 
   npm install node-sass -g
 
-If you don't like Grunt, or would just prefer to use SASS' internal watch
+If you don't like Gulp, or would just prefer to use Sass' internal watch
 functionality, simply cd into your theme directory and run:
 
   node-sass sass -o css --output-style expanded --source-map true --watch
@@ -128,11 +127,11 @@ What are the files for?
 In /sass
 ============
 
-- layout/layout.sass
+- layout/layout.scss
   Defines the layout of the theme (compiles to css/layout/layout.css)
-- theme/print.sass
+- theme/print.scss
   Defines the way the theme looks when printed (compiles to css/theme/print.css)
-- components/tabs.sass
+- components/tabs.scss
   Styles for the admin tabs (compiles to css/components/tabs.css)
 
 
@@ -150,7 +149,7 @@ In /js
   child, an important part of the Bourbon Neat grid system, as it is not
   supported in Internet Explorer 8.
 - build/scripts.js & source/scripts.js
-  When using Grunt, save files to the
+  When using Gulp, save files to the
   source folder and a minified version will automatically be saved to the build
   folder. See comments in basic.libraries.yml file to enable the starter
   scripts.js file.
@@ -176,34 +175,27 @@ layout. Refer to the notes in layout.sass to see how to modify the layout.
 
 
 ===========================
-How to Use Grunt with Basic
+How to Use Gulp with Basic
 ===========================
 
-Grunt (http://gruntjs.com/) requires Node.JS to be installed on your machine.
+Gulp (https://gulpjs.com/) requires Node.JS to be installed on your machine.
 There are various package managers that can handle this for you.
 
 https://nodejs.org/download/
 
-Once Node.JS is installed, go to the root folder of Basic and install your Grunt
+Once Node.JS is installed, go to the root folder of Basic and install your Gulp
 packages:
 
   npm install
 
-This will install the neccessary node_modules to run Grunt. In order for Grunt
-to work from the command line we are going to need the Grunt CLI. Open a new
-Terminal window and type:
-
-  npm install -g grunt-cli
-
-This will install the CLI globally. Restart terminal when that is complete and
-you will now be able to use Grunt commands.
-
-Once installed, cd to the root folder of Basic and run Grunt via the command
+This will install the neccessary node_modules to run Gulp, including Gulp itself.
+Once installed, cd to the root folder of Basic and run Gulp via the command
 line:
 
-  grunt
+  gulp
 
-This will initialize Grunt and start watching changes to your SASS files. Voilà!
+This will initialize gulp, compile Sass (as .scss files) to CSS, transpile and 
+uglify your JS, and start watching changes to your files. Voilà!
 
 
 ==============
@@ -240,3 +232,4 @@ Current maintainers:
 * Joël Pittet (joelpittet)            - https://www.drupal.org/u/joelpittet
 * Catherine Winters (CatherineOmega)  - https://www.drupal.org/u/catherineomega
 * Johannes Schmidt (johannez)         - https://www.drupal.org/u/johannez
+* Chuck Kosman (cwkosman)             - https://www.drupal.org/u/cwkosman

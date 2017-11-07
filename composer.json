@@ -33,6 +33,12 @@
       "email": "mail@2tabs.com",
       "homepage": "http://2tabs.com",
       "role": "Maintainer"
+    },
+    {
+      "name": "Chuck Kosman",
+      "email": "chuck@thejibe.com",
+      "homepage": "http://thejibe.com",
+      "role": "Maintainer"
     }
   ],
   "support": {

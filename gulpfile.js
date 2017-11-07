@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var argv = require('yargs').argv;
 
 var autoprefixer = require('gulp-autoprefixer');
+var babel = require('gulp-babel');
 var bs = require('browser-sync').create();
 var imagemin = require('gulp-imagemin');
 var pixrem = require('gulp-pixrem');
@@ -21,6 +22,8 @@ var paths = {
 	svgSrc: 'images/source/**/*.svg',
 	svgDest: 'images/optimized'
 }
+
+var browserList = ['last 5 versions', '> 5%', 'Firefox ESR'];
  
 gulp.task('sass', function () {
 	return gulp.src(paths.sassSrc)
@@ -31,16 +34,27 @@ gulp.task('sass', function () {
 		// https://github.com/ByScripts/gulp-sample/blob/master/gulpfile.js
 		.pipe(sourcemaps.write({includeContent: false}))
     .pipe(sourcemaps.init({loadMaps: true}))
-		.pipe(autoprefixer({browsers: ['last 5 versions', '> 5%', 'Firefox ESR']}))
+		.pipe(autoprefixer({browsers: browserList}))
 		.pipe(pixrem())
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(paths.sassDest))
 		.pipe(bs.stream());
 });
 
-gulp.task('uglify', function() {
+gulp.task('js', function() {
 	return gulp.src(paths.jsSrc)
+		.pipe(sourcemaps.init())
+		.pipe(babel({
+			presets: [
+				['env', {
+					targets: {
+						browsers: browserList
+					}
+				}]
+			]
+		}))
 		.pipe(uglify())
+		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest(paths.jsDest));
 });
 
@@ -69,8 +83,8 @@ gulp.task('watch', function() {
 		proxy: argv.proxy
 	});
 	gulp.watch(paths.sassSrc, ['sass']);
-	gulp.watch(paths.jsSrc, ['uglify']).on('change', bs.reload);
+	gulp.watch(paths.jsSrc, ['js']).on('change', bs.reload);
 });
  
 // Default task
-gulp.task('default', ['sass', 'uglify', 'watch']);
+gulp.task('default', ['sass', 'js', 'watch']);
