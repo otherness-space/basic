@@ -1,2 +1,1 @@
-!function(Drupal,$,window){Drupal.behaviors.basic={attach:function(context,settings){$(window).load(function(){}),$(window).resize(function(){}),$(window).scroll(function(){})}}}(Drupal,jQuery,this);
-//# sourceMappingURL=scripts.js.map
+!function(n,o){"use strict";n.behaviors.basic={attach:function(n,i){o(window).on("load",function(){}),o(window).on("resize",function(){}),o(window).on("scroll",function(){})}}}(Drupal,jQuery);
