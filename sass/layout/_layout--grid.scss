@@ -39,20 +39,8 @@ body {
   max-width: $max-screen;
 }
 
-#header-region {
-  // 100% width for small screens.
-  @include grid-column(4);
-
-  // Same logic for medium screens.
-  @include grid-media($medium-screen-up) {
-    @include grid-column(8);
-  }
-
-
-  // Same logic for large screens.
-  @include grid-media($large-screen-up) {
-    @include grid-column(12);
-  }
+#content-wrapper {
+  @include grid-collapse;
 }
 
 #content {
@@ -160,22 +148,6 @@ body {
     // Span this div 4 columns wide for large screens.
     @include grid-column(4);
     @include grid-push(0);
-  }
-}
-
-#footer-region {
-  // 100% width for small screens.
-  @include grid-column(4);
-
-  // Same logic for medium screens.
-  @include grid-media($medium-screen-up) {
-    @include grid-column(8);
-  }
-
-
-  // Same logic for large screens.
-  @include grid-media($large-screen-up) {
-    @include grid-column(12);
   }
 }
 
