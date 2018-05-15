@@ -10,16 +10,16 @@
  */
 function basic_drush_command() {
 
-  $items['basic-install'] = array(
+  $items['basic-install'] = [
     'description' => dt('Run through the installation process of the Basic theme.'),
-    'options' => array(
-      'destination' => array(
+    'options' => [
+      'destination' => [
         'description' => 'Path to which the theme will be placed. If you\'re providing a relative path, note it is relative to the drupal root.',
         'example-value' => 'themes/',
-      ),
-    ),
-    'aliases' => array('binstall'),
-  );
+      ],
+    ],
+    'aliases' => ['binstall'],
+  ];
 
   return $items;
 }
@@ -65,18 +65,18 @@ function drush_basic_install() {
 
   // Try to generate a machine-readable name. If that fails, prompt for one.
   if (!$machine_name = drush_basic_generate_theme_name($name)) {
-    drush_print(dt("Sorry, I couldn't generate a machine-readable name for @name", array(
+    drush_print(dt("Sorry, I couldn't generate a machine-readable name for @name", [
       '@name' => $name,
-    )));
+    ]));
   }
   // Prompt for a theme name using the automatically generated default if any.
   drush_set_option('machine-name', drush_basic_require_valid_theme_name(dt('Please enter a machine-readable name for your new theme'), $machine_name));
 
   // Try to generate a machine-readable name. If that fails, prompt for one.
   if (!$machine_name = drush_get_option('machine-name', drush_basic_generate_theme_name($name))) {
-    drush_print(dt("Sorry, I couldn't generate a machine-readable name for @name. Please use the '--machine-name' option to specify it manually.", array(
+    drush_print(dt("Sorry, I couldn't generate a machine-readable name for @name. Please use the '--machine-name' option to specify it manually.", [
       '@name' => $name,
-    )));
+    ]));
   }
 
   $origin_path = $theme_handler->getTheme('basic')->getPath();
@@ -87,9 +87,9 @@ function drush_basic_install() {
   // Check whether the destination path exist and bail out if it does,
   // so we don't delete any important data by accident.
   if (file_exists($destination_path)) {
-    return drush_set_error('BASIC_COPY_PATH', dt('The path !path already exists.', array(
+    return drush_set_error('BASIC_COPY_PATH', dt('The path !path already exists.', [
       '!path' => $destination_path,
-    )));
+    ]));
   }
 
   if (is_dir($temp_path)) {
@@ -98,19 +98,19 @@ function drush_basic_install() {
 
   // Copy into temp directory.
   if (!basic_copy_dir($origin_path, $temp_path)) {
-    return drush_set_error('DRUSH_COPY_DIR_FAILURE', dt('Failed to copy !origin_path to !temp_path.', array(
+    return drush_set_error('DRUSH_COPY_DIR_FAILURE', dt('Failed to copy !origin_path to !temp_path.', [
       '!origin_path' => $origin_path,
       '!temp_path' => $temp_path,
-    )));
+    ]));
   }
 
   // Recursively rewrite the file names and contents of all the files that are
   // now in the subtheme's directory to represent the human- and
   // machine-readable names of the subtheme.
-  $search = array(
+  $search = [
     'basic' => $machine_name,
     'Basic' => $name,
-  );
+  ];
 
   if (!drush_basic_rewrite_recursive($temp_path, array_keys($search), array_values($search))) {
     return drush_set_error('BASIC_COPY_GENERATE_THEME', dt('Failed to rewrite files and contents while generating theme.'));
@@ -118,26 +118,26 @@ function drush_basic_install() {
 
   // Copy from temp folder into new theme's folder.
   if (!basic_copy_dir($temp_path, $destination_path)) {
-    return drush_set_error('DRUSH_COPY_DIR_FAILURE', dt('Failed to copy !temp_path to !destination_path.', array(
+    return drush_set_error('DRUSH_COPY_DIR_FAILURE', dt('Failed to copy !temp_path to !destination_path.', [
       '!temp_path' => $temp_path,
       '!destination_path' => $destination_path,
-    )));
+    ]));
   }
 
   // Run npm install on the new theme folder.
-  drush_print(dt("Building node dependencies for the theme @theme. This could take a couple minutes.", array(
+  drush_print(dt("Building node dependencies for the theme @theme. This could take a couple minutes.", [
     '@theme' => $machine_name,
-  )));
+  ]));
   drush_op('chdir', DRUPAL_ROOT . '/' . $destination_path);
   drush_shell_exec('npm install');
   drush_print(dt("Node dependancies have been successfully built."));
 
   // Notify user of successful installation.
   drush_print(dt("------------------------------------------------------------------"));
-  drush_print(dt("The new theme, !theme, has been successfully derived from Basic and placed in !destination.", array(
+  drush_print(dt("The new theme, !theme, has been successfully derived from Basic and placed in !destination.", [
     '!theme' => $machine_name,
     '!destination' => $destination_path,
-  )));
+  ]));
   drush_print(dt("------------------------------------------------------------------"));
 }
 
@@ -205,9 +205,9 @@ function drush_basic_require_valid_theme_name($message, $default = NULL) {
 
       // Validate that the machine-readable name of the theme is unique.
       if (isset($themes[$prompt])) {
-        drush_print(dt('A theme with the name @name already exists. The machine-readable name must be unique.', array(
+        drush_print(dt('A theme with the name @name already exists. The machine-readable name must be unique.', [
           '@name' => $prompt,
-        )));
+        ]));
       }
       else {
         // The given machine-readable name is valid. Let's proceed.
@@ -263,9 +263,9 @@ function drush_basic_get_destination($machine_name) {
  */
 function drush_basic_rewrite_recursive($path, $search, $replace) {
   if (!is_dir($path)) {
-    return drush_set_error('INVALID_PATH', dt('The given path !path is not a directory.', array(
+    return drush_set_error('INVALID_PATH', dt('The given path !path is not a directory.', [
       '!path' => $path,
-    )));
+    ]));
   }
 
   // If the file actually is a directory, proceed with the recursion.
@@ -293,11 +293,11 @@ function drush_basic_rewrite_recursive($path, $search, $replace) {
       }
 
       if (($changed_content = str_replace($search, $replace, $content)) === NULL) {
-        return drush_set_error('REWRITE_FAILURE', dt('There was an error while trying to rewrite !path (!search to !replace)', array(
+        return drush_set_error('REWRITE_FAILURE', dt('There was an error while trying to rewrite !path (!search to !replace)', [
           '!path' => $pathname,
           '!search' => $search,
           '!replace' => $replace,
-        )));
+        ]));
       }
 
       if ($content !== $changed_content) {
@@ -335,27 +335,27 @@ function basic_copy_dir($src, $dest, $overwrite = FILE_EXISTS_ABORT) {
       drush_op('drush_delete_dir', $dest, TRUE);
     }
     elseif ($overwrite === FILE_EXISTS_ABORT) {
-      return drush_set_error('DRUSH_DESTINATION_EXISTS', dt('Destination directory !dest already exists.', array('!dest' => $dest)));
+      return drush_set_error('DRUSH_DESTINATION_EXISTS', dt('Destination directory !dest already exists.', ['!dest' => $dest]));
     }
     elseif ($overwrite === FILE_EXISTS_MERGE) {
       // $overwrite flag may indicate we should merge instead.
-      drush_log(dt('Merging existing !dest directory', array('!dest' => $dest)));
+      drush_log(dt('Merging existing !dest directory', ['!dest' => $dest]));
     }
   }
   // $src readable?
   if (!is_readable($src)) {
-    return drush_set_error('DRUSH_SOURCE_NOT_EXISTS', dt('Source directory !src is not readable or does not exist.', array('!src' => $src)));
+    return drush_set_error('DRUSH_SOURCE_NOT_EXISTS', dt('Source directory !src is not readable or does not exist.', ['!src' => $src]));
   }
   // $dest writable?
   if (!is_writable(dirname($dest))) {
-    return drush_set_error('DRUSH_DESTINATION_NOT_WRITABLE', dt('Destination directory !dest is not writable.', array('!dest' => dirname($dest))));
+    return drush_set_error('DRUSH_DESTINATION_NOT_WRITABLE', dt('Destination directory !dest is not writable.', ['!dest' => dirname($dest)]));
   }
   // Try to do a recursive copy.
   if (@drush_op('_basic_recursive_copy', $src, $dest)) {
     return TRUE;
   }
 
-  return drush_set_error('DRUSH_COPY_DIR_FAILURE', dt('Unable to copy !src to !dest.', array('!src' => $src, '!dest' => $dest)));
+  return drush_set_error('DRUSH_COPY_DIR_FAILURE', dt('Unable to copy !src to !dest.', ['!src' => $src, '!dest' => $dest]));
 }
 
 /**
@@ -367,9 +367,9 @@ function _basic_recursive_copy($src, $destination) {
     $machine_name = drush_get_option('machine-name');
   }
   // All subdirectories and contents.
-  $ignore_directories = array(
+  $ignore_directories = [
     'node_modules',
-  );
+  ];
   $no_mask = '/^' . implode('|', $ignore_directories) . '$/';
 
   if (is_dir($src)) {
